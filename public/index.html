@@ -404,7 +404,153 @@ footer a{
     display: block;
 }
 
+
+/* KEŞFET */
+.discover-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+    margin-top:25px;
+}
+
+.discover-card{
+    background:linear-gradient(145deg,#111a30,#0d1426);
+    border:1px solid #263654;
+    border-radius:20px;
+    padding:25px;
+    min-height:190px;
+    cursor:pointer;
+    transition:.25s ease;
+    box-shadow:0 10px 30px rgba(0,0,0,.18);
+}
+
+.discover-card:hover{
+    transform:translateY(-6px);
+    border-color:#4da3ff;
+    box-shadow:0 15px 35px rgba(0,0,0,.3);
+}
+
+.discover-icon{
+    font-size:34px;
+    margin-bottom:12px;
+}
+
+.discover-card h3{
+    margin:5px 0 10px;
+    font-size:20px;
+}
+
+.discover-card p{
+    color:#9eabc4;
+    line-height:1.6;
+}
+
+.discover-card strong{
+    display:inline-block;
+    margin-top:8px;
+    color:#4da3ff;
+}
+
+.discover-search{
+    grid-column:span 2;
+}
+
+.discover-search-box{
+    display:flex;
+    gap:10px;
+    margin-top:18px;
+}
+
+.discover-search-box input{
+    flex:1;
+    margin:0;
+}
+
+.discover-search-box button{
+    border:0;
+    border-radius:10px;
+    padding:0 20px;
+    background:#287cff;
+    color:white;
+    font-weight:700;
+    cursor:pointer;
+}
+
+#kesfetSonuc{
+    margin-top:12px;
+    color:#8fc5ff;
+}
+
+@media(max-width:900px){
+    .discover-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .discover-search{
+        grid-column:span 2;
+    }
+}
+
+@media(max-width:600px){
+    .discover-grid{
+        grid-template-columns:1fr;
+    }
+
+    .discover-search{
+        grid-column:span 1;
+    }
+}
+
 </style>
+
+<style>
+/* DAHA BELİRGİN YAZILAR */
+body{
+    color:#f8fafc;
+}
+
+h1,h2,h3,h4,h5,h6{
+    color:#ffffff;
+    font-weight:800;
+    letter-spacing:.1px;
+}
+
+p,li,td,th,label{
+    color:#e8edf7;
+}
+
+.muted{
+    color:#b8c4d9 !important;
+}
+
+.discover-card h3,
+.engineering h3,
+.category h3{
+    color:#ffffff !important;
+    font-weight:800;
+}
+
+.discover-card p,
+.engineering p,
+.category p{
+    color:#c4cee0 !important;
+}
+
+input,select,textarea{
+    color:#ffffff !important;
+}
+
+input::placeholder,
+textarea::placeholder{
+    color:#9eabc0 !important;
+    opacity:1;
+}
+
+button{
+    font-weight:700;
+}
+</style>
+
 </head>
 
 <body>
@@ -487,104 +633,70 @@ footer a{
 </section>
 
 
-<!-- KATEGORİLER -->
+<!-- KEŞFET -->
 
-<section class="container">
+<section class="container" id="kesfet">
 
 <div class="title">
-
-    <h2>📚 Kategoriler</h2>
-
-    <p>
-        İstediğin bilgiye kategoriler üzerinden ulaş.
-    </p>
-
+    <h2>🚀 Keşfet</h2>
+    <p>Mühendislik dünyasında merak ettiğini bul.</p>
 </div>
 
-<div class="categories">
+<div class="discover-grid">
 
-<div class="category">
+    <div class="discover-card discover-search">
+        <div class="discover-icon">🔎</div>
+        <h3>Ne arıyorsun?</h3>
+        <p>Mühendislik, üniversite veya YKS hakkında ara.</p>
 
-    <div class="icon">⚙️</div>
+        <div class="discover-search-box">
+            <input
+                id="kesfetSearch"
+                type="text"
+                placeholder="Örn. Bilgisayar Mühendisliği..."
+                oninput="kesfetAra(this.value)"
+            >
+            <button onclick="kesfetAra(document.getElementById('kesfetSearch').value)">
+                Ara
+            </button>
+        </div>
 
-    <h3>Mühendislik</h3>
+        <div id="kesfetSonuc"></div>
+    </div>
 
-    <p>
-        Mühendislik dalları, bölümler,
-        kariyer ve iş olanakları.
-    </p>
+    <div class="discover-card" onclick="gununMuhendisligi()">
+        <div class="discover-icon">🎯</div>
+        <h3>Günün Mühendisliği</h3>
+        <p>Bugünün öne çıkan mühendisliğini keşfet.</p>
+        <strong>Keşfet →</strong>
+    </div>
 
-</div>
+    <div class="discover-card" onclick="muhendislikKarsilastir()">
+        <div class="discover-icon">⚔️</div>
+        <h3>Karşılaştır</h3>
+        <p>İki mühendisliği yan yana karşılaştır.</p>
+        <strong>Karşılaştır →</strong>
+    </div>
 
-<div class="category">
+    <div class="discover-card" onclick="universiteKesfet()">
+        <div class="discover-icon">🎓</div>
+        <h3>Üniversite Keşfet</h3>
+        <p>Bölüm, şehir ve başarı sırasına göre keşfet.</p>
+        <strong>Üniversiteleri Gör →</strong>
+    </div>
 
-    <div class="icon">🎓</div>
+    <div class="discover-card" onclick="yksHedef()">
+        <div class="discover-icon">📊</div>
+        <h3>YKS Hedefim</h3>
+        <p>TYT ve AYT sonuçlarını kullanarak hedefini takip et.</p>
+        <strong>Hedefini Gör →</strong>
+    </div>
 
-    <h3>Üniversite</h3>
 
-    <p>
-        Üniversiteler, bölümler,
-        puanlar ve sıralamalar.
-    </p>
-
-</div>
-
-<div class="category">
-
-    <div class="icon">📝</div>
-
-    <h3>YKS</h3>
-
-    <p>
-        TYT, AYT, net hesaplama
-        ve tercih bilgileri.
-    </p>
-
-</div>
-
-<div class="category">
-
-    <div class="icon">💰</div>
-
-    <h3>Maaşlar</h3>
-
-    <p>
-        Kamu ve özel sektör
-        mühendis maaşları.
-    </p>
-
-</div>
-
-<div class="category">
-
-    <div class="icon">📰</div>
-
-    <h3>Haberler</h3>
-
-    <p>
-        Eğitim, teknoloji ve
-        mühendislik haberleri.
-    </p>
-
-</div>
-
-<div class="category">
-
-    <div class="icon">🚀</div>
-
-    <h3>Kariyer</h3>
-
-    <p>
-        Staj, iş imkanları,
-        beceriler ve kariyer.
-    </p>
-
-</div>
 
 </div>
 
 </section>
-
 
 <!-- MÜHENDİSLİK -->
 
@@ -1362,7 +1474,167 @@ function bolumGoster(){
     document.getElementById("bolumSonuc").textContent=
         b+" seçildi. Üniversite ve başarı sırası verilerini sonraki aşamada ekleyeceğiz.";
 }
+
+<script>
+/* KEŞFET SİSTEMİ */
+
+const kesfetMuhendislikler = [
+    ["Bilgisayar Mühendisliği","Yazılım, bilgisayar sistemleri ve yapay zekâ."],
+    ["Yazılım Mühendisliği","Yazılım geliştirme ve teknoloji."],
+    ["Elektrik-Elektronik Mühendisliği","Elektronik, enerji ve haberleşme."],
+    ["Makine Mühendisliği","Makine, üretim ve mekanik sistemler."],
+    ["İnşaat Mühendisliği","Yapılar, altyapı ve projeler."],
+    ["Endüstri Mühendisliği","Üretim, optimizasyon ve yönetim."],
+    ["Mekatronik Mühendisliği","Robotik, mekanik ve elektronik."],
+    ["Biyomedikal Mühendisliği","Tıp ve mühendisliğin birleşimi."],
+    ["Kimya Mühendisliği","Kimyasal üretim ve prosesler."],
+    ["Çevre Mühendisliği","Çevre ve sürdürülebilirlik."],
+    ["Uçak Mühendisliği","Uçak tasarımı ve havacılık."],
+    ["Uzay Mühendisliği","Uzay araçları ve sistemleri."],
+    ["Otomotiv Mühendisliği","Araç teknolojileri."],
+    ["Metalurji ve Malzeme","Malzeme ve metal teknolojileri."],
+    ["Enerji Sistemleri","Enerji üretimi ve sistemleri."],
+    ["Harita Mühendisliği","Haritalama ve coğrafi sistemler."],
+    ["Jeoloji Mühendisliği","Yer bilimi ve doğal kaynaklar."],
+    ["Jeofizik Mühendisliği","Yeraltı ve fiziksel araştırmalar."],
+    ["Gıda Mühendisliği","Gıda üretimi ve güvenliği."],
+    ["Ziraat Mühendisliği","Tarım teknolojileri."],
+    ["Tekstil Mühendisliği","Tekstil ve üretim teknolojileri."],
+    ["Maden Mühendisliği","Maden ve kaynak teknolojileri."],
+    ["Denizcilik Mühendisliği","Gemi ve deniz teknolojileri."],
+    ["Çevre Teknolojileri","Sürdürülebilir teknoloji."],
+    ["Nükleer Enerji Mühendisliği","Nükleer enerji sistemleri."]
+];
+
+function kesfetAra(deger){
+    const sonuc = document.getElementById("kesfetSonuc");
+    const q = (deger || "").trim().toLocaleLowerCase("tr-TR");
+
+    if(!q){
+        sonuc.innerHTML = "";
+        return;
+    }
+
+    const bulunan = kesfetMuhendislikler.filter(x =>
+        x[0].toLocaleLowerCase("tr-TR").includes(q) ||
+        x[1].toLocaleLowerCase("tr-TR").includes(q)
+    );
+
+    if(!bulunan.length){
+        sonuc.innerHTML = "❌ Sonuç bulunamadı.";
+        return;
+    }
+
+    sonuc.innerHTML = bulunan.slice(0,5).map(x => `
+        <div onclick="muhendislikAc('${x[0].replace(/'/g,"\\'")}')"
+             style="padding:12px;margin-top:8px;background:#17223a;border-radius:10px;cursor:pointer">
+            <strong>${x[0]}</strong><br>
+            <small>${x[1]}</small>
+        </div>
+    `).join("");
+}
+
+function muhendislikAc(ad){
+    const alan = document.getElementById("muhendislik");
+
+    if(alan){
+        alan.scrollIntoView({
+            behavior:"smooth",
+            block:"start"
+        });
+    }
+
+    setTimeout(() => {
+        const kartlar = document.querySelectorAll(".engineering .eng");
+        kartlar.forEach(k => {
+            if(k.innerText.includes(ad)){
+                k.scrollIntoView({
+                    behavior:"smooth",
+                    block:"center"
+                });
+            }
+        });
+    },500);
+}
+
+function gununMuhendisligi(){
+    const alan = document.getElementById("muhendislik");
+
+    if(alan){
+        alan.scrollIntoView({
+            behavior:"smooth",
+            block:"start"
+        });
+    }
+
+    alert("🎯 Günün Mühendisliği\n\nBilgisayar Mühendisliği\n\nYazılım, bilgisayar sistemleri ve yapay zekâ alanlarında çalışır.");
+}
+
+function muhendislikKarsilastir(){
+    const bir = prompt("1. mühendisliği yaz:\nÖrn. Bilgisayar Mühendisliği");
+
+    if(!bir) return;
+
+    const iki = prompt("2. mühendisliği yaz:\nÖrn. Makine Mühendisliği");
+
+    if(!iki) return;
+
+    alert(
+        "⚔️ Mühendislik Karşılaştırması\n\n" +
+        bir + "  ⚔️  " + iki +
+        "\n\nBu karşılaştırma sistemi sonraki aşamada detaylandırılacak."
+    );
+}
+
+function universiteKesfet(){
+    const alan = document.getElementById("universiteler");
+
+    if(alan){
+        alan.scrollIntoView({
+            behavior:"smooth",
+            block:"start"
+        });
+        return;
+    }
+
+    const bolum = document.getElementById("universite");
+
+    if(bolum){
+        bolum.scrollIntoView({
+            behavior:"smooth",
+            block:"start"
+        });
+        return;
+    }
+
+    alert("🎓 Üniversite keşfetme alanı hazırlanıyor.");
+}
+
+function yksHedef(){
+    const yks = document.getElementById("yks-panel");
+
+    if(yks){
+        yks.scrollIntoView({
+            behavior:"smooth",
+            block:"start"
+        });
+        return;
+    }
+
+    const hedef = document.getElementById("yks");
+
+    if(hedef){
+        hedef.scrollIntoView({
+            behavior:"smooth",
+            block:"start"
+        });
+        return;
+    }
+
+    alert("📊 YKS hedef sistemi açılıyor.");
+}
 </script>
+
 
 </body>
 </html>
