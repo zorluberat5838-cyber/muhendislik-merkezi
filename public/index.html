@@ -1408,230 +1408,86 @@ loadNews();
 
 
 <script>
-function openTYT(){
-    document.getElementById("yks-panel").style.display="block";
-    document.getElementById("yks-baslik").textContent="TYT Net Hesaplama";
-    document.getElementById("yks-icerik").innerHTML=`
-        <p>Net hesabı: Doğru - (Yanlış ÷ 4)</p>
-        <label>Doğru</label>
-        <input id="tytDogru" type="number" min="0" value="0">
-        <label>Yanlış</label>
-        <input id="tytYanlis" type="number" min="0" value="0">
-        <button onclick="hesaplaTYT()">Hesapla</button>
-        <h3 id="tytSonuc"></h3>
-    `;
-}
-
-function hesaplaTYT(){
-    const d=Number(document.getElementById("tytDogru").value)||0;
-    const y=Number(document.getElementById("tytYanlis").value)||0;
-    const net=d-(y/4);
-    document.getElementById("tytSonuc").textContent="TYT Netin: "+net.toFixed(2);
-}
-
-function openAYT(){
-    document.getElementById("yks-panel").style.display="block";
-    document.getElementById("yks-baslik").textContent="AYT Net Hesaplama";
-    document.getElementById("yks-icerik").innerHTML=`
-        <p>Net hesabı: Doğru - (Yanlış ÷ 4)</p>
-        <label>Doğru</label>
-        <input id="aytDogru" type="number" min="0" value="0">
-        <label>Yanlış</label>
-        <input id="aytYanlis" type="number" min="0" value="0">
-        <button onclick="hesaplaAYT()">Hesapla</button>
-        <h3 id="aytSonuc"></h3>
-    `;
-}
-
-function hesaplaAYT(){
-    const d=Number(document.getElementById("aytDogru").value)||0;
-    const y=Number(document.getElementById("aytYanlis").value)||0;
-    const net=d-(y/4);
-    document.getElementById("aytSonuc").textContent="AYT Netin: "+net.toFixed(2);
-}
-
-function openTercih(){
-    document.getElementById("yks-panel").style.display="block";
-    document.getElementById("yks-baslik").textContent="Tercih Merkezi";
-    document.getElementById("yks-icerik").innerHTML=`
-        <p>Mühendislik bölümleri:</p>
-        <select id="bolum">
-            <option>Bilgisayar Mühendisliği</option>
-            <option>Yazılım Mühendisliği</option>
-            <option>Elektrik-Elektronik Mühendisliği</option>
-            <option>Makine Mühendisliği</option>
-            <option>Endüstri Mühendisliği</option>
-            <option>Mekatronik Mühendisliği</option>
-            <option>İnşaat Mühendisliği</option>
-        </select>
-        <button onclick="bolumGoster()">Bölümü Gör</button>
-        <h3 id="bolumSonuc"></h3>
-    `;
-}
-
-function bolumGoster(){
-    const b=document.getElementById("bolum").value;
-    document.getElementById("bolumSonuc").textContent=
-        b+" seçildi. Üniversite ve başarı sırası verilerini sonraki aşamada ekleyeceğiz.";
-}
-
-<script>
-/* KEŞFET SİSTEMİ */
-
-const kesfetMuhendislikler = [
-    ["Bilgisayar Mühendisliği","Yazılım, bilgisayar sistemleri ve yapay zekâ."],
-    ["Yazılım Mühendisliği","Yazılım geliştirme ve teknoloji."],
-    ["Elektrik-Elektronik Mühendisliği","Elektronik, enerji ve haberleşme."],
-    ["Makine Mühendisliği","Makine, üretim ve mekanik sistemler."],
-    ["İnşaat Mühendisliği","Yapılar, altyapı ve projeler."],
-    ["Endüstri Mühendisliği","Üretim, optimizasyon ve yönetim."],
-    ["Mekatronik Mühendisliği","Robotik, mekanik ve elektronik."],
-    ["Biyomedikal Mühendisliği","Tıp ve mühendisliğin birleşimi."],
-    ["Kimya Mühendisliği","Kimyasal üretim ve prosesler."],
-    ["Çevre Mühendisliği","Çevre ve sürdürülebilirlik."],
-    ["Uçak Mühendisliği","Uçak tasarımı ve havacılık."],
-    ["Uzay Mühendisliği","Uzay araçları ve sistemleri."],
-    ["Otomotiv Mühendisliği","Araç teknolojileri."],
-    ["Metalurji ve Malzeme","Malzeme ve metal teknolojileri."],
-    ["Enerji Sistemleri","Enerji üretimi ve sistemleri."],
-    ["Harita Mühendisliği","Haritalama ve coğrafi sistemler."],
-    ["Jeoloji Mühendisliği","Yer bilimi ve doğal kaynaklar."],
-    ["Jeofizik Mühendisliği","Yeraltı ve fiziksel araştırmalar."],
-    ["Gıda Mühendisliği","Gıda üretimi ve güvenliği."],
-    ["Ziraat Mühendisliği","Tarım teknolojileri."],
-    ["Tekstil Mühendisliği","Tekstil ve üretim teknolojileri."],
-    ["Maden Mühendisliği","Maden ve kaynak teknolojileri."],
-    ["Denizcilik Mühendisliği","Gemi ve deniz teknolojileri."],
-    ["Çevre Teknolojileri","Sürdürülebilir teknoloji."],
-    ["Nükleer Enerji Mühendisliği","Nükleer enerji sistemleri."]
-];
-
 function kesfetAra(deger){
-    const sonuc = document.getElementById("kesfetSonuc");
-    const q = (deger || "").trim().toLocaleLowerCase("tr-TR");
+    const sonuc=document.getElementById("kesfetSonuc");
+    const q=(deger||"").trim().toLocaleLowerCase("tr-TR");
 
     if(!q){
-        sonuc.innerHTML = "";
+        sonuc.innerHTML="";
         return;
     }
 
-    const bulunan = kesfetMuhendislikler.filter(x =>
+    const liste=typeof engineeringList !== "undefined"
+        ? engineeringList
+        : [];
+
+    const bulunan=liste.filter(x =>
         x[0].toLocaleLowerCase("tr-TR").includes(q) ||
         x[1].toLocaleLowerCase("tr-TR").includes(q)
     );
 
     if(!bulunan.length){
-        sonuc.innerHTML = "❌ Sonuç bulunamadı.";
+        sonuc.innerHTML="❌ Sonuç bulunamadı.";
         return;
     }
 
-    sonuc.innerHTML = bulunan.slice(0,5).map(x => `
-        <div onclick="muhendislikAc('${x[0].replace(/'/g,"\\'")}')"
-             style="padding:12px;margin-top:8px;background:#17223a;border-radius:10px;cursor:pointer">
-            <strong>${x[0]}</strong><br>
-            <small>${x[1]}</small>
+    sonuc.innerHTML=bulunan.slice(0,6).map(x=>`
+        <div onclick="muhendislikAc('${x[0].replace(/'/g,"\\'") }')"
+             style="padding:14px;margin-top:8px;background:#17223a;border:1px solid #2b3b5d;border-radius:10px;cursor:pointer">
+            <strong style="color:#fff">${x[0]}</strong><br>
+            <small style="color:#c4cee0">${x[1]}</small>
         </div>
     `).join("");
 }
 
+function bolumeGit(id){
+    const hedef=document.getElementById(id);
+
+    if(!hedef) return;
+
+    hedef.scrollIntoView({
+        behavior:"smooth",
+        block:"start"
+    });
+}
+
 function muhendislikAc(ad){
-    const alan = document.getElementById("muhendislik");
+    bolumeGit("muhendislik");
 
-    if(alan){
-        alan.scrollIntoView({
-            behavior:"smooth",
-            block:"start"
-        });
-    }
+    setTimeout(()=>{
+        const kartlar=document.querySelectorAll(".engineering .eng,.engineering > div");
 
-    setTimeout(() => {
-        const kartlar = document.querySelectorAll(".engineering .eng");
-        kartlar.forEach(k => {
-            if(k.innerText.includes(ad)){
+        kartlar.forEach(k=>{
+            if(k.innerText && k.innerText.includes(ad)){
                 k.scrollIntoView({
                     behavior:"smooth",
                     block:"center"
                 });
+
+                k.style.outline="3px solid #4da3ff";
+
+                setTimeout(()=>{
+                    k.style.outline="";
+                },2000);
             }
         });
     },500);
 }
 
 function gununMuhendisligi(){
-    const alan = document.getElementById("muhendislik");
-
-    if(alan){
-        alan.scrollIntoView({
-            behavior:"smooth",
-            block:"start"
-        });
-    }
-
-    alert("🎯 Günün Mühendisliği\n\nBilgisayar Mühendisliği\n\nYazılım, bilgisayar sistemleri ve yapay zekâ alanlarında çalışır.");
+    bolumeGit("muhendislik");
 }
 
 function muhendislikKarsilastir(){
-    const bir = prompt("1. mühendisliği yaz:\nÖrn. Bilgisayar Mühendisliği");
-
-    if(!bir) return;
-
-    const iki = prompt("2. mühendisliği yaz:\nÖrn. Makine Mühendisliği");
-
-    if(!iki) return;
-
-    alert(
-        "⚔️ Mühendislik Karşılaştırması\n\n" +
-        bir + "  ⚔️  " + iki +
-        "\n\nBu karşılaştırma sistemi sonraki aşamada detaylandırılacak."
-    );
+    bolumeGit("muhendislik");
 }
 
 function universiteKesfet(){
-    const alan = document.getElementById("universiteler");
-
-    if(alan){
-        alan.scrollIntoView({
-            behavior:"smooth",
-            block:"start"
-        });
-        return;
-    }
-
-    const bolum = document.getElementById("universite");
-
-    if(bolum){
-        bolum.scrollIntoView({
-            behavior:"smooth",
-            block:"start"
-        });
-        return;
-    }
-
-    alert("🎓 Üniversite keşfetme alanı hazırlanıyor.");
+    bolumeGit("universite");
 }
 
 function yksHedef(){
-    const yks = document.getElementById("yks-panel");
-
-    if(yks){
-        yks.scrollIntoView({
-            behavior:"smooth",
-            block:"start"
-        });
-        return;
-    }
-
-    const hedef = document.getElementById("yks");
-
-    if(hedef){
-        hedef.scrollIntoView({
-            behavior:"smooth",
-            block:"start"
-        });
-        return;
-    }
-
-    alert("📊 YKS hedef sistemi açılıyor.");
+    bolumeGit("yks");
 }
 </script>
 
