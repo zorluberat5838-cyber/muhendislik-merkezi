@@ -138,7 +138,74 @@ app.get("/api/categories", (req, res) => {
     );
 });
 
-app.get("/api/news", (req, res) => {
+
+const https = require("https");
+
+function getMEBNews() {
+    return new Promise((resolve) => {
+        const req = https.get("https://www.meb.gov.tr/", {
+            headers: {
+                "User-Agent": "Mozilla/5.0"
+            }
+        }, res => {
+            let html = "";
+
+            res.on("data", chunk => html += chunk);
+
+            res.on("end", () => {
+                const news = [];
+                const regex =
+                    /<a[^>]+href=["']([^"']+)["'][^>]*>([\s\S]*?)<\/a>/gi;
+
+                let match;
+
+                while ((match = regex.exec(html)) && news.length < 8) {
+                    const title = match[2]
+                        .replace(/<[^>]*>/g, "")
+                        .replace(/\s+/g, " ")
+                        .trim();
+
+                    if (
+                        title.length >= 20 &&
+                        /yks|üniversite|eğitim|öğrenci|okul|sınav|bakan|meb/i.test(title)
+                    ) {
+                        let url = match[1];
+
+                        if (url.startsWith("/")) {
+                            url = "https://www.meb.gov.tr" + url;
+                        }
+
+                        news.push({
+                            id: "meb-" + news.length,
+                            title: title,
+                            text: "Millî Eğitim Bakanlığı resmi kaynağından.",
+                            created_at: new Date().toISOString(),
+                            source: "MEB",
+                            url: url
+                        });
+                    }
+                }
+
+                resolve(news);
+            });
+        });
+
+        req.on("error", () => resolve([]));
+
+        req.setTimeout(10000, () => {
+            req.destroy();
+            resolve([]);
+        });
+    });
+}
+
+app.get("/api/news", async (req, res) => {
+    const mebNews = await getMEBNews();
+
+    if (mebNews.length > 0) {
+        return res.json(mebNews);
+    }
+
     res.json(
         db.prepare(
             "SELECT * FROM news ORDER BY id DESC"
