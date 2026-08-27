@@ -35,6 +35,25 @@ button.primary{background:#287cff;color:white;border:0;padding:11px 16px;border-
 </head>
 <body>
 
+<div id="loginScreen" style="position:fixed;inset:0;background:#0b1020;display:flex;align-items:center;justify-content:center;z-index:9999">
+<div style="width:380px;background:#11182b;border:1px solid #25304a;border-radius:18px;padding:30px">
+<h1 style="margin-top:0">Admin Girişi</h1>
+<p class="muted">Mühendislik Merkezi yönetim paneli</p>
+
+<label>Kullanıcı adı</label>
+<input id="loginName" type="text" placeholder="Kullanıcı adın">
+
+<label>Şifre</label>
+<input id="loginPassword" type="password" placeholder="Şifren">
+
+<button class="primary" style="width:100%;margin-top:5px" onclick="loginAdmin()">Giriş Yap</button>
+
+<p id="loginError" style="color:#ff6b6b;display:none;margin-bottom:0">
+Kullanıcı adı veya şifre yanlış.
+</p>
+</div>
+</div>
+
 <div class="layout">
 
 <aside>
@@ -297,6 +316,30 @@ document.getElementById("tytTotal").textContent=t;
 </div>
 
 <script>
+async function loginAdmin(){
+const name=document.getElementById("loginName").value;
+const password=document.getElementById("loginPassword").value;
+
+try{
+const r=await fetch("/api/login",{
+method:"POST",
+headers:{"Content-Type":"application/json"},
+body:JSON.stringify({name,password})
+});
+
+const d=await r.json();
+
+if(d.success){
+document.getElementById("loginScreen").style.display="none";
+}else{
+document.getElementById("loginError").style.display="block";
+}
+}catch(e){
+document.getElementById("loginError").textContent="Sunucuya bağlanılamadı.";
+document.getElementById("loginError").style.display="block";
+}
+}
+
 function showPage(id,btn){
 document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
 document.getElementById(id).classList.add('active');
