@@ -3,358 +3,227 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Mühendislik Merkezi | Admin</title>
+<title>Admin Girişi | Mühendislik Merkezi</title>
+
 <style>
 *{box-sizing:border-box}
-body{margin:0;font-family:Inter,Arial,sans-serif;background:#0b1020;color:#eef2ff}
-.layout{display:flex;min-height:100vh}
-aside{width:250px;background:#11182b;border-right:1px solid #25304a;padding:25px 15px}
-.logo{font-size:21px;font-weight:800;padding:10px 12px 30px}
-.logo span{color:#4da3ff}
-nav button{width:100%;padding:13px;margin:4px 0;border:0;border-radius:10px;background:transparent;color:#aeb9d3;text-align:left;font-size:14px;cursor:pointer}
-nav button:hover,nav button.active{background:#1c2944;color:white}
-main{flex:1;padding:30px;overflow:auto}
-.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:30px}
-h1{margin:0;font-size:28px}
-.muted{color:#8e9ab5}
-.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-.card{background:#11182b;border:1px solid #25304a;border-radius:16px;padding:22px}
-.stat{font-size:30px;font-weight:800;margin:12px 0}
-.icon{font-size:25px}
-.section{margin-top:25px}
-table{width:100%;border-collapse:collapse}
-th,td{padding:14px;border-bottom:1px solid #25304a;text-align:left}
-th{color:#8e9ab5;font-size:13px}
-.badge{padding:5px 9px;border-radius:20px;background:#173d2d;color:#69e09a;font-size:12px}
-input,select,textarea{width:100%;padding:12px;margin:7px 0 15px;border:1px solid #2b3855;border-radius:9px;background:#0b1020;color:white}
-button.primary{background:#287cff;color:white;border:0;padding:11px 16px;border-radius:9px;cursor:pointer}
-.page{display:none}
-.page.active{display:block}
-@media(max-width:900px){aside{width:190px}.grid{grid-template-columns:repeat(2,1fr)}}
+
+body{
+    margin:0;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:Arial,sans-serif;
+    background:#080d18;
+    color:white;
+}
+
+.login{
+    width:390px;
+    padding:35px;
+    background:#111827;
+    border:1px solid #26344d;
+    border-radius:20px;
+    box-shadow:0 20px 60px rgba(0,0,0,.45);
+}
+
+.logo{
+    text-align:center;
+    font-size:25px;
+    font-weight:800;
+    margin-bottom:8px;
+}
+
+.logo span{
+    color:#3b82f6;
+}
+
+.subtitle{
+    text-align:center;
+    color:#94a3b8;
+    margin-bottom:30px;
+}
+
+label{
+    display:block;
+    margin:15px 0 7px;
+    color:#cbd5e1;
+}
+
+input{
+    width:100%;
+    padding:14px;
+    border-radius:10px;
+    border:1px solid #334155;
+    background:#0b1220;
+    color:white;
+    outline:none;
+}
+
+input:focus{
+    border-color:#3b82f6;
+}
+
+button{
+    width:100%;
+    padding:14px;
+    margin-top:20px;
+    border:0;
+    border-radius:10px;
+    background:#2563eb;
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#1d4ed8;
+}
+
+#error{
+    display:none;
+    margin-top:15px;
+    padding:12px;
+    border-radius:9px;
+    background:#3b1118;
+    color:#ff8a9b;
+    text-align:center;
+}
+
+#loading{
+    display:none;
+    text-align:center;
+    margin-top:15px;
+    color:#94a3b8;
+}
 </style>
 </head>
+
 <body>
 
-<div id="loginScreen" style="position:fixed;inset:0;background:#0b1020;display:flex;align-items:center;justify-content:center;z-index:9999">
-<div style="width:380px;background:#11182b;border:1px solid #25304a;border-radius:18px;padding:30px">
-<h1 style="margin-top:0">Admin Girişi</h1>
-<p class="muted">Mühendislik Merkezi yönetim paneli</p>
+<div class="login">
 
-<label>Kullanıcı adı</label>
-<input id="loginName" type="text" placeholder="Kullanıcı adın">
+    <div class="logo">
+        Mühendislik <span>Merkezi</span>
+    </div>
 
-<label>Şifre</label>
-<input id="loginPassword" type="password" placeholder="Şifren">
+    <div class="subtitle">
+        Yönetim Paneli
+    </div>
 
-<button class="primary" style="width:100%;margin-top:5px" onclick="loginAdmin()">Giriş Yap</button>
+    <label>Kullanıcı adı</label>
+    <input
+        id="name"
+        type="text"
+        autocomplete="username"
+        placeholder="Kullanıcı adını gir">
 
-<p id="loginError" style="color:#ff6b6b;display:none;margin-bottom:0">
-Kullanıcı adı veya şifre yanlış.
-</p>
-</div>
-</div>
+    <label>Şifre</label>
+    <input
+        id="password"
+        type="password"
+        autocomplete="current-password"
+        placeholder="Şifreni gir">
 
-<div class="layout">
+    <button onclick="login()">
+        Giriş Yap
+    </button>
 
-<aside>
-<div class="logo">Mühendislik <span>Merkezi</span></div>
+    <div id="loading">
+        Giriş kontrol ediliyor...
+    </div>
 
-<nav>
-<button onclick="showPage('advanced',this)">Gelişmiş Yönetim</button>
-<button class="active" onclick="showPage('dashboard',this)">Dashboard</button>
-<button onclick="showPage('news',this)">Haber Yönetimi</button>
-<button onclick="showPage('engineering',this)">Mühendislikler</button>
-<button onclick="showPage('universities',this)">Üniversiteler</button>
-<button onclick="showPage('salaries',this)">Maaşlar</button>
-<button onclick="showPage('yks',this)">YKS Ayarları</button>
-<button onclick="showPage('settings',this)">Site Ayarları</button>
-</nav>
-</aside>
+    <div id="error">
+        Kullanıcı adı veya şifre yanlış.
+    </div>
 
-<main>
-
-<section id="dashboard" class="page active">
-<div class="top">
-<div>
-<h1>Dashboard</h1>
-<div class="muted">Mühendislik Merkezi yönetim paneli</div>
-</div>
-<span class="badge">Sistem Aktif</span>
-</div>
-
-<div class="grid">
-<div class="card"><div class="icon">👥</div><div class="muted">Toplam Ziyaretçi</div><div class="stat" id="visits">-</div></div>
-<div class="card"><div class="icon">🏫</div><div class="muted">Üniversite</div><div class="stat" id="universities">-</div></div>
-<div class="card"><div class="icon">⚙️</div><div class="muted">Mühendislik</div><div class="stat">20+</div></div>
-<div class="card"><div class="icon">📰</div><div class="muted">Haber</div><div class="stat" id="newsCount">-</div></div>
-</div>
-
-<div class="section card">
-<h2>Hızlı Yönetim</h2>
-<p class="muted">Sol menüden sitenin bölümlerini yönetebilirsin.</p>
-</div>
-</section>
-
-<section id="news" class="page">
-<h1>Haber Yönetimi</h1>
-<div class="section card">
-<label>Haber başlığı</label>
-<input placeholder="Yeni haber başlığı">
-<label>Haber metni</label>
-<textarea rows="6" placeholder="Haber içeriği"></textarea>
-<button class="primary">Haber Ekle</button>
-</div>
-</section>
-
-<section id="engineering" class="page">
-<h1>Mühendislik Yönetimi</h1>
-<div class="section card">
-<label>Mühendislik adı</label>
-<input placeholder="Örn. Bilgisayar Mühendisliği">
-<label>Açıklama</label>
-<textarea rows="5" placeholder="Bölüm açıklaması"></textarea>
-<button class="primary">Mühendislik Ekle</button>
-</div>
-</section>
-
-<section id="universities" class="page">
-<h1>Üniversite Yönetimi</h1>
-<div class="section card">
-<label>Üniversite</label>
-<input placeholder="Üniversite adı">
-<label>Bölüm</label>
-<input placeholder="Bölüm adı">
-<label>Şehir</label>
-<input placeholder="Şehir">
-<label>Taban puan</label>
-<input placeholder="Puan">
-<label>Başarı sırası</label>
-<input placeholder="Başarı sırası">
-<label>Kontenjan</label>
-<input placeholder="Kontenjan">
-<button class="primary">Üniversite Ekle</button>
-</div>
-</section>
-
-<section id="salaries" class="page">
-<h1>Maaş Yönetimi</h1>
-<div class="section card">
-<label>Mühendislik</label>
-<input placeholder="Mühendislik">
-<label>Sektör</label>
-<input placeholder="Kamu / Özel">
-<label>Yıl</label>
-<input type="number" placeholder="2026">
-<label>Maaş</label>
-<input placeholder="₺">
-<button class="primary">Maaş Ekle</button>
-</div>
-</section>
-
-<section id="yks" class="page">
-<h1>YKS Ayarları</h1>
-<div class="section card">
-<h2>TYT Dersleri</h2>
-
-<label>Türkçe</label>
-<input id="tytTurkce" type="number" value="40">
-
-<label>Sosyal Bilimler</label>
-<input id="tytSosyal" type="number" value="20">
-
-<label>Temel Matematik</label>
-<input id="tytMatematik" type="number" value="40">
-
-<label>Fen Bilimleri</label>
-<input id="tytFen" type="number" value="20">
-
-<div class="card">
-<h2>Toplam Soru</h2>
-<div class="stat" id="tytTotal">120</div>
-</div>
-
-<h2>AYT Alanı</h2>
-
-<select id="aytAlan" onchange="aytAlanDegistir()">
-<option value="sayisal">Sayısal</option>
-<option value="ea">Eşit Ağırlık</option>
-<option value="sozel">Sözel</option>
-</select>
-
-<div id="aytDersleri" class="card">
-<p>Alan seçildiğinde dersler burada gösterilecek.</p>
 </div>
 
 <script>
-const aytData={
-sayisal:[
-["Matematik",40],
-["Fizik",14],
-["Kimya",13],
-["Biyoloji",13]
-],
-ea:[
-["Matematik",40],
-["Edebiyat",24],
-["Tarih-1",10],
-["Coğrafya-1",6]
-],
-sozel:[
-["Edebiyat",24],
-["Tarih-1",10],
-["Coğrafya-1",6],
-["Tarih-2",11],
-["Coğrafya-2",11],
-["Felsefe Grubu",12],
-["Din Kültürü",6]
-]
-};
 
-function aytAlanDegistir(){
-const alan=document.getElementById("aytAlan").value;
-const kutu=document.getElementById("aytDersleri");
+async function login(){
 
-kutu.innerHTML=aytData[alan].map(d=>`
-<label>${d[0]} — ${d[1]} soru</label>
-<input type="number" min="0" placeholder="Doğru">
-<input type="number" min="0" placeholder="Yanlış">
-`).join("");
+    const name =
+        document.getElementById("name").value.trim();
+
+    const password =
+        document.getElementById("password").value;
+
+    const error =
+        document.getElementById("error");
+
+    const loading =
+        document.getElementById("loading");
+
+    error.style.display="none";
+
+    if(!name || !password){
+
+        error.textContent =
+            "Kullanıcı adı ve şifre gerekli.";
+
+        error.style.display="block";
+
+        return;
+    }
+
+    loading.style.display="block";
+
+    try{
+
+        const response = await fetch("/api/login",{
+
+            method:"POST",
+
+            headers:{
+                "Content-Type":"application/json"
+            },
+
+            body:JSON.stringify({
+                name:name,
+                password:password
+            })
+
+        });
+
+        const data = await response.json();
+
+        if(data.success){
+
+            window.location.href="/admin/panel";
+
+        }else{
+
+            error.textContent =
+                data.message ||
+                "Kullanıcı adı veya şifre yanlış.";
+
+            error.style.display="block";
+
+        }
+
+    }catch(e){
+
+        error.textContent =
+            "Sunucuya bağlanılamadı.";
+
+        error.style.display="block";
+
+    }
+
+    loading.style.display="none";
 }
 
-aytAlanDegistir();
-</script>
+document.addEventListener("keydown",function(e){
 
-<h2>Net Ayarı</h2>
-<label>Yanlış başına net kaybı</label>
-<input id="wrongPenalty" type="number" step="0.01" value="0.25">
+    if(e.key==="Enter"){
+        login();
+    }
 
-<button class="primary" onclick="updateTytTotal()">Ayarları Kaydet</button>
-
-<script>
-function updateTytTotal(){
-const t =
-Number(document.getElementById("tytTurkce").value||0)+
-Number(document.getElementById("tytSosyal").value||0)+
-Number(document.getElementById("tytMatematik").value||0)+
-Number(document.getElementById("tytFen").value||0);
-
-document.getElementById("tytTotal").textContent=t;
-}
-</script>
-</div>
-</section>
-
-<section id="settings" class="page">
-<h1>Site Ayarları</h1>
-<div class="section card">
-<label>Site adı</label>
-<input value="Mühendislik Merkezi">
-<label>Site açıklaması</label>
-<textarea rows="4">Üniversite, YKS ve mühendislik kariyerinin merkezi.</textarea>
-<button class="primary">Ayarları Kaydet</button>
-</div>
-</section>
-
-
-<section class="page" id="advanced">
-<h1>Gelişmiş Yönetim</h1>
-
-<div class="grid">
-
-<div class="card">
-<h2>Analiz</h2>
-<p>Günlük ziyaretçi, sayfa görüntülenmesi ve arama istatistiklerini takip et.</p>
-<button>Analizleri Aç</button>
-</div>
-
-<div class="card">
-<h2>İçerik Yönetimi</h2>
-<p>Haber, mühendislik ve üniversite içeriklerini tek merkezden yönet.</p>
-<button>İçerikleri Yönet</button>
-</div>
-
-<div class="card">
-<h2>YKS Ayarları</h2>
-<p>TYT ve AYT dersleri, soru sayıları ve hesaplama kurallarını yönet.</p>
-<button>YKS Ayarları</button>
-</div>
-
-<div class="card">
-<h2>Veri Yönetimi</h2>
-<p>Üniversite, bölüm, puan, sıralama ve kontenjan verilerini yönet.</p>
-<button>Verileri Yönet</button>
-</div>
-
-<div class="card">
-<h2>SEO</h2>
-<p>Site başlığı, açıklaması ve arama motoru ayarlarını düzenle.</p>
-<button>SEO Ayarları</button>
-</div>
-
-<div class="card">
-<h2>Sistem</h2>
-<p>Sunucu, veritabanı ve uygulama durumunu kontrol et.</p>
-<button>Sistem Durumu</button>
-</div>
-
-<div class="card">
-<h2>Güvenlik</h2>
-<p>Admin güvenliği ve erişim ayarlarını yönet.</p>
-<button>Güvenlik Ayarları</button>
-</div>
-
-<div class="card">
-<h2>Duyurular</h2>
-<p>Sitede gösterilecek duyuruları oluştur ve yönet.</p>
-<button>Duyuru Yönetimi</button>
-</div>
-
-</div>
-</section>
-
-</main>
-</div>
-
-<script>
-async function loginAdmin(){
-const name=document.getElementById("loginName").value;
-const password=document.getElementById("loginPassword").value;
-
-try{
-const r=await fetch("/api/login",{
-method:"POST",
-headers:{"Content-Type":"application/json"},
-body:JSON.stringify({name,password})
 });
 
-const d=await r.json();
-
-if(d.success){
-document.getElementById("loginScreen").style.display="none";
-}else{
-document.getElementById("loginError").style.display="block";
-}
-}catch(e){
-document.getElementById("loginError").textContent="Sunucuya bağlanılamadı.";
-document.getElementById("loginError").style.display="block";
-}
-}
-
-function showPage(id,btn){
-document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
-document.getElementById(id).classList.add('active');
-document.querySelectorAll('nav button').forEach(x=>x.classList.remove('active'));
-btn.classList.add('active');
-}
-
-fetch('/api/admin/stats')
-.then(r=>r.json())
-.then(d=>{
-if(d.visits!==undefined)document.getElementById('visits').textContent=d.visits;
-if(d.universities!==undefined)document.getElementById('universities').textContent=d.universities;
-if(d.news!==undefined)document.getElementById('newsCount').textContent=d.news;
-})
-.catch(()=>{});
 </script>
 
 </body>

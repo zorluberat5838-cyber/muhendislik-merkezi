@@ -75,6 +75,44 @@ app.get("/admin", (req, res) => {
     res.sendFile(path.join(__dirname, "admin", "index.html"));
 });
 
+app.get("/admin/panel", (req, res) => {
+    res.send(`
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Admin Paneli</title>
+<style>
+body{
+    margin:0;
+    background:#080d18;
+    color:white;
+    font-family:Arial,sans-serif;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-height:100vh;
+}
+.box{
+    text-align:center;
+    padding:40px;
+    background:#111827;
+    border:1px solid #26344d;
+    border-radius:20px;
+}
+</style>
+</head>
+<body>
+<div class="box">
+<h1>🎛️ Admin Paneli</h1>
+<p>Giriş başarılı.</p>
+<p>Ultra yönetim panelini burada oluşturacağız.</p>
+</div>
+</body>
+</html>
+    `);
+});
+
 app.get("/api/settings", (req, res) => {
     const settings = db.prepare(
         "SELECT admin_name FROM settings WHERE id = 1"
