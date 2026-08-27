@@ -146,6 +146,110 @@ app.get("/api/news", (req, res) => {
     );
 });
 
+
+// ==================== HABER YÖNETİMİ ====================
+
+app.post("/api/admin/news", (req, res) => {
+    const { title, text } = req.body;
+
+    if (!title || !text) {
+        return res.status(400).json({
+            success: false,
+            message: "Başlık ve haber metni gerekli."
+        });
+    }
+
+    try {
+        const result = db.prepare(`
+            INSERT INTO news (title, text, created_at)
+            VALUES (?, ?, ?)
+        `).run(
+            title.trim(),
+            text.trim(),
+            new Date().toISOString()
+        );
+
+        res.json({
+            success: true,
+            id: result.lastInsertRowid,
+            message: "Haber yayınlandı."
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            success: false,
+            message: "Haber eklenemedi."
+        });
+    }
+});
+
+app.put("/api/admin/news/:id", (req, res) => {
+    const { title, text } = req.body;
+    const id = Number(req.params.id);
+
+    if (!id || !title || !text) {
+        return res.status(400).json({
+            success: false,
+            message: "Eksik bilgi."
+        });
+    }
+
+    try {
+        const result = db.prepare(`
+            UPDATE news
+            SET title = ?, text = ?
+            WHERE id = ?
+        `).run(
+            title.trim(),
+            text.trim(),
+            id
+        );
+
+        res.json({
+            success: result.changes > 0,
+            message: result.changes > 0
+                ? "Haber güncellendi."
+                : "Haber bulunamadı."
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            success: false,
+            message: "Haber güncellenemedi."
+        });
+    }
+});
+
+app.delete("/api/admin/news/:id", (req, res) => {
+    const id = Number(req.params.id);
+
+    if (!id) {
+        return res.status(400).json({
+            success: false,
+            message: "Geçersiz haber."
+        });
+    }
+
+    try {
+        const result = db.prepare(
+            "DELETE FROM news WHERE id = ?"
+        ).run(id);
+
+        res.json({
+            success: result.changes > 0,
+            message: result.changes > 0
+                ? "Haber silindi."
+                : "Haber bulunamadı."
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            success: false,
+            message: "Haber silinemedi."
+        });
+    }
+});
+
 app.get("/api/universities", (req, res) => {
     res.json(
         db.prepare(

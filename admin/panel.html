@@ -339,23 +339,131 @@ Mühendislik <span>Merkezi</span>
 </section>
 
 
+
 <section id="news" class="page">
+<style>
+.news-admin-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+.news-editor{
+    background:#111827;
+    border:1px solid #334155;
+    border-radius:18px;
+    padding:22px;
+}
+.news-editor h2{
+    margin-top:0;
+}
+.news-editor input,
+.news-editor textarea{
+    width:100%;
+    padding:13px;
+    margin:7px 0 14px;
+    border-radius:10px;
+    border:1px solid #475569;
+    background:#0b1020;
+    color:white;
+}
+.news-editor textarea{
+    min-height:140px;
+    resize:vertical;
+}
+.news-actions{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+}
+.news-list{
+    margin-top:25px;
+    display:grid;
+    gap:14px;
+}
+.news-item{
+    background:#111827;
+    border:1px solid #334155;
+    border-radius:15px;
+    padding:18px;
+}
+.news-item h3{
+    margin:5px 0 8px;
+}
+.news-date{
+    color:#60a5fa;
+    font-size:13px;
+}
+.news-item p{
+    color:#cbd5e1;
+    line-height:1.6;
+}
+.news-item button{
+    border:0;
+    border-radius:8px;
+    padding:9px 13px;
+    cursor:pointer;
+    margin-right:7px;
+}
+.edit-btn{background:#2563eb;color:white}
+.delete-btn{background:#dc2626;color:white}
+
+@media(max-width:800px){
+    .news-admin-grid{
+        grid-template-columns:1fr;
+    }
+}
+</style>
 
 <h1>📰 Haber Yönetimi</h1>
+<p class="muted">
+Sitedeki haberleri buradan oluştur, düzenle ve yayınla.
+</p>
 
-<div class="card panel">
+<div class="news-admin-grid">
 
-<label>Başlık</label>
-<input placeholder="Haber başlığı">
+<div class="news-editor">
+<h2>🚀 Yeni Haber Yayınla</h2>
 
-<label>İçerik</label>
-<textarea rows="8" placeholder="Haber içeriği..."></textarea>
+<label>Haber başlığı</label>
+<input id="newsTitle" placeholder="Örn. 2026-YKS yerleştirme sonuçları açıklandı">
 
-<button class="btn">Haber Yayınla</button>
+<label>Haber içeriği</label>
+<textarea id="newsText"
+placeholder="Haberin açıklamasını buraya yaz..."></textarea>
+
+<div class="news-actions">
+<button class="primary" onclick="publishNews()">
+🚀 Haber Yayınla
+</button>
+
+<button onclick="clearNewsForm()">
+Temizle
+</button>
+</div>
+</div>
+
+<div class="news-editor">
+<h2>📊 Haber Merkezi</h2>
+<div class="stat" id="adminNewsCount">0</div>
+<div class="muted">Yayınlanmış haber</div>
+
+<hr style="border-color:#334155;margin:22px 0">
+
+<p class="muted">
+Yeni haber yayınladığında normal sitenin
+<strong>Haberler ve Duyurular</strong> bölümünde otomatik görünür.
+</p>
+</div>
 
 </div>
 
+<div class="news-list" id="adminNewsList">
+<div class="news-item">
+Haberler yükleniyor...
+</div>
+</div>
 </section>
+
 
 
 <section id="yks" class="page">
@@ -506,3 +614,262 @@ document.getElementById("newsCount").textContent=d.news;
 
 </body>
 </html>
+
+<script>
+async function loadAdminNews(){
+
+    const list = document.getElementById("adminNewsList");
+    const count = document.getElementById("adminNewsCount");
+
+    try{
+
+        const response = await fetch("/api/news");
+        const news = await response.json();
+
+        count.textContent = news.length;
+
+        if(!news.length){
+            list.innerHTML = `
+                <div class="news-item">
+                    <h3>Henüz haber yok</h3>
+                    <p>Yukarıdaki formdan ilk haberi yayınlayabilirsin.</p>
+                </div>
+            `;
+            return;
+        }
+
+        list.innerHTML = news.map(item => {
+
+            const date = new Date(item.created_at);
+
+            return `
+                <div class="news-item">
+
+                    <div class="news-date">
+                        ${date.toLocaleDateString("tr-TR")}
+                    </div>
+
+                    <h3>${escapeNews(item.title)}</h3>
+
+                    <p>${escapeNews(item.text)}</p>
+
+                    <button
+                        class="edit-btn"
+                        onclick="editNews(
+                            ${item.id},
+                            ${JSON.stringify(item.title)},
+                            ${JSON.stringify(item.text)}
+                        )">
+                        ✏️ Düzenle
+                    </button>
+
+                    <button
+                        class="delete-btn"
+                        onclick="deleteNews(${item.id})">
+                        🗑️ Sil
+                    </button>
+
+                </div>
+            `;
+
+        }).join("");
+
+    }catch(error){
+
+        console.error(error);
+
+        list.innerHTML = `
+            <div class="news-item">
+                <h3>⚠️ Haberler yüklenemedi</h3>
+                <p>Sunucu bağlantısını kontrol et.</p>
+            </div>
+        `;
+    }
+}
+
+
+async function publishNews(){
+
+    const title =
+        document.getElementById("newsTitle").value.trim();
+
+    const text =
+        document.getElementById("newsText").value.trim();
+
+    if(!title || !text){
+
+        alert("Başlık ve haber içeriğini doldur.");
+
+        return;
+    }
+
+    try{
+
+        const response = await fetch("/api/admin/news",{
+
+            method:"POST",
+
+            headers:{
+                "Content-Type":"application/json"
+            },
+
+            body:JSON.stringify({
+                title:title,
+                text:text
+            })
+
+        });
+
+        const result = await response.json();
+
+        if(!result.success){
+
+            alert(result.message || "Haber yayınlanamadı.");
+
+            return;
+        }
+
+        alert("✅ Haber başarıyla yayınlandı!");
+
+        clearNewsForm();
+
+        loadAdminNews();
+
+    }catch(error){
+
+        console.error(error);
+
+        alert("❌ Sunucuya bağlanılamadı.");
+    }
+}
+
+
+async function deleteNews(id){
+
+    if(!confirm("Bu haberi silmek istediğine emin misin?")){
+
+        return;
+    }
+
+    try{
+
+        const response = await fetch(
+            "/api/admin/news/" + id,
+            {
+                method:"DELETE"
+            }
+        );
+
+        const result = await response.json();
+
+        if(result.success){
+
+            loadAdminNews();
+
+        }else{
+
+            alert(result.message || "Haber silinemedi.");
+        }
+
+    }catch(error){
+
+        alert("Sunucuya bağlanılamadı.");
+    }
+}
+
+
+function editNews(id,title,text){
+
+    document.getElementById("newsTitle").value = title;
+
+    document.getElementById("newsText").value = text;
+
+    const button =
+        document.querySelector(
+            '#news .primary'
+        );
+
+    button.textContent = "💾 Haberi Güncelle";
+
+    button.onclick = async function(){
+
+        try{
+
+            const response = await fetch(
+                "/api/admin/news/" + id,
+                {
+                    method:"PUT",
+
+                    headers:{
+                        "Content-Type":"application/json"
+                    },
+
+                    body:JSON.stringify({
+                        title:
+                            document.getElementById("newsTitle").value.trim(),
+
+                        text:
+                            document.getElementById("newsText").value.trim()
+                    })
+                }
+            );
+
+            const result = await response.json();
+
+            if(result.success){
+
+                alert("✅ Haber güncellendi!");
+
+                clearNewsForm();
+
+                loadAdminNews();
+
+            }else{
+
+                alert(result.message || "Güncelleme başarısız.");
+            }
+
+        }catch(error){
+
+            alert("Sunucuya bağlanılamadı.");
+        }
+
+    };
+
+    document
+        .getElementById("newsTitle")
+        .focus();
+}
+
+
+function clearNewsForm(){
+
+    document.getElementById("newsTitle").value = "";
+
+    document.getElementById("newsText").value = "";
+
+    const button =
+        document.querySelector(
+            '#news .primary'
+        );
+
+    button.textContent = "🚀 Haber Yayınla";
+
+    button.onclick = publishNews;
+}
+
+
+function escapeNews(value){
+
+    return String(value)
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+}
+
+
+loadAdminNews();
+</script>
+
