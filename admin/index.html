@@ -135,14 +135,93 @@ button.primary{background:#287cff;color:white;border:0;padding:11px 16px;border-
 <section id="yks" class="page">
 <h1>YKS Ayarları</h1>
 <div class="section card">
-<h2>TYT</h2>
-<input value="40" placeholder="Türkçe soru sayısı">
-<input value="20" placeholder="Sosyal soru sayısı">
-<input value="40" placeholder="Matematik soru sayısı">
-<input value="20" placeholder="Fen soru sayısı">
+<h2>TYT Dersleri</h2>
+
+<label>Türkçe</label>
+<input id="tytTurkce" type="number" value="40">
+
+<label>Sosyal Bilimler</label>
+<input id="tytSosyal" type="number" value="20">
+
+<label>Temel Matematik</label>
+<input id="tytMatematik" type="number" value="40">
+
+<label>Fen Bilimleri</label>
+<input id="tytFen" type="number" value="20">
+
+<div class="card">
+<h2>Toplam Soru</h2>
+<div class="stat" id="tytTotal">120</div>
+</div>
+
+<h2>AYT Alanı</h2>
+
+<select id="aytAlan" onchange="aytAlanDegistir()">
+<option value="sayisal">Sayısal</option>
+<option value="ea">Eşit Ağırlık</option>
+<option value="sozel">Sözel</option>
+</select>
+
+<div id="aytDersleri" class="card">
+<p>Alan seçildiğinde dersler burada gösterilecek.</p>
+</div>
+
+<script>
+const aytData={
+sayisal:[
+["Matematik",40],
+["Fizik",14],
+["Kimya",13],
+["Biyoloji",13]
+],
+ea:[
+["Matematik",40],
+["Edebiyat",24],
+["Tarih-1",10],
+["Coğrafya-1",6]
+],
+sozel:[
+["Edebiyat",24],
+["Tarih-1",10],
+["Coğrafya-1",6],
+["Tarih-2",11],
+["Coğrafya-2",11],
+["Felsefe Grubu",12],
+["Din Kültürü",6]
+]
+};
+
+function aytAlanDegistir(){
+const alan=document.getElementById("aytAlan").value;
+const kutu=document.getElementById("aytDersleri");
+
+kutu.innerHTML=aytData[alan].map(d=>`
+<label>${d[0]} — ${d[1]} soru</label>
+<input type="number" min="0" placeholder="Doğru">
+<input type="number" min="0" placeholder="Yanlış">
+`).join("");
+}
+
+aytAlanDegistir();
+</script>
+
 <h2>Net Ayarı</h2>
-<input value="0.25" placeholder="Yanlış başına kayıp">
-<button class="primary">YKS Ayarlarını Kaydet</button>
+<label>Yanlış başına net kaybı</label>
+<input id="wrongPenalty" type="number" step="0.01" value="0.25">
+
+<button class="primary" onclick="updateTytTotal()">Ayarları Kaydet</button>
+
+<script>
+function updateTytTotal(){
+const t =
+Number(document.getElementById("tytTurkce").value||0)+
+Number(document.getElementById("tytSosyal").value||0)+
+Number(document.getElementById("tytMatematik").value||0)+
+Number(document.getElementById("tytFen").value||0);
+
+document.getElementById("tytTotal").textContent=t;
+}
+</script>
 </div>
 </section>
 
