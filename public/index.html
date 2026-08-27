@@ -1258,11 +1258,20 @@ async function loadNews(){
 
             card.innerHTML = `
 
-                <small>HABER</small>
+                <small>${item.source || "HABER"}</small>
 
                 <h3>${item.title}</h3>
 
-                <p>${item.text}</p>
+                <p>${item.text || ""}</p>
+
+                ${
+                    item.url
+                    ? `<a href="${item.url}" target="_blank" rel="noopener noreferrer"
+                         style="display:inline-block;margin-top:10px;color:#4da3ff;font-weight:700;text-decoration:none">
+                         Haberin tamamını MEB'de görüntüle →
+                       </a>`
+                    : ""
+                }
 
             `;
 
