@@ -720,62 +720,43 @@ engineeringList.forEach(item=>{
 
 
 <!-- YKS -->
-
 <section class="container" id="yks">
-
 <div class="title">
-
-    <h2>📝 YKS Merkezi</h2>
-
-    <p>
-        Üniversite hedefin için gerekli araçlar.
-    </p>
-
+    <h2>YKS Merkezi</h2>
+    <p>TYT ve AYT netlerini hesapla, hedefini takip et.</p>
 </div>
 
 <div class="categories">
 
 <div class="category">
-
-    <div class="icon">🧮</div>
-
+    <div class="icon">TYT</div>
     <h3>TYT Net Hesaplama</h3>
-
-    <p>
-        Doğru ve yanlış sayılarını
-        kullanarak netini hesapla.
-    </p>
-
+    <p>Doğru ve yanlış sayılarını gir.</p>
+    <button onclick="openTYT()">TYT Hesapla</button>
 </div>
 
 <div class="category">
-
-    <div class="icon">📊</div>
-
+    <div class="icon">AYT</div>
     <h3>AYT Net Hesaplama</h3>
-
-    <p>
-        AYT derslerindeki netlerini
-        hesapla.
-    </p>
-
+    <p>AYT derslerindeki netlerini hesapla.</p>
+    <button onclick="openAYT()">AYT Hesapla</button>
 </div>
 
 <div class="category">
-
-    <div class="icon">🎯</div>
-
+    <div class="icon">TERCİH</div>
     <h3>Tercih Merkezi</h3>
-
-    <p>
-        Bölümleri ve üniversiteleri
-        karşılaştır.
-    </p>
-
+    <p>Mühendislik bölümlerini incele.</p>
+    <button onclick="openTercih()">Tercihleri Aç</button>
 </div>
 
 </div>
 
+<div id="yks-panel" style="display:none; margin-top:30px;">
+    <div class="category">
+        <h3 id="yks-baslik">YKS Hesaplama</h3>
+        <div id="yks-icerik"></div>
+    </div>
+</div>
 </section>
 
 
@@ -1168,6 +1149,76 @@ registerVisit();
 loadStats();
 loadNews();
 
+</script>
+
+
+<script>
+function openTYT(){
+    document.getElementById("yks-panel").style.display="block";
+    document.getElementById("yks-baslik").textContent="TYT Net Hesaplama";
+    document.getElementById("yks-icerik").innerHTML=`
+        <p>Net hesabı: Doğru - (Yanlış ÷ 4)</p>
+        <label>Doğru</label>
+        <input id="tytDogru" type="number" min="0" value="0">
+        <label>Yanlış</label>
+        <input id="tytYanlis" type="number" min="0" value="0">
+        <button onclick="hesaplaTYT()">Hesapla</button>
+        <h3 id="tytSonuc"></h3>
+    `;
+}
+
+function hesaplaTYT(){
+    const d=Number(document.getElementById("tytDogru").value)||0;
+    const y=Number(document.getElementById("tytYanlis").value)||0;
+    const net=d-(y/4);
+    document.getElementById("tytSonuc").textContent="TYT Netin: "+net.toFixed(2);
+}
+
+function openAYT(){
+    document.getElementById("yks-panel").style.display="block";
+    document.getElementById("yks-baslik").textContent="AYT Net Hesaplama";
+    document.getElementById("yks-icerik").innerHTML=`
+        <p>Net hesabı: Doğru - (Yanlış ÷ 4)</p>
+        <label>Doğru</label>
+        <input id="aytDogru" type="number" min="0" value="0">
+        <label>Yanlış</label>
+        <input id="aytYanlis" type="number" min="0" value="0">
+        <button onclick="hesaplaAYT()">Hesapla</button>
+        <h3 id="aytSonuc"></h3>
+    `;
+}
+
+function hesaplaAYT(){
+    const d=Number(document.getElementById("aytDogru").value)||0;
+    const y=Number(document.getElementById("aytYanlis").value)||0;
+    const net=d-(y/4);
+    document.getElementById("aytSonuc").textContent="AYT Netin: "+net.toFixed(2);
+}
+
+function openTercih(){
+    document.getElementById("yks-panel").style.display="block";
+    document.getElementById("yks-baslik").textContent="Tercih Merkezi";
+    document.getElementById("yks-icerik").innerHTML=`
+        <p>Mühendislik bölümleri:</p>
+        <select id="bolum">
+            <option>Bilgisayar Mühendisliği</option>
+            <option>Yazılım Mühendisliği</option>
+            <option>Elektrik-Elektronik Mühendisliği</option>
+            <option>Makine Mühendisliği</option>
+            <option>Endüstri Mühendisliği</option>
+            <option>Mekatronik Mühendisliği</option>
+            <option>İnşaat Mühendisliği</option>
+        </select>
+        <button onclick="bolumGoster()">Bölümü Gör</button>
+        <h3 id="bolumSonuc"></h3>
+    `;
+}
+
+function bolumGoster(){
+    const b=document.getElementById("bolum").value;
+    document.getElementById("bolumSonuc").textContent=
+        b+" seçildi. Üniversite ve başarı sırası verilerini sonraki aşamada ekleyeceğiz.";
+}
 </script>
 
 </body>
