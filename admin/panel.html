@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mühendislik Merkezi | Yönetim</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#070b14;
+color:#eef2ff;
+}
+
+.layout{
+display:flex;
+min-height:100vh;
+}
+
+.sidebar{
+width:250px;
+background:#0d1424;
+border-right:1px solid #202b40;
+padding:22px 14px;
+}
+
+.logo{
+font-size:21px;
+font-weight:bold;
+padding:10px 12px 28px;
+}
+
+.logo span{
+color:#3b82f6;
+}
+
+.menu button{
+width:100%;
+padding:13px;
+margin:4px 0;
+border:0;
+border-radius:10px;
+background:transparent;
+color:#9eabc2;
+text-align:left;
+cursor:pointer;
+font-size:14px;
+}
+
+.menu button:hover,
+.menu button.active{
+background:#17243b;
+color:white;
+}
+
+.main{
+flex:1;
+padding:30px;
+}
+
+.header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:28px;
+}
+
+.header h1{
+margin:0;
+font-size:28px;
+}
+
+.status{
+padding:8px 13px;
+border-radius:20px;
+background:#123525;
+color:#61e59a;
+font-size:13px;
+}
+
+.page{
+display:none;
+}
+
+.page.active{
+display:block;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:18px;
+}
+
+.card{
+background:#0d1424;
+border:1px solid #202b40;
+border-radius:16px;
+padding:22px;
+}
+
+.icon{
+font-size:25px;
+}
+
+.label{
+color:#8997ae;
+margin-top:10px;
+}
+
+.number{
+font-size:30px;
+font-weight:bold;
+margin-top:8px;
+}
+
+.panel{
+margin-top:22px;
+}
+
+.panel h2{
+margin-top:0;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+}
+
+th,td{
+padding:14px;
+border-bottom:1px solid #202b40;
+text-align:left;
+}
+
+th{
+color:#8997ae;
+font-size:13px;
+}
+
+input,select,textarea{
+width:100%;
+padding:12px;
+margin:7px 0 15px;
+background:#080e1a;
+border:1px solid #2a3852;
+border-radius:9px;
+color:white;
+}
+
+.btn{
+padding:11px 17px;
+border:0;
+border-radius:9px;
+background:#2563eb;
+color:white;
+cursor:pointer;
+}
+
+.btn:hover{
+background:#1d4ed8;
+}
+
+.grid2{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:20px;
+}
+
+@media(max-width:900px){
+.sidebar{width:190px}
+.cards{grid-template-columns:1fr 1fr}
+.grid2{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+
+<div class="layout">
+
+<aside class="sidebar">
+
+<div class="logo">
+Mühendislik <span>Merkezi</span>
+</div>
+
+<div class="menu">
+
+<button class="active" onclick="show('dashboard',this)">📊 Dashboard</button>
+
+<button onclick="show('analytics',this)">📈 Analiz</button>
+
+<button onclick="show('universities',this)">🏫 Üniversiteler</button>
+
+<button onclick="show('engineering',this)">⚙️ Mühendislikler</button>
+
+<button onclick="show('news',this)">📰 Haberler</button>
+
+<button onclick="show('yks',this)">📝 YKS Yönetimi</button>
+
+<button onclick="show('users',this)">👥 Kullanıcılar</button>
+
+<button onclick="show('settings',this)">⚙️ Site Ayarları</button>
+
+<button onclick="show('security',this)">🔐 Güvenlik</button>
+
+</div>
+
+</aside>
+
+<main class="main">
+
+<div class="header">
+
+<h1>Dashboard</h1>
+
+<div class="status">● Sistem Aktif</div>
+
+</div>
+
+<section id="dashboard" class="page active">
+
+<div class="cards">
+
+<div class="card">
+<div class="icon">👥</div>
+<div class="label">Toplam Ziyaretçi</div>
+<div class="number" id="visits">0</div>
+</div>
+
+<div class="card">
+<div class="icon">🏫</div>
+<div class="label">Üniversite</div>
+<div class="number" id="universitiesCount">0</div>
+</div>
+
+<div class="card">
+<div class="icon">⚙️</div>
+<div class="label">Mühendislik</div>
+<div class="number">20+</div>
+</div>
+
+<div class="card">
+<div class="icon">📰</div>
+<div class="label">Haber</div>
+<div class="number" id="newsCount">0</div>
+</div>
+
+</div>
+
+<div class="card panel">
+
+<h2>Hızlı Yönetim</h2>
+
+<p>Site verilerini sol menüden yönetebilirsin.</p>
+
+</div>
+
+</section>
+
+
+<section id="analytics" class="page">
+
+<h1>📈 Analiz</h1>
+
+<div class="grid2">
+
+<div class="card">
+<h2>Ziyaretçi Analizi</h2>
+<p>Toplam ziyaretçi: <b id="analyticsVisits">0</b></p>
+<p>Sunucu durumu: <b>Aktif</b></p>
+</div>
+
+<div class="card">
+<h2>Site Durumu</h2>
+<p>API: Aktif</p>
+<p>Veritabanı: Aktif</p>
+</div>
+
+</div>
+
+</section>
+
+
+<section id="universities" class="page">
+
+<h1>🏫 Üniversite Yönetimi</h1>
+
+<div class="card panel">
+
+<label>Üniversite adı</label>
+<input placeholder="Örn. Erciyes Üniversitesi">
+
+<label>Bölüm</label>
+<input placeholder="Bilgisayar Mühendisliği">
+
+<label>Şehir</label>
+<input placeholder="Kayseri">
+
+<label>Taban puan</label>
+<input placeholder="Örn. 450.25">
+
+<label>Başarı sırası</label>
+<input placeholder="Örn. 35.000">
+
+<label>Kontenjan</label>
+<input placeholder="Örn. 80">
+
+<button class="btn">Üniversite Ekle</button>
+
+</div>
+
+</section>
+
+
+<section id="engineering" class="page">
+
+<h1>⚙️ Mühendislik Yönetimi</h1>
+
+<div class="card panel">
+
+<label>Mühendislik adı</label>
+<input placeholder="Bilgisayar Mühendisliği">
+
+<label>Açıklama</label>
+<textarea rows="7" placeholder="Bölüm hakkında bilgi..."></textarea>
+
+<label>İş olanakları</label>
+<textarea rows="5" placeholder="Çalışma alanları..."></textarea>
+
+<button class="btn">Mühendislik Ekle</button>
+
+</div>
+
+</section>
+
+
+<section id="news" class="page">
+
+<h1>📰 Haber Yönetimi</h1>
+
+<div class="card panel">
+
+<label>Başlık</label>
+<input placeholder="Haber başlığı">
+
+<label>İçerik</label>
+<textarea rows="8" placeholder="Haber içeriği..."></textarea>
+
+<button class="btn">Haber Yayınla</button>
+
+</div>
+
+</section>
+
+
+<section id="yks" class="page">
+
+<h1>📝 YKS Yönetimi</h1>
+
+<div class="grid2">
+
+<div class="card">
+
+<h2>TYT</h2>
+
+<label>Türkçe</label>
+<input type="number" value="40">
+
+<label>Sosyal Bilimler</label>
+<input type="number" value="20">
+
+<label>Temel Matematik</label>
+<input type="number" value="40">
+
+<label>Fen Bilimleri</label>
+<input type="number" value="20">
+
+</div>
+
+<div class="card">
+
+<h2>Net Hesaplama</h2>
+
+<label>Yanlış başına götürülen net</label>
+
+<input type="number" value="0.25" step="0.01">
+
+<button class="btn">YKS Ayarlarını Kaydet</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section id="users" class="page">
+
+<h1>👥 Kullanıcı Yönetimi</h1>
+
+<div class="card panel">
+
+<p>Henüz kayıtlı kullanıcı sistemi aktif değil.</p>
+
+<button class="btn">Kullanıcı Sistemini Yapılandır</button>
+
+</div>
+
+</section>
+
+
+<section id="settings" class="page">
+
+<h1>⚙️ Site Ayarları</h1>
+
+<div class="card panel">
+
+<label>Site adı</label>
+<input value="Mühendislik Merkezi">
+
+<label>Site açıklaması</label>
+
+<textarea rows="5">Üniversite, YKS ve mühendislik kariyerinin merkezi.</textarea>
+
+<button class="btn">Ayarları Kaydet</button>
+
+</div>
+
+</section>
+
+
+<section id="security" class="page">
+
+<h1>🔐 Güvenlik</h1>
+
+<div class="card panel">
+
+<h2>Admin Hesabı</h2>
+
+<p>Admin hesabının güvenlik ayarları.</p>
+
+<label>Yeni admin şifresi</label>
+
+<input type="password" placeholder="Yeni şifre">
+
+<button class="btn">Şifreyi Güncelle</button>
+
+</div>
+
+</section>
+
+</main>
+
+</div>
+
+<script>
+
+function show(id,button){
+
+document.querySelectorAll(".page")
+.forEach(x=>x.classList.remove("active"));
+
+document.getElementById(id)
+.classList.add("active");
+
+document.querySelectorAll(".menu button")
+.forEach(x=>x.classList.remove("active"));
+
+button.classList.add("active");
+
+}
+
+fetch("/api/admin/stats")
+.then(r=>r.json())
+.then(d=>{
+
+if(d.visits!==undefined){
+
+document.getElementById("visits").textContent=d.visits;
+
+document.getElementById("analyticsVisits").textContent=d.visits;
+
+}
+
+if(d.universities!==undefined){
+
+document.getElementById("universitiesCount").textContent=d.universities;
+
+}
+
+if(d.news!==undefined){
+
+document.getElementById("newsCount").textContent=d.news;
+
+}
+
+})
+.catch(()=>{});
+
+</script>
+
+</body>
+</html>

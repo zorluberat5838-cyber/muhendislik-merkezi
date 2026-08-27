@@ -76,42 +76,9 @@ app.get("/admin", (req, res) => {
 });
 
 app.get("/admin/panel", (req, res) => {
-    res.send(`
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-<meta charset="UTF-8">
-<title>Admin Paneli</title>
-<style>
-body{
-    margin:0;
-    background:#080d18;
-    color:white;
-    font-family:Arial,sans-serif;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    min-height:100vh;
-}
-.box{
-    text-align:center;
-    padding:40px;
-    background:#111827;
-    border:1px solid #26344d;
-    border-radius:20px;
-}
-</style>
-</head>
-<body>
-<div class="box">
-<h1>🎛️ Admin Paneli</h1>
-<p>Giriş başarılı.</p>
-<p>Ultra yönetim panelini burada oluşturacağız.</p>
-</div>
-</body>
-</html>
-    `);
+    res.sendFile(path.join(__dirname, "admin", "panel.html"));
 });
+
 
 app.get("/api/settings", (req, res) => {
     const settings = db.prepare(
@@ -129,280 +96,91 @@ app.post("/api/login", (req, res) => {
     ).get();
 
     if (
+        admin &&
         name === admin.admin_name &&
         password === admin.admin_password
     ) {
-        res.json({
+        return res.json({
             success: true,
             message: "Giriş başarılı"
         });
-    } else {
-        res.status(401).json({
-            success: false,
-            message: "Kullanıcı adı veya şifre yanlış"
-        });
-    }
-});
-
-app.get("/api/categories", (req, res) => {
-    const categories = db.prepare(
-        "SELECT * FROM categories ORDER BY name"
-    ).all();
-
-    res.json(categories);
-});
-
-app.post("/api/categories", (req, res) => {
-    const { name, parent_id } = req.body;
-
-    if (!name) {
-        return res.status(400).json({
-            error: "Kategori adı gerekli"
-        });
     }
 
-    const result = db.prepare(`
-        INSERT INTO categories (name, parent_id)
-        VALUES (?, ?)
-    `).run(name, parent_id || null);
-
-    res.json({
-        success: true,
-        id: result.lastInsertRowid
+    res.status(401).json({
+        success: false,
+        message: "Kullanıcı adı veya şifre yanlış"
     });
 });
 
-app.delete("/api/categories/:id", (req, res) => {
-    db.prepare(
-        "DELETE FROM categories WHERE id = ?"
-    ).run(req.params.id);
-
-    res.json({ success: true });
-});
-
-app.get("/api/content", (req, res) => {
-    const content = db.prepare(`
-        SELECT content.*, categories.name AS category_name
-        FROM content
-        LEFT JOIN categories
-        ON content.category_id = categories.id
-        ORDER BY content.id DESC
-    `).all();
-
-    res.json(content);
-});
-
-app.post("/api/content", (req, res) => {
-    const { title, text, category_id } = req.body;
-
-    if (!title || !text) {
-        return res.status(400).json({
-            error: "Başlık ve içerik gerekli"
-        });
-    }
-
-    const result = db.prepare(`
-        INSERT INTO content
-        (title, text, category_id, created_at)
-        VALUES (?, ?, ?, ?)
-    `).run(
-        title,
-        text,
-        category_id || null,
-        new Date().toISOString()
-    );
-
-    res.json({
-        success: true,
-        id: result.lastInsertRowid
-    });
-});
-
-app.delete("/api/content/:id", (req, res) => {
-    db.prepare(
-        "DELETE FROM content WHERE id = ?"
-    ).run(req.params.id);
-
-    res.json({ success: true });
-});
-
-app.get("/api/salaries", (req, res) => {
-    const salaries = db.prepare(`
-        SELECT *
-        FROM salaries
-        ORDER BY year DESC
-    `).all();
-
-    res.json(salaries);
-});
-
-app.post("/api/salaries", (req, res) => {
-    const {
-        engineering,
-        sector,
-        year,
-        salary
-    } = req.body;
-
-    if (!engineering || !sector || !year || !salary) {
-        return res.status(400).json({
-            error: "Tüm alanları doldur"
-        });
-    }
-
-    const result = db.prepare(`
-        INSERT INTO salaries
-        (engineering, sector, year, salary)
-        VALUES (?, ?, ?, ?)
-    `).run(
-        engineering,
-        sector,
-        year,
-        salary
-    );
-
-    res.json({
-        success: true,
-        id: result.lastInsertRowid
-    });
-});
-
-app.get("/api/universities", (req, res) => {
-    const universities = db.prepare(`
-        SELECT *
-        FROM universities
-        ORDER BY name
-    `).all();
-
-    res.json(universities);
-});
-
-app.post("/api/universities", (req, res) => {
-    const {
-        name,
-        department,
-        score,
-        ranking
-    } = req.body;
-
-    if (!name || !department) {
-        return res.status(400).json({
-            error: "Üniversite ve bölüm gerekli"
-        });
-    }
-
-    const result = db.prepare(`
-        INSERT INTO universities
-        (name, department, score, ranking)
-        VALUES (?, ?, ?, ?)
-    `).run(
-        name,
-        department,
-        score || "",
-        ranking || ""
-    );
-
-    res.json({
-        success: true,
-        id: result.lastInsertRowid
-    });
-});
-
-app.get("/api/news", (req, res) => {
-    const news = db.prepare(`
-        SELECT *
-        FROM news
-        ORDER BY id DESC
-    `).all();
-
-    res.json(news);
-});
-
-app.post("/api/news", (req, res) => {
-    const { title, text } = req.body;
-
-    if (!title || !text) {
-        return res.status(400).json({
-            error: "Başlık ve haber metni gerekli"
-        });
-    }
-
-    const result = db.prepare(`
-        INSERT INTO news
-        (title, text, created_at)
-        VALUES (?, ?, ?)
-    `).run(
-        title,
-        text,
-        new Date().toISOString()
-    );
-
-    res.json({
-        success: true,
-        id: result.lastInsertRowid
-    });
-});
-
-app.post("/api/visit", (req, res) => {
-    const visitorId = req.body.visitor_id;
-
-    if (!visitorId) {
-        return res.status(400).json({
-            error: "visitor_id gerekli"
-        });
-    }
-
-    db.prepare(`
-        INSERT OR IGNORE INTO visits
-        (visitor_id, first_visit)
-        VALUES (?, ?)
-    `).run(
-        visitorId,
-        new Date().toISOString()
-    );
-
-    const total = db.prepare(
+app.get("/api/admin/stats", (req, res) => {
+    const visits = db.prepare(
         "SELECT COUNT(*) AS count FROM visits"
-    ).get();
-
-    res.json({
-        total: total.count
-    });
-});
-
-app.get("/api/stats", (req, res) => {
-    const visitors = db.prepare(
-        "SELECT COUNT(*) AS count FROM visits"
-    ).get().count;
-
-    const content = db.prepare(
-        "SELECT COUNT(*) AS count FROM content"
-    ).get().count;
-
-    const categories = db.prepare(
-        "SELECT COUNT(*) AS count FROM categories"
     ).get().count;
 
     const universities = db.prepare(
         "SELECT COUNT(*) AS count FROM universities"
     ).get().count;
 
+    const news = db.prepare(
+        "SELECT COUNT(*) AS count FROM news"
+    ).get().count;
+
     res.json({
-        visitors,
-        content,
-        categories,
-        universities
+        visits,
+        universities,
+        news
     });
 });
 
-app.listen(PORT, "0.0.0.0", () => {
-    console.log("");
-    console.log("=================================");
-    console.log(" MÜHENDİSLİK MERKEZİ");
-    console.log(" Backend çalışıyor!");
-    console.log("=================================");
-    console.log("");
+app.get("/api/categories", (req, res) => {
+    res.json(
+        db.prepare("SELECT * FROM categories ORDER BY name").all()
+    );
+});
+
+app.get("/api/news", (req, res) => {
+    res.json(
+        db.prepare(
+            "SELECT * FROM news ORDER BY id DESC"
+        ).all()
+    );
+});
+
+app.get("/api/universities", (req, res) => {
+    res.json(
+        db.prepare(
+            "SELECT * FROM universities ORDER BY id DESC"
+        ).all()
+    );
+});
+
+app.get("/api/salaries", (req, res) => {
+    res.json(
+        db.prepare(
+            "SELECT * FROM salaries ORDER BY year DESC, id DESC"
+        ).all()
+    );
+});
+
+app.post("/api/visit", (req, res) => {
+    const { visitor_id } = req.body;
+
+    if (!visitor_id) {
+        return res.status(400).json({ success: false });
+    }
+
+    try {
+        db.prepare(
+            "INSERT OR IGNORE INTO visits (visitor_id, first_visit) VALUES (?, ?)"
+        ).run(visitor_id, new Date().toISOString());
+
+        res.json({ success: true });
+    } catch (error) {
+        res.status(500).json({ success: false });
+    }
+});
+
+app.listen(PORT, () => {
     console.log(`Site: http://localhost:${PORT}`);
     console.log(`Admin: http://localhost:${PORT}/admin`);
-    console.log("");
 });
