@@ -3,1163 +3,178 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-
-<title>Admin Paneli</title>
-
+<title>Mühendislik Merkezi | Admin</title>
 <style>
-
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-}
-
-body{
-    font-family:Arial,sans-serif;
-    background:#f4f7fb;
-    color:#172033;
-}
-
-/* GİRİŞ */
-
-.login{
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    padding:20px;
-    background:linear-gradient(135deg,#eef4ff,#f8f2ff);
-}
-
-.login-box{
-    width:100%;
-    max-width:430px;
-    background:white;
-    padding:40px;
-    border-radius:18px;
-    box-shadow:0 20px 60px rgba(0,0,0,.12);
-}
-
-.login-box h1{
-    margin-bottom:10px;
-    color:#2563eb;
-}
-
-.login-box p{
-    color:#64748b;
-    margin-bottom:30px;
-}
-
-input,textarea,select{
-    width:100%;
-    padding:13px;
-    margin:8px 0 15px;
-    border:1px solid #d1d5db;
-    border-radius:9px;
-    font-size:15px;
-}
-
-textarea{
-    min-height:120px;
-    resize:vertical;
-}
-
-button{
-    border:0;
-    border-radius:9px;
-    padding:13px 20px;
-    background:#2563eb;
-    color:white;
-    cursor:pointer;
-    font-weight:bold;
-}
-
-button:hover{
-    opacity:.9;
-}
-
-.error{
-    color:#dc2626;
-    margin-top:12px;
-}
-
-/* PANEL */
-
-#panel{
-    display:none;
-}
-
-header{
-    background:#111827;
-    color:white;
-    padding:18px 5%;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
-
-header h1{
-    font-size:22px;
-}
-
-.logout{
-    background:#dc2626;
-}
-
-.layout{
-    display:grid;
-    grid-template-columns:230px 1fr;
-    min-height:calc(100vh - 70px);
-}
-
-aside{
-    background:white;
-    border-right:1px solid #e5e7eb;
-    padding:20px;
-}
-
-aside button{
-    width:100%;
-    text-align:left;
-    margin-bottom:8px;
-    background:white;
-    color:#374151;
-}
-
-aside button:hover{
-    background:#eef4ff;
-    color:#2563eb;
-}
-
-main{
-    padding:35px;
-}
-
-.page{
-    display:none;
-}
-
-.page.active{
-    display:block;
-}
-
-.page h2{
-    margin-bottom:25px;
-}
-
-/* KARTLAR */
-
-.stats{
-    display:grid;
-    grid-template-columns:
-        repeat(auto-fit,minmax(180px,1fr));
-    gap:15px;
-    margin-bottom:30px;
-}
-
-.stat{
-    background:white;
-    padding:25px;
-    border-radius:14px;
-    border:1px solid #e5e7eb;
-}
-
-.stat strong{
-    display:block;
-    font-size:32px;
-    color:#2563eb;
-    margin-bottom:5px;
-}
-
-/* FORMLAR */
-
-.form-box{
-    background:white;
-    padding:25px;
-    border-radius:14px;
-    border:1px solid #e5e7eb;
-    margin-bottom:25px;
-}
-
-.item{
-    background:white;
-    padding:18px;
-    margin:10px 0;
-    border-radius:10px;
-    border:1px solid #e5e7eb;
-    display:flex;
-    justify-content:space-between;
-    gap:15px;
-    align-items:center;
-}
-
-.delete{
-    background:#dc2626;
-}
-
-@media(max-width:700px){
-
-    .layout{
-        grid-template-columns:1fr;
-    }
-
-    aside{
-        border-right:0;
-        border-bottom:1px solid #ddd;
-    }
-
-    main{
-        padding:20px;
-    }
-
-}
-
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,Arial,sans-serif;background:#0b1020;color:#eef2ff}
+.layout{display:flex;min-height:100vh}
+aside{width:250px;background:#11182b;border-right:1px solid #25304a;padding:25px 15px}
+.logo{font-size:21px;font-weight:800;padding:10px 12px 30px}
+.logo span{color:#4da3ff}
+nav button{width:100%;padding:13px;margin:4px 0;border:0;border-radius:10px;background:transparent;color:#aeb9d3;text-align:left;font-size:14px;cursor:pointer}
+nav button:hover,nav button.active{background:#1c2944;color:white}
+main{flex:1;padding:30px;overflow:auto}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:30px}
+h1{margin:0;font-size:28px}
+.muted{color:#8e9ab5}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.card{background:#11182b;border:1px solid #25304a;border-radius:16px;padding:22px}
+.stat{font-size:30px;font-weight:800;margin:12px 0}
+.icon{font-size:25px}
+.section{margin-top:25px}
+table{width:100%;border-collapse:collapse}
+th,td{padding:14px;border-bottom:1px solid #25304a;text-align:left}
+th{color:#8e9ab5;font-size:13px}
+.badge{padding:5px 9px;border-radius:20px;background:#173d2d;color:#69e09a;font-size:12px}
+input,select,textarea{width:100%;padding:12px;margin:7px 0 15px;border:1px solid #2b3855;border-radius:9px;background:#0b1020;color:white}
+button.primary{background:#287cff;color:white;border:0;padding:11px 16px;border-radius:9px;cursor:pointer}
+.page{display:none}
+.page.active{display:block}
+@media(max-width:900px){aside{width:190px}.grid{grid-template-columns:repeat(2,1fr)}}
 </style>
 </head>
-
 <body>
-
-<!-- GİRİŞ -->
-
-<div class="login" id="login">
-
-<div class="login-box">
-
-<h1>Mühendislik Merkezi</h1>
-
-<p>Yönetim Paneli</p>
-
-<label>Admin adı</label>
-
-<input
-    id="username"
-    value="Berat Buğra Zorlu"
->
-
-<label>Şifre</label>
-
-<input
-    id="password"
-    type="password"
-    placeholder="Şifreni gir"
->
-
-<button onclick="login()">
-    Giriş Yap
-</button>
-
-<div
-    class="error"
-    id="error"
-></div>
-
-</div>
-
-</div>
-
-
-<!-- PANEL -->
-
-<div id="panel">
-
-<header>
-
-<h1>
-    Mühendislik Merkezi — Admin
-</h1>
-
-<div>
-
-<span>
-    Berat Buğra Zorlu
-</span>
-
-<button
-    class="logout"
-    onclick="logout()"
->
-    Çıkış
-</button>
-
-</div>
-
-</header>
-
 
 <div class="layout">
 
 <aside>
+<div class="logo">Mühendislik <span>Merkezi</span></div>
 
-<button onclick="showPage('dashboard')">
-    📊 Gösterge Paneli
-</button>
-
-<button onclick="showPage('categories')">
-    📁 Kategoriler
-</button>
-
-<button onclick="showPage('content')">
-    📝 İçerikler
-</button>
-
-<button onclick="showPage('salary')">
-    💰 Maaşlar
-</button>
-
-<button onclick="showPage('universities')">
-    🎓 Üniversiteler
-</button>
-
-<button onclick="showPage('news')">
-    📰 Haberler
-</button>
-
+<nav>
+<button class="active" onclick="showPage('dashboard',this)">Dashboard</button>
+<button onclick="showPage('news',this)">Haber Yönetimi</button>
+<button onclick="showPage('engineering',this)">Mühendislikler</button>
+<button onclick="showPage('universities',this)">Üniversiteler</button>
+<button onclick="showPage('salaries',this)">Maaşlar</button>
+<button onclick="showPage('yks',this)">YKS Ayarları</button>
+<button onclick="showPage('settings',this)">Site Ayarları</button>
+</nav>
 </aside>
-
 
 <main>
 
-
-<!-- DASHBOARD -->
-
-<div
-    class="page active"
-    id="dashboard"
->
-
-<h2>📊 Gösterge Paneli</h2>
-
-<div class="stats">
-
-<div class="stat">
-
-<strong id="visitors">
-0
-</strong>
-
-Ziyaretçi
-
+<section id="dashboard" class="page active">
+<div class="top">
+<div>
+<h1>Dashboard</h1>
+<div class="muted">Mühendislik Merkezi yönetim paneli</div>
+</div>
+<span class="badge">Sistem Aktif</span>
 </div>
 
-<div class="stat">
-
-<strong id="categoriesCount">
-0
-</strong>
-
-Kategori
-
+<div class="grid">
+<div class="card"><div class="icon">👥</div><div class="muted">Toplam Ziyaretçi</div><div class="stat" id="visits">-</div></div>
+<div class="card"><div class="icon">🏫</div><div class="muted">Üniversite</div><div class="stat" id="universities">-</div></div>
+<div class="card"><div class="icon">⚙️</div><div class="muted">Mühendislik</div><div class="stat">20+</div></div>
+<div class="card"><div class="icon">📰</div><div class="muted">Haber</div><div class="stat" id="newsCount">-</div></div>
 </div>
 
-<div class="stat">
-
-<strong id="contentCount">
-0
-</strong>
-
-İçerik
-
+<div class="section card">
+<h2>Hızlı Yönetim</h2>
+<p class="muted">Sol menüden sitenin bölümlerini yönetebilirsin.</p>
 </div>
+</section>
 
-<div class="stat">
-
-<strong id="universityCount">
-0
-</strong>
-
-Üniversite
-
+<section id="news" class="page">
+<h1>Haber Yönetimi</h1>
+<div class="section card">
+<label>Haber başlığı</label>
+<input placeholder="Yeni haber başlığı">
+<label>Haber metni</label>
+<textarea rows="6" placeholder="Haber içeriği"></textarea>
+<button class="primary">Haber Ekle</button>
 </div>
+</section>
 
+<section id="engineering" class="page">
+<h1>Mühendislik Yönetimi</h1>
+<div class="section card">
+<label>Mühendislik adı</label>
+<input placeholder="Örn. Bilgisayar Mühendisliği">
+<label>Açıklama</label>
+<textarea rows="5" placeholder="Bölüm açıklaması"></textarea>
+<button class="primary">Mühendislik Ekle</button>
 </div>
+</section>
 
+<section id="universities" class="page">
+<h1>Üniversite Yönetimi</h1>
+<div class="section card">
+<label>Üniversite</label>
+<input placeholder="Üniversite adı">
+<label>Bölüm</label>
+<input placeholder="Bölüm adı">
+<label>Şehir</label>
+<input placeholder="Şehir">
+<label>Taban puan</label>
+<input placeholder="Puan">
+<label>Başarı sırası</label>
+<input placeholder="Başarı sırası">
+<label>Kontenjan</label>
+<input placeholder="Kontenjan">
+<button class="primary">Üniversite Ekle</button>
 </div>
+</section>
 
-
-<!-- KATEGORİLER -->
-
-<div
-    class="page"
-    id="categories"
->
-
-<h2>📁 Kategori Yönetimi</h2>
-
-<div class="form-box">
-
-<h3>Yeni kategori</h3>
-
-<input
-    id="categoryName"
-    placeholder="Örn: Mühendislik"
-/>
-
-<select id="parentCategory">
-
-<option value="">
-Ana kategori
-</option>
-
-</select>
-
-<button onclick="addCategory()">
-    Kategori Ekle
-</button>
-
+<section id="salaries" class="page">
+<h1>Maaş Yönetimi</h1>
+<div class="section card">
+<label>Mühendislik</label>
+<input placeholder="Mühendislik">
+<label>Sektör</label>
+<input placeholder="Kamu / Özel">
+<label>Yıl</label>
+<input type="number" placeholder="2026">
+<label>Maaş</label>
+<input placeholder="₺">
+<button class="primary">Maaş Ekle</button>
 </div>
+</section>
 
-<div id="categoryList"></div>
-
+<section id="yks" class="page">
+<h1>YKS Ayarları</h1>
+<div class="section card">
+<h2>TYT</h2>
+<input value="40" placeholder="Türkçe soru sayısı">
+<input value="20" placeholder="Sosyal soru sayısı">
+<input value="40" placeholder="Matematik soru sayısı">
+<input value="20" placeholder="Fen soru sayısı">
+<h2>Net Ayarı</h2>
+<input value="0.25" placeholder="Yanlış başına kayıp">
+<button class="primary">YKS Ayarlarını Kaydet</button>
 </div>
+</section>
 
-
-<!-- İÇERİK -->
-
-<div
-    class="page"
-    id="content"
->
-
-<h2>📝 İçerik Yönetimi</h2>
-
-<div class="form-box">
-
-<input
-    id="contentTitle"
-    placeholder="Başlık"
-/>
-
-<textarea
-    id="contentText"
-    placeholder="İçerik..."
-></textarea>
-
-<select id="contentCategory">
-
-<option value="">
-Kategori seç
-</option>
-
-</select>
-
-<button onclick="addContent()">
-    İçerik Ekle
-</button>
-
+<section id="settings" class="page">
+<h1>Site Ayarları</h1>
+<div class="section card">
+<label>Site adı</label>
+<input value="Mühendislik Merkezi">
+<label>Site açıklaması</label>
+<textarea rows="4">Üniversite, YKS ve mühendislik kariyerinin merkezi.</textarea>
+<button class="primary">Ayarları Kaydet</button>
 </div>
-
-<div id="contentList"></div>
-
-</div>
-
-
-<!-- MAAŞ -->
-
-<div
-    class="page"
-    id="salary"
->
-
-<h2>💰 Maaş Yönetimi</h2>
-
-<div class="form-box">
-
-<input
-    id="engineering"
-    placeholder="Mühendislik"
-/>
-
-<select id="sector">
-
-<option value="Kamu">
-Kamu
-</option>
-
-<option value="Özel">
-Özel
-</option>
-
-</select>
-
-<input
-    id="year"
-    type="number"
-    placeholder="Yıl"
-/>
-
-<input
-    id="salaryValue"
-    placeholder="Maaş"
-/>
-
-<button onclick="addSalary()">
-    Maaş Ekle
-</button>
-
-</div>
-
-</div>
-
-
-<!-- ÜNİVERSİTE -->
-
-<div
-    class="page"
-    id="universities"
->
-
-<h2>🎓 Üniversite Yönetimi</h2>
-
-<div class="form-box">
-
-<input
-    id="universityName"
-    placeholder="Üniversite"
-/>
-
-<input
-    id="department"
-    placeholder="Bölüm"
-/>
-
-<input
-    id="score"
-    placeholder="Taban puanı"
-/>
-
-<input
-    id="ranking"
-    placeholder="Başarı sırası"
-/>
-
-<button onclick="addUniversity()">
-    Üniversite Ekle
-</button>
-
-</div>
-
-</div>
-
-
-<!-- HABER -->
-
-<div
-    class="page"
-    id="news"
->
-
-<h2>📰 Haber Yönetimi</h2>
-
-<div class="form-box">
-
-<input
-    id="newsTitle"
-    placeholder="Haber başlığı"
-/>
-
-<textarea
-    id="newsText"
-    placeholder="Haber metni"
-></textarea>
-
-<button onclick="addNews()">
-    Haber Yayınla
-</button>
-
-</div>
-
-</div>
-
+</section>
 
 </main>
-
 </div>
-
-</div>
-
 
 <script>
-
-let loggedIn=false;
-
-
-/* GİRİŞ */
-
-async function login(){
-
-    const name =
-        document
-        .getElementById("username")
-        .value;
-
-    const password =
-        document
-        .getElementById("password")
-        .value;
-
-    const response =
-        await fetch("/api/login",{
-
-            method:"POST",
-
-            headers:{
-                "Content-Type":
-                "application/json"
-            },
-
-            body:JSON.stringify({
-                name,
-                password
-            })
-
-        });
-
-    if(response.ok){
-
-        loggedIn=true;
-
-        document
-        .getElementById("login")
-        .style.display="none";
-
-        document
-        .getElementById("panel")
-        .style.display="block";
-
-        loadAll();
-
-    }else{
-
-        document
-        .getElementById("error")
-        .textContent =
-        "Admin adı veya şifre yanlış.";
-
-    }
-
+function showPage(id,btn){
+document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
+document.getElementById(id).classList.add('active');
+document.querySelectorAll('nav button').forEach(x=>x.classList.remove('active'));
+btn.classList.add('active');
 }
 
-
-/* ÇIKIŞ */
-
-function logout(){
-
-    loggedIn=false;
-
-    location.reload();
-
-}
-
-
-/* SAYFA */
-
-function showPage(id){
-
-    document
-    .querySelectorAll(".page")
-    .forEach(page=>{
-        page.classList.remove("active");
-    });
-
-    document
-    .getElementById(id)
-    .classList.add("active");
-
-}
-
-
-/* KATEGORİ */
-
-async function addCategory(){
-
-    const name =
-        document
-        .getElementById("categoryName")
-        .value;
-
-    const parent =
-        document
-        .getElementById("parentCategory")
-        .value;
-
-    if(!name){
-
-        alert("Kategori adı yaz.");
-
-        return;
-
-    }
-
-    await fetch(
-        "/api/categories",
-        {
-
-            method:"POST",
-
-            headers:{
-                "Content-Type":
-                "application/json"
-            },
-
-            body:JSON.stringify({
-
-                name:name,
-
-                parent_id:
-                    parent || null
-
-            })
-
-        }
-    );
-
-    document
-    .getElementById("categoryName")
-    .value="";
-
-    loadCategories();
-
-}
-
-
-/* KATEGORİLERİ GETİR */
-
-async function loadCategories(){
-
-    const response =
-        await fetch(
-            "/api/categories"
-        );
-
-    const data =
-        await response.json();
-
-    const list =
-        document
-        .getElementById("categoryList");
-
-    const select =
-        document
-        .getElementById("parentCategory");
-
-    const contentSelect =
-        document
-        .getElementById("contentCategory");
-
-    list.innerHTML="";
-
-    select.innerHTML =
-        '<option value="">Ana kategori</option>';
-
-    contentSelect.innerHTML =
-        '<option value="">Kategori seç</option>';
-
-    data.forEach(category=>{
-
-        const item =
-            document.createElement("div");
-
-        item.className="item";
-
-        item.innerHTML=`
-
-            <span>
-                📁 ${category.name}
-            </span>
-
-            <button
-                class="delete"
-                onclick="deleteCategory(${category.id})"
-            >
-                Sil
-            </button>
-
-        `;
-
-        list.appendChild(item);
-
-
-        const option =
-            document.createElement("option");
-
-        option.value =
-            category.id;
-
-        option.textContent =
-            category.name;
-
-        select.appendChild(option);
-
-        contentSelect.appendChild(
-            option.cloneNode(true)
-        );
-
-    });
-
-}
-
-
-/* KATEGORİ SİL */
-
-async function deleteCategory(id){
-
-    if(!confirm("Bu kategoriyi silmek istiyor musun?"))
-        return;
-
-    await fetch(
-        `/api/categories/${id}`,
-        {
-            method:"DELETE"
-        }
-    );
-
-    loadCategories();
-
-}
-
-
-/* İÇERİK */
-
-async function addContent(){
-
-    const title =
-        document
-        .getElementById("contentTitle")
-        .value;
-
-    const text =
-        document
-        .getElementById("contentText")
-        .value;
-
-    const category =
-        document
-        .getElementById("contentCategory")
-        .value;
-
-    if(!title || !text){
-
-        alert("Başlık ve içerik gerekli.");
-
-        return;
-
-    }
-
-    await fetch(
-        "/api/content",
-        {
-
-            method:"POST",
-
-            headers:{
-                "Content-Type":
-                "application/json"
-            },
-
-            body:JSON.stringify({
-
-                title,
-                text,
-                category_id:
-                    category || null
-
-            })
-
-        }
-    );
-
-    document
-    .getElementById("contentTitle")
-    .value="";
-
-    document
-    .getElementById("contentText")
-    .value="";
-
-    loadContent();
-
-}
-
-
-/* İÇERİK GETİR */
-
-async function loadContent(){
-
-    const response =
-        await fetch(
-            "/api/content"
-        );
-
-    const data =
-        await response.json();
-
-    const list =
-        document
-        .getElementById("contentList");
-
-    list.innerHTML="";
-
-    data.forEach(item=>{
-
-        const div =
-            document.createElement("div");
-
-        div.className="item";
-
-        div.innerHTML=`
-
-            <div>
-
-                <strong>
-                    ${item.title}
-                </strong>
-
-                <br>
-
-                ${item.category_name || "Kategorisiz"}
-
-            </div>
-
-            <button
-                class="delete"
-                onclick="deleteContent(${item.id})"
-            >
-                Sil
-            </button>
-
-        `;
-
-        list.appendChild(div);
-
-    });
-
-}
-
-
-async function deleteContent(id){
-
-    if(!confirm("İçeriği silmek istiyor musun?"))
-        return;
-
-    await fetch(
-        `/api/content/${id}`,
-        {
-            method:"DELETE"
-        }
-    );
-
-    loadContent();
-
-}
-
-
-/* MAAŞ */
-
-async function addSalary(){
-
-    const engineering =
-        document
-        .getElementById("engineering")
-        .value;
-
-    const sector =
-        document
-        .getElementById("sector")
-        .value;
-
-    const year =
-        document
-        .getElementById("year")
-        .value;
-
-    const salary =
-        document
-        .getElementById("salaryValue")
-        .value;
-
-    await fetch(
-        "/api/salaries",
-        {
-
-            method:"POST",
-
-            headers:{
-                "Content-Type":
-                "application/json"
-            },
-
-            body:JSON.stringify({
-
-                engineering,
-                sector,
-                year,
-                salary
-
-            })
-
-        }
-    );
-
-    alert("Maaş eklendi.");
-
-}
-
-
-/* ÜNİVERSİTE */
-
-async function addUniversity(){
-
-    const name =
-        document
-        .getElementById("universityName")
-        .value;
-
-    const department =
-        document
-        .getElementById("department")
-        .value;
-
-    const score =
-        document
-        .getElementById("score")
-        .value;
-
-    const ranking =
-        document
-        .getElementById("ranking")
-        .value;
-
-    await fetch(
-        "/api/universities",
-        {
-
-            method:"POST",
-
-            headers:{
-                "Content-Type":
-                "application/json"
-            },
-
-            body:JSON.stringify({
-
-                name,
-                department,
-                score,
-                ranking
-
-            })
-
-        }
-    );
-
-    alert("Üniversite eklendi.");
-
-}
-
-
-/* HABER */
-
-async function addNews(){
-
-    const title =
-        document
-        .getElementById("newsTitle")
-        .value;
-
-    const text =
-        document
-        .getElementById("newsText")
-        .value;
-
-    if(!title || !text){
-
-        alert("Başlık ve metin gerekli.");
-
-        return;
-
-    }
-
-    await fetch(
-        "/api/news",
-        {
-
-            method:"POST",
-
-            headers:{
-                "Content-Type":
-                "application/json"
-            },
-
-            body:JSON.stringify({
-
-                title,
-                text
-
-            })
-
-        }
-    );
-
-    document
-    .getElementById("newsTitle")
-    .value="";
-
-    document
-    .getElementById("newsText")
-    .value="";
-
-    alert("Haber yayınlandı.");
-
-}
-
-
-/* İSTATİSTİK */
-
-async function loadStats(){
-
-    const response =
-        await fetch(
-            "/api/stats"
-        );
-
-    const data =
-        await response.json();
-
-    document
-    .getElementById("visitors")
-    .textContent =
-        data.visitors;
-
-    document
-    .getElementById("categoriesCount")
-    .textContent =
-        data.categories;
-
-    document
-    .getElementById("contentCount")
-    .textContent =
-        data.content;
-
-    document
-    .getElementById("universityCount")
-    .textContent =
-        data.universities;
-
-}
-
-
-/* HEPSİ */
-
-function loadAll(){
-
-    loadStats();
-
-    loadCategories();
-
-    loadContent();
-
-}
-
+fetch('/api/admin/stats')
+.then(r=>r.json())
+.then(d=>{
+if(d.visits!==undefined)document.getElementById('visits').textContent=d.visits;
+if(d.universities!==undefined)document.getElementById('universities').textContent=d.universities;
+if(d.news!==undefined)document.getElementById('newsCount').textContent=d.news;
+})
+.catch(()=>{});
 </script>
 
 </body>
