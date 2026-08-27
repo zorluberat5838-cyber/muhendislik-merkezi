@@ -885,6 +885,12 @@ document.getElementById('tytN').textContent=tn.toFixed(2);
 document.querySelectorAll('.correct,.wrong').forEach(input=>{
 input.type='number';
 input.min=0;
+
+const row=input.closest('tr');
+if(row && row.dataset.total){
+    input.max=row.dataset.total;
+}
+
 input.addEventListener('input',calculateYks);
 });
 </script>
