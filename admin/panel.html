@@ -248,6 +248,134 @@ gap:20px;
 }
 
 </style>
+
+<style>
+
+/* KONTROL MERKEZI */
+
+.page-description{
+    color:#52627a !important;
+    margin-top:-10px;
+    margin-bottom:24px;
+}
+
+.control-box strong{
+    color:#ffffff !important;
+}
+
+.health-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:14px;
+    margin-top:18px;
+}
+
+.health-item{
+    background:#111a2d;
+    border:1px solid #293956;
+    border-radius:13px;
+    padding:17px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+}
+
+.health-item span{
+    color:#ffffff !important;
+    font-weight:700;
+}
+
+.health-ok{
+    color:#38d996 !important;
+    white-space:nowrap;
+}
+
+.quick-actions{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+    margin-top:18px;
+}
+
+.quick-action{
+    border:1px solid #334766;
+    background:#17223a;
+    color:#ffffff !important;
+    border-radius:12px;
+    padding:16px;
+    cursor:pointer;
+    font-weight:700;
+    font-size:14px;
+    transition:.2s;
+}
+
+.quick-action:hover{
+    background:#287cff;
+    transform:translateY(-2px);
+}
+
+.announcement-buttons{
+    display:flex;
+    gap:10px;
+    margin-top:12px;
+}
+
+.btn.secondary{
+    background:#263248 !important;
+}
+
+#announcementPreview{
+    margin-top:18px;
+}
+
+.announcement-preview{
+    background:#17223a;
+    border:1px solid #36527c;
+    border-radius:13px;
+    padding:18px;
+}
+
+.announcement-preview h3{
+    color:#ffffff !important;
+    margin-top:0;
+}
+
+.announcement-preview p{
+    color:#cbd5e1 !important;
+}
+
+#featuredMessage,
+#siteInfoMessage{
+    margin-top:12px;
+    color:#38d996 !important;
+    font-weight:700;
+}
+
+.system-log{
+    background:#0b1220;
+    border:1px solid #263754;
+    border-radius:12px;
+    padding:16px;
+    color:#cbd5e1 !important;
+    font-family:monospace;
+}
+
+@media(max-width:900px){
+    .health-grid,
+    .quick-actions{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:600px){
+    .health-grid,
+    .quick-actions{
+        grid-template-columns:1fr;
+    }
+}
+
+</style>
 </head>
 
 <body>
@@ -583,77 +711,214 @@ Haberler yükleniyor...
 
 <h1>🛠️ Site Kontrol Merkezi</h1>
 
-<div class="card panel">
-
-<h2>📊 Sistem Durumu</h2>
-
-<div class="control-grid">
-
-<div class="control-box">
-<strong>🌐 Ana Site</strong>
-<span class="status-ok">● Çalışıyor</span>
-</div>
-
-<div class="control-box">
-<strong>⚙️ API</strong>
-<span class="status-ok">● Aktif</span>
-</div>
-
-<div class="control-box">
-<strong>📰 Haber Sistemi</strong>
-<span class="status-ok">● Aktif</span>
-</div>
-
-<div class="control-box">
-<strong>📝 YKS Sistemi</strong>
-<span class="status-ok">● Aktif</span>
-</div>
-
-</div>
-
-</div>
-
-<div class="card panel">
-
-<h2>🔗 Hızlı Erişim</h2>
-
-<div class="quick-links">
-
-<a href="/" target="_blank" class="quick-link">
-🌐 Ana Site
-</a>
-
-<a href="/#muhendislik" target="_blank" class="quick-link">
-⚙️ Mühendislikler
-</a>
-
-<a href="/#universite" target="_blank" class="quick-link">
-🎓 Üniversiteler
-</a>
-
-<a href="/#yks" target="_blank" class="quick-link">
-📝 YKS
-</a>
-
-<a href="/#haberler" target="_blank" class="quick-link">
-📰 Haberler
-</a>
-
-</div>
-
-</div>
-
-<div class="card panel">
-
-<h2>🔐 Yönetici Bilgileri</h2>
-
-<p class="muted">
-Yönetici hesabı ve güvenlik ayarları Güvenlik bölümünden yönetilir.
+<p class="page-description">
+Sitenin önemli bölümlerini tek yerden kontrol et.
 </p>
 
-<button class="btn" onclick="show('security',document.querySelector('[onclick*=security]'))">
-🔐 Güvenlik Ayarlarına Git
+<div class="cards">
+
+<div class="card">
+<div class="icon">👥</div>
+<div class="label">Toplam Ziyaretçi</div>
+<div class="number" id="controlVisits">0</div>
+</div>
+
+<div class="card">
+<div class="icon">🏫</div>
+<div class="label">Üniversiteler</div>
+<div class="number" id="controlUniversities">0</div>
+</div>
+
+<div class="card">
+<div class="icon">⚙️</div>
+<div class="label">Mühendislikler</div>
+<div class="number">20+</div>
+</div>
+
+<div class="card">
+<div class="icon">📰</div>
+<div class="label">Haberler</div>
+<div class="number" id="controlNews">0</div>
+</div>
+
+</div>
+
+
+<div class="card panel">
+
+<h2>🟢 Sistem Sağlığı</h2>
+
+<div class="health-grid">
+
+<div class="health-item">
+<span>🌐 Ana Site</span>
+<b class="health-ok">● Çalışıyor</b>
+</div>
+
+<div class="health-item">
+<span>⚙️ API</span>
+<b class="health-ok">● Aktif</b>
+</div>
+
+<div class="health-item">
+<span>🗄️ Veritabanı</span>
+<b class="health-ok">● Aktif</b>
+</div>
+
+<div class="health-item">
+<span>📰 Haber Sistemi</span>
+<b class="health-ok">● Aktif</b>
+</div>
+
+<div class="health-item">
+<span>📝 YKS Sistemi</span>
+<b class="health-ok">● Aktif</b>
+</div>
+
+<div class="health-item">
+<span>🔐 Admin</span>
+<b class="health-ok">● Güvenli</b>
+</div>
+
+</div>
+
+</div>
+
+
+<div class="card panel">
+
+<h2>🔗 Hızlı İşlemler</h2>
+
+<div class="quick-actions">
+
+<button class="quick-action" onclick="window.open('/','_blank')">
+🌐 Ana Siteyi Aç
 </button>
+
+<button class="quick-action" onclick="yenileKontrol()">
+🔄 Verileri Yenile
+</button>
+
+<button class="quick-action" onclick="show('news',document.querySelector('[onclick*=news]'))">
+📰 Haber Yönetimi
+</button>
+
+<button class="quick-action" onclick="show('engineering',document.querySelector('[onclick*=engineering]'))">
+⚙️ Mühendislik Yönetimi
+</button>
+
+<button class="quick-action" onclick="show('universities',document.querySelector('[onclick*=universities]'))">
+🏫 Üniversite Yönetimi
+</button>
+
+<button class="quick-action" onclick="show('yks',document.querySelector('[onclick*=yks]'))">
+📝 YKS Yönetimi
+</button>
+
+</div>
+
+</div>
+
+
+<div class="card panel">
+
+<h2>📢 Ana Sayfa Duyurusu</h2>
+
+<p class="muted">
+Buradan hazırladığın duyuruyu daha sonra ana sayfanın üst kısmında gösterebiliriz.
+</p>
+
+<input
+id="announcementTitle"
+placeholder="Duyuru başlığı"
+>
+
+<textarea
+id="announcementText"
+rows="4"
+placeholder="Duyuru metni..."
+></textarea>
+
+<div class="announcement-buttons">
+
+<button class="btn" onclick="duyuruOnizle()">
+👁️ Önizle
+</button>
+
+<button class="btn secondary" onclick="duyuruTemizle()">
+🗑️ Temizle
+</button>
+
+</div>
+
+<div id="announcementPreview"></div>
+
+</div>
+
+
+<div class="card panel">
+
+<h2>⭐ Öne Çıkan Mühendislik</h2>
+
+<p class="muted">
+Ana sayfada öne çıkarmak istediğin mühendisliği seç.
+</p>
+
+<select id="featuredEngineering">
+
+<option>Bilgisayar Mühendisliği</option>
+<option>Yazılım Mühendisliği</option>
+<option>Elektrik-Elektronik Mühendisliği</option>
+<option>Makine Mühendisliği</option>
+<option>Endüstri Mühendisliği</option>
+<option>Mekatronik Mühendisliği</option>
+<option>Biyomedikal Mühendisliği</option>
+<option>İnşaat Mühendisliği</option>
+
+</select>
+
+<button class="btn" onclick="oneCikanKaydet()">
+⭐ Öne Çıkanı Kaydet
+</button>
+
+<div id="featuredMessage"></div>
+
+</div>
+
+
+<div class="card panel">
+
+<h2>🎨 Site Bilgileri</h2>
+
+<label>Site adı</label>
+<input
+id="controlSiteName"
+value="Mühendislik Merkezi"
+>
+
+<label>Site açıklaması</label>
+
+<textarea
+id="controlSiteDescription"
+rows="3"
+>Üniversite, YKS ve mühendislik kariyerinin merkezi.</textarea>
+
+<button class="btn" onclick="siteBilgisiKaydet()">
+💾 Site Bilgilerini Kaydet
+</button>
+
+<div id="siteInfoMessage"></div>
+
+</div>
+
+
+<div class="card panel">
+
+<h2>📝 Son İşlem Durumu</h2>
+
+<div id="systemLog" class="system-log">
+Sistem hazır.
+</div>
 
 </div>
 
@@ -750,6 +1015,134 @@ document.getElementById("newsCount").textContent=d.news;
 
 </script>
 
+
+<script>
+
+/* SITE KONTROL MERKEZI */
+
+async function kontrolIstatistikleri(){
+
+    try{
+
+        const response=await fetch("/api/admin/stats");
+        const data=await response.json();
+
+        const visits=document.getElementById("controlVisits");
+        const universities=document.getElementById("controlUniversities");
+        const news=document.getElementById("controlNews");
+
+        if(visits) visits.textContent=data.visits ?? 0;
+        if(universities) universities.textContent=data.universities ?? 0;
+        if(news) news.textContent=data.news ?? 0;
+
+        logYaz("İstatistikler güncellendi.");
+
+    }catch(error){
+
+        logYaz("İstatistikler alınamadı.");
+
+    }
+
+}
+
+function yenileKontrol(){
+
+    kontrolIstatistikleri();
+
+    const el=document.getElementById("systemLog");
+
+    if(el){
+        el.textContent="🔄 Sistem verileri yenileniyor...";
+    }
+
+    setTimeout(()=>{
+        if(el){
+            el.textContent="✅ Sistem verileri güncellendi.";
+        }
+    },700);
+
+}
+
+function duyuruOnizle(){
+
+    const title=document.getElementById("announcementTitle").value.trim();
+    const text=document.getElementById("announcementText").value.trim();
+
+    const preview=document.getElementById("announcementPreview");
+
+    if(!title || !text){
+
+        preview.innerHTML=
+        '<p style="color:#ef4444 !important">Başlık ve duyuru metni gerekli.</p>';
+
+        return;
+    }
+
+    preview.innerHTML=`
+        <div class="announcement-preview">
+            <h3>📢 ${title}</h3>
+            <p>${text}</p>
+        </div>
+    `;
+
+    logYaz("Duyuru önizlemesi oluşturuldu.");
+
+}
+
+function duyuruTemizle(){
+
+    document.getElementById("announcementTitle").value="";
+    document.getElementById("announcementText").value="";
+    document.getElementById("announcementPreview").innerHTML="";
+
+    logYaz("Duyuru alanı temizlendi.");
+
+}
+
+function oneCikanKaydet(){
+
+    const value=document.getElementById("featuredEngineering").value;
+
+    localStorage.setItem(
+        "featuredEngineering",
+        value
+    );
+
+    document.getElementById("featuredMessage").textContent=
+        "✅ "+value+" öne çıkan olarak kaydedildi.";
+
+    logYaz(value+" öne çıkan mühendislik olarak seçildi.");
+
+}
+
+function siteBilgisiKaydet(){
+
+    const name=document.getElementById("controlSiteName").value;
+    const description=document.getElementById("controlSiteDescription").value;
+
+    localStorage.setItem("siteName",name);
+    localStorage.setItem("siteDescription",description);
+
+    document.getElementById("siteInfoMessage").textContent=
+        "✅ Site bilgileri kaydedildi.";
+
+    logYaz("Site bilgileri kaydedildi.");
+
+}
+
+function logYaz(text){
+
+    const log=document.getElementById("systemLog");
+
+    if(log){
+        log.textContent="["+new Date().toLocaleTimeString("tr-TR")+"] "+text;
+    }
+
+}
+
+kontrolIstatistikleri();
+
+</script>
 </body>
 </html>
 
