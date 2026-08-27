@@ -176,6 +176,78 @@ gap:20px;
 .grid2{grid-template-columns:1fr}
 }
 </style>
+
+<style>
+
+/* SITE KONTROL MERKEZI */
+
+.control-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+    margin-top:20px;
+}
+
+.control-box{
+    background:#111a2d;
+    border:1px solid #293956;
+    border-radius:14px;
+    padding:20px;
+}
+
+.control-box strong{
+    display:block;
+    color:#172033;
+    font-size:16px;
+    margin-bottom:10px;
+}
+
+.status-ok{
+    color:#16834b !important;
+    font-weight:700;
+}
+
+.quick-links{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+    margin-top:18px;
+}
+
+.quick-link{
+    display:block;
+    padding:15px;
+    border-radius:12px;
+    background:#17223a;
+    color:#ffffff !important;
+    text-decoration:none;
+    font-weight:700;
+    transition:.2s;
+}
+
+.quick-link:hover{
+    background:#287cff;
+    transform:translateY(-2px);
+}
+
+@media(max-width:900px){
+    .control-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .quick-links{
+        grid-template-columns:1fr 1fr;
+    }
+}
+
+@media(max-width:600px){
+    .control-grid,
+    .quick-links{
+        grid-template-columns:1fr;
+    }
+}
+
+</style>
 </head>
 
 <body>
@@ -509,13 +581,79 @@ Haberler yükleniyor...
 
 <section id="users" class="page">
 
-<h1>👥 Kullanıcı Yönetimi</h1>
+<h1>🛠️ Site Kontrol Merkezi</h1>
 
 <div class="card panel">
 
-<p>Henüz kayıtlı kullanıcı sistemi aktif değil.</p>
+<h2>📊 Sistem Durumu</h2>
 
-<button class="btn">Kullanıcı Sistemini Yapılandır</button>
+<div class="control-grid">
+
+<div class="control-box">
+<strong>🌐 Ana Site</strong>
+<span class="status-ok">● Çalışıyor</span>
+</div>
+
+<div class="control-box">
+<strong>⚙️ API</strong>
+<span class="status-ok">● Aktif</span>
+</div>
+
+<div class="control-box">
+<strong>📰 Haber Sistemi</strong>
+<span class="status-ok">● Aktif</span>
+</div>
+
+<div class="control-box">
+<strong>📝 YKS Sistemi</strong>
+<span class="status-ok">● Aktif</span>
+</div>
+
+</div>
+
+</div>
+
+<div class="card panel">
+
+<h2>🔗 Hızlı Erişim</h2>
+
+<div class="quick-links">
+
+<a href="/" target="_blank" class="quick-link">
+🌐 Ana Site
+</a>
+
+<a href="/#muhendislik" target="_blank" class="quick-link">
+⚙️ Mühendislikler
+</a>
+
+<a href="/#universite" target="_blank" class="quick-link">
+🎓 Üniversiteler
+</a>
+
+<a href="/#yks" target="_blank" class="quick-link">
+📝 YKS
+</a>
+
+<a href="/#haberler" target="_blank" class="quick-link">
+📰 Haberler
+</a>
+
+</div>
+
+</div>
+
+<div class="card panel">
+
+<h2>🔐 Yönetici Bilgileri</h2>
+
+<p class="muted">
+Yönetici hesabı ve güvenlik ayarları Güvenlik bölümünden yönetilir.
+</p>
+
+<button class="btn" onclick="show('security',document.querySelector('[onclick*=security]'))">
+🔐 Güvenlik Ayarlarına Git
+</button>
 
 </div>
 
