@@ -722,44 +722,172 @@ engineeringList.forEach(item=>{
 <!-- YKS -->
 <section class="container" id="yks">
 <div class="title">
-    <h2>YKS Merkezi</h2>
-    <p>TYT ve AYT netlerini hesapla, hedefini takip et.</p>
+<h2>🎓 YKS Merkezi</h2>
+<p>TYT ve AYT netlerini ders ders hesapla.</p>
 </div>
 
-<div class="categories">
+<style>
+.yks-tabs{display:flex;gap:12px;margin-bottom:20px;flex-wrap:wrap}
+.yks-tabs button,.ayt-tabs button{
+padding:13px 22px;border:0;border-radius:10px;
+background:#1c2944;color:white;cursor:pointer;font-weight:bold
+}
+.yks-tabs button.active,.ayt-tabs button.active{background:#287cff}
+.yks-panel{display:none}.yks-panel.active{display:block}
+.yks-calc{
+background:#11182b;border:1px solid #25304a;border-radius:16px;
+padding:22px;margin-bottom:20px
+}
+.yks-table{width:100%;border-collapse:collapse}
+.yks-table th,.yks-table td{padding:10px;border-bottom:1px solid #25304a;text-align:center}
+.yks-table input{
+width:70px;padding:9px;border:1px solid #2b3855;
+border-radius:8px;background:#0b1020;color:white;text-align:center
+}
+.yks-result{font-weight:bold;color:#69e09a}
+.yks-summary{
+display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:20px
+}
+.yks-summary div{
+background:#0b1020;padding:15px;border-radius:10px;text-align:center
+}
+.yks-summary b{display:block;font-size:22px;margin-top:6px}
+@media(max-width:700px){
+.yks-summary{grid-template-columns:repeat(2,1fr)}
+.yks-table{font-size:12px}
+}
+</style>
 
-<div class="category">
-    <div class="icon">TYT</div>
-    <h3>TYT Net Hesaplama</h3>
-    <p>Doğru ve yanlış sayılarını gir.</p>
-    <button onclick="openTYT()">TYT Hesapla</button>
+<div class="yks-tabs">
+<button class="active" onclick="showYks('tyt',this)">TYT</button>
+<button onclick="showYks('ayt',this)">AYT</button>
 </div>
 
-<div class="category">
-    <div class="icon">AYT</div>
-    <h3>AYT Net Hesaplama</h3>
-    <p>AYT derslerindeki netlerini hesapla.</p>
-    <button onclick="openAYT()">AYT Hesapla</button>
+<div id="tyt" class="yks-panel active">
+<div class="yks-calc">
+<h3>TYT Net Hesaplama — Toplam 120 Soru</h3>
+<table class="yks-table">
+<thead>
+<tr><th>Ders</th><th>Toplam</th><th>Doğru</th><th>Yanlış</th><th>Boş</th><th>Net</th></tr>
+</thead>
+<tbody>
+<tr data-total="40"><td>Türkçe</td><td>40</td><td><input class="correct"></td><td><input class="wrong"></td><td class="blank">-</td><td class="net">0</td></tr>
+<tr data-total="20"><td>Sosyal Bilimler</td><td>20</td><td><input class="correct"></td><td><input class="wrong"></td><td class="blank">-</td><td class="net">0</td></tr>
+<tr data-total="40"><td>Temel Matematik</td><td>40</td><td><input class="correct"></td><td><input class="wrong"></td><td class="blank">-</td><td class="net">0</td></tr>
+<tr data-total="20"><td>Fen Bilimleri</td><td>20</td><td><input class="correct"></td><td><input class="wrong"></td><td class="blank">-</td><td class="net">0</td></tr>
+</tbody>
+</table>
+
+<div class="yks-summary">
+<div>Toplam Doğru<b id="tytD">0</b></div>
+<div>Toplam Yanlış<b id="tytY">0</b></div>
+<div>Toplam Boş<b id="tytB">120</b></div>
+<div>Toplam Net<b id="tytN">0</b></div>
+</div>
+</div>
 </div>
 
-<div class="category">
-    <div class="icon">TERCİH</div>
-    <h3>Tercih Merkezi</h3>
-    <p>Mühendislik bölümlerini incele.</p>
-    <button onclick="openTercih()">Tercihleri Aç</button>
+<div id="ayt" class="yks-panel">
+<div class="ayt-tabs">
+<button class="active" onclick="showAyt('sayisal',this)">Sayısal</button>
+<button onclick="showAyt('ea',this)">Eşit Ağırlık</button>
+<button onclick="showAyt('sozel',this)">Sözel</button>
 </div>
 
+<div id="sayisal" class="ayt-area">
+<div class="yks-calc">
+<h3>AYT Sayısal</h3>
+<table class="yks-table"><tbody>
+<tr data-total="40"><td>Matematik</td><td>40</td><td><input class="correct"></td><td><input class="wrong"></td><td class="blank">-</td><td class="net">0</td></tr>
+<tr data-total="14"><td>Fizik</td><td>14</td><td><input class="correct"></td><td><input class="wrong"></td><td class="blank">-</td><td class="net">0</td></tr>
+<tr data-total="13"><td>Kimya</td><td>13</td><td><input class="correct"></td><td><input class="wrong"></td><td class="blank">-</td><td class="net">0</td></tr>
+<tr data-total="13"><td>Biyoloji</td><td>13</td><td><input class="correct"></td><td><input class="wrong"></td><td class="blank">-</td><td class="net">0</td></tr>
+</tbody></table>
+</div>
 </div>
 
-<div id="yks-panel" style="display:none; margin-top:30px;">
-    <div class="category">
-        <h3 id="yks-baslik">YKS Hesaplama</h3>
-        <div id="yks-icerik"></div>
-    </div>
+<div id="ea" class="ayt-area" style="display:none">
+<div class="yks-calc">
+<h3>AYT Eşit Ağırlık</h3>
+<table class="yks-table"><tbody>
+<tr data-total="40"><td>Matematik</td><td>40</td><td><input class="correct"></td><td><input class="wrong"></td><td class="blank">-</td><td class="net">0</td></tr>
+<tr data-total="24"><td>Edebiyat</td><td>24</td><td><input class="correct"></td><td><input class="wrong"></td><td class="blank">-</td><td class="net">0</td></tr>
+<tr data-total="10"><td>Tarih-1</td><td>10</td><td><input class="correct"></td><td><input class="wrong"></td><td class="blank">-</td><td class="net">0</td></tr>
+<tr data-total="6"><td>Coğrafya-1</td><td>6</td><td><input class="correct"></td><td><input class="wrong"></td><td class="blank">-</td><td class="net">0</td></tr>
+</tbody></table>
+</div>
+</div>
+
+<div id="sozel" class="ayt-area" style="display:none">
+<div class="yks-calc">
+<h3>AYT Sözel</h3>
+<table class="yks-table"><tbody>
+<tr data-total="24"><td>Edebiyat</td><td>24</td><td><input class="correct"></td><td><input class="wrong"></td><td class="blank">-</td><td class="net">0</td></tr>
+<tr data-total="10"><td>Tarih-1</td><td>10</td><td><input class="correct"></td><td><input class="wrong"></td><td class="blank">-</td><td class="net">0</td></tr>
+<tr data-total="6"><td>Coğrafya-1</td><td>6</td><td><input class="correct"></td><td><input class="wrong"></td><td class="blank">-</td><td class="net">0</td></tr>
+<tr data-total="11"><td>Tarih-2</td><td>11</td><td><input class="correct"></td><td><input class="wrong"></td><td class="blank">-</td><td class="net">0</td></tr>
+<tr data-total="11"><td>Coğrafya-2</td><td>11</td><td><input class="correct"></td><td><input class="wrong"></td><td class="blank">-</td><td class="net">0</td></tr>
+<tr data-total="12"><td>Felsefe Grubu</td><td>12</td><td><input class="correct"></td><td><input class="wrong"></td><td class="blank">-</td><td class="net">0</td></tr>
+<tr data-total="6"><td>Din Kültürü</td><td>6</td><td><input class="correct"></td><td><input class="wrong"></td><td class="blank">-</td><td class="net">0</td></tr>
+</tbody></table>
+</div>
+</div>
 </div>
 </section>
 
+<script>
+function showYks(id,btn){
+document.querySelectorAll('.yks-panel').forEach(x=>x.classList.remove('active'));
+document.getElementById(id).classList.add('active');
+document.querySelectorAll('.yks-tabs button').forEach(x=>x.classList.remove('active'));
+btn.classList.add('active');
+}
 
+function showAyt(id,btn){
+document.querySelectorAll('.ayt-area').forEach(x=>x.style.display='none');
+document.getElementById(id).style.display='block';
+document.querySelectorAll('.ayt-tabs button').forEach(x=>x.classList.remove('active'));
+btn.classList.add('active');
+}
+
+function calculateYks(){
+document.querySelectorAll('.yks-table tr[data-total]').forEach(row=>{
+let total=Number(row.dataset.total);
+let d=Math.max(0,Number(row.querySelector('.correct').value)||0);
+let y=Math.max(0,Number(row.querySelector('.wrong').value)||0);
+
+if(d+y>total){
+y=Math.max(0,total-d);
+row.querySelector('.wrong').value=y;
+}
+
+let b=Math.max(0,total-d-y);
+let n=d-y/4;
+
+row.querySelector('.blank').textContent=b;
+row.querySelector('.net').textContent=n.toFixed(2);
+});
+
+let td=0,ty=0,tb=0,tn=0;
+document.querySelectorAll('#tyt tr[data-total]').forEach(row=>{
+td+=Number(row.querySelector('.correct').value)||0;
+ty+=Number(row.querySelector('.wrong').value)||0;
+tb+=Number(row.querySelector('.blank').textContent)||0;
+tn+=Number(row.querySelector('.net').textContent)||0;
+});
+
+document.getElementById('tytD').textContent=td;
+document.getElementById('tytY').textContent=ty;
+document.getElementById('tytB').textContent=tb;
+document.getElementById('tytN').textContent=tn.toFixed(2);
+}
+
+document.querySelectorAll('.correct,.wrong').forEach(input=>{
+input.type='number';
+input.min=0;
+input.addEventListener('input',calculateYks);
+});
+</script>
 <!-- MAAŞ -->
 
 <section class="container" id="maas">
@@ -1223,3 +1351,52 @@ function bolumGoster(){
 
 </body>
 </html>
+<style>
+/* YKS TABLO OKUNABİLİRLİK DÜZELTMESİ */
+#yks .yks-calc{
+    color:#ffffff !important;
+    font-weight:600 !important;
+}
+
+#yks .yks-table{
+    color:#ffffff !important;
+    font-size:16px !important;
+}
+
+#yks .yks-table th{
+    color:#ffffff !important;
+    font-weight:800 !important;
+    font-size:15px !important;
+}
+
+#yks .yks-table td{
+    color:#ffffff !important;
+    font-weight:700 !important;
+}
+
+#yks .yks-table td:first-child{
+    text-align:left !important;
+    font-weight:800 !important;
+    color:#ffffff !important;
+}
+
+#yks .yks-table input{
+    color:#ffffff !important;
+    font-weight:800 !important;
+    font-size:16px !important;
+}
+
+#yks .yks-summary{
+    color:#ffffff !important;
+}
+
+#yks .yks-summary div{
+    color:#cbd5e1 !important;
+    font-weight:700 !important;
+}
+
+#yks .yks-summary b{
+    color:#ffffff !important;
+    font-weight:900 !important;
+}
+</style>
