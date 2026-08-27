@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Mühendislik Merkezi | Eğitim ve Kariyer</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f5f7fb;
+    color:#172033;
+}
+
+/* ÜST BAR */
+
+.top{
+    background:#111827;
+    color:white;
+    padding:9px 6%;
+    display:flex;
+    justify-content:space-between;
+    font-size:14px;
+}
+
+/* HEADER */
+
+header{
+    background:white;
+    border-bottom:1px solid #e5e7eb;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.nav{
+    max-width:1250px;
+    margin:auto;
+    min-height:80px;
+    padding:0 20px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:30px;
+}
+
+.logo{
+    font-size:24px;
+    font-weight:800;
+    color:#2563eb;
+}
+
+.logo span{
+    color:#7c3aed;
+}
+
+.menu{
+    display:flex;
+    gap:25px;
+    align-items:center;
+}
+
+.menu a{
+    text-decoration:none;
+    color:#374151;
+    font-weight:600;
+}
+
+.menu a:hover{
+    color:#2563eb;
+}
+
+/* ARAMA */
+
+.search{
+    max-width:1250px;
+    margin:auto;
+    padding:15px 20px;
+    display:flex;
+    gap:10px;
+}
+
+.search input{
+    width:100%;
+    padding:14px 18px;
+    border:1px solid #d1d5db;
+    border-radius:10px;
+    font-size:15px;
+    outline:none;
+}
+
+.search button{
+    border:0;
+    background:#2563eb;
+    color:white;
+    padding:0 25px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+/* HERO */
+
+.hero{
+    background:
+    linear-gradient(120deg,#eef4ff,#ffffff,#f5efff);
+
+    padding:90px 20px;
+}
+
+.hero-inner{
+    max-width:1150px;
+    margin:auto;
+}
+
+.hero h1{
+    font-size:55px;
+    max-width:800px;
+    line-height:1.08;
+    margin-bottom:20px;
+}
+
+.hero h1 span{
+    color:#2563eb;
+}
+
+.hero p{
+    max-width:700px;
+    color:#64748b;
+    font-size:18px;
+    line-height:1.7;
+}
+
+.buttons{
+    display:flex;
+    gap:12px;
+    margin-top:30px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    padding:14px 22px;
+    border-radius:9px;
+    text-decoration:none;
+    font-weight:bold;
+    display:inline-block;
+}
+
+.blue{
+    background:#2563eb;
+    color:white;
+}
+
+.purple{
+    background:#7c3aed;
+    color:white;
+}
+
+.white{
+    background:white;
+    color:#1f2937;
+    border:1px solid #d1d5db;
+}
+
+/* GENEL */
+
+.container{
+    max-width:1250px;
+    margin:auto;
+    padding:75px 20px;
+}
+
+.title{
+    margin-bottom:35px;
+}
+
+.title h2{
+    font-size:34px;
+    margin-bottom:10px;
+}
+
+.title p{
+    color:#64748b;
+}
+
+/* KATEGORİLER */
+
+.categories{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:18px;
+}
+
+.category{
+    background:white;
+    border:1px solid #e5e7eb;
+    border-radius:14px;
+    padding:25px;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.category:hover{
+    transform:translateY(-5px);
+    box-shadow:0 12px 30px rgba(37,99,235,.12);
+    border-color:#93c5fd;
+}
+
+.category .icon{
+    font-size:32px;
+    margin-bottom:15px;
+}
+
+.category h3{
+    margin-bottom:8px;
+}
+
+.category p{
+    color:#64748b;
+    line-height:1.5;
+}
+
+/* MÜHENDİSLİKLER */
+
+.engineering{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:15px;
+}
+
+.eng{
+    background:white;
+    border:1px solid #e5e7eb;
+    border-radius:12px;
+    padding:20px;
+    transition:.25s;
+}
+
+.eng:hover{
+    transform:translateY(-4px);
+    border-color:#7c3aed;
+}
+
+.eng h3{
+    margin-bottom:8px;
+    font-size:17px;
+}
+
+.eng p{
+    color:#64748b;
+    font-size:14px;
+}
+
+/* İSTATİSTİK */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+    gap:18px;
+}
+
+.stat{
+    background:white;
+    border:1px solid #e5e7eb;
+    padding:30px;
+    border-radius:14px;
+}
+
+.stat strong{
+    font-size:34px;
+    color:#2563eb;
+    display:block;
+    margin-bottom:8px;
+}
+
+.stat span{
+    color:#64748b;
+}
+
+/* TABLOLAR */
+
+.table-box{
+    overflow-x:auto;
+    background:white;
+    border:1px solid #e5e7eb;
+    border-radius:14px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th,td{
+    padding:16px;
+    text-align:left;
+    border-bottom:1px solid #e5e7eb;
+}
+
+th{
+    background:#f8fafc;
+}
+
+/* HABERLER */
+
+.news{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
+    gap:20px;
+}
+
+.news-card{
+    background:white;
+    padding:25px;
+    border:1px solid #e5e7eb;
+    border-radius:14px;
+}
+
+.news-card small{
+    color:#2563eb;
+}
+
+.news-card h3{
+    margin:12px 0;
+}
+
+.news-card p{
+    color:#64748b;
+    line-height:1.6;
+}
+
+/* FOOTER */
+
+footer{
+    background:#111827;
+    color:white;
+    padding:50px 20px;
+}
+
+.footer-inner{
+    max-width:1250px;
+    margin:auto;
+
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:35px;
+}
+
+footer h3{
+    margin-bottom:15px;
+}
+
+footer p,
+footer a{
+    color:#9ca3af;
+    line-height:1.8;
+    text-decoration:none;
+}
+
+.bottom{
+    max-width:1250px;
+    margin:35px auto 0;
+    padding-top:20px;
+    border-top:1px solid #374151;
+    color:#9ca3af;
+}
+
+/* MOBİL */
+
+@media(max-width:800px){
+
+    .menu{
+        display:none;
+    }
+
+    .hero h1{
+        font-size:40px;
+    }
+
+    .top{
+        display:none;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="top">
+
+    <div>🎓 Eğitim ve Mühendislik Portalı</div>
+
+    <div>Berat Buğra Zorlu</div>
+
+</div>
+
+<header>
+
+<div class="nav">
+
+    <div class="logo">
+        Mühendislik<span>Merkezi</span>
+    </div>
+
+    <nav class="menu">
+
+        <a href="#muhendislik">Mühendislik</a>
+        <a href="#universite">Üniversite</a>
+        <a href="#yks">YKS</a>
+        <a href="#maas">Maaşlar</a>
+        <a href="#haberler">Haberler</a>
+
+    </nav>
+
+</div>
+
+<div class="search">
+
+    <input
+        id="searchInput"
+        type="text"
+        placeholder="Mühendislik, üniversite veya konu ara..."
+    >
+
+    <button onclick="searchSite()">
+        Ara
+    </button>
+
+</div>
+
+</header>
+
+
+<section class="hero">
+
+<div class="hero-inner">
+
+    <h1>
+        Geleceğini
+        <span>Mühendislikle</span>
+        Tasarla
+    </h1>
+
+    <p>
+        Mühendislik bölümleri, üniversiteler,
+        kariyer seçenekleri, maaşlar, YKS
+        ve eğitim bilgilerini tek yerde keşfet.
+    </p>
+
+    <div class="buttons">
+
+        <a href="#muhendislik" class="btn blue">
+            Mühendislikleri Keşfet
+        </a>
+
+        <a href="#yks" class="btn purple">
+            YKS Merkezi
+        </a>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- KATEGORİLER -->
+
+<section class="container">
+
+<div class="title">
+
+    <h2>📚 Kategoriler</h2>
+
+    <p>
+        İstediğin bilgiye kategoriler üzerinden ulaş.
+    </p>
+
+</div>
+
+<div class="categories">
+
+<div class="category">
+
+    <div class="icon">⚙️</div>
+
+    <h3>Mühendislik</h3>
+
+    <p>
+        Mühendislik dalları, bölümler,
+        kariyer ve iş olanakları.
+    </p>
+
+</div>
+
+<div class="category">
+
+    <div class="icon">🎓</div>
+
+    <h3>Üniversite</h3>
+
+    <p>
+        Üniversiteler, bölümler,
+        puanlar ve sıralamalar.
+    </p>
+
+</div>
+
+<div class="category">
+
+    <div class="icon">📝</div>
+
+    <h3>YKS</h3>
+
+    <p>
+        TYT, AYT, net hesaplama
+        ve tercih bilgileri.
+    </p>
+
+</div>
+
+<div class="category">
+
+    <div class="icon">💰</div>
+
+    <h3>Maaşlar</h3>
+
+    <p>
+        Kamu ve özel sektör
+        mühendis maaşları.
+    </p>
+
+</div>
+
+<div class="category">
+
+    <div class="icon">📰</div>
+
+    <h3>Haberler</h3>
+
+    <p>
+        Eğitim, teknoloji ve
+        mühendislik haberleri.
+    </p>
+
+</div>
+
+<div class="category">
+
+    <div class="icon">🚀</div>
+
+    <h3>Kariyer</h3>
+
+    <p>
+        Staj, iş imkanları,
+        beceriler ve kariyer.
+    </p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- MÜHENDİSLİK -->
+
+<section class="container" id="muhendislik">
+
+<div class="title">
+
+    <h2>⚙️ Mühendislik Alanları</h2>
+
+    <p>
+        Popüler mühendislik bölümlerini keşfet.
+    </p>
+
+</div>
+
+<div class="engineering">
+
+<script>
+
+const engineeringList = [
+
+["Bilgisayar Mühendisliği","Yazılım, bilgisayar sistemleri ve yapay zekâ."],
+["Yazılım Mühendisliği","Yazılım geliştirme ve teknoloji."],
+["Elektrik-Elektronik Mühendisliği","Elektronik, enerji ve haberleşme."],
+["Makine Mühendisliği","Makine, üretim ve mekanik sistemler."],
+["İnşaat Mühendisliği","Yapılar, altyapı ve projeler."],
+["Endüstri Mühendisliği","Üretim, optimizasyon ve yönetim."],
+["Mekatronik Mühendisliği","Robotik, mekanik ve elektronik."],
+["Biyomedikal Mühendisliği","Tıp ve mühendisliğin birleşimi."],
+["Kimya Mühendisliği","Kimyasal üretim ve prosesler."],
+["Çevre Mühendisliği","Çevre ve sürdürülebilirlik."],
+["Uçak Mühendisliği","Uçak tasarımı ve havacılık."],
+["Uzay Mühendisliği","Uzay araçları ve sistemleri."],
+["Otomotiv Mühendisliği","Araç teknolojileri."],
+["Metalurji ve Malzeme","Malzeme ve metal teknolojileri."],
+["Enerji Sistemleri","Enerji üretimi ve sistemleri."],
+["Harita Mühendisliği","Haritalama ve coğrafi sistemler."],
+["Jeoloji Mühendisliği","Yer bilimi ve doğal kaynaklar."],
+["Jeofizik Mühendisliği","Yeraltı ve fiziksel araştırmalar."],
+["Gıda Mühendisliği","Gıda üretimi ve güvenliği."],
+["Ziraat Mühendisliği","Tarım teknolojileri."],
+["Tekstil Mühendisliği","Tekstil ve üretim teknolojileri."],
+["Maden Mühendisliği","Maden ve kaynak teknolojileri."],
+["Denizcilik Mühendisliği","Gemi ve deniz teknolojileri."],
+["Çevre Teknolojileri","Sürdürülebilir teknoloji."],
+["Nükleer Enerji Mühendisliği","Nükleer enerji sistemleri."]
+];
+
+engineeringList.forEach(item=>{
+
+    document.write(`
+    
+    <div class="eng">
+
+        <h3>${item[0]}</h3>
+
+        <p>${item[1]}</p>
+
+    </div>
+
+    `);
+
+});
+
+</script>
+
+</div>
+
+</section>
+
+
+<!-- ÜNİVERSİTE -->
+
+<section class="container" id="universite">
+
+<div class="title">
+
+    <h2>🎓 Üniversite Merkezi</h2>
+
+    <p>
+        Üniversite ve mühendislik bölümlerini karşılaştır.
+    </p>
+
+</div>
+
+<div class="table-box">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Üniversite</th>
+<th>Bölüm</th>
+<th>Puan</th>
+<th>Sıralama</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+<td>Bilgi eklenecek</td>
+<td>Bilgisayar Mühendisliği</td>
+<td>—</td>
+<td>—</td>
+</tr>
+
+<tr>
+<td>Bilgi eklenecek</td>
+<td>Elektrik-Elektronik</td>
+<td>—</td>
+<td>—</td>
+</tr>
+
+<tr>
+<td>Bilgi eklenecek</td>
+<td>Makine Mühendisliği</td>
+<td>—</td>
+<td>—</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</section>
+
+
+<!-- YKS -->
+
+<section class="container" id="yks">
+
+<div class="title">
+
+    <h2>📝 YKS Merkezi</h2>
+
+    <p>
+        Üniversite hedefin için gerekli araçlar.
+    </p>
+
+</div>
+
+<div class="categories">
+
+<div class="category">
+
+    <div class="icon">🧮</div>
+
+    <h3>TYT Net Hesaplama</h3>
+
+    <p>
+        Doğru ve yanlış sayılarını
+        kullanarak netini hesapla.
+    </p>
+
+</div>
+
+<div class="category">
+
+    <div class="icon">📊</div>
+
+    <h3>AYT Net Hesaplama</h3>
+
+    <p>
+        AYT derslerindeki netlerini
+        hesapla.
+    </p>
+
+</div>
+
+<div class="category">
+
+    <div class="icon">🎯</div>
+
+    <h3>Tercih Merkezi</h3>
+
+    <p>
+        Bölümleri ve üniversiteleri
+        karşılaştır.
+    </p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- MAAŞ -->
+
+<section class="container" id="maas">
+
+<div class="title">
+
+    <h2>💰 Mühendis Maaşları</h2>
+
+    <p>
+        Kamu ve özel sektör maaşlarını karşılaştır.
+        Veriler kaynak ve tarih bilgisiyle yayınlanmalıdır.
+    </p>
+
+</div>
+
+<div class="table-box">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Mühendislik</th>
+<th>Sektör</th>
+<th>Yıl</th>
+<th>Maaş</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+<td>Bilgisayar</td>
+<td>Kamu</td>
+<td>2026</td>
+<td>Veri eklenecek</td>
+</tr>
+
+<tr>
+<td>Makine</td>
+<td>Kamu</td>
+<td>2026</td>
+<td>Veri eklenecek</td>
+</tr>
+
+<tr>
+<td>Elektrik-Elektronik</td>
+<td>Özel</td>
+<td>2026</td>
+<td>Veri eklenecek</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</section>
+
+
+<!-- İSTATİSTİK -->
+
+<section class="container">
+
+<div class="title">
+
+    <h2>📊 Site İstatistikleri</h2>
+
+</div>
+
+<div class="stats">
+
+<div class="stat">
+
+    <strong id="visitorCount">0</strong>
+
+    <span>Toplam ziyaretçi</span>
+
+</div>
+
+<div class="stat">
+
+    <strong id="categoryCount">0</strong>
+
+    <span>Kategori</span>
+
+</div>
+
+<div class="stat">
+
+    <strong id="universityCount">0</strong>
+
+    <span>Üniversite</span>
+
+</div>
+
+<div class="stat">
+
+    <strong id="contentCount">0</strong>
+
+    <span>İçerik</span>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- HABERLER -->
+
+<section class="container" id="haberler">
+
+<div class="title">
+
+    <h2>📰 Haberler ve Duyurular</h2>
+
+    <p>
+        Eğitim ve mühendislik dünyasından gelişmeler.
+    </p>
+
+</div>
+
+<div id="newsContainer" class="news">
+
+<div class="news-card">
+
+    <small>DUYURU</small>
+
+    <h3>Yakında</h3>
+
+    <p>
+        Haber ve duyuru sistemi admin panelinden
+        yönetilebilir hale getirilecek.
+    </p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<footer>
+
+<div class="footer-inner">
+
+<div>
+
+    <h3>Mühendislik Merkezi</h3>
+
+    <p>
+        Eğitim, mühendislik ve kariyer
+        bilgilerini tek yerde bul.
+    </p>
+
+</div>
+
+<div>
+
+    <h3>Kategoriler</h3>
+
+    <p>Mühendislik</p>
+    <p>Üniversite</p>
+    <p>YKS</p>
+    <p>Maaşlar</p>
+
+</div>
+
+<div>
+
+    <h3>Hızlı Menü</h3>
+
+    <p>Hakkımızda</p>
+    <p>İletişim</p>
+    <p>Gizlilik</p>
+
+</div>
+
+</div>
+
+<div class="bottom">
+
+    © 2026 Mühendislik Merkezi —
+    Berat Buğra Zorlu
+
+</div>
+
+</footer>
+
+
+<script>
+
+async function loadStats(){
+
+    try{
+
+        const response =
+            await fetch("/api/stats");
+
+        const data =
+            await response.json();
+
+        document.getElementById("visitorCount")
+            .textContent = data.visitors;
+
+        document.getElementById("categoryCount")
+            .textContent = data.categories;
+
+        document.getElementById("universityCount")
+            .textContent = data.universities;
+
+        document.getElementById("contentCount")
+            .textContent = data.content;
+
+    }catch(error){
+
+        console.log(error);
+
+    }
+
+}
+
+
+async function registerVisit(){
+
+    let visitorId =
+        localStorage.getItem("visitor_id");
+
+    if(!visitorId){
+
+        visitorId =
+            crypto.randomUUID();
+
+        localStorage.setItem(
+            "visitor_id",
+            visitorId
+        );
+
+    }
+
+    try{
+
+        await fetch("/api/visit",{
+
+            method:"POST",
+
+            headers:{
+                "Content-Type":
+                "application/json"
+            },
+
+            body:JSON.stringify({
+                visitor_id:visitorId
+            })
+
+        });
+
+    }catch(error){
+
+        console.log(error);
+
+    }
+
+}
+
+
+function searchSite(){
+
+    const value =
+        document
+        .getElementById("searchInput")
+        .value
+        .toLowerCase()
+        .trim();
+
+    if(!value){
+
+        alert("Aramak istediğin şeyi yaz.");
+
+        return;
+
+    }
+
+    const elements =
+        document.querySelectorAll(
+            ".eng,.category,.news-card"
+        );
+
+    let found = false;
+
+    elements.forEach(element=>{
+
+        if(
+            element.innerText
+            .toLowerCase()
+            .includes(value)
+        ){
+
+            element.scrollIntoView({
+                behavior:"smooth",
+                block:"center"
+            });
+
+            element.style.outline =
+                "3px solid #2563eb";
+
+            setTimeout(()=>{
+
+                element.style.outline = "";
+
+            },2000);
+
+            found = true;
+
+        }
+
+    });
+
+    if(!found){
+
+        alert(
+            `"${value}" için sonuç bulunamadı.`
+        );
+
+    }
+
+}
+
+
+async function loadNews(){
+
+    try{
+
+        const response =
+            await fetch("/api/news");
+
+        const news =
+            await response.json();
+
+        if(!news.length)
+            return;
+
+        const container =
+            document.getElementById(
+                "newsContainer"
+            );
+
+        container.innerHTML = "";
+
+        news.forEach(item=>{
+
+            const card =
+                document.createElement("div");
+
+            card.className =
+                "news-card";
+
+            card.innerHTML = `
+
+                <small>HABER</small>
+
+                <h3>${item.title}</h3>
+
+                <p>${item.text}</p>
+
+            `;
+
+            container.appendChild(card);
+
+        });
+
+    }catch(error){
+
+        console.log(error);
+
+    }
+
+}
+
+
+registerVisit();
+loadStats();
+loadNews();
+
+</script>
+
+</body>
+</html>
