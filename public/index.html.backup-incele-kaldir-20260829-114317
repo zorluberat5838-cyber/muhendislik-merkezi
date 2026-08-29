@@ -1890,46 +1890,6 @@ section#yks {
 
 </style>
 
-
-<style id="ayt-total-style">
-.ayt-total-box{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:12px;
-    margin:18px 0 22px;
-}
-
-.ayt-total-box > div{
-    padding:15px 10px;
-    text-align:center;
-    background:linear-gradient(145deg,#0b2038,#102f4f);
-    border:1px solid #285575;
-    border-radius:14px;
-    color:#d9ecfa;
-    font-size:13px;
-    transition:.25s ease;
-}
-
-.ayt-total-box > div:hover{
-    transform:translateY(-2px);
-    border-color:#4d8bb5;
-    box-shadow:0 8px 22px rgba(0,0,0,.22);
-}
-
-.ayt-total-box b{
-    display:block;
-    margin-top:6px;
-    color:#ffffff;
-    font-size:20px;
-}
-
-@media(max-width:700px){
-    .ayt-total-box{
-        grid-template-columns:repeat(2,1fr);
-    }
-}
-</style>
-
 </head>
 
 <body>
@@ -2134,7 +2094,7 @@ section#yks {
             <strong>544,03</strong>
         </div>
 
-        
+        <div class="uni25-click">İncele ↗</div>
     </div>
 
     <div class="uni25-card">
@@ -2150,7 +2110,7 @@ section#yks {
             <strong>489,00</strong>
         </div>
 
-        
+        <div class="uni25-click">İncele ↗</div>
     </div>
 
     <div class="uni25-card">
@@ -2166,7 +2126,7 @@ section#yks {
             <strong>544,03</strong>
         </div>
 
-        
+        <div class="uni25-click">İncele ↗</div>
     </div>
 
     <div class="uni25-card">
@@ -2182,7 +2142,7 @@ section#yks {
             <strong>535,00</strong>
         </div>
 
-        
+        <div class="uni25-click">İncele ↗</div>
     </div>
 
     <div class="uni25-card">
@@ -2198,7 +2158,7 @@ section#yks {
             <strong>469,00</strong>
         </div>
 
-        
+        <div class="uni25-click">İncele ↗</div>
     </div>
 
     <div class="uni25-card">
@@ -2214,7 +2174,7 @@ section#yks {
             <strong>536,00</strong>
         </div>
 
-        
+        <div class="uni25-click">İncele ↗</div>
     </div>
 
     <div class="uni25-card">
@@ -2230,7 +2190,7 @@ section#yks {
             <strong>491,00</strong>
         </div>
 
-        
+        <div class="uni25-click">İncele ↗</div>
     </div>
 
     <div class="uni25-card">
@@ -2246,7 +2206,7 @@ section#yks {
             <strong>456,00</strong>
         </div>
 
-        
+        <div class="uni25-click">İncele ↗</div>
     </div>
 
     <div class="uni25-card">
@@ -2262,7 +2222,7 @@ section#yks {
             <strong>486,00</strong>
         </div>
 
-        
+        <div class="uni25-click">İncele ↗</div>
     </div>
 
     <div class="uni25-card">
@@ -2278,7 +2238,7 @@ section#yks {
             <strong>451,00</strong>
         </div>
 
-        
+        <div class="uni25-click">İncele ↗</div>
     </div>
 
     <div class="uni25-card">
@@ -2294,7 +2254,7 @@ section#yks {
             <strong>511,00</strong>
         </div>
 
-        
+        <div class="uni25-click">İncele ↗</div>
     </div>
 
     <div class="uni25-card">
@@ -2310,7 +2270,7 @@ section#yks {
             <strong>506,00</strong>
         </div>
 
-        
+        <div class="uni25-click">İncele ↗</div>
     </div>
 
     <div class="uni25-card">
@@ -2326,7 +2286,7 @@ section#yks {
             <strong>451,00</strong>
         </div>
 
-        
+        <div class="uni25-click">İncele ↗</div>
     </div>
 
     <div class="uni25-card">
@@ -2342,7 +2302,7 @@ section#yks {
             <strong>493,00</strong>
         </div>
 
-        
+        <div class="uni25-click">İncele ↗</div>
     </div>
 
     <div class="uni25-card">
@@ -2358,7 +2318,7 @@ section#yks {
             <strong>438,00</strong>
         </div>
 
-        
+        <div class="uni25-click">İncele ↗</div>
     </div>
 
     <div class="uni25-card">
@@ -2374,7 +2334,7 @@ section#yks {
             <strong>443,00</strong>
         </div>
 
-        
+        <div class="uni25-click">İncele ↗</div>
     </div>
 
     <div class="uni25-card">
@@ -2390,7 +2350,7 @@ section#yks {
             <strong>422,00</strong>
         </div>
 
-        
+        <div class="uni25-click">İncele ↗</div>
     </div>
 
     <div class="uni25-card">
@@ -2406,7 +2366,7 @@ section#yks {
             <strong>407,00</strong>
         </div>
 
-        
+        <div class="uni25-click">İncele ↗</div>
     </div>
 
     <div class="uni25-card">
@@ -2422,7 +2382,7 @@ section#yks {
             <strong>430,00</strong>
         </div>
 
-        
+        <div class="uni25-click">İncele ↗</div>
     </div>
 
     <div class="uni25-card">
@@ -2438,7 +2398,7 @@ section#yks {
             <strong>398,00</strong>
         </div>
 
-        
+        <div class="uni25-click">İncele ↗</div>
     </div>
 
     <div class="uni25-card">
@@ -2454,7 +2414,7 @@ section#yks {
             <strong>455,00</strong>
         </div>
 
-        
+        <div class="uni25-click">İncele ↗</div>
     </div>
 
     <div class="uni25-card">
@@ -2470,7 +2430,7 @@ section#yks {
             <strong>425,00</strong>
         </div>
 
-        
+        <div class="uni25-click">İncele ↗</div>
     </div>
 
     <div class="uni25-card">
@@ -2486,7 +2446,7 @@ section#yks {
             <strong>455,00</strong>
         </div>
 
-        
+        <div class="uni25-click">İncele ↗</div>
     </div>
 
     <div class="uni25-card">
@@ -2502,7 +2462,7 @@ section#yks {
             <strong>374,45</strong>
         </div>
 
-        
+        <div class="uni25-click">İncele ↗</div>
     </div>
 
     <div class="uni25-card">
@@ -2518,7 +2478,7 @@ section#yks {
             <strong>470,00</strong>
         </div>
 
-        
+        <div class="uni25-click">İncele ↗</div>
     </div>
 
 </div>
@@ -2620,7 +2580,24 @@ section#yks {
     font-size:20px;
 }
 
+.uni25-click {
+    position:absolute;
+    right:14px;
+    bottom:9px;
+    padding:4px 9px;
+    border-radius:7px;
+    background:#071522;
+    border:1px solid #285575;
+    color:#dff6ff;
+    font-size:10px;
+    font-weight:700;
+    opacity:0;
+    transition:.2s;
+}
 
+.uni25-card:hover .uni25-click {
+    opacity:1;
+}
 
 @media(max-width:750px) {
     .uni25-grid {
@@ -2886,12 +2863,6 @@ background:#0b1020;padding:15px;border-radius:10px;text-align:center
 <div id="sayisal" class="ayt-area">
 <div class="yks-calc">
 <h3>AYT Sayısal</h3>
-<div class="ayt-total-box">
-    <div>Toplam Doğru<b id="ayt-sayisal-d">0</b></div>
-    <div>Toplam Yanlış<b id="ayt-sayisal-y">0</b></div>
-    <div>Toplam Boş<b id="ayt-sayisal-b">120</b></div>
-    <div>Toplam Net<b id="ayt-sayisal-n">0.00</b></div>
-</div>
 <table class="yks-table"><tbody>
 <tr data-total="40"><td>Matematik</td><td>40</td><td><input class="correct"></td><td><input class="wrong"></td><td class="blank">-</td><td class="net">0</td></tr>
 <tr data-total="14"><td>Fizik</td><td>14</td><td><input class="correct"></td><td><input class="wrong"></td><td class="blank">-</td><td class="net">0</td></tr>
@@ -2904,12 +2875,6 @@ background:#0b1020;padding:15px;border-radius:10px;text-align:center
 <div id="ea" class="ayt-area" style="display:none">
 <div class="yks-calc">
 <h3>AYT Eşit Ağırlık</h3>
-<div class="ayt-total-box">
-    <div>Toplam Doğru<b id="ayt-ea-d">0</b></div>
-    <div>Toplam Yanlış<b id="ayt-ea-y">0</b></div>
-    <div>Toplam Boş<b id="ayt-ea-b">120</b></div>
-    <div>Toplam Net<b id="ayt-ea-n">0.00</b></div>
-</div>
 <table class="yks-table"><tbody>
 <tr data-total="40"><td>Matematik</td><td>40</td><td><input class="correct"></td><td><input class="wrong"></td><td class="blank">-</td><td class="net">0</td></tr>
 <tr data-total="24"><td>Edebiyat</td><td>24</td><td><input class="correct"></td><td><input class="wrong"></td><td class="blank">-</td><td class="net">0</td></tr>
@@ -2922,12 +2887,6 @@ background:#0b1020;padding:15px;border-radius:10px;text-align:center
 <div id="sozel" class="ayt-area" style="display:none">
 <div class="yks-calc">
 <h3>AYT Sözel</h3>
-<div class="ayt-total-box">
-    <div>Toplam Doğru<b id="ayt-sozel-d">0</b></div>
-    <div>Toplam Yanlış<b id="ayt-sozel-y">0</b></div>
-    <div>Toplam Boş<b id="ayt-sozel-b">120</b></div>
-    <div>Toplam Net<b id="ayt-sozel-n">0.00</b></div>
-</div>
 <table class="yks-table"><tbody>
 <tr data-total="24"><td>Edebiyat</td><td>24</td><td><input class="correct"></td><td><input class="wrong"></td><td class="blank">-</td><td class="net">0</td></tr>
 <tr data-total="10"><td>Tarih-1</td><td>10</td><td><input class="correct"></td><td><input class="wrong"></td><td class="blank">-</td><td class="net">0</td></tr>
@@ -3201,7 +3160,59 @@ input.addEventListener('input',calculateYks);
 <!-- İSTATİSTİK -->
 
 
+<section id="statistics" class="section site-statistics">
+    <div class="section-head">
+        <div>
+            <span class="section-badge">CANLI VERİLER</span>
+            <h2>📊 Site İstatistikleri</h2>
+            <p>Site büyüdükçe gerçek veriler otomatik olarak güncellenir.</p>
+        </div>
+        <div class="stats-live">
+            <span class="live-dot"></span>
+            Canlı
+        </div>
+    </div>
 
+    <div class="statistics-grid">
+
+        <div class="stat-card">
+            <span class="stat-icon">👥</span>
+            <strong id="statTotalVisitors">0</strong>
+            <span>Toplam ziyaretçi</span>
+        </div>
+
+        <div class="stat-card">
+            <span class="stat-icon">🔥</span>
+            <strong id="statTodayVisitors">0</strong>
+            <span>Bugünkü ziyaretçi</span>
+        </div>
+
+        <div class="stat-card">
+            <span class="stat-icon">⚙️</span>
+            <strong id="statEngineering">0</strong>
+            <span>Mühendislik alanı</span>
+        </div>
+
+        <div class="stat-card">
+            <span class="stat-icon">💰</span>
+            <strong id="statSalary">0</strong>
+            <span>Maaş kaydı</span>
+        </div>
+
+        <div class="stat-card">
+            <span class="stat-icon">📰</span>
+            <strong id="statNews">0</strong>
+            <span>Haber</span>
+        </div>
+
+        <div class="stat-card">
+            <span class="stat-icon">📚</span>
+            <strong id="statContent">0</strong>
+            <span>İçerik</span>
+        </div>
+
+    </div>
+</section>
 
 
 
@@ -3495,725 +3506,35 @@ loadNews();
 
 <script>
 function kesfetAra(deger){
-
-    const sonuc = document.getElementById("kesfetSonuc");
-
-    if(!sonuc) return;
-
-    const q = String(deger || "")
-        .toLocaleLowerCase("tr-TR")
-        .trim();
+    const sonuc=document.getElementById("kesfetSonuc");
+    const q=(deger||"").trim().toLocaleLowerCase("tr-TR");
 
     if(!q){
         sonuc.innerHTML="";
         return;
     }
 
-    /*
-    ============================================================
-    GELİŞMİŞ KEŞFET ARAMA SİSTEMİ
-    ============================================================
-    */
-
-    const anahtarKelimeGruplari = {
-
-        bilgisayar: [
-            "bilgisayar",
-            "computer",
-            "computer engineering",
-            "yazılım",
-            "software",
-            "programlama",
-            "kodlama",
-            "kod",
-            "python",
-            "javascript",
-            "java",
-            "c++",
-            "web",
-            "frontend",
-            "backend",
-            "full stack",
-            "yapay zeka",
-            "ai",
-            "yapayzeka",
-            "makine öğrenmesi",
-            "machine learning",
-            "derin öğrenme",
-            "deep learning",
-            "veri bilimi",
-            "data science",
-            "siber güvenlik",
-            "cyber security",
-            "bilgisayar sistemleri",
-            "algoritma",
-            "algoritmalar"
-        ],
-
-        yazilim: [
-            "yazılım",
-            "software",
-            "program",
-            "programlama",
-            "kod",
-            "kodlama",
-            "uygulama",
-            "app",
-            "mobil",
-            "web",
-            "frontend",
-            "backend",
-            "fullstack",
-            "full stack",
-            "oyun geliştirme",
-            "game development",
-            "yapay zeka",
-            "ai"
-        ],
-
-        elektrik: [
-            "elektrik",
-            "elektronik",
-            "elektrik elektronik",
-            "eee",
-            "devre",
-            "devreler",
-            "enerji",
-            "haberleşme",
-            "telekomünikasyon",
-            "telekom",
-            "robotik",
-            "otomasyon",
-            "kontrol",
-            "mikroelektronik",
-            "elektromanyetik"
-        ],
-
-        makine: [
-            "makine",
-            "mekanik",
-            "üretim",
-            "imalat",
-            "tasarım",
-            "motor",
-            "termal",
-            "ısı",
-            "akışkan",
-            "otomotiv",
-            "robot"
-        ],
-
-        insaat: [
-            "inşaat",
-            "yapı",
-            "bina",
-            "köprü",
-            "baraj",
-            "altyapı",
-            "üst yapı",
-            "beton",
-            "çelik",
-            "statik",
-            "şantiye",
-            "proje"
-        ],
-
-        endustri: [
-            "endüstri",
-            "endüstriyel",
-            "üretim",
-            "optimizasyon",
-            "yönetim",
-            "lojistik",
-            "tedarik",
-            "kalite",
-            "verimlilik",
-            "planlama",
-            "işletme"
-        ],
-
-        mekatronik: [
-            "mekatronik",
-            "robotik",
-            "robot",
-            "otomasyon",
-            "mekanik",
-            "elektronik",
-            "kontrol",
-            "sensör"
-        ],
-
-        biyomedikal: [
-            "biyomedikal",
-            "medikal",
-            "tıp",
-            "sağlık",
-            "hastane",
-            "protez",
-            "biyoloji",
-            "medikal cihaz",
-            "sağlık teknolojileri"
-        ],
-
-        kimya: [
-            "kimya",
-            "kimyasal",
-            "kimya mühendisliği",
-            "proses",
-            "reaksiyon",
-            "petrokimya",
-            "polimer",
-            "ilaç",
-            "üretim"
-        ],
-
-        cevre: [
-            "çevre",
-            "çevre mühendisliği",
-            "sürdürülebilirlik",
-            "atık",
-            "su",
-            "arıtma",
-            "geri dönüşüm",
-            "iklim",
-            "doğa",
-            "ekoloji",
-            "karbon"
-        ],
-
-        ucak: [
-            "uçak",
-            "uçak mühendisliği",
-            "havacılık",
-            "aerodinamik",
-            "uçuş",
-            "hava",
-            "uçak tasarımı"
-        ],
-
-        uzay: [
-            "uzay",
-            "uzay mühendisliği",
-            "havacılık",
-            "roket",
-            "uydu",
-            "uydular",
-            "uzay aracı",
-            "uzay araçları",
-            "astronomi",
-            "yörünge",
-            "füze"
-        ],
-
-        otomotiv: [
-            "otomotiv",
-            "otomobil",
-            "araba",
-            "araç",
-            "motor",
-            "elektrikli araç",
-            "hibrit",
-            "araç teknolojileri"
-        ],
-
-        metalurji: [
-            "metalurji",
-            "malzeme",
-            "metal",
-            "çelik",
-            "alaşım",
-            "nanoteknoloji",
-            "seramik",
-            "kompozit",
-            "polimer"
-        ],
-
-        enerji: [
-            "enerji",
-            "enerji sistemleri",
-            "güneş",
-            "solar",
-            "rüzgar",
-            "yenilenebilir",
-            "elektrik üretimi",
-            "enerji üretimi",
-            "nükleer"
-        ],
-
-        harita: [
-            "harita",
-            "harita mühendisliği",
-            "gps",
-            "gis",
-            "coğrafi",
-            "kadastro",
-            "ölçme",
-            "uydu"
-        ],
-
-        jeoloji: [
-            "jeoloji",
-            "jeoloji mühendisliği",
-            "yer bilimi",
-            "yeraltı",
-            "maden",
-            "kaynak",
-            "deprem",
-            "kayaç",
-            "zemin"
-        ],
-
-        jeofizik: [
-            "jeofizik",
-            "jeofizik mühendisliği",
-            "deprem",
-            "yeraltı",
-            "sismik",
-            "sismoloji",
-            "yer bilimi"
-        ],
-
-        gida: [
-            "gıda",
-            "gıda mühendisliği",
-            "gıda üretimi",
-            "gıda güvenliği",
-            "beslenme",
-            "üretim",
-            "hijyen"
-        ],
-
-        ziraat: [
-            "ziraat",
-            "tarım",
-            "ziraat mühendisliği",
-            "çiftçilik",
-            "bitki",
-            "toprak",
-            "hayvancılık",
-            "tarım teknolojileri"
-        ],
-
-        tekstil: [
-            "tekstil",
-            "tekstil mühendisliği",
-            "kumaş",
-            "giyim",
-            "iplik",
-            "elyaf",
-            "moda",
-            "üretim"
-        ],
-
-        maden: [
-            "maden",
-            "maden mühendisliği",
-            "madencilik",
-            "kömür",
-            "cevher",
-            "yeraltı",
-            "kaynak"
-        ],
-
-        denizcilik: [
-            "denizcilik",
-            "gemi",
-            "gemi mühendisliği",
-            "deniz",
-            "gemi tasarımı",
-            "tersane",
-            "deniz teknolojileri"
-        ],
-
-        nukleer: [
-            "nükleer",
-            "nükleer enerji",
-            "atom",
-            "reaktör",
-            "radyasyon",
-            "enerji"
-        ],
-
-        universite: [
-            "üniversite",
-            "universite",
-            "okul",
-            "kampüs",
-            "bölüm",
-            "fakülte",
-            "lisans",
-            "yükseköğretim",
-            "yök",
-            "yök atlas"
-        ],
-
-        yks: [
-            "yks",
-            "tyt",
-            "ayt",
-            "sayısal",
-            "sayisal",
-            "eşit ağırlık",
-            "eşit agirlik",
-            "ea",
-            "sözel",
-            "sozel",
-            "net",
-            "puan",
-            "sıralama",
-            "siralamа",
-            "başarı sırası",
-            "başarı sirasi",
-            "tercih",
-            "üniversite tercihi",
-            "tercih robotu",
-            "hedef",
-            "yks hedef",
-            "tyt net",
-            "ayt net"
-        ],
-
-        kariyer: [
-            "kariyer",
-            "meslek",
-            "iş",
-            "işler",
-            "çalışma",
-            "çalışmak",
-            "firma",
-            "şirket",
-            "sektör",
-            "gelecek",
-            "iş imkanı",
-            "iş imkanları",
-            "staj",
-            "maaş",
-            "ücret",
-            "kazanç",
-            "gelir"
-        ],
-
-        ders: [
-            "ders",
-            "dersler",
-            "matematik",
-            "fizik",
-            "kimya",
-            "biyoloji",
-            "geometri",
-            "programlama",
-            "mekanik",
-            "elektronik",
-            "istatistik",
-            "termodinamik"
-        ]
-    };
-
-    /*
-    Türkçe karakterleri daha kolay eşleştirmek için normalize
-    */
-
-    function normalize(text){
-
-        return String(text || "")
-            .toLocaleLowerCase("tr-TR")
-            .replace(/ı/g,"i")
-            .replace(/İ/g,"i")
-            .replace(/ş/g,"s")
-            .replace(/Ş/g,"s")
-            .replace(/ğ/g,"g")
-            .replace(/Ğ/g,"g")
-            .replace(/ü/g,"u")
-            .replace(/Ü/g,"u")
-            .replace(/ö/g,"o")
-            .replace(/Ö/g,"o")
-            .replace(/ç/g,"c")
-            .replace(/Ç/g,"c")
-            .trim();
-    }
-
-    const aranan = normalize(q);
-
-    /*
-    Kullanıcının yazdığı kelimeyi ilgili anahtar kelime
-    grubuyla genişlet.
-    */
-
-    const genisArama = new Set([aranan]);
-
-    Object.values(anahtarKelimeGruplari).forEach(grup => {
-
-        const normalGrup = grup.map(normalize);
-
-        if(
-            normalGrup.some(k =>
-                k.includes(aranan) ||
-                aranan.includes(k)
-            )
-        ){
-
-            grup.forEach(k =>
-                genisArama.add(normalize(k))
-            );
-        }
-    });
-
-    /*
-    Statik liste + API'den gelen güncel liste
-    */
-
-    const kaynaklar = [];
-
-    if(Array.isArray(window.MUHENDISLIKLer)){
-        kaynaklar.push(...window.MUHENDISLIKLer);
-    }
-
-    if(typeof engineeringList !== "undefined" &&
-       Array.isArray(engineeringList)){
-
-        engineeringList.forEach(x => {
-
-            if(!kaynaklar.some(y =>
-                normalize(y?.name || y?.[0] || "") ===
-                normalize(x?.name || x?.[0] || "")
-            )){
-                kaynaklar.push(x);
-            }
-
-        });
-    }
-
-    /*
-    Mühendislikleri aranabilir metne dönüştür
-    */
-
-    const bulunan = kaynaklar
-        .map(item => {
-
-            const name =
-                item?.name ||
-                item?.[0] ||
-                "Mühendislik";
-
-            const description =
-                item?.kisa ||
-                item?.description ||
-                item?.nedir ||
-                item?.[1] ||
-                "";
-
-            const alanlar =
-                Array.isArray(item?.alanlar)
-                    ? item.alanlar.join(" ")
-                    : String(item?.alanlar || "");
-
-            const isler =
-                Array.isArray(item?.isler)
-                    ? item.isler.join(" ")
-                    : String(item?.isler || item?.work || "");
-
-            const dersler =
-                Array.isArray(item?.dersler)
-                    ? item.dersler.join(" ")
-                    : String(item?.dersler || item?.education || "");
-
-            const kariyer =
-                String(item?.kariyer || "");
-
-            const etiket =
-                Array.isArray(item?.etiket)
-                    ? item.etiket.join(" ")
-                    : String(item?.etiket || "");
-
-            const salary =
-                String(item?.salary || "");
-
-            const aramaMetni = normalize([
-                name,
-                description,
-                alanlar,
-                isler,
-                dersler,
-                kariyer,
-                etiket,
-                salary
-            ].join(" "));
-
-            let skor = 0;
-
-            /*
-            Tam isim eşleşmesi en yüksek puan
-            */
-
-            if(normalize(name) === aranan){
-                skor += 100;
-            }
-
-            if(normalize(name).includes(aranan)){
-                skor += 70;
-            }
-
-            /*
-            Genişletilmiş anahtar kelimeler
-            */
-
-            genisArama.forEach(kelime => {
-
-                if(!kelime) return;
-
-                if(aramaMetni.includes(kelime)){
-
-                    skor += 12;
-
-                    if(normalize(name).includes(kelime)){
-                        skor += 25;
-                    }
-                }
-            });
-
-            /*
-            Birden fazla kelimeyle arama:
-            "yapay zeka mühendislik" gibi
-            */
-
-            aranan
-                .split(/\s+/)
-                .filter(Boolean)
-                .forEach(kelime => {
-
-                    if(kelime.length >= 2 &&
-                       aramaMetni.includes(kelime)){
-
-                        skor += 8;
-                    }
-                });
-
-            return {
-                item,
-                name,
-                description,
-                skor
-            };
-
-        })
-        .filter(x => x.skor > 0)
-        .sort((a,b) => b.skor - a.skor);
-
-    /*
-    Sonuç yoksa bazı genel yönlendirmeler göster
-    */
+    const liste=typeof engineeringList !== "undefined"
+        ? engineeringList
+        : [];
+
+    const bulunan=liste.filter(x =>
+        x[0].toLocaleLowerCase("tr-TR").includes(q) ||
+        x[1].toLocaleLowerCase("tr-TR").includes(q)
+    );
 
     if(!bulunan.length){
-
-        sonuc.innerHTML = `
-            <div style="
-                margin-top:12px;
-                padding:16px;
-                border-radius:14px;
-                background:linear-gradient(145deg,#0b2038,#102f50);
-                border:1px solid #285575;
-                color:#dcecff;
-                line-height:1.6;
-            ">
-                ❌ <strong>Sonuç bulunamadı.</strong>
-                <div style="
-                    margin-top:7px;
-                    font-size:13px;
-                    opacity:.85;
-                ">
-                    Örnek: bilgisayar, yazılım, yapay zeka,
-                    elektrik, makine, robotik, uzay, üniversite,
-                    YKS, TYT, AYT, maaş, kariyer...
-                </div>
-            </div>
-        `;
-
+        sonuc.innerHTML="❌ Sonuç bulunamadı.";
         return;
     }
 
-    /*
-    Sonuçları göster
-    */
-
-    sonuc.innerHTML = bulunan
-        .slice(0,8)
-        .map(x => {
-
-            const safeName =
-                String(x.name)
-                    .replace(/\\/g,"\\\\")
-                    .replace(/'/g,"\\'")
-                    .replace(/"/g,"&quot;");
-
-            const safeDescription =
-                String(x.description || "")
-                    .replace(/</g,"&lt;")
-                    .replace(/>/g,"&gt;");
-
-            return `
-                <div
-                    onclick="muhendislikAc('${safeName}')"
-                    style="
-                        padding:15px;
-                        margin-top:9px;
-                        background:linear-gradient(
-                            145deg,
-                            #0b2038,
-                            #102f50
-                        );
-                        border:1px solid #285575;
-                        border-radius:13px;
-                        cursor:pointer;
-                        transition:
-                            transform .22s ease,
-                            border-color .22s ease,
-                            box-shadow .22s ease;
-                    "
-                    onmouseenter="
-                        this.style.transform='translateY(-2px)';
-                        this.style.borderColor='#4d8bb5';
-                        this.style.boxShadow='0 8px 22px rgba(0,0,0,.25)';
-                    "
-                    onmouseleave="
-                        this.style.transform='';
-                        this.style.borderColor='#285575';
-                        this.style.boxShadow='';
-                    "
-                >
-                    <strong style="
-                        color:#ffffff;
-                        font-size:15px;
-                    ">
-                        ${safeName}
-                    </strong>
-
-                    ${
-                        safeDescription
-                        ? `
-                            <br>
-                            <small style="
-                                color:#c4cee0;
-                                display:block;
-                                margin-top:5px;
-                            ">
-                                ${safeDescription}
-                            </small>
-                        `
-                        : ""
-                    }
-
-                    <div style="
-                        margin-top:8px;
-                        font-size:11px;
-                        color:#78b8e8;
-                    ">
-                        Mühendislik bilgisini görüntüle →
-                    </div>
-                </div>
-            `;
-
-        })
-        .join("");
+    sonuc.innerHTML=bulunan.slice(0,6).map(x=>`
+        <div onclick="muhendislikAc('${x[0].replace(/'/g,"\\'") }')"
+             style="padding:14px;margin-top:8px;background:#17223a;border:1px solid #2b3b5d;border-radius:10px;cursor:pointer">
+            <strong style="color:#fff">${x[0]}</strong><br>
+            <small style="color:#c4cee0">${x[1]}</small>
+        </div>
+    `).join("");
 }
 
 function bolumeGit(id){
@@ -6947,1390 +6268,3 @@ section#salaries .section-heading div {
 
 })();
 </script>
-
-<style>
-/* ===== KEŞFET ARAMA KUTUSU - DAHA KOMPAKT ===== */
-
-#kesfet .discover-search{
-    padding:24px 26px !important;
-    min-height:0 !important;
-}
-
-#kesfet .discover-search .discover-icon{
-    margin-bottom:8px !important;
-    font-size:28px !important;
-}
-
-#kesfet .discover-search h3{
-    margin:4px 0 6px !important;
-    font-size:21px !important;
-}
-
-#kesfet .discover-search p{
-    margin:0 0 14px !important;
-    font-size:14px !important;
-}
-
-#kesfet .discover-search-box{
-    margin-top:8px !important;
-}
-
-#kesfet .discover-search-box input{
-    height:42px !important;
-    padding:8px 13px !important;
-    font-size:14px !important;
-}
-
-#kesfet .discover-search-box button{
-    height:42px !important;
-    padding:0 18px !important;
-}
-
-#kesfet #kesfetSonuc{
-    max-height:180px !important;
-    overflow-y:auto !important;
-    margin-top:8px !important;
-}
-
-#kesfet #kesfetSonuc > div{
-    padding:9px 12px !important;
-    margin-top:5px !important;
-}
-
-/* Diğer keşfet kartları da biraz daha kompakt */
-#kesfet .discover-card{
-    min-height:0 !important;
-}
-</style>
-
-<script>
-/* Arama sonuçları açılmadığında kutunun gereksiz boşluk bırakmasını engelle */
-(function(){
-    const sonuc = document.getElementById("kesfetSonuc");
-
-    if(!sonuc) return;
-
-    const observer = new MutationObserver(function(){
-        if(!sonuc.innerHTML.trim()){
-            sonuc.style.display = "none";
-        }else{
-            sonuc.style.display = "block";
-        }
-    });
-
-    observer.observe(sonuc,{
-        childList:true,
-        subtree:true,
-        characterData:true
-    });
-
-    if(!sonuc.innerHTML.trim()){
-        sonuc.style.display = "none";
-    }
-})();
-</script>
-
-
-<style id="KESFET-ARAMA-SON-KISA">
-/* ===== KEŞFET ARAMA KUTUSU - KOMPAKT YÜKSEKLİK ===== */
-
-#kesfet .discover-search{
-    padding:16px 22px !important;
-    min-height:0 !important;
-    height:auto !important;
-}
-
-#kesfet .discover-search .discover-icon{
-    font-size:24px !important;
-    margin-bottom:3px !important;
-    line-height:1 !important;
-}
-
-#kesfet .discover-search h3{
-    margin:2px 0 4px !important;
-    font-size:19px !important;
-    line-height:1.2 !important;
-}
-
-#kesfet .discover-search p{
-    margin:0 0 8px !important;
-    font-size:13px !important;
-    line-height:1.35 !important;
-}
-
-#kesfet .discover-search-box{
-    margin-top:5px !important;
-    gap:7px !important;
-    height:38px !important;
-}
-
-#kesfet .discover-search-box input{
-    height:38px !important;
-    min-height:38px !important;
-    padding:6px 11px !important;
-    font-size:13px !important;
-    box-sizing:border-box !important;
-}
-
-#kesfet .discover-search-box button{
-    height:38px !important;
-    min-height:38px !important;
-    padding:0 15px !important;
-    font-size:13px !important;
-}
-
-#kesfet #kesfetSonuc{
-    margin-top:5px !important;
-    max-height:120px !important;
-}
-
-/* Sonuç yokken kesinlikle boş alan bırakmasın */
-#kesfet #kesfetSonuc:empty{
-    display:none !important;
-}
-
-/* Arama kartının gereksiz minimum yüksekliğini kaldır */
-#kesfet .discover-card.discover-search{
-    min-height:0 !important;
-}
-
-/* Hover sırasında kutunun boyu değişmesin */
-#kesfet .discover-search:hover{
-    transform:translateY(-4px) !important;
-}
-</style>
-
-<script>
-/* Keşfet arama kutusunun yüksekliğini sonuçlara göre otomatik ayarla */
-(function(){
-    const sonuc = document.getElementById("kesfetSonuc");
-
-    if(!sonuc) return;
-
-    function ayarla(){
-        if(!sonuc.innerHTML.trim()){
-            sonuc.style.display = "none";
-        }else{
-            sonuc.style.display = "block";
-        }
-    }
-
-    ayarla();
-
-    new MutationObserver(ayarla).observe(sonuc,{
-        childList:true,
-        subtree:true,
-        characterData:true
-    });
-})();
-</script>
-
-
-<style id="KESFET-ARAMA-GERCEK-KISALTMA">
-/* =========================================================
-   KEŞFET ARAMA KARTI - GERÇEK YÜKSEKLİK DÜZELTMESİ
-   ========================================================= */
-
-/* Grid'in kartları otomatik olarak uzatmasını engelle */
-#kesfet .discover-grid{
-    align-items:start !important;
-}
-
-/* Arama kartı sadece kendi içeriği kadar olsun */
-#kesfet .discover-search{
-    align-self:start !important;
-    height:auto !important;
-    min-height:0 !important;
-    max-height:none !important;
-    box-sizing:border-box !important;
-    padding:16px 22px !important;
-}
-
-/* İçeride gereksiz boşluk bırakma */
-#kesfet .discover-search .discover-icon{
-    margin:0 0 4px 0 !important;
-    line-height:1 !important;
-    font-size:24px !important;
-}
-
-#kesfet .discover-search h3{
-    margin:2px 0 4px 0 !important;
-    line-height:1.2 !important;
-}
-
-#kesfet .discover-search p{
-    margin:0 0 7px 0 !important;
-    line-height:1.3 !important;
-}
-
-#kesfet .discover-search-box{
-    margin:4px 0 0 0 !important;
-    height:36px !important;
-}
-
-#kesfet .discover-search-box input,
-#kesfet .discover-search-box button{
-    height:36px !important;
-    min-height:36px !important;
-    box-sizing:border-box !important;
-}
-
-/* Sonuç yoksa sıfır alan */
-#kesfet #kesfetSonuc{
-    display:none;
-    margin:4px 0 0 0 !important;
-}
-
-#kesfet #kesfetSonuc:not(:empty){
-    display:block;
-}
-
-/* Hover aşağı doğru büyütmesin */
-#kesfet .discover-search:hover{
-    transform:translateY(-4px) !important;
-}
-</style>
-
-
-<style id="KESFET-ARAMA-SATIR-DUZELTME-FINAL">
-
-/* =========================================================
-   KEŞFET — ARAMA KARTINI GERÇEKTEN KOMPAKT YAP
-   ========================================================= */
-
-#kesfet .discover-grid{
-    display:grid !important;
-    grid-template-columns:repeat(3,minmax(0,1fr)) !important;
-    align-items:start !important;
-    gap:20px !important;
-}
-
-/* Arama kartı 2 kolon kaplasın ama satırın yüksekliğini almasın */
-#kesfet .discover-card.discover-search{
-    grid-column:span 2 !important;
-
-    height:fit-content !important;
-    min-height:0 !important;
-    max-height:max-content !important;
-
-    align-self:start !important;
-
-    padding:18px 22px !important;
-    margin:0 !important;
-
-    box-sizing:border-box !important;
-}
-
-/* Arama kartının tüm içeriğini sıkıştır */
-#kesfet .discover-search .discover-icon{
-    font-size:25px !important;
-    line-height:1 !important;
-    margin:0 0 5px 0 !important;
-}
-
-#kesfet .discover-search h3{
-    margin:0 0 5px 0 !important;
-    line-height:1.2 !important;
-    font-size:19px !important;
-}
-
-#kesfet .discover-search p{
-    margin:0 0 9px 0 !important;
-    line-height:1.35 !important;
-    font-size:13px !important;
-}
-
-/* Input + Ara */
-#kesfet .discover-search-box{
-    display:flex !important;
-    height:38px !important;
-    min-height:38px !important;
-    margin:0 !important;
-    gap:8px !important;
-}
-
-#kesfet .discover-search-box input{
-    height:38px !important;
-    min-height:38px !important;
-    padding:7px 11px !important;
-    margin:0 !important;
-    box-sizing:border-box !important;
-}
-
-#kesfet .discover-search-box button{
-    height:38px !important;
-    min-height:38px !important;
-    padding:0 15px !important;
-    margin:0 !important;
-    box-sizing:border-box !important;
-}
-
-/* Sonuç alanı sadece sonuç varsa görünsün */
-#kesfet #kesfetSonuc{
-    display:none;
-    height:auto !important;
-    min-height:0 !important;
-    max-height:120px !important;
-    overflow-y:auto !important;
-    margin:7px 0 0 0 !important;
-}
-
-#kesfet #kesfetSonuc:not(:empty){
-    display:block !important;
-}
-
-/* Sonuç kartlarının gereksiz büyümesini engelle */
-#kesfet #kesfetSonuc > div{
-    box-sizing:border-box !important;
-    padding:8px 10px !important;
-    margin:4px 0 0 0 !important;
-}
-
-/* Hover sadece yukarı doğru hareket */
-#kesfet .discover-search:hover{
-    transform:translateY(-4px) !important;
-}
-
-/* Mobil */
-@media(max-width:900px){
-
-    #kesfet .discover-grid{
-        grid-template-columns:repeat(2,minmax(0,1fr)) !important;
-    }
-
-    #kesfet .discover-card.discover-search{
-        grid-column:span 2 !important;
-    }
-
-}
-
-@media(max-width:600px){
-
-    #kesfet .discover-grid{
-        grid-template-columns:1fr !important;
-    }
-
-    #kesfet .discover-card.discover-search{
-        grid-column:span 1 !important;
-    }
-
-}
-
-</style>
-
-
-<style id="MM-GELISMIS-ARAMA-CSS">
-
-/* =========================================================
-   GELİŞMİŞ SİTE ARAMA
-   ========================================================= */
-
-#mm-search-message{
-    position:fixed;
-    top:90px;
-    left:50%;
-    transform:translateX(-50%);
-    z-index:99999;
-
-    padding:13px 20px;
-
-    background:linear-gradient(
-        135deg,
-        #0b1d36,
-        #12345b
-    );
-
-    border:1px solid rgba(90,170,255,.55);
-    border-radius:12px;
-
-    color:#fff;
-    font-size:14px;
-    font-weight:700;
-
-    box-shadow:
-        0 12px 35px rgba(0,0,0,.35),
-        0 0 18px rgba(45,140,255,.15);
-
-    opacity:0;
-    pointer-events:none;
-
-    transition:
-        opacity .25s ease,
-        transform .25s ease;
-}
-
-#mm-search-message.active{
-    opacity:1;
-    transform:translateX(-50%) translateY(5px);
-}
-
-/* Arama sonucu vurgusu */
-
-.mm-search-highlight{
-    outline:3px solid #3b9cff !important;
-
-    box-shadow:
-        0 0 0 5px rgba(59,156,255,.12),
-        0 0 28px rgba(59,156,255,.35) !important;
-
-    transition:
-        outline .2s ease,
-        box-shadow .2s ease !important;
-}
-
-</style>
-
-
-<div id="mm-search-message"></div>
-
-
-<script id="MM-GELISMIS-ARAMA">
-
-/* =========================================================
-   MÜHENDİSLİK MERKEZİ — GELİŞMİŞ ARAMA MOTORU
-   ========================================================= */
-
-(function(){
-
-    const SEARCH_DATA = {
-
-        /* =========================
-           MÜHENDİSLİKLER
-           ========================= */
-
-        "bilgisayar": [
-            "bilgisayar",
-            "computer",
-            "yazılım",
-            "programlama",
-            "kodlama",
-            "yapay zeka",
-            "yapay zekâ",
-            "ai",
-            "yazılım geliştirme",
-            "algoritma",
-            "veri",
-            "siber",
-            "siber güvenlik"
-        ],
-
-        "yazilim": [
-            "yazılım",
-            "yazilim",
-            "software",
-            "kod",
-            "kodlama",
-            "programlama",
-            "uygulama geliştirme",
-            "web geliştirme"
-        ],
-
-        "elektrik": [
-            "elektrik",
-            "elektronik",
-            "elektrik elektronik",
-            "elektrik-elektronik",
-            "enerji",
-            "devre",
-            "haberleşme",
-            "telekomünikasyon"
-        ],
-
-        "makine": [
-            "makine",
-            "mekanik",
-            "üretim",
-            "imalat",
-            "tasarım",
-            "motor"
-        ],
-
-        "insaat": [
-            "inşaat",
-            "insaat",
-            "yapı",
-            "bina",
-            "altyapı",
-            "üst yapı",
-            "şantiye"
-        ],
-
-        "endustri": [
-            "endüstri",
-            "endustri",
-            "üretim",
-            "optimizasyon",
-            "lojistik",
-            "yönetim",
-            "verimlilik"
-        ],
-
-        "mekatronik": [
-            "mekatronik",
-            "robotik",
-            "robot",
-            "otomasyon",
-            "mekanik elektronik"
-        ],
-
-        "biyomedikal": [
-            "biyomedikal",
-            "bio",
-            "medikal",
-            "tıp",
-            "sağlık teknolojileri",
-            "biyoteknoloji"
-        ],
-
-        "kimya": [
-            "kimya",
-            "kimyasal",
-            "proses",
-            "petrokimya",
-            "laboratuvar"
-        ],
-
-        "cevre": [
-            "çevre",
-            "cevre",
-            "sürdürülebilirlik",
-            "atık",
-            "su arıtma",
-            "doğa",
-            "ekoloji"
-        ],
-
-        "ucak": [
-            "uçak",
-            "ucak",
-            "havacılık",
-            "aerodinamik",
-            "uçuş"
-        ],
-
-        "uzay": [
-            "uzay",
-            "havacılık",
-            "roket",
-            "uydu",
-            "uzay araçları",
-            "astronomi"
-        ],
-
-        "otomotiv": [
-            "otomotiv",
-            "araba",
-            "araç",
-            "otomobil",
-            "motorlu araç"
-        ],
-
-        "metalurji": [
-            "metalurji",
-            "malzeme",
-            "metal",
-            "çelik",
-            "alaşım"
-        ],
-
-        "enerji": [
-            "enerji",
-            "enerji sistemleri",
-            "yenilenebilir",
-            "güneş",
-            "rüzgar",
-            "rüzgâr",
-            "elektrik üretimi"
-        ],
-
-        "harita": [
-            "harita",
-            "haritacılık",
-            "coğrafi",
-            "gis",
-            "konum",
-            "ölçme"
-        ],
-
-        "jeoloji": [
-            "jeoloji",
-            "yer bilimi",
-            "kayaç",
-            "maden",
-            "yeraltı"
-        ],
-
-        "jeofizik": [
-            "jeofizik",
-            "yeraltı",
-            "sismik",
-            "deprem",
-            "sismoloji"
-        ],
-
-        "gida": [
-            "gıda",
-            "gida",
-            "gıda mühendisliği",
-            "gıda üretimi",
-            "gıda güvenliği"
-        ],
-
-        "ziraat": [
-            "ziraat",
-            "tarım",
-            "tarım teknolojileri",
-            "bitki",
-            "toprak",
-            "tarımsal"
-        ],
-
-        "tekstil": [
-            "tekstil",
-            "kumaş",
-            "giyim",
-            "iplik",
-            "dokuma"
-        ],
-
-        "maden": [
-            "maden",
-            "madencilik",
-            "mineral",
-            "cevher",
-            "yeraltı kaynakları"
-        ],
-
-        "denizcilik": [
-            "denizcilik",
-            "gemi",
-            "gemi inşaat",
-            "deniz",
-            "maritime"
-        ],
-
-        "nukleer": [
-            "nükleer",
-            "nukleer",
-            "atom",
-            "reaktör",
-            "nükleer enerji"
-        ],
-
-        /* =========================
-           YKS
-           ========================= */
-
-        "yks": [
-            "yks",
-            "üniversite sınavı",
-            "üniversite sınav",
-            "sınav",
-            "sinav",
-            "puan",
-            "başarı sırası",
-            "başarı sıralaması",
-            "sıralama",
-            "tercih"
-        ],
-
-        "tyt": [
-            "tyt",
-            "temel yeterlilik",
-            "türkçe",
-            "matematik",
-            "fen",
-            "sosyal",
-            "net",
-            "doğru",
-            "yanlış",
-            "boş"
-        ],
-
-        "ayt": [
-            "ayt",
-            "alan yeterlilik",
-            "sayısal",
-            "sayisal",
-            "eşit ağırlık",
-            "ea",
-            "sözel",
-            "sozel",
-            "edebiyat",
-            "geometri",
-            "fizik",
-            "kimya",
-            "biyoloji"
-        ],
-
-        /* =========================
-           ÜNİVERSİTE
-           ========================= */
-
-        "universite": [
-            "üniversite",
-            "universite",
-            "üniversiteler",
-            "üniversite merkezi",
-            "okul",
-            "kampüs",
-            "fakülte",
-            "yükseköğretim",
-            "yök",
-            "yök atlas"
-        ],
-
-        "koc": [
-            "koç",
-            "koc",
-            "koç üniversitesi"
-        ],
-
-        "bilkent": [
-            "bilkent",
-            "bilkent üniversitesi"
-        ],
-
-        "odtu": [
-            "odtü",
-            "odtu",
-            "orta doğu teknik üniversitesi"
-        ],
-
-        "itu": [
-            "itü",
-            "itu",
-            "istanbul teknik üniversitesi"
-        ],
-
-        "bogazici": [
-            "boğaziçi",
-            "bogazici",
-            "boğaziçi üniversitesi"
-        ],
-
-        "tobb": [
-            "tobb",
-            "tobb etü",
-            "tobb etu"
-        ],
-
-        "ozyegin": [
-            "özyeğin",
-            "ozyegin",
-            "özyeğin üniversitesi"
-        ],
-
-        "hacettepe": [
-            "hacettepe",
-            "hacettepe üniversitesi"
-        ],
-
-        "galatasaray": [
-            "galatasaray",
-            "galatasaray üniversitesi"
-        ],
-
-        /* =========================
-           KARİYER / MAAŞ
-           ========================= */
-
-        "maas": [
-            "maaş",
-            "maas",
-            "maaşlar",
-            "maaş bilgisi",
-            "gelir",
-            "kazanç",
-            "ücret",
-            "ortalama maaş",
-            "başlangıç maaşı",
-            "mühendis maaşı"
-        ],
-
-        "kariyer": [
-            "kariyer",
-            "iş",
-            "meslek",
-            "çalışma",
-            "iş imkanları",
-            "iş imkanı",
-            "iş olanakları",
-            "staj",
-            "mezuniyet",
-            "mezun"
-        ],
-
-        /* =========================
-           HABERLER
-           ========================= */
-
-        "haber": [
-            "haber",
-            "haberler",
-            "son dakika",
-            "gündem",
-            "duyuru",
-            "güncel",
-            "gelişme",
-            "teknoloji haberi",
-            "mühendislik haberi"
-        ],
-
-        /* =========================
-           GENEL
-           ========================= */
-
-        "muhendislik": [
-            "mühendislik",
-            "muhendislik",
-            "mühendis",
-            "muhendis",
-            "bölüm",
-            "bolum",
-            "mühendislik bölümü",
-            "mühendislik alanı",
-            "teknoloji"
-        ],
-
-        "yapayzeka": [
-            "yapay zeka",
-            "yapay zekâ",
-            "yapayzeka",
-            "ai",
-            "machine learning",
-            "makine öğrenmesi",
-            "derin öğrenme",
-            "deep learning"
-        ],
-
-        "robotik": [
-            "robotik",
-            "robot",
-            "otomasyon",
-            "insansı robot",
-            "endüstriyel robot"
-        ]
-
-    };
-
-
-    /* =====================================================
-       TÜRKÇE KARAKTER NORMALLEŞTİRME
-       ===================================================== */
-
-    function normalize(text){
-
-        return String(text || "")
-            .toLocaleLowerCase("tr-TR")
-            .normalize("NFD")
-            .replace(/[\u0300-\u036f]/g,"")
-            .replace(/ı/g,"i")
-            .replace(/ğ/g,"g")
-            .replace(/ü/g,"u")
-            .replace(/ş/g,"s")
-            .replace(/ö/g,"o")
-            .replace(/ç/g,"c")
-            .trim();
-
-    }
-
-
-    /* =====================================================
-       BÜTÜN ANAHTAR KELİMELERİ DÜZLEŞTİR
-       ===================================================== */
-
-    const KEYWORDS = {};
-
-    Object.keys(SEARCH_DATA).forEach(key=>{
-
-        KEYWORDS[key] = SEARCH_DATA[key].map(normalize);
-
-    });
-
-
-    /* =====================================================
-       ARAMA MESAJI
-       ===================================================== */
-
-    function showMessage(text){
-
-        let box =
-            document.getElementById("mm-search-message");
-
-        if(!box){
-
-            box=document.createElement("div");
-
-            box.id="mm-search-message";
-
-            document.body.appendChild(box);
-
-        }
-
-        box.textContent=text;
-
-        box.classList.add("active");
-
-        clearTimeout(box._timer);
-
-        box._timer=setTimeout(()=>{
-
-            box.classList.remove("active");
-
-        },2500);
-
-    }
-
-
-    /* =====================================================
-       HEDEF BÖLÜME GİT
-       ===================================================== */
-
-    function goToSection(id){
-
-        const target=document.getElementById(id);
-
-        if(!target)
-            return false;
-
-        target.scrollIntoView({
-            behavior:"smooth",
-            block:"start"
-        });
-
-        return true;
-
-    }
-
-
-    /* =====================================================
-       KART VURGULA
-       ===================================================== */
-
-    function highlight(element){
-
-        if(!element)
-            return;
-
-        document
-            .querySelectorAll(".mm-search-highlight")
-            .forEach(el=>{
-                el.classList.remove("mm-search-highlight");
-            });
-
-        element.classList.add("mm-search-highlight");
-
-        setTimeout(()=>{
-
-            element.classList.remove("mm-search-highlight");
-
-        },2500);
-
-    }
-
-
-    /* =====================================================
-       BÖLÜM EŞLEŞTİR
-       ===================================================== */
-
-    function findEngineering(keyword){
-
-        const cards =
-            document.querySelectorAll(
-                ".eng,.engineering-card,.eng-card,.live-engineering-card"
-            );
-
-        let best=null;
-
-        cards.forEach(card=>{
-
-            const text=normalize(card.innerText);
-
-            if(text.includes(keyword)){
-
-                best=card;
-
-            }
-
-        });
-
-        return best;
-
-    }
-
-
-    /* =====================================================
-       ÜNİVERSİTE EŞLEŞTİR
-       ===================================================== */
-
-    function findUniversity(keyword){
-
-        const cards =
-            document.querySelectorAll(
-                ".uni25-card,.university-card,.university-item,.uni-card"
-            );
-
-        let best=null;
-
-        cards.forEach(card=>{
-
-            const text=normalize(card.innerText);
-
-            if(text.includes(keyword)){
-
-                best=card;
-
-            }
-
-        });
-
-        return best;
-
-    }
-
-
-    /* =====================================================
-       GELİŞMİŞ ARAMA
-       ===================================================== */
-
-    window.searchSite=function(){
-
-        const input=
-            document.getElementById("searchInput");
-
-        if(!input)
-            return;
-
-        const raw=input.value.trim();
-
-        const query=normalize(raw);
-
-        if(!query){
-
-            showMessage("Aramak istediğin şeyi yaz.");
-
-            input.focus();
-
-            return;
-
-        }
-
-
-        /* -----------------------------------------------
-           ÖNCE DOĞRUDAN SAYFA BÖLÜMLERİ
-           ----------------------------------------------- */
-
-        const sectionRules=[
-
-            {
-                id:"muhendislik",
-                words:KEYWORDS.muhendislik
-            },
-
-            {
-                id:"universite",
-                words:KEYWORDS.universite
-            },
-
-            {
-                id:"yks",
-                words:[
-                    ...KEYWORDS.yks,
-                    ...KEYWORDS.tyt,
-                    ...KEYWORDS.ayt
-                ]
-            },
-
-            {
-                id:"salaries",
-                words:[
-                    ...KEYWORDS.maas,
-                    ...KEYWORDS.kariyer
-                ]
-            },
-
-            {
-                id:"haberler",
-                words:KEYWORDS.haber
-            }
-
-        ];
-
-
-        for(const rule of sectionRules){
-
-            if(
-                rule.words.some(word =>
-                    query.includes(word) ||
-                    word.includes(query)
-                )
-            ){
-
-                if(goToSection(rule.id)){
-
-                    showMessage(
-                        "🔎 " +
-                        raw +
-                        " → ilgili bölüme gidiliyor"
-                    );
-
-                    return;
-
-                }
-
-            }
-
-        }
-
-
-        /* -----------------------------------------------
-           MÜHENDİSLİK KARTI
-           ----------------------------------------------- */
-
-        const engineeringAliases = {
-
-            "bilgisayar":KEYWORDS.bilgisayar,
-            "yazilim":KEYWORDS.yazilim,
-            "elektrik":KEYWORDS.elektrik,
-            "makine":KEYWORDS.makine,
-            "insaat":KEYWORDS.insaat,
-            "endustri":KEYWORDS.endustri,
-            "mekatronik":KEYWORDS.mekatronik,
-            "biyomedikal":KEYWORDS.biyomedikal,
-            "kimya":KEYWORDS.kimya,
-            "cevre":KEYWORDS.cevre,
-            "ucak":KEYWORDS.ucak,
-            "uzay":KEYWORDS.uzay,
-            "otomotiv":KEYWORDS.otomotiv,
-            "metalurji":KEYWORDS.metalurji,
-            "enerji":KEYWORDS.enerji,
-            "harita":KEYWORDS.harita,
-            "jeoloji":KEYWORDS.jeoloji,
-            "jeofizik":KEYWORDS.jeofizik,
-            "gida":KEYWORDS.gida,
-            "ziraat":KEYWORDS.ziraat,
-            "tekstil":KEYWORDS.tekstil,
-            "maden":KEYWORDS.maden,
-            "denizcilik":KEYWORDS.denizcilik,
-            "nukleer":KEYWORDS.nukleer
-        };
-
-
-        for(const key of Object.keys(engineeringAliases)){
-
-            const words=engineeringAliases[key];
-
-            const match=
-                words.some(word =>
-                    query.includes(word) ||
-                    word.includes(query)
-                );
-
-            if(match){
-
-                if(!goToSection("muhendislik"))
-                    continue;
-
-                setTimeout(()=>{
-
-                    const card=
-                        findEngineering(
-                            words.find(word =>
-                                query.includes(word)
-                            ) || key
-                        );
-
-                    if(card){
-
-                        card.scrollIntoView({
-                            behavior:"smooth",
-                            block:"center"
-                        });
-
-                        highlight(card);
-
-                    }
-
-                },500);
-
-                showMessage(
-                    "⚙️ " +
-                    raw +
-                    " → mühendislik bulundu"
-                );
-
-                return;
-
-            }
-
-        }
-
-
-        /* -----------------------------------------------
-           ÜNİVERSİTE
-           ----------------------------------------------- */
-
-        const universityAliases={
-
-            "koc":KEYWORDS.koc,
-            "bilkent":KEYWORDS.bilkent,
-            "odtu":KEYWORDS.odtu,
-            "itu":KEYWORDS.itu,
-            "bogazici":KEYWORDS.bogazici,
-            "tobb":KEYWORDS.tobb,
-            "ozyegin":KEYWORDS.ozyegin,
-            "hacettepe":KEYWORDS.hacettepe,
-            "galatasaray":KEYWORDS.galatasaray
-
-        };
-
-
-        for(const key of Object.keys(universityAliases)){
-
-            const words=universityAliases[key];
-
-            if(
-                words.some(word =>
-                    query.includes(word) ||
-                    word.includes(query)
-                )
-            ){
-
-                if(!goToSection("universite"))
-                    continue;
-
-                setTimeout(()=>{
-
-                    const card=
-                        findUniversity(
-                            words.find(word =>
-                                query.includes(word)
-                            ) || key
-                        );
-
-                    if(card){
-
-                        card.scrollIntoView({
-                            behavior:"smooth",
-                            block:"center"
-                        });
-
-                        highlight(card);
-
-                    }
-
-                },500);
-
-                showMessage(
-                    "🎓 " +
-                    raw +
-                    " → üniversite bulundu"
-                );
-
-                return;
-
-            }
-
-        }
-
-
-        /* -----------------------------------------------
-           SAYFADAKİ GERÇEK YAZILARDA ARAMA
-           ----------------------------------------------- */
-
-        const elements=
-            document.querySelectorAll(
-                ".eng,.category,.news-card,.uni25-card," +
-                ".engineering-card,.eng-card," +
-                ".yks-card,.yks-section,.yks-panel," +
-                "#universite,.title,.container"
-            );
-
-        let found=null;
-
-        for(const element of elements){
-
-            const text=normalize(element.innerText);
-
-            if(
-                text &&
-                (
-                    text.includes(query) ||
-                    query.includes(text)
-                )
-            ){
-
-                found=element;
-
-                break;
-
-            }
-
-        }
-
-
-        if(found){
-
-            found.scrollIntoView({
-                behavior:"smooth",
-                block:"center"
-            });
-
-            highlight(found);
-
-            showMessage(
-                "🔎 \"" +
-                raw +
-                "\" bulundu"
-            );
-
-            return;
-
-        }
-
-
-        /* -----------------------------------------------
-           BULUNAMADI
-           ----------------------------------------------- */
-
-        showMessage(
-            "❌ \"" +
-            raw +
-            "\" için sonuç bulunamadı."
-        );
-
-    };
-
-
-    /* =====================================================
-       ENTER İLE ARAMA
-       ===================================================== */
-
-    const searchInput=
-        document.getElementById("searchInput");
-
-    if(searchInput){
-
-        searchInput.addEventListener(
-            "keydown",
-            function(e){
-
-                if(e.key==="Enter"){
-
-                    e.preventDefault();
-
-                    window.searchSite();
-
-                }
-
-            }
-        );
-
-    }
-
-
-})();
-
-</script>
-

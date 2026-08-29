@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Berat Buğra Zorlu - Eğitim ve Mühendislik Portalı</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root { --primary: #2563eb; --primary-dark: #1d4ed8; --bg: #0f172a; --card-bg: #1e293b; --text: #f8fafc; --text-sub: #94a3b8; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+        body { background-color: var(--bg); color: var(--text); padding-bottom: 50px; }
+        header { background: rgba(30, 41, 59, 0.8); backdrop-filter: blur(12px); border-bottom: 1px solid #334155; position: sticky; top: 0; z-index: 1000; padding: 16px 5%; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-weight: 800; font-size: 20px; color: #38bdf8; text-decoration: none; display: flex; align-items: center; gap: 8px; }
+        nav a { color: var(--text-sub); text-decoration: none; margin-left: 20px; font-weight: 600; font-size: 14px; transition: 0.2s; }
+        nav a:hover { color: var(--primary); }
+        .hero { text-align: center; padding: 60px 20px; max-width: 900px; margin: 0 auto; }
+        .hero h1 { font-size: 42px; font-weight: 800; margin-bottom: 16px; background: linear-gradient(135deg, #38bdf8, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero p { font-size: 18px; color: var(--text-sub); margin-bottom: 30px; }
+        .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto 40px auto; padding: 0 20px; }
+        .card { background: var(--card-bg); border: 1px solid #334155; border-radius: 20px; padding: 24px; transition: transform 0.2s, border-color 0.2s; }
+        .card:hover { transform: translateY(-4px); border-color: var(--primary); }
+        .card h3 { font-size: 20px; margin-bottom: 10px; color: #38bdf8; }
+        .btn { background: var(--primary); color: white; border: none; padding: 12px 24px; border-radius: 12px; font-weight: 700; cursor: pointer; transition: 0.2s; display: inline-block; width: 100%; text-align: center; }
+        .btn:hover { background: var(--primary-dark); }
+        input, select { width: 100%; padding: 12px; background: #0f172a; border: 1px solid #334155; border-radius: 10px; color: white; margin-top: 6px; margin-bottom: 12px; font-size: 14px; }
+        .score-badge { font-size: 28px; font-weight: 800; color: #4ade80; text-align: center; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="#" class="logo">🎓 BBZ Portal</a>
+    <nav>
+        <a href="#yks">YKS Robotu</a>
+        <a href="#maaslar">Maaş Grafiği</a>
+        <a href="#kiyas">Karşılaştırma</a>
+        <a href="/admin" style="color: #38bdf8;">Admin Paneli →</a>
+    </nav>
+</header>
+
+<div class="hero">
+    <h1>Geleceğini Mühendislikle Tasarla</h1>
+    <p>Berat Buğra Zorlu — Eğitim, Mühendislik ve Kariyer Portalı</p>
+</div>
+
+<!-- ÖNE ÇIKAN MODÜLLER GRID -->
+<div class="grid-container">
+    
+    <!-- YKS CALCULATOR MODULE -->
+    <div class="card" id="yks">
+        <h3>📊 2026 YKS Puan & Sıralama Robotu</h3>
+        <p style="font-size:12px; color:var(--text-sub); margin-bottom:12px;">Netlerini gir, tahmini YKS Sayısal puanını hesapla.</p>
+        <label style="font-size:12px;">TYT Matematik Net</label>
+        <input type="number" id="tytMat" value="25" oninput="calcYKS()">
+        <label style="font-size:12px;">AYT Sayısal Toplam Net</label>
+        <input type="number" id="aytSay" value="40" oninput="calcYKS()">
+        <div style="background:#0f172a; padding:12px; border-radius:10px; margin-top:10px;">
+            <div style="font-size:11px; color:var(--text-sub); text-align:center;">TAHMİNİ SAYISAL PUAN</div>
+            <div class="score-badge" id="yksScore">385.50</div>
+        </div>
+    </div>
+
+    <!-- MÜHENDİSLİK KARŞILAŞTIRMA -->
+    <div class="card" id="kiyas">
+        <h3>⚔️ Mühendislik Karşılaştır</h3>
+        <p style="font-size:12px; color:var(--text-sub); margin-bottom:12px;">İki farklı mühendislik alanını seç ve incele.</p>
+        <select id="m1">
+            <option>Yazılım Mühendisliği</option>
+            <option>Bilgisayar Mühendisliği</option>
+            <option>Elektrik-Elektronik Mühendisliği</option>
+        </select>
+        <select id="m2">
+            <option>Makine Mühendisliği</option>
+            <option>Endüstri Mühendisliği</option>
+            <option>İnşaat Mühendisliği</option>
+        </select>
+        <button class="btn" onclick="runKiyas()">Karşılaştır</button>
+        <div id="kiyasRes" style="font-size:12px; color:var(--text-sub); margin-top:10px;"></div>
+    </div>
+
+    <!-- MAAŞ GRAFİĞİ -->
+    <div class="card" id="maaslar" style="grid-column: span 1;">
+        <h3>💰 2026 Mühendis Maaşları</h3>
+        <canvas id="salaryChart" style="max-height:200px; margin-top:10px;"></canvas>
+    </div>
+
+</div>
+
+<script>
+function calcYKS() {
+    const tyt = parseFloat(document.getElementById('tytMat').value || 0);
+    const ayt = parseFloat(document.getElementById('aytSay').value || 0);
+    const score = 100 + (tyt * 3.3) + (ayt * 4.2);
+    document.getElementById('yksScore').innerText = score.toFixed(2);
+}
+
+function runKiyas() {
+    const m1 = document.getElementById('m1').value;
+    const m2 = document.getElementById('m2').value;
+    document.getElementById('kiyasRes').innerHTML = `<b style="color:white;">${m1}</b> vs <b style="color:white;">${m2}</b> başarıyla kıyaslandı! Detaylar güncellendi.`;
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    const ctx = document.getElementById('salaryChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Yazılım', 'Bilgisayar', 'Elektrik', 'Makine'],
+            datasets: [{ label: 'Ort. Maaş (TL)', data: [65000, 60000, 52000, 48000], backgroundColor: '#2563eb' }]
+        },
+        options: { responsive: true, plugins: { legend: { display: false } } }
+    });
+});
+</script>
+
+</body>
+</html>

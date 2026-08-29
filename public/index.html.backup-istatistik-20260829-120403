@@ -3201,7 +3201,59 @@ input.addEventListener('input',calculateYks);
 <!-- İSTATİSTİK -->
 
 
+<section id="statistics" class="section site-statistics">
+    <div class="section-head">
+        <div>
+            <span class="section-badge">CANLI VERİLER</span>
+            <h2>📊 Site İstatistikleri</h2>
+            <p>Site büyüdükçe gerçek veriler otomatik olarak güncellenir.</p>
+        </div>
+        <div class="stats-live">
+            <span class="live-dot"></span>
+            Canlı
+        </div>
+    </div>
 
+    <div class="statistics-grid">
+
+        <div class="stat-card">
+            <span class="stat-icon">👥</span>
+            <strong id="statTotalVisitors">0</strong>
+            <span>Toplam ziyaretçi</span>
+        </div>
+
+        <div class="stat-card">
+            <span class="stat-icon">🔥</span>
+            <strong id="statTodayVisitors">0</strong>
+            <span>Bugünkü ziyaretçi</span>
+        </div>
+
+        <div class="stat-card">
+            <span class="stat-icon">⚙️</span>
+            <strong id="statEngineering">0</strong>
+            <span>Mühendislik alanı</span>
+        </div>
+
+        <div class="stat-card">
+            <span class="stat-icon">💰</span>
+            <strong id="statSalary">0</strong>
+            <span>Maaş kaydı</span>
+        </div>
+
+        <div class="stat-card">
+            <span class="stat-icon">📰</span>
+            <strong id="statNews">0</strong>
+            <span>Haber</span>
+        </div>
+
+        <div class="stat-card">
+            <span class="stat-icon">📚</span>
+            <strong id="statContent">0</strong>
+            <span>İçerik</span>
+        </div>
+
+    </div>
+</section>
 
 
 

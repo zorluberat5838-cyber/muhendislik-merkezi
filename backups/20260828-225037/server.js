@@ -2,13 +2,10 @@ const express = require("express");
 const Database = require("better-sqlite3");
 const path = require("path");
 const session = require("express-session");
-const bcrypt = require("bcryptjs");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 const db = new Database("./data/site.db");
-
-db.pragma("journal_mode = WAL");
 
 db.exec(`
 CREATE TABLE IF NOT EXISTS settings (
@@ -21,13 +18,6 @@ CREATE TABLE IF NOT EXISTS visits (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     visitor_id TEXT UNIQUE,
     first_visit TEXT NOT NULL
-);
-
-CREATE TABLE IF NOT EXISTS visitor_daily (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    visitor_id TEXT NOT NULL,
-    visit_date TEXT NOT NULL,
-    UNIQUE(visitor_id, visit_date)
 );
 
 CREATE TABLE IF NOT EXISTS categories (
@@ -133,17 +123,6 @@ if (!admin) {
     `).run("Berat Buğra Zorlu", "123456");
 }
 
-
-// Maaş kaynak sütunu: eski veritabanlarında yoksa ekle
-try {
-    const salaryColumns = db.prepare("PRAGMA table_info(salaries)").all();
-    if (!salaryColumns.some(col => col.name === "source")) {
-        db.exec("ALTER TABLE salaries ADD COLUMN source TEXT DEFAULT ''");
-    }
-} catch (error) {
-    console.error("Salary source migration:", error);
-}
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -175,16 +154,7 @@ function adminAuth(req, res, next) {
     return res.redirect("/admin");
 }
 
-app.use(express.static(path.join(__dirname, "public"), {
-    etag: false,
-    lastModified: false,
-    maxAge: 0,
-    setHeaders: (res, filePath) => {
-        res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate");
-        res.setHeader("Pragma", "no-cache");
-        res.setHeader("Expires", "0");
-    }
-}));
+app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/admin", (req, res) => {
     res.sendFile(path.join(__dirname, "admin", "index.html"));
@@ -194,92 +164,6 @@ app.get("/admin/panel", adminAuth, (req, res) => {
     res.sendFile(path.join(__dirname, "admin", "panel.html"));
 });
 
-
-
-// ============================================================
-// CANLI SITE DATA — ADMIN PANELİYLE AYNI VERİ KAYNAĞI
-// ============================================================
-
-app.get("/api/site-data", (req, res) => {
-    try {
-
-        const settings = db.prepare(`
-            SELECT
-                site_name,
-                site_description,
-                hero_title,
-                hero_text,
-                technician,
-                footer_text
-            FROM site_settings
-            WHERE id = 1
-        `).get() || {};
-
-        const engineering = db.prepare(`
-            SELECT
-                id,
-                name,
-                description,
-                work,
-                education,
-                salary,
-                kisa,
-                nedir,
-                isler,
-                dersler,
-                alanlar,
-                uygun,
-                kariyer,
-                etiket
-            FROM engineering
-            ORDER BY id ASC
-        `).all();
-
-        const universities = db.prepare(`
-            SELECT
-                id,
-                name,
-                department,
-                score,
-                ranking
-            FROM universities
-            ORDER BY id ASC
-        `).all();
-
-        const salaries = db.prepare(`
-            SELECT *
-            FROM salaries
-            ORDER BY id DESC
-        `).all();
-
-        const news = db.prepare(`
-            SELECT *
-            FROM news
-            ORDER BY id DESC
-        `).all();
-
-        res.setHeader("Cache-Control", "no-store");
-
-        res.json({
-            success: true,
-            timestamp: Date.now(),
-            settings,
-            engineering,
-            universities,
-            salaries,
-            news
-        });
-
-    } catch (error) {
-
-        console.error("SITE DATA ERROR:", error);
-
-        res.status(500).json({
-            success: false,
-            message: "Site verileri alınamadı."
-        });
-    }
-});
 
 app.get("/api/settings", (req, res) => {
     const settings = db.prepare(
@@ -299,10 +183,7 @@ app.post("/api/login", (req, res) => {
     if (
         admin &&
         name === admin.admin_name &&
-        (
-            bcrypt.compareSync(password, admin.admin_password) ||
-            password === admin.admin_password
-        )
+        password === admin.admin_password
     ) {
         req.session.isAdmin = true;
         req.session.adminName = admin.admin_name;
@@ -537,100 +418,6 @@ app.delete("/api/admin/news/:id", adminAuth, (req, res) => {
         res.status(500).json({
             success: false,
             message: "Haber silinemedi."
-        });
-    }
-});
-
-
-
-// ==================== ZİYARETÇİ TAKİBİ VE İSTATİSTİK ====================
-
-function todayTR() {
-    return new Intl.DateTimeFormat("en-CA", {
-        timeZone: "Europe/Istanbul",
-        year: "numeric",
-        month: "2-digit",
-        day: "2-digit"
-    }).format(new Date());
-}
-
-app.get("/api/track-visit", (req, res) => {
-    try {
-        let visitorId = String(req.query.id || "").trim().slice(0, 120);
-
-        if (!visitorId) {
-            return res.status(400).json({
-                success: false,
-                message: "Ziyaretçi kimliği gerekli."
-            });
-        }
-
-        const now = new Date().toISOString();
-        const today = todayTR();
-
-        db.prepare(`
-            INSERT OR IGNORE INTO visits
-            (visitor_id, first_visit)
-            VALUES (?, ?)
-        `).run(visitorId, now);
-
-        db.prepare(`
-            INSERT OR IGNORE INTO visitor_daily
-            (visitor_id, visit_date)
-            VALUES (?, ?)
-        `).run(visitorId, today);
-
-        res.json({ success: true });
-
-    } catch (error) {
-        console.error("Visit tracking error:", error);
-        res.status(500).json({ success: false });
-    }
-});
-
-app.get("/api/site-stats", (req, res) => {
-    try {
-        const today = todayTR();
-
-        const totalVisitors =
-            db.prepare("SELECT COUNT(*) AS count FROM visits").get().count;
-
-        const todayVisitors =
-            db.prepare(
-                "SELECT COUNT(*) AS count FROM visitor_daily WHERE visit_date=?"
-            ).get(today).count;
-
-        const engineeringCount =
-            db.prepare("SELECT COUNT(*) AS count FROM engineering").get().count;
-
-        const universityCount =
-            db.prepare("SELECT COUNT(*) AS count FROM universities").get().count;
-
-        const contentCount =
-            db.prepare("SELECT COUNT(*) AS count FROM content").get().count;
-
-        const salaryCount =
-            db.prepare("SELECT COUNT(*) AS count FROM salaries").get().count;
-
-        const newsCount =
-            db.prepare("SELECT COUNT(*) AS count FROM news").get().count;
-
-        res.json({
-            success: true,
-            totalVisitors,
-            todayVisitors,
-            engineeringCount,
-            universityCount,
-            contentCount,
-            salaryCount,
-            newsCount
-        });
-
-    } catch (error) {
-        console.error("Stats error:", error);
-        res.status(500).json({
-            success: false,
-            message: "İstatistikler alınamadı."
         });
     }
 });
@@ -987,78 +774,6 @@ app.delete("/api/admin/engineering/:id", adminAuth, (req, res) => {
 // ==================== MÜHENDİSLİK API SON ====================
 
 // ==================== MÜHENDİSLİK API SON ====================
-
-
-// ============================================================
-// ADMİN DASHBOARD CANLI VERİ API
-// ============================================================
-
-app.get("/api/admin/dashboard-data", adminAuth, (req, res) => {
-    try {
-
-        const engineering = db.prepare(`
-            SELECT
-                id,
-                name,
-                description,
-                work,
-                education,
-                salary,
-                kisa,
-                nedir,
-                isler,
-                dersler,
-                alanlar,
-                uygun,
-                kariyer,
-                etiket
-            FROM engineering
-            ORDER BY id ASC
-        `).all();
-
-        const universities = db.prepare(`
-            SELECT *
-            FROM universities
-            ORDER BY id DESC
-        `).all();
-
-        const salaries = db.prepare(`
-            SELECT *
-            FROM salaries
-            ORDER BY id DESC
-        `).all();
-
-        const news = db.prepare(`
-            SELECT *
-            FROM news
-            ORDER BY id DESC
-        `).all();
-
-        const siteSettings = db.prepare(`
-            SELECT *
-            FROM site_settings
-            WHERE id = 1
-        `).get();
-
-        res.json({
-            success: true,
-            engineering,
-            universities,
-            salaries,
-            news,
-            siteSettings
-        });
-
-    } catch (error) {
-
-        console.error("Dashboard data error:", error);
-
-        res.status(500).json({
-            success: false,
-            message: "Admin verileri alınamadı."
-        });
-    }
-});
 
 // ==================== SİTE YÖNETİMİ ====================
 

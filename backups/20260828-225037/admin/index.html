@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Admin Girişi | Mühendislik Merkezi</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+    margin:0;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:Arial,sans-serif;
+    background:#080d18;
+    color:white;
+}
+
+.login{
+    width:390px;
+    padding:35px;
+    background:#111827;
+    border:1px solid #26344d;
+    border-radius:20px;
+    box-shadow:0 20px 60px rgba(0,0,0,.45);
+}
+
+.logo{
+    text-align:center;
+    font-size:25px;
+    font-weight:800;
+    margin-bottom:8px;
+}
+
+.logo span{
+    color:#3b82f6;
+}
+
+.subtitle{
+    text-align:center;
+    color:#94a3b8;
+    margin-bottom:30px;
+}
+
+label{
+    display:block;
+    margin:15px 0 7px;
+    color:#cbd5e1;
+}
+
+input{
+    width:100%;
+    padding:14px;
+    border-radius:10px;
+    border:1px solid #334155;
+    background:#0b1220;
+    color:white;
+    outline:none;
+}
+
+input:focus{
+    border-color:#3b82f6;
+}
+
+button{
+    width:100%;
+    padding:14px;
+    margin-top:20px;
+    border:0;
+    border-radius:10px;
+    background:#2563eb;
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#1d4ed8;
+}
+
+#error{
+    display:none;
+    margin-top:15px;
+    padding:12px;
+    border-radius:9px;
+    background:#3b1118;
+    color:#ff8a9b;
+    text-align:center;
+}
+
+#loading{
+    display:none;
+    text-align:center;
+    margin-top:15px;
+    color:#94a3b8;
+}
+</style>
+</head>
+
+<body>
+
+<div class="login">
+
+    <div class="logo">
+        Mühendislik <span>Merkezi</span>
+    </div>
+
+    <div class="subtitle">
+        Yönetim Paneli
+    </div>
+
+    <label>Kullanıcı adı</label>
+    <input
+        id="name"
+        type="text"
+        autocomplete="username"
+        placeholder="Kullanıcı adını gir">
+
+    <label>Şifre</label>
+    <input
+        id="password"
+        type="password"
+        autocomplete="current-password"
+        placeholder="Şifreni gir">
+
+    <button onclick="login()">
+        Giriş Yap
+    </button>
+
+    <div id="loading">
+        Giriş kontrol ediliyor...
+    </div>
+
+    <div id="error">
+        Kullanıcı adı veya şifre yanlış.
+    </div>
+
+</div>
+
+<script>
+
+async function login(){
+
+    const name =
+        document.getElementById("name").value.trim();
+
+    const password =
+        document.getElementById("password").value;
+
+    const error =
+        document.getElementById("error");
+
+    const loading =
+        document.getElementById("loading");
+
+    error.style.display="none";
+
+    if(!name || !password){
+
+        error.textContent =
+            "Kullanıcı adı ve şifre gerekli.";
+
+        error.style.display="block";
+
+        return;
+    }
+
+    loading.style.display="block";
+
+    try{
+
+        const response = await fetch("/api/login",{
+
+            method:"POST",
+
+            headers:{
+                "Content-Type":"application/json"
+            },
+
+            body:JSON.stringify({
+                name:name,
+                password:password
+            })
+
+        });
+
+        const data = await response.json();
+
+        if(data.success){
+
+            window.location.href="/admin/panel";
+
+        }else{
+
+            error.textContent =
+                data.message ||
+                "Kullanıcı adı veya şifre yanlış.";
+
+            error.style.display="block";
+
+        }
+
+    }catch(e){
+
+        error.textContent =
+            "Sunucuya bağlanılamadı.";
+
+        error.style.display="block";
+
+    }
+
+    loading.style.display="none";
+}
+
+document.addEventListener("keydown",function(e){
+
+    if(e.key==="Enter"){
+        login();
+    }
+
+});
+
+</script>
+
+</body>
+</html>

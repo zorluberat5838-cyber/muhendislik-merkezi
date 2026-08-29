@@ -1,0 +1,881 @@
+const express = require("express");
+const Database = require("better-sqlite3");
+const path = require("path");
+
+const app = express();
+const PORT = process.env.PORT || 3000;
+const db = new Database("./data/site.db");
+
+db.exec(`
+CREATE TABLE IF NOT EXISTS settings (
+    id INTEGER PRIMARY KEY,
+    admin_name TEXT NOT NULL,
+    admin_password TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS visits (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    visitor_id TEXT UNIQUE,
+    first_visit TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS categories (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    parent_id INTEGER DEFAULT NULL
+);
+
+CREATE TABLE IF NOT EXISTS content (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT NOT NULL,
+    text TEXT NOT NULL,
+    category_id INTEGER,
+    created_at TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS salaries (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    engineering TEXT NOT NULL,
+    sector TEXT NOT NULL,
+    year INTEGER NOT NULL,
+    salary TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS engineering (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    description TEXT NOT NULL,
+    work TEXT DEFAULT '',
+    education TEXT DEFAULT '',
+    salary TEXT DEFAULT ''
+);
+
+CREATE TABLE IF NOT EXISTS universities (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    department TEXT NOT NULL,
+    score TEXT,
+    ranking TEXT
+);
+
+CREATE TABLE IF NOT EXISTS site_settings (
+    id INTEGER PRIMARY KEY,
+    site_name TEXT NOT NULL DEFAULT 'Mühendislik Merkezi',
+    site_description TEXT NOT NULL DEFAULT 'Mühendislik, üniversite, YKS ve kariyer bilgilerini tek yerde keşfet.',
+    hero_title TEXT NOT NULL DEFAULT 'Geleceğini Mühendislikle Tasarla',
+    hero_text TEXT NOT NULL DEFAULT 'Mühendislik bölümleri, üniversiteler, kariyer seçenekleri, maaşlar, YKS ve eğitim bilgilerini tek yerde keşfet.',
+    technician TEXT NOT NULL DEFAULT 'Berkay Zorlu',
+    footer_text TEXT NOT NULL DEFAULT 'Eğitim, mühendislik ve kariyer bilgilerini tek yerde bul.'
+);
+
+CREATE TABLE IF NOT EXISTS news (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT NOT NULL,
+    text TEXT NOT NULL,
+    created_at TEXT NOT NULL
+);
+`);
+
+db.prepare(`
+    INSERT OR IGNORE INTO site_settings
+    (id, site_name, site_description, hero_title, hero_text, technician, footer_text)
+    VALUES
+    (1,
+     'Mühendislik Merkezi',
+     'Mühendislik, üniversite, YKS ve kariyer bilgilerini tek yerde keşfet.',
+     'Geleceğini Mühendislikle Tasarla',
+     'Mühendislik bölümleri, üniversiteler, kariyer seçenekleri, maaşlar, YKS ve eğitim bilgilerini tek yerde keşfet.',
+     'Berkay Zorlu',
+     'Eğitim, mühendislik ve kariyer bilgilerini tek yerde bul.')
+`).run();
+
+const admin = db.prepare("SELECT * FROM settings WHERE id = 1").get();
+
+if (!admin) {
+    db.prepare(`
+        INSERT INTO settings (id, admin_name, admin_password)
+        VALUES (1, ?, ?)
+    `).run("Berat Buğra Zorlu", "123456");
+}
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+app.use(express.static(path.join(__dirname, "public")));
+
+app.get("/admin", (req, res) => {
+    res.sendFile(path.join(__dirname, "admin", "index.html"));
+});
+
+app.get("/admin/panel", (req, res) => {
+    res.sendFile(path.join(__dirname, "admin", "panel.html"));
+});
+
+
+app.get("/api/settings", (req, res) => {
+    const settings = db.prepare(
+        "SELECT admin_name FROM settings WHERE id = 1"
+    ).get();
+
+    res.json(settings);
+});
+
+app.post("/api/login", (req, res) => {
+    const { name, password } = req.body;
+
+    const admin = db.prepare(
+        "SELECT * FROM settings WHERE id = 1"
+    ).get();
+
+    if (
+        admin &&
+        name === admin.admin_name &&
+        password === admin.admin_password
+    ) {
+        return res.json({
+            success: true,
+            message: "Giriş başarılı"
+        });
+    }
+
+    res.status(401).json({
+        success: false,
+        message: "Kullanıcı adı veya şifre yanlış"
+    });
+});
+
+app.get("/api/admin/stats", (req, res) => {
+    const visits = db.prepare(
+        "SELECT COUNT(*) AS count FROM visits"
+    ).get().count;
+
+    const universities = db.prepare(
+        "SELECT COUNT(*) AS count FROM universities"
+    ).get().count;
+
+    const news = db.prepare(
+        "SELECT COUNT(*) AS count FROM news"
+    ).get().count;
+
+    res.json({
+        visits,
+        universities,
+        news
+    });
+});
+
+app.get("/api/categories", (req, res) => {
+    res.json(
+        db.prepare("SELECT * FROM categories ORDER BY name").all()
+    );
+});
+
+
+const https = require("https");
+
+function getMEBNews() {
+    return new Promise((resolve) => {
+        const req = https.get("https://www.meb.gov.tr/", {
+            headers: {
+                "User-Agent": "Mozilla/5.0"
+            }
+        }, res => {
+            let html = "";
+
+            res.on("data", chunk => html += chunk);
+
+            res.on("end", () => {
+                const news = [];
+                const regex =
+                    /<a[^>]+href=["']([^"']+)["'][^>]*>([\s\S]*?)<\/a>/gi;
+
+                let match;
+
+                while ((match = regex.exec(html)) && news.length < 8) {
+                    const title = match[2]
+                        .replace(/<[^>]*>/g, "")
+                        .replace(/\s+/g, " ")
+                        .trim();
+
+                    if (
+                        title.length >= 20 &&
+                        /yks|üniversite|eğitim|öğrenci|okul|sınav|bakan|meb/i.test(title)
+                    ) {
+                        let url = match[1];
+
+                        if (url.startsWith("/")) {
+                            url = "https://www.meb.gov.tr" + url;
+                        }
+
+                        news.push({
+                            id: "meb-" + news.length,
+                            title: title,
+                            text: "Millî Eğitim Bakanlığı resmi kaynağından.",
+                            created_at: new Date().toISOString(),
+                            source: "MEB",
+                            url: url
+                        });
+                    }
+                }
+
+                resolve(news);
+            });
+        });
+
+        req.on("error", () => resolve([]));
+
+        req.setTimeout(10000, () => {
+            req.destroy();
+            resolve([]);
+        });
+    });
+}
+
+app.get("/api/news", async (req, res) => {
+    const mebNews = await getMEBNews();
+
+    if (mebNews.length > 0) {
+        return res.json(mebNews);
+    }
+
+    res.json(
+        db.prepare(
+            "SELECT * FROM news ORDER BY id DESC"
+        ).all()
+    );
+});
+
+
+// ==================== HABER YÖNETİMİ ====================
+
+app.post("/api/admin/news", (req, res) => {
+    const { title, text } = req.body;
+
+    if (!title || !text) {
+        return res.status(400).json({
+            success: false,
+            message: "Başlık ve haber metni gerekli."
+        });
+    }
+
+    try {
+        const result = db.prepare(`
+            INSERT INTO news (title, text, created_at)
+            VALUES (?, ?, ?)
+        `).run(
+            title.trim(),
+            text.trim(),
+            new Date().toISOString()
+        );
+
+        res.json({
+            success: true,
+            id: result.lastInsertRowid,
+            message: "Haber yayınlandı."
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            success: false,
+            message: "Haber eklenemedi."
+        });
+    }
+});
+
+app.put("/api/admin/news/:id", (req, res) => {
+    const { title, text } = req.body;
+    const id = Number(req.params.id);
+
+    if (!id || !title || !text) {
+        return res.status(400).json({
+            success: false,
+            message: "Eksik bilgi."
+        });
+    }
+
+    try {
+        const result = db.prepare(`
+            UPDATE news
+            SET title = ?, text = ?
+            WHERE id = ?
+        `).run(
+            title.trim(),
+            text.trim(),
+            id
+        );
+
+        res.json({
+            success: result.changes > 0,
+            message: result.changes > 0
+                ? "Haber güncellendi."
+                : "Haber bulunamadı."
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            success: false,
+            message: "Haber güncellenemedi."
+        });
+    }
+});
+
+app.delete("/api/admin/news/:id", (req, res) => {
+    const id = Number(req.params.id);
+
+    if (!id) {
+        return res.status(400).json({
+            success: false,
+            message: "Geçersiz haber."
+        });
+    }
+
+    try {
+        const result = db.prepare(
+            "DELETE FROM news WHERE id = ?"
+        ).run(id);
+
+        res.json({
+            success: result.changes > 0,
+            message: result.changes > 0
+                ? "Haber silindi."
+                : "Haber bulunamadı."
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            success: false,
+            message: "Haber silinemedi."
+        });
+    }
+});
+
+
+// ==================== MÜHENDİSLİK API ====================
+
+app.get("/api/engineering", (req, res) => {
+    res.json(
+        db.prepare("SELECT * FROM engineering ORDER BY id ASC").all()
+    );
+});
+
+app.post("/api/admin/engineering", (req, res) => {
+
+    const {
+        name,
+        description,
+        work,
+        education,
+        salary
+    } = req.body;
+
+    if (!name || !description) {
+        return res.status(400).json({
+            success:false,
+            message:"Mühendislik adı ve açıklama gerekli."
+        });
+    }
+
+    try {
+
+        const result = db.prepare(`
+            INSERT INTO engineering
+            (name, description, work, education, salary)
+            VALUES (?, ?, ?, ?, ?)
+        `).run(
+            name.trim(),
+            description.trim(),
+            (work || "").trim(),
+            (education || "").trim(),
+            (salary || "").trim()
+        );
+
+        res.json({
+            success:true,
+            id:result.lastInsertRowid,
+            message:"Mühendislik eklendi."
+        });
+
+    } catch(error) {
+
+        console.error(error);
+
+        res.status(500).json({
+            success:false,
+            message:"Mühendislik eklenemedi."
+        });
+
+    }
+
+});
+
+
+app.put("/api/admin/engineering/:id", (req, res) => {
+
+    const id = Number(req.params.id);
+
+    const {
+        name,
+        description,
+        work,
+        education,
+        salary
+    } = req.body;
+
+    if(!id || !name || !description){
+
+        return res.status(400).json({
+            success:false,
+            message:"Eksik bilgi."
+        });
+
+    }
+
+    try {
+
+        const result = db.prepare(`
+            UPDATE engineering
+            SET
+                name=?,
+                description=?,
+                work=?,
+                education=?,
+                salary=?
+            WHERE id=?
+        `).run(
+            name.trim(),
+            description.trim(),
+            (work || "").trim(),
+            (education || "").trim(),
+            (salary || "").trim(),
+            id
+        );
+
+        res.json({
+            success:result.changes > 0,
+            message:
+                result.changes > 0
+                ? "Mühendislik güncellendi."
+                : "Mühendislik bulunamadı."
+        });
+
+    } catch(error) {
+
+        console.error(error);
+
+        res.status(500).json({
+            success:false,
+            message:"Mühendislik güncellenemedi."
+        });
+
+    }
+
+});
+
+
+app.delete("/api/admin/engineering/:id", (req, res) => {
+
+    const id = Number(req.params.id);
+
+    if(!id){
+
+        return res.status(400).json({
+            success:false,
+            message:"Geçersiz mühendislik."
+        });
+
+    }
+
+    try {
+
+        const result =
+            db.prepare(
+                "DELETE FROM engineering WHERE id=?"
+            ).run(id);
+
+        res.json({
+            success:result.changes > 0,
+            message:
+                result.changes > 0
+                ? "Mühendislik silindi."
+                : "Mühendislik bulunamadı."
+        });
+
+    } catch(error) {
+
+        console.error(error);
+
+        res.status(500).json({
+            success:false,
+            message:"Mühendislik silinemedi."
+        });
+
+    }
+
+});
+
+
+app.get("/api/universities", (req, res) => {
+    res.json(
+        db.prepare(
+            "SELECT * FROM universities ORDER BY id DESC"
+        ).all()
+    );
+});
+
+app.get("/api/salaries", (req, res) => {
+    res.json(
+        db.prepare(
+            "SELECT * FROM salaries ORDER BY year DESC, id DESC"
+        ).all()
+    );
+});
+
+app.post("/api/visit", (req, res) => {
+    const { visitor_id } = req.body;
+
+    if (!visitor_id) {
+        return res.status(400).json({ success: false });
+    }
+
+    try {
+        db.prepare(
+            "INSERT OR IGNORE INTO visits (visitor_id, first_visit) VALUES (?, ?)"
+        ).run(visitor_id, new Date().toISOString());
+
+        res.json({ success: true });
+    } catch (error) {
+        res.status(500).json({ success: false });
+    }
+});
+
+
+// ==================== SİTE YÖNETİMİ ====================
+
+app.get("/api/site-settings", (req, res) => {
+    try {
+        const settings = db.prepare(
+            "SELECT * FROM site_settings WHERE id = 1"
+        ).get();
+
+        res.json(settings);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            success: false,
+            message: "Site ayarları alınamadı."
+        });
+    }
+});
+
+app.put("/api/admin/site-settings", (req, res) => {
+    const {
+        site_name,
+        site_description,
+        hero_title,
+        hero_text,
+        technician,
+        footer_text
+    } = req.body;
+
+    try {
+        db.prepare(`
+            UPDATE site_settings
+            SET
+                site_name = ?,
+                site_description = ?,
+                hero_title = ?,
+                hero_text = ?,
+                technician = ?,
+                footer_text = ?
+            WHERE id = 1
+        `).run(
+            String(site_name || "").trim(),
+            String(site_description || "").trim(),
+            String(hero_title || "").trim(),
+            String(hero_text || "").trim(),
+            String(technician || "").trim(),
+            String(footer_text || "").trim()
+        );
+
+        res.json({
+            success: true,
+            message: "Site ayarları kaydedildi."
+        });
+    } catch (error) {
+        console.error(error);
+
+        res.status(500).json({
+            success: false,
+            message: "Site ayarları kaydedilemedi."
+        });
+    }
+});
+
+
+// ==================== MÜHENDİSLİK YÖNETİMİ ====================
+
+app.get("/api/admin/engineering", (req, res) => {
+    try {
+        res.json(
+            db.prepare(`
+                SELECT id, title, text
+                FROM content
+                ORDER BY id DESC
+            `).all()
+        );
+    } catch (error) {
+        console.error(error);
+        res.status(500).json([]);
+    }
+});
+
+app.post("/api/admin/engineering", (req, res) => {
+    const { title, text } = req.body;
+
+    if (!title || !text) {
+        return res.status(400).json({
+            success: false,
+            message: "Mühendislik adı ve açıklaması gerekli."
+        });
+    }
+
+    try {
+        const result = db.prepare(`
+            INSERT INTO content
+            (title, text, category_id, created_at)
+            VALUES (?, ?, NULL, ?)
+        `).run(
+            title.trim(),
+            text.trim(),
+            new Date().toISOString()
+        );
+
+        res.json({
+            success: true,
+            id: result.lastInsertRowid,
+            message: "Mühendislik eklendi."
+        });
+    } catch (error) {
+        console.error(error);
+
+        res.status(500).json({
+            success: false,
+            message: "Mühendislik eklenemedi."
+        });
+    }
+});
+
+app.put("/api/admin/engineering/:id", (req, res) => {
+    const { title, text } = req.body;
+    const id = Number(req.params.id);
+
+    if (!id || !title || !text) {
+        return res.status(400).json({
+            success: false,
+            message: "Eksik bilgi."
+        });
+    }
+
+    const result = db.prepare(`
+        UPDATE content
+        SET title = ?, text = ?
+        WHERE id = ?
+    `).run(
+        title.trim(),
+        text.trim(),
+        id
+    );
+
+    res.json({
+        success: result.changes > 0,
+        message: result.changes > 0
+            ? "Mühendislik güncellendi."
+            : "Mühendislik bulunamadı."
+    });
+});
+
+app.delete("/api/admin/engineering/:id", (req, res) => {
+    const id = Number(req.params.id);
+
+    if (!id) {
+        return res.status(400).json({
+            success: false,
+            message: "Geçersiz mühendislik."
+        });
+    }
+
+    const result = db.prepare(
+        "DELETE FROM content WHERE id = ?"
+    ).run(id);
+
+    res.json({
+        success: result.changes > 0,
+        message: result.changes > 0
+            ? "Mühendislik silindi."
+            : "Mühendislik bulunamadı."
+    });
+});
+
+
+// ==================== MAAŞ YÖNETİMİ ====================
+
+app.post("/api/admin/salaries", (req, res) => {
+    const { engineering, sector, year, salary } = req.body;
+
+    if (!engineering || !sector || !year || !salary) {
+        return res.status(400).json({
+            success: false,
+            message: "Tüm maaş bilgilerini doldur."
+        });
+    }
+
+    try {
+        const result = db.prepare(`
+            INSERT INTO salaries
+            (engineering, sector, year, salary)
+            VALUES (?, ?, ?, ?)
+        `).run(
+            engineering.trim(),
+            sector.trim(),
+            Number(year),
+            salary.trim()
+        );
+
+        res.json({
+            success: true,
+            id: result.lastInsertRowid,
+            message: "Maaş bilgisi eklendi."
+        });
+    } catch (error) {
+        console.error(error);
+
+        res.status(500).json({
+            success: false,
+            message: "Maaş bilgisi eklenemedi."
+        });
+    }
+});
+
+app.put("/api/admin/salaries/:id", (req, res) => {
+    const { engineering, sector, year, salary } = req.body;
+    const id = Number(req.params.id);
+
+    const result = db.prepare(`
+        UPDATE salaries
+        SET engineering = ?, sector = ?, year = ?, salary = ?
+        WHERE id = ?
+    `).run(
+        String(engineering || "").trim(),
+        String(sector || "").trim(),
+        Number(year),
+        String(salary || "").trim(),
+        id
+    );
+
+    res.json({
+        success: result.changes > 0,
+        message: result.changes > 0
+            ? "Maaş bilgisi güncellendi."
+            : "Maaş bilgisi bulunamadı."
+    });
+});
+
+app.delete("/api/admin/salaries/:id", (req, res) => {
+    const id = Number(req.params.id);
+
+    const result = db.prepare(
+        "DELETE FROM salaries WHERE id = ?"
+    ).run(id);
+
+    res.json({
+        success: result.changes > 0,
+        message: result.changes > 0
+            ? "Maaş bilgisi silindi."
+            : "Maaş bilgisi bulunamadı."
+    });
+});
+
+
+// ==================== ÜNİVERSİTE YÖNETİMİ ====================
+
+app.post("/api/admin/universities", (req, res) => {
+    const {
+        name,
+        department,
+        score,
+        ranking
+    } = req.body;
+
+    if (!name || !department) {
+        return res.status(400).json({
+            success: false,
+            message: "Üniversite ve bölüm gerekli."
+        });
+    }
+
+    const result = db.prepare(`
+        INSERT INTO universities
+        (name, department, score, ranking)
+        VALUES (?, ?, ?, ?)
+    `).run(
+        name.trim(),
+        department.trim(),
+        String(score || "").trim(),
+        String(ranking || "").trim()
+    );
+
+    res.json({
+        success: true,
+        id: result.lastInsertRowid,
+        message: "Üniversite eklendi."
+    });
+});
+
+app.put("/api/admin/universities/:id", (req, res) => {
+    const id = Number(req.params.id);
+    const {
+        name,
+        department,
+        score,
+        ranking
+    } = req.body;
+
+    const result = db.prepare(`
+        UPDATE universities
+        SET name = ?, department = ?, score = ?, ranking = ?
+        WHERE id = ?
+    `).run(
+        String(name || "").trim(),
+        String(department || "").trim(),
+        String(score || "").trim(),
+        String(ranking || "").trim(),
+        id
+    );
+
+    res.json({
+        success: result.changes > 0,
+        message: result.changes > 0
+            ? "Üniversite güncellendi."
+            : "Üniversite bulunamadı."
+    });
+});
+
+app.delete("/api/admin/universities/:id", (req, res) => {
+    const id = Number(req.params.id);
+
+    const result = db.prepare(
+        "DELETE FROM universities WHERE id = ?"
+    ).run(id);
+
+    res.json({
+        success: result.changes > 0,
+        message: result.changes > 0
+            ? "Üniversite silindi."
+            : "Üniversite bulunamadı."
+    });
+});
+
+app.listen(PORT, () => {
+    console.log(`Site: http://localhost:${PORT}`);
+    console.log(`Admin: http://localhost:${PORT}/admin`);
+});
