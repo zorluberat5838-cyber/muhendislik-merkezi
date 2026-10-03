@@ -780,8 +780,8 @@ footer .footer-bottom{
     padding-top:20px !important;
     border-top:1px solid #1e293b !important;
     text-align:center !important;
-    color: #000000 !important;
- color: #000000 !important; -webkit-text-fill-color: #000000 !important;}
+    color:#94a3b8 !important;
+}
 
 @media(max-width:700px){
     footer{
@@ -2396,9 +2396,9 @@ body {
 </style>
 <!-- /MODERN TASARIM - MÜHENDİSLİK MERKEZİ -->
 
-
+/* MÜHENDİSLİK MERKEZİ FULL CONTENT UPGRADE */
 <style>
-
+/* MÜHENDİSLİK MERKEZİ FULL CONTENT UPGRADE */
 
 .mm-section-intro{
     max-width:900px;
@@ -2782,409 +2782,6 @@ body {
 }
 </style>
 
-
-<style id="mm-final-professional-ui">
-
-/* =========================================================
-   MÜHENDİSLİK MERKEZİ - PROFESYONEL UI
-   ========================================================= */
-
-:root{
-    --mm-accent:#287cff;
-    --mm-accent-2:#00b8d9;
-    --mm-bg:#f6f8fc;
-    --mm-card:#ffffff;
-    --mm-text:#162033;
-    --mm-muted:#667085;
-    --mm-border:#e3e8f0;
-    --mm-shadow:0 14px 35px rgba(15,23,42,.08);
-}
-
-body.dark,
-body.dark-theme,
-html[data-theme="dark"] body,
-body[data-theme="dark"]{
-    --mm-bg:#09111f;
-    --mm-card:#101b2d;
-    --mm-text:#f4f7fb;
-    --mm-muted:#b6c1d1;
-    --mm-border:#25344b;
-    --mm-shadow:0 18px 40px rgba(0,0,0,.25);
-}
-
-#kesfet{
-    scroll-margin-top:90px;
-}
-
-#kesfet .title,
-#kesfet .mm-section-intro{
-    max-width:920px;
-    margin-left:auto;
-    margin-right:auto;
-}
-
-#kesfet .title h2{
-    font-size:clamp(30px,4vw,46px);
-    margin-bottom:10px;
-}
-
-#kesfet .title p{
-    color:var(--mm-muted);
-}
-
-#kesfet .discover-search,
-#kesfet .search-card{
-    max-width:900px;
-    margin:25px auto 30px;
-    padding:24px;
-    border:1px solid var(--mm-border);
-    background:var(--mm-card);
-    border-radius:22px;
-    box-shadow:var(--mm-shadow);
-}
-
-#kesfet .discover-search input,
-#kesfet #kesfetSearch{
-    min-height:54px;
-    width:100%;
-    box-sizing:border-box;
-    border-radius:14px;
-    border:1px solid var(--mm-border);
-    background:var(--mm-bg);
-    color:var(--mm-text);
-    padding:0 18px;
-    font-size:16px;
-    outline:none;
-    transition:.2s;
-}
-
-#kesfet .discover-search input:focus,
-#kesfet #kesfetSearch:focus{
-    border-color:var(--mm-accent);
-    box-shadow:0 0 0 4px rgba(40,124,255,.12);
-}
-
-#kesfet .discover-search button,
-#kesfet button[onclick*="kesfetAra"]{
-    min-height:54px;
-    border:0;
-    border-radius:14px;
-    background:linear-gradient(135deg,var(--mm-accent),var(--mm-accent-2));
-    color:#fff;
-    font-weight:800;
-    padding:0 28px;
-    cursor:pointer;
-    transition:.2s;
-}
-
-#kesfet .discover-search button:hover,
-#kesfet button[onclick*="kesfetAra"]:hover{
-    transform:translateY(-2px);
-}
-
-#kesfetSonuc{
-    max-width:900px;
-    margin:0 auto 30px;
-}
-
-#kesfetSonuc > *{
-    border-radius:16px;
-}
-
-#kesfet .discover-grid,
-#kesfet .discover-cards,
-#kesfet .mm-discover-grid{
-    display:grid;
-    grid-template-columns:repeat(4,minmax(0,1fr));
-    gap:18px;
-    align-items:stretch;
-}
-
-#kesfet .discover-card{
-    min-height:210px;
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
-    padding:24px;
-    border-radius:20px;
-    border:1px solid var(--mm-border);
-    background:var(--mm-card);
-    color:var(--mm-text);
-    box-shadow:var(--mm-shadow);
-    transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;
-}
-
-#kesfet .discover-card:hover{
-    transform:translateY(-5px);
-    border-color:rgba(40,124,255,.45);
-    box-shadow:0 20px 45px rgba(15,23,42,.12);
-}
-
-#kesfet .discover-card h3,
-#kesfet .discover-card h4{
-    color:var(--mm-text);
-}
-
-#kesfet .discover-card p{
-    color:var(--mm-muted);
-    line-height:1.7;
-}
-
-#kesfet .discover-card a,
-#kesfet .discover-card button{
-    color:var(--mm-accent);
-}
-
-.mm-university-features{
-    display:grid !important;
-    grid-template-columns:repeat(4,minmax(0,1fr));
-    gap:18px;
-}
-
-.mm-university-features > div{
-    min-height:135px;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    padding:22px;
-    border-radius:18px;
-    background:var(--mm-card);
-    border:1px solid var(--mm-border);
-    box-shadow:var(--mm-shadow);
-}
-
-.mm-university-features span{
-    color:var(--mm-muted);
-    line-height:1.6;
-    margin-top:8px;
-}
-
-.mm-career-path{
-    margin-top:45px;
-    padding:34px;
-    border-radius:24px;
-    background:var(--mm-card);
-    border:1px solid var(--mm-border);
-    box-shadow:var(--mm-shadow);
-}
-
-.career-intro{
-    max-width:900px;
-    margin:10px auto 32px;
-    text-align:center;
-    color:var(--mm-muted);
-    line-height:1.8;
-}
-
-.mm-career-steps{
-    display:grid;
-    grid-template-columns:repeat(3,minmax(0,1fr));
-    gap:18px;
-}
-
-.mm-career-steps > div{
-    min-height:250px;
-    padding:24px;
-    border-radius:18px;
-    border:1px solid var(--mm-border);
-    background:var(--mm-bg);
-}
-
-.mm-career-steps span{
-    display:inline-flex;
-    width:42px;
-    height:42px;
-    align-items:center;
-    justify-content:center;
-    border-radius:12px;
-    background:var(--mm-accent);
-    color:#fff;
-    font-weight:900;
-    margin-bottom:16px;
-}
-
-.mm-career-steps strong{
-    display:block;
-    color:var(--mm-text);
-    font-size:18px;
-    margin-bottom:10px;
-}
-
-.mm-career-steps p{
-    color:var(--mm-muted);
-    line-height:1.75;
-    margin:0;
-}
-
-.mm-guide-columns{
-    display:grid;
-    grid-template-columns:repeat(4,minmax(0,1fr));
-    gap:18px;
-}
-
-.mm-guide-columns article{
-    background:var(--mm-card);
-    color:var(--mm-text);
-    border:1px solid var(--mm-border);
-    border-radius:20px;
-    padding:24px;
-    box-shadow:var(--mm-shadow);
-}
-
-.mm-guide-columns article p{
-    color:var(--mm-muted);
-    line-height:1.75;
-}
-
-.footer-inner{
-    color:var(--mm-text);
-}
-
-@media(max-width:1000px){
-    #kesfet .discover-grid,
-    #kesfet .discover-cards,
-    #kesfet .mm-discover-grid,
-    .mm-university-features{
-        grid-template-columns:repeat(2,minmax(0,1fr));
-    }
-
-    .mm-guide-columns{
-        grid-template-columns:repeat(2,minmax(0,1fr));
-    }
-
-    .mm-career-steps{
-        grid-template-columns:repeat(2,minmax(0,1fr));
-    }
-}
-
-@media(max-width:650px){
-    #kesfet .discover-grid,
-    #kesfet .discover-cards,
-    #kesfet .mm-discover-grid,
-    .mm-university-features,
-    .mm-guide-columns,
-    .mm-career-steps{
-        grid-template-columns:1fr;
-    }
-
-    .mm-career-path{
-        padding:20px;
-    }
-}
-
-</style>
-
-
-<style id="mm-kesfet-optimize">
-#kesfet .discover-grid,
-#kesfet .mm-discover-grid,
-#kesfet .discover-cards {
-    display: grid !important;
-    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
-    gap: 18px !important;
-    align-items: stretch !important;
-}
-
-#kesfet .discover-card {
-    min-height: 200px !important;
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: space-between !important;
-    padding: 22px !important;
-    border-radius: 18px !important;
-    transition: transform .22s ease, box-shadow .22s ease !important;
-}
-
-#kesfet .discover-card:hover {
-    transform: translateY(-4px) !important;
-}
-
-@media (max-width: 1000px) {
-    #kesfet .discover-grid,
-    #kesfet .mm-discover-grid,
-    #kesfet .discover-cards {
-        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    }
-}
-@media (max-width: 600px) {
-    #kesfet .discover-grid,
-    #kesfet .mm-discover-grid,
-    #kesfet .discover-cards {
-        grid-template-columns: 1fr !important;
-    }
-}
-
-/* Arama kutusu daha temiz */
-#kesfet .discover-search,
-#kesfet .search-card {
-    max-width: 860px !important;
-    margin: 0 auto 28px !important;
-}
-</style>
-
-
-<style id="mm-color-fix">
-/* Açık temada görünmeyen yazılar */
-body:not(.dark):not(.dark-theme):not([data-theme="dark"]) .mm-section-intro,
-body:not(.dark):not(.dark-theme):not([data-theme="dark"]) .section-heading p,
-body:not(.dark):not(.dark-theme):not([data-theme="dark"]) .title p {
-    color: #475569 !important;
-    -webkit-text-fill-color: #475569 !important;
-    opacity: 1 !important;
-}
-
-/* Koyu temada açık renk */
-body.dark .mm-section-intro,
-body.dark-theme .mm-section-intro,
-body[data-theme="dark"] .mm-section-intro,
-html[data-theme="dark"] .mm-section-intro,
-body.dark .section-heading p,
-body.dark-theme .section-heading p,
-body[data-theme="dark"] .section-heading p {
-    color: #cbd5e1 !important;
-    -webkit-text-fill-color: #cbd5e1 !important;
-}
-
-/* Hero alt yazılar */
-.hero p, .hero-text p, .banner p {
-    color: #e2e8f0 !important;
-}
-
-/* Genel metin kontrastı */
-.mm-guide-columns article p,
-.mm-career-steps p,
-.discover-card p {
-    color: var(--mm-muted, #64748b) !important;
-}
-</style>
-
-
-<style id="mm-hero-copyright-black">
-/* Ana sayfa (hero) copyright yazısını siyah yap */
-.hero p,
-.hero-text p,
-.banner p,
-.hero .copyright,
-.hero-bottom,
-.hero-footer,
-[class*="hero"] p,
-.main-hero p {
-    color: #000000 !important;
-    -webkit-text-fill-color: #000000 !important;
-    opacity: 1 !important;
-}
-
-/* Özellikle © satırı */
-p:has(+ *), 
-p {
-    /* güvenli yakalama */
-}
-body .hero p,
-body .banner p {
-    color: #000000 !important;
-}
-</style>
-
 </head>
 
 <body>
@@ -3481,7 +3078,14 @@ body .banner p {
     </p>
 </div>
 
-<div>
+<div class="mm-university-features">
+
+    <div>
+        <strong>🏫 Üniversite</strong>
+        <span>Üniversite ve fakülte bilgilerini incele.</span>
+    </div>
+
+    <div>
         <strong>⚙️ Bölüm</strong>
         <span>Hangi mühendisliğin hangi üniversitelerde bulunduğunu araştır.</span>
     </div>
@@ -3498,16 +3102,30 @@ body .banner p {
 
 </div>
 
+<div class="mm-university-guide">
 
+    <h3>Üniversite seçerken kontrol listesi</h3>
+
+    <div class="mm-check-grid">
+        <div>✓ Bölümün eğitim dili</div>
+        <div>✓ Fakülte ve bölüm olanakları</div>
+        <div>✓ Laboratuvar ve uygulama imkanları</div>
+        <div>✓ Staj ve sektör bağlantıları</div>
+        <div>✓ Üniversitenin bulunduğu şehir</div>
+        <div>✓ Burs ve barınma seçenekleri</div>
+        <div>✓ Öğrenci kulüpleri</div>
+        <div>✓ Akademik ve sosyal imkanlar</div>
+    </div>
 
 </div>
 
 <div class="mm-ranking-title">
     <span>ÖRNEK LİSTE</span>
-    <h3>2026 Mühendislik Programları</h3>
+    <h3>Mühendislik Programlarından Seçilmiş Örnekler</h3>
     <p>
-        Üniversite ve mühendislik programlarını puan türü, üniversite,
-        şehir ve program bilgileriyle birlikte inceleyebilirsin.
+        Aşağıdaki mevcut liste sitedeki örnek veri alanıdır. Tercih
+        döneminde kesin karar vermeden önce ÖSYM'nin ilgili yıl için
+        yayımladığı resmi kılavuz ve sonuç verileri kontrol edilmelidir.
     </p>
 </div>
 
@@ -3659,7 +3277,12 @@ body .banner p {
 
 </div>
 
-
+<div class="mm-university-note">
+    <strong>Önemli:</strong>
+    Taban puanları ve başarı sıralamaları her yıl değişebilir. Bu
+    bölümdeki örnek değerler tercih tavsiyesi değildir; tercih
+    döneminde resmi ÖSYM verileri esas alınmalıdır.
+</div>
 
 </section>
 
@@ -3728,18 +3351,6 @@ background:#0b1020;padding:15px;border-radius:10px;text-align:center
 <div>Toplam Boş<b id="tytB">120</b></div>
 <div>Toplam Net<b id="tytN">0</b></div>
 </div>
-
-<div style="margin:20px 0;padding:16px;background:var(--mm-card,#fff);border-radius:14px;border:1px solid #e3e8f0;">
-    <label style="font-weight:700;display:block;margin-bottom:8px;">Diploma Notu / OBP (50-100 arası)</label>
-    <input type="number" id="obpInput" min="50" max="100" step="0.1" value="80" 
-           style="width:140px;padding:10px 14px;border-radius:10px;border:1px solid #e3e8f0;font-size:16px;">
-    <span style="margin-left:12px;color:#667085;font-size:14px;">OBP = Diploma × 5 → Yerleştirme katkısı × 0.12</span>
-</div>
-<div class="ayt-total-box" style="margin-top:12px;">
-    <div>TYT Ham (yaklaşık)<b id="tytHam">0</b></div>
-    <div>Yerleştirme (OBP dahil)<b id="tytYer">0.00</b></div>
-</div>
-
 </div>
 </div>
 
@@ -3825,70 +3436,35 @@ btn.classList.add('active');
 }
 
 function calculateYks(){
-    // TYT
-    let td=0, ty=0, tb=0;
-    document.querySelectorAll('#tyt .correct').forEach(inp=>{
-        const v = parseInt(inp.value)||0;
-        td += v;
-    });
-    document.querySelectorAll('#tyt .wrong').forEach(inp=>{
-        const v = parseInt(inp.value)||0;
-        ty += v;
-    });
-    // Boş = toplam soru - doğru - yanlış (TYT 120)
-    tb = 120 - td - ty;
-    if(tb < 0) tb = 0;
-    const tn = td - (ty / 4);
-    document.getElementById('tytD').textContent = td;
-    document.getElementById('tytY').textContent = ty;
-    document.getElementById('tytB').textContent = tb;
-    document.getElementById('tytN').textContent = tn.toFixed(2);
+document.querySelectorAll('.yks-table tr[data-total]').forEach(row=>{
+let total=Number(row.dataset.total);
+let d=Math.max(0,Number(row.querySelector('.correct').value)||0);
+let y=Math.max(0,Number(row.querySelector('.wrong').value)||0);
 
-    // Yaklaşık TYT Ham (basit katsayı modeli - gerçek ÖSYM standart sapma kullanır)
-    // Tipik: 100 + net * ~3.3
-    const tytHam = Math.max(100, 100 + (tn * 3.25));
-    document.getElementById('tytHam').textContent = tytHam.toFixed(1);
+if(d+y>total){
+y=Math.max(0,total-d);
+row.querySelector('.wrong').value=y;
+}
 
-    // OBP
-    const diploma = parseFloat(document.getElementById('obpInput')?.value) || 80;
-    const obp = Math.min(500, Math.max(250, diploma * 5));
-    const obpKatki = obp * 0.12;
-    const tytYer = tytHam + obpKatki;
-    document.getElementById('tytYer').textContent = tytYer.toFixed(2);
+let b=Math.max(0,total-d-y);
+let n=d-y/4;
 
-    // AYT alanları (SAY / EA / SÖZ) için net toplamları
-    ['say','ea','sozel'].forEach(area=>{
-        const panel = document.getElementById(area);
-        if(!panel) return;
-        let ad=0, ay=0;
-        panel.querySelectorAll('.correct').forEach(i=> ad += parseInt(i.value)||0);
-        panel.querySelectorAll('.wrong').forEach(i=> ay += parseInt(i.value)||0);
-        const an = ad - (ay/4);
-        const totalQ = area==='say' ? 80 : (area==='ea' ? 80 : 80); // yaklaşık
-        const ab = Math.max(0, totalQ - ad - ay);
-        const dEl = document.getElementById('ayt-'+area+'-d');
-        const yEl = document.getElementById('ayt-'+area+'-y');
-        const bEl = document.getElementById('ayt-'+area+'-b');
-        const nEl = document.getElementById('ayt-'+area+'-n');
-        if(dEl) dEl.textContent = ad;
-        if(yEl) yEl.textContent = ay;
-        if(bEl) bEl.textContent = ab;
-        if(nEl) nEl.textContent = an.toFixed(2);
-    });
+row.querySelector('.blank').textContent=b;
+row.querySelector('.net').textContent=n.toFixed(2);
+});
 
-    // Satır netleri
-    document.querySelectorAll('tr[data-total]').forEach(row=>{
-        const c = parseInt(row.querySelector('.correct')?.value)||0;
-        const w = parseInt(row.querySelector('.wrong')?.value)||0;
-        const net = c - (w/4);
-        const netCell = row.querySelector('.net');
-        const blankCell = row.querySelector('.blank');
-        if(netCell) netCell.textContent = net.toFixed(2);
-        if(blankCell){
-            const tot = parseInt(row.dataset.total)||0;
-            blankCell.textContent = Math.max(0, tot - c - w);
-        }
-    });
+let td=0,ty=0,tb=0,tn=0;
+document.querySelectorAll('#tyt tr[data-total]').forEach(row=>{
+td+=Number(row.querySelector('.correct').value)||0;
+ty+=Number(row.querySelector('.wrong').value)||0;
+tb+=Number(row.querySelector('.blank').textContent)||0;
+tn+=Number(row.querySelector('.net').textContent)||0;
+});
+
+document.getElementById('tytD').textContent=td;
+document.getElementById('tytY').textContent=ty;
+document.getElementById('tytB').textContent=tb;
+document.getElementById('tytN').textContent=tn.toFixed(2);
 }
 
 document.querySelectorAll('.correct,.wrong').forEach(input=>{
@@ -3901,7 +3477,6 @@ if(row && row.dataset.total){
 }
 
 input.addEventListener('input',calculateYks);
-document.getElementById('obpInput')?.addEventListener('input',calculateYks);
 });
 </script>
 
@@ -3963,35 +3538,65 @@ document.getElementById('obpInput')?.addEventListener('input',calculateYks);
 </tr>
 </thead>
 
-
 <tbody>
-<tr><td>Bilgisayar Mühendisliği</td><td>Özel</td><td>2026</td><td><strong>70.100 TL</strong></td><td>Eleman.net</td></tr>
-<tr><td>Yazılım Mühendisliği</td><td>Özel</td><td>2026</td><td><strong>75.200 TL</strong></td><td>Eleman.net</td></tr>
-<tr><td>Elektrik-Elektronik Mühendisliği</td><td>Özel</td><td>2026</td><td><strong>78.900 TL</strong></td><td>Eleman.net</td></tr>
-<tr><td>Makine Mühendisliği</td><td>Özel</td><td>2026</td><td><strong>57.100 TL</strong></td><td>Eleman.net</td></tr>
-<tr><td>İnşaat Mühendisliği</td><td>Özel</td><td>2026</td><td><strong>60.300 TL</strong></td><td>Eleman.net</td></tr>
-<tr><td>Endüstri Mühendisliği</td><td>Özel</td><td>2026</td><td><strong>68.900 TL</strong></td><td>Eleman.net</td></tr>
-<tr><td>Mekatronik Mühendisliği</td><td>Özel</td><td>2026</td><td><strong>59.300 TL</strong></td><td>Eleman.net</td></tr>
-<tr><td>Biyomedikal Mühendisliği</td><td>Özel</td><td>2026</td><td><strong>53.800 TL</strong></td><td>Eleman.net</td></tr>
-<tr><td>Kimya Mühendisliği</td><td>Özel</td><td>2026</td><td><strong>56.800 TL</strong></td><td>Eleman.net</td></tr>
-<tr><td>Çevre Mühendisliği</td><td>Özel</td><td>2026</td><td><strong>52.400 TL</strong></td><td>Eleman.net</td></tr>
-<tr><td>Uçak Mühendisliği</td><td>Özel</td><td>2026</td><td><strong>105.000 TL</strong></td><td>Eleman.net</td></tr>
-<tr><td>Uzay Mühendisliği</td><td>Özel</td><td>2026</td><td><strong>109.100 TL</strong></td><td>Eleman.net</td></tr>
-<tr><td>Metalurji ve Malzeme Mühendisliği</td><td>Özel</td><td>2026</td><td><strong>63.300 TL</strong></td><td>Eleman.net</td></tr>
-<tr><td>Maden Mühendisliği</td><td>Özel</td><td>2026</td><td><strong>69.900 TL</strong></td><td>Eleman.net</td></tr>
-<tr><td>Jeoloji Mühendisliği</td><td>Özel</td><td>2026</td><td><strong>52.800 TL</strong></td><td>Eleman.net</td></tr>
-<tr><td>Jeofizik Mühendisliği</td><td>Özel</td><td>2026</td><td><strong>48.200 TL</strong></td><td>Eleman.net</td></tr>
-<tr><td>Gıda Mühendisliği</td><td>Özel</td><td>2026</td><td><strong>88.800 TL</strong></td><td>Eleman.net</td></tr>
-<tr><td>Tekstil Mühendisliği</td><td>Özel</td><td>2026</td><td><strong>51.600 TL</strong></td><td>Eleman.net</td></tr>
-<tr><td>Petrol ve Doğalgaz Mühendisliği</td><td>Özel</td><td>2026</td><td><strong>72.400 TL</strong></td><td>Eleman.net</td></tr>
-<tr><td>Enerji Sistemleri Mühendisliği</td><td>Özel</td><td>2026</td><td><strong>61.500 TL</strong></td><td>Eleman.net</td></tr>
-<tr><td>Otomotiv Mühendisliği</td><td>Özel</td><td>2026</td><td><strong>64.200 TL</strong></td><td>Eleman.net</td></tr>
-<tr><td>Gemi İnşaatı ve Gemi Makineleri</td><td>Özel</td><td>2026</td><td><strong>66.700 TL</strong></td><td>Eleman.net</td></tr>
-<tr><td>Harita Mühendisliği</td><td>Özel</td><td>2026</td><td><strong>54.900 TL</strong></td><td>Eleman.net</td></tr>
-<tr><td>Orman Mühendisliği</td><td>Özel</td><td>2026</td><td><strong>49.800 TL</strong></td><td>Eleman.net</td></tr>
-<tr><td>Ziraat Mühendisliği</td><td>Özel</td><td>2026</td><td><strong>47.300 TL</strong></td><td>Eleman.net</td></tr>
-</tbody>
 
+<tr>
+<td>Bilgisayar Mühendisliği</td>
+<td>Özel</td>
+<td>2026</td>
+<td><strong>70.100 TL</strong></td>
+<td>Eleman.net</td>
+</tr>
+
+<tr>
+<td>Elektrik-Elektronik Mühendisliği</td>
+<td>Özel</td>
+<td>2026</td>
+<td><strong>78.900 TL</strong></td>
+<td>Eleman.net</td>
+</tr>
+
+<tr>
+<td>Makine Mühendisliği</td>
+<td>Özel</td>
+<td>2026</td>
+<td><strong>57.100 TL</strong></td>
+<td>Eleman.net</td>
+</tr>
+
+<tr>
+<td>İnşaat Mühendisliği</td>
+<td>Özel</td>
+<td>2026</td>
+<td><strong>60.300 TL</strong></td>
+<td>Eleman.net</td>
+</tr>
+
+<tr>
+<td>Endüstri Mühendisliği</td>
+<td>Özel</td>
+<td>2026</td>
+<td><strong>68.900 TL</strong></td>
+<td>Eleman.net</td>
+</tr>
+
+<tr>
+<td>Uçak Mühendisliği</td>
+<td>Özel</td>
+<td>2026</td>
+<td><strong>105.000 TL</strong></td>
+<td>Eleman.net</td>
+</tr>
+
+<tr>
+<td>Mühendis</td>
+<td>Kamu</td>
+<td>2026</td>
+<td><strong>109.185 TL</strong></td>
+<td>AA / Temmuz-Aralık 2026</td>
+</tr>
+
+</tbody>
 
 </table>
 
@@ -4006,123 +3611,40 @@ mesai, prim ve uzmanlık alanına göre değişebilir. Güncel ücret
 araştırmasında kaynağın tarihi mutlaka kontrol edilmelidir.
 </div>
 
-
-
 <div class="mm-career-path">
-    <h3>Bir mühendisin kariyer yolu nasıl ilerleyebilir?</h3>
-    <p class="career-intro">
-        Mühendislik kariyeri tek bir kalıba sığmaz. Seçtiğin bölüm, geliştirdiğin teknik beceriler,
-        yaptığın stajlar, projeler, yabancı dil, iletişim yeteneği ve hedeflerin zamanla farklı
-        yollar açar. Aşağıdaki adımlar tipik bir ilerleyişi gösterir.
-    </p>
 
-    <div class="mm-career-steps">
-        <div>
-            <span>01</span>
-            <strong>Lise ve YKS Hazırlığı</strong>
-            <p>
-                Matematik, fizik, kimya ve problem çözme temeli güçlendirilir.
-                Farklı mühendislik alanları araştırılır, ilgi ve yetenekler keşfedilir.
-                Hedef netleştikçe çalışma planı netleşir.
-            </p>
-        </div>
-        <div>
-            <span>02</span>
-            <strong>Üniversiteye Giriş</strong>
-            <p>
-                YKS sonucuyla uygun puan türündeki programlar incelenir.
-                Ders programı, eğitim dili, laboratuvar imkanları, şehir ve staj
-                olanakları birlikte değerlendirilir.
-            </p>
-        </div>
-        <div>
-            <span>03</span>
-            <strong>Temel Mühendislik Eğitimi</strong>
-            <p>
-                İlk yıllarda matematik, fizik, programlama, teknik çizim ve
-                bölümün temel bilimleri öğrenilir. Bu dönem sonraki uzmanlaşmanın
-                omurgasını oluşturur.
-            </p>
-        </div>
-        <div>
-            <span>04</span>
-            <strong>Alan ve Uzmanlık Seçimi</strong>
-            <p>
-                Bölüm içindeki yönelimler netleşir: yazılım / yapay zekâ / siber güvenlik,
-                tasarım / üretim / enerji, kontrol / otomasyon gibi. Seçmeli dersler
-                ve projeler bu yönü güçlendirir.
-            </p>
-        </div>
-        <div>
-            <span>05</span>
-            <strong>Teknik Beceri Geliştirme</strong>
-            <p>
-                Programlama dilleri, CAD, simülasyon yazılımları, veri analizi,
-                elektronik tasarım, laboratuvar teknikleri veya proje yönetimi
-                gibi uygulamalı beceriler geliştirilir.
-            </p>
-        </div>
-        <div>
-            <span>06</span>
-            <strong>Proje, Kulüp ve Yarışmalar</strong>
-            <p>
-                Ders projeleri, öğrenci kulüpleri, TEKNOFEST, robot yarışmaları
-                ve kişisel projeler teoriyi uygulamaya çevirir. Portföy oluşmaya başlar.
-            </p>
-        </div>
-        <div>
-            <span>07</span>
-            <strong>Staj Dönemi</strong>
-            <p>
-                Gerçek çalışma ortamında teknik bilgi kullanılır. Ekip çalışması,
-                teknik dokümantasyon, iş güvenliği, proje takibi ve profesyonel
-                iletişim becerileri gelişir.
-            </p>
-        </div>
-        <div>
-            <span>08</span>
-            <strong>İlk Profesyonel Deneyim</strong>
-            <p>
-                Mezuniyet sonrası tasarım, üretim, yazılım, Ar-Ge, kalite, saha,
-                test, analiz veya teknik destek gibi rollerde kariyere başlanır.
-            </p>
-        </div>
-        <div>
-            <span>09</span>
-            <strong>Uzmanlaşma</strong>
-            <p>
-                Birkaç yıl içinde belirli bir teknik alanda derinleşilir.
-                Sertifikalar, lisansüstü eğitim ve zorlu projeler bu süreci hızlandırır.
-            </p>
-        </div>
-        <div>
-            <span>10</span>
-            <strong>Kıdemli Mühendislik</strong>
-            <p>
-                Daha karmaşık problemlerde sorumluluk alınır. Teknik kararlar,
-                kalite süreçleri ve genç mühendislerin gelişimi gibi görevler artar.
-            </p>
-        </div>
-        <div>
-            <span>11</span>
-            <strong>Teknik Liderlik / Proje Yönetimi</strong>
-            <p>
-                Teknik bilginin yanına planlama, risk yönetimi, ekip iletişimi,
-                bütçe ve zaman yönetimi eklenir. Bazı mühendisler bu yola yönelir.
-            </p>
-        </div>
-        <div>
-            <span>12</span>
-            <strong>Uzun Vadeli Yollar</strong>
-            <p>
-                Teknik uzman, teknik lider, proje yöneticisi, Ar-Ge, akademisyen,
-                yönetici veya girişimci olarak devam edilebilir. Tek zorunlu yol yoktur.
-            </p>
-        </div>
-    </div>
+<h3>Bir mühendisin kariyer yolu nasıl ilerleyebilir?</h3>
+
+<div class="mm-career-steps">
+
+<div>
+<span>01</span>
+<strong>Üniversite</strong>
+<p>Temel mühendislik bilgileri ve mesleki altyapı oluşturulur.</p>
+</div>
+
+<div>
+<span>02</span>
+<strong>Staj / Proje</strong>
+<p>Teorik bilgiler gerçek problemlere uygulanmaya başlanır.</p>
+</div>
+
+<div>
+<span>03</span>
+<strong>İlk İş</strong>
+<p>Belirli bir ekip ve uzmanlık alanında profesyonel deneyim kazanılır.</p>
+</div>
+
+<div>
+<span>04</span>
+<strong>Uzmanlaşma</strong>
+<p>Teknik uzmanlık, yönetim veya farklı bir kariyer yönü seçilebilir.</p>
 </div>
 
 </div>
+
+</div>
+
 </section>
 
 
@@ -4293,56 +3815,52 @@ araştırmasında kaynağın tarihi mutlaka kontrol edilmelidir.
 
 </section>
 
-
-
 <footer>
+
 <div class="footer-inner">
-    <div class="footer-brand">
-        <h3>Mühendislik Merkezi</h3>
-        <p>
-            Mühendislik bölümleri, üniversite araştırması, YKS araçları
-            ve mühendislik kariyerleri hakkında düzenli, anlaşılır ve
-            güncel bilgi sunmayı amaçlayan bağımsız bir bilgi platformudur.
-        </p>
-        <p class="footer-slogan" style="margin-top:14px;font-weight:700;color:var(--mm-accent,#287cff);letter-spacing:.3px;">
-            9/D öğrencisinin hayali gerçek oldu.
-        </p>
-    </div>
 
-    <div>
-        <h4>Mühendislik</h4>
-        <a href="#muhendislik">Mühendislik Bölümleri</a>
-        <a href="#kesfet">Bölüm Keşfet</a>
-        <a href="#salaries">Maaş Araştırması</a>
-        <a href="#muhendislik">Kariyer Yolu</a>
-    </div>
+<div>
 
-    <div>
-        <h4>Üniversite</h4>
-        <a href="#universite">Üniversiteler</a>
-        <a href="#universite">Mühendislik Programları</a>
-        <a href="#universite">Üniversite Rehberi</a>
-    </div>
+    <h3>Mühendislik Merkezi</h3>
 
-    <div>
-        <h4>YKS</h4>
-        <a href="#yks">TYT Net Hesaplama</a>
-        <a href="#yks">AYT Net Hesaplama</a>
-        <a href="#yks">Puan Hesaplama</a>
-    </div>
+    <p>
+        Eğitim, mühendislik ve kariyer
+        bilgilerini tek yerde bul.
+    </p>
 
-    <div>
-        <h4>Site</h4>
-        <a href="#haberler">Gündem</a>
-        <a href="/admin">Yönetim</a>
-        <a href="#kesfet">Keşfet</a>
-    </div>
 </div>
 
-<div class="footer-bottom">
-    © 2026 Mühendislik Merkezi — Berat Buğra Zorlu</div>
-</footer>
+<div>
 
+    <h3>Kategoriler</h3>
+
+    <p>Mühendislik</p>
+    <p>Üniversite</p>
+    <p>YKS</p>
+    <p>Maaşlar</p>
+
+</div>
+
+<div>
+
+    <h3>Hızlı Menü</h3>
+
+    <p>Hakkımızda</p>
+    <p>İletişim</p>
+    <p>Gizlilik</p>
+
+</div>
+
+</div>
+
+<div class="bottom">
+
+    © 2026 Mühendislik Merkezi —
+    Berat Buğra Zorlu
+
+</div>
+
+</footer>
 
 
 <script>
@@ -7533,97 +7051,6 @@ window.addEventListener(
     }
 );
 
-</script>
-
-
-
-
-
-<script id="mm-smart-engineering-search-v2">
-(function(){
-    function normalize(text){
-        return String(text || "")
-            .toLocaleLowerCase("tr-TR")
-            .replace(/ı/g,"i").replace(/İ/g,"i")
-            .replace(/ğ/g,"g").replace(/Ğ/g,"g")
-            .replace(/ü/g,"u").replace(/Ü/g,"u")
-            .replace(/ş/g,"s").replace(/Ş/g,"s")
-            .replace(/ö/g,"o").replace(/Ö/g,"o")
-            .replace(/ç/g,"c").replace(/Ç/g,"c")
-            .trim();
-    }
-
-    function findEngineering(query){
-        const q = normalize(query);
-        if(!q || typeof muhendislikDetaylari !== "object") return null;
-        const names = Object.keys(muhendislikDetaylari);
-        // Önce tam / içerir eşleşme
-        let match = names.find(name => {
-            const n = normalize(name);
-            return n === q || n.includes(q) || q.includes(n);
-        });
-        if(match) return match;
-        // Kısa kelime için başlangıç eşleşmesi
-        if(q.length >= 3){
-            match = names.find(name => {
-                const n = normalize(name);
-                return n.split(" ").some(w => w.startsWith(q));
-            });
-        }
-        return match || null;
-    }
-
-    window.kesfetAra = function(value){
-        const query = String(value || document.getElementById("kesfetSearch")?.value || "").trim();
-        if(!query) return;
-
-        const match = findEngineering(query);
-        if(match){
-            const section = document.getElementById("muhendislik");
-            if(section){
-                section.scrollIntoView({ behavior: "smooth", block: "start" });
-            }
-            setTimeout(function(){
-                if(typeof window.muhDetayAc === "function"){
-                    window.muhDetayAc(match);
-                } else if(typeof window.muhendislikAc === "function"){
-                    window.muhendislikAc(match);
-                } else {
-                    // Kart tıklama fallback
-                    const cards = document.querySelectorAll("#muhendislik-listesi > div, #muhendislik-listesi .engineering-card");
-                    for(const card of cards){
-                        const title = card.querySelector("h3, h4, .title");
-                        if(title && normalize(title.textContent) === normalize(match)){
-                            card.click();
-                            break;
-                        }
-                    }
-                }
-            }, 300);
-            return;
-        }
-        // Eşleşme yoksa sonuç alanına yaz
-        const sonuc = document.getElementById("kesfetSonuc");
-        if(sonuc){
-            sonuc.innerHTML = `<div style="padding:16px;border-radius:12px;background:#f8fafc;border:1px solid #e2e8f0;color:#475569;">
-                "${query}" için doğrudan mühendislik eşleşmesi bulunamadı. Aşağıdaki listeden seçebilirsin.
-            </div>`;
-        }
-    };
-
-    // Enter tuşu
-    document.addEventListener("DOMContentLoaded", function(){
-        const inp = document.getElementById("kesfetSearch");
-        if(inp){
-            inp.addEventListener("keydown", function(e){
-                if(e.key === "Enter"){
-                    e.preventDefault();
-                    window.kesfetAra(inp.value);
-                }
-            });
-        }
-    });
-})();
 </script>
 
 </body>

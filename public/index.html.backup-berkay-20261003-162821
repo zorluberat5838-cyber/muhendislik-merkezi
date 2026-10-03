@@ -780,8 +780,8 @@ footer .footer-bottom{
     padding-top:20px !important;
     border-top:1px solid #1e293b !important;
     text-align:center !important;
-    color: #000000 !important;
- color: #000000 !important; -webkit-text-fill-color: #000000 !important;}
+    color:#94a3b8 !important;
+}
 
 @media(max-width:700px){
     footer{
@@ -3158,33 +3158,6 @@ body[data-theme="dark"] .section-heading p {
 }
 </style>
 
-
-<style id="mm-hero-copyright-black">
-/* Ana sayfa (hero) copyright yazısını siyah yap */
-.hero p,
-.hero-text p,
-.banner p,
-.hero .copyright,
-.hero-bottom,
-.hero-footer,
-[class*="hero"] p,
-.main-hero p {
-    color: #000000 !important;
-    -webkit-text-fill-color: #000000 !important;
-    opacity: 1 !important;
-}
-
-/* Özellikle © satırı */
-p:has(+ *), 
-p {
-    /* güvenli yakalama */
-}
-body .hero p,
-body .banner p {
-    color: #000000 !important;
-}
-</style>
-
 </head>
 
 <body>
@@ -4340,7 +4313,8 @@ araştırmasında kaynağın tarihi mutlaka kontrol edilmelidir.
 </div>
 
 <div class="footer-bottom">
-    © 2026 Mühendislik Merkezi — Berat Buğra Zorlu</div>
+    © 2026 Mühendislik Merkezi — Berat Buğra Zorlu
+</div>
 </footer>
 
 

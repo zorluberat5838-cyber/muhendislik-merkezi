@@ -780,8 +780,8 @@ footer .footer-bottom{
     padding-top:20px !important;
     border-top:1px solid #1e293b !important;
     text-align:center !important;
-    color: #000000 !important;
- color: #000000 !important; -webkit-text-fill-color: #000000 !important;}
+    color:#94a3b8 !important;
+}
 
 @media(max-width:700px){
     footer{
@@ -3074,117 +3074,6 @@ body[data-theme="dark"]{
 
 </style>
 
-
-<style id="mm-kesfet-optimize">
-#kesfet .discover-grid,
-#kesfet .mm-discover-grid,
-#kesfet .discover-cards {
-    display: grid !important;
-    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
-    gap: 18px !important;
-    align-items: stretch !important;
-}
-
-#kesfet .discover-card {
-    min-height: 200px !important;
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: space-between !important;
-    padding: 22px !important;
-    border-radius: 18px !important;
-    transition: transform .22s ease, box-shadow .22s ease !important;
-}
-
-#kesfet .discover-card:hover {
-    transform: translateY(-4px) !important;
-}
-
-@media (max-width: 1000px) {
-    #kesfet .discover-grid,
-    #kesfet .mm-discover-grid,
-    #kesfet .discover-cards {
-        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    }
-}
-@media (max-width: 600px) {
-    #kesfet .discover-grid,
-    #kesfet .mm-discover-grid,
-    #kesfet .discover-cards {
-        grid-template-columns: 1fr !important;
-    }
-}
-
-/* Arama kutusu daha temiz */
-#kesfet .discover-search,
-#kesfet .search-card {
-    max-width: 860px !important;
-    margin: 0 auto 28px !important;
-}
-</style>
-
-
-<style id="mm-color-fix">
-/* Açık temada görünmeyen yazılar */
-body:not(.dark):not(.dark-theme):not([data-theme="dark"]) .mm-section-intro,
-body:not(.dark):not(.dark-theme):not([data-theme="dark"]) .section-heading p,
-body:not(.dark):not(.dark-theme):not([data-theme="dark"]) .title p {
-    color: #475569 !important;
-    -webkit-text-fill-color: #475569 !important;
-    opacity: 1 !important;
-}
-
-/* Koyu temada açık renk */
-body.dark .mm-section-intro,
-body.dark-theme .mm-section-intro,
-body[data-theme="dark"] .mm-section-intro,
-html[data-theme="dark"] .mm-section-intro,
-body.dark .section-heading p,
-body.dark-theme .section-heading p,
-body[data-theme="dark"] .section-heading p {
-    color: #cbd5e1 !important;
-    -webkit-text-fill-color: #cbd5e1 !important;
-}
-
-/* Hero alt yazılar */
-.hero p, .hero-text p, .banner p {
-    color: #e2e8f0 !important;
-}
-
-/* Genel metin kontrastı */
-.mm-guide-columns article p,
-.mm-career-steps p,
-.discover-card p {
-    color: var(--mm-muted, #64748b) !important;
-}
-</style>
-
-
-<style id="mm-hero-copyright-black">
-/* Ana sayfa (hero) copyright yazısını siyah yap */
-.hero p,
-.hero-text p,
-.banner p,
-.hero .copyright,
-.hero-bottom,
-.hero-footer,
-[class*="hero"] p,
-.main-hero p {
-    color: #000000 !important;
-    -webkit-text-fill-color: #000000 !important;
-    opacity: 1 !important;
-}
-
-/* Özellikle © satırı */
-p:has(+ *), 
-p {
-    /* güvenli yakalama */
-}
-body .hero p,
-body .banner p {
-    color: #000000 !important;
-}
-</style>
-
 </head>
 
 <body>
@@ -3481,7 +3370,14 @@ body .banner p {
     </p>
 </div>
 
-<div>
+<div class="mm-university-features">
+
+    <div>
+        <strong>🏫 Üniversite</strong>
+        <span>Üniversite ve fakülte bilgilerini incele.</span>
+    </div>
+
+    <div>
         <strong>⚙️ Bölüm</strong>
         <span>Hangi mühendisliğin hangi üniversitelerde bulunduğunu araştır.</span>
     </div>
@@ -3963,35 +3859,65 @@ document.getElementById('obpInput')?.addEventListener('input',calculateYks);
 </tr>
 </thead>
 
-
 <tbody>
-<tr><td>Bilgisayar Mühendisliği</td><td>Özel</td><td>2026</td><td><strong>70.100 TL</strong></td><td>Eleman.net</td></tr>
-<tr><td>Yazılım Mühendisliği</td><td>Özel</td><td>2026</td><td><strong>75.200 TL</strong></td><td>Eleman.net</td></tr>
-<tr><td>Elektrik-Elektronik Mühendisliği</td><td>Özel</td><td>2026</td><td><strong>78.900 TL</strong></td><td>Eleman.net</td></tr>
-<tr><td>Makine Mühendisliği</td><td>Özel</td><td>2026</td><td><strong>57.100 TL</strong></td><td>Eleman.net</td></tr>
-<tr><td>İnşaat Mühendisliği</td><td>Özel</td><td>2026</td><td><strong>60.300 TL</strong></td><td>Eleman.net</td></tr>
-<tr><td>Endüstri Mühendisliği</td><td>Özel</td><td>2026</td><td><strong>68.900 TL</strong></td><td>Eleman.net</td></tr>
-<tr><td>Mekatronik Mühendisliği</td><td>Özel</td><td>2026</td><td><strong>59.300 TL</strong></td><td>Eleman.net</td></tr>
-<tr><td>Biyomedikal Mühendisliği</td><td>Özel</td><td>2026</td><td><strong>53.800 TL</strong></td><td>Eleman.net</td></tr>
-<tr><td>Kimya Mühendisliği</td><td>Özel</td><td>2026</td><td><strong>56.800 TL</strong></td><td>Eleman.net</td></tr>
-<tr><td>Çevre Mühendisliği</td><td>Özel</td><td>2026</td><td><strong>52.400 TL</strong></td><td>Eleman.net</td></tr>
-<tr><td>Uçak Mühendisliği</td><td>Özel</td><td>2026</td><td><strong>105.000 TL</strong></td><td>Eleman.net</td></tr>
-<tr><td>Uzay Mühendisliği</td><td>Özel</td><td>2026</td><td><strong>109.100 TL</strong></td><td>Eleman.net</td></tr>
-<tr><td>Metalurji ve Malzeme Mühendisliği</td><td>Özel</td><td>2026</td><td><strong>63.300 TL</strong></td><td>Eleman.net</td></tr>
-<tr><td>Maden Mühendisliği</td><td>Özel</td><td>2026</td><td><strong>69.900 TL</strong></td><td>Eleman.net</td></tr>
-<tr><td>Jeoloji Mühendisliği</td><td>Özel</td><td>2026</td><td><strong>52.800 TL</strong></td><td>Eleman.net</td></tr>
-<tr><td>Jeofizik Mühendisliği</td><td>Özel</td><td>2026</td><td><strong>48.200 TL</strong></td><td>Eleman.net</td></tr>
-<tr><td>Gıda Mühendisliği</td><td>Özel</td><td>2026</td><td><strong>88.800 TL</strong></td><td>Eleman.net</td></tr>
-<tr><td>Tekstil Mühendisliği</td><td>Özel</td><td>2026</td><td><strong>51.600 TL</strong></td><td>Eleman.net</td></tr>
-<tr><td>Petrol ve Doğalgaz Mühendisliği</td><td>Özel</td><td>2026</td><td><strong>72.400 TL</strong></td><td>Eleman.net</td></tr>
-<tr><td>Enerji Sistemleri Mühendisliği</td><td>Özel</td><td>2026</td><td><strong>61.500 TL</strong></td><td>Eleman.net</td></tr>
-<tr><td>Otomotiv Mühendisliği</td><td>Özel</td><td>2026</td><td><strong>64.200 TL</strong></td><td>Eleman.net</td></tr>
-<tr><td>Gemi İnşaatı ve Gemi Makineleri</td><td>Özel</td><td>2026</td><td><strong>66.700 TL</strong></td><td>Eleman.net</td></tr>
-<tr><td>Harita Mühendisliği</td><td>Özel</td><td>2026</td><td><strong>54.900 TL</strong></td><td>Eleman.net</td></tr>
-<tr><td>Orman Mühendisliği</td><td>Özel</td><td>2026</td><td><strong>49.800 TL</strong></td><td>Eleman.net</td></tr>
-<tr><td>Ziraat Mühendisliği</td><td>Özel</td><td>2026</td><td><strong>47.300 TL</strong></td><td>Eleman.net</td></tr>
-</tbody>
 
+<tr>
+<td>Bilgisayar Mühendisliği</td>
+<td>Özel</td>
+<td>2026</td>
+<td><strong>70.100 TL</strong></td>
+<td>Eleman.net</td>
+</tr>
+
+<tr>
+<td>Elektrik-Elektronik Mühendisliği</td>
+<td>Özel</td>
+<td>2026</td>
+<td><strong>78.900 TL</strong></td>
+<td>Eleman.net</td>
+</tr>
+
+<tr>
+<td>Makine Mühendisliği</td>
+<td>Özel</td>
+<td>2026</td>
+<td><strong>57.100 TL</strong></td>
+<td>Eleman.net</td>
+</tr>
+
+<tr>
+<td>İnşaat Mühendisliği</td>
+<td>Özel</td>
+<td>2026</td>
+<td><strong>60.300 TL</strong></td>
+<td>Eleman.net</td>
+</tr>
+
+<tr>
+<td>Endüstri Mühendisliği</td>
+<td>Özel</td>
+<td>2026</td>
+<td><strong>68.900 TL</strong></td>
+<td>Eleman.net</td>
+</tr>
+
+<tr>
+<td>Uçak Mühendisliği</td>
+<td>Özel</td>
+<td>2026</td>
+<td><strong>105.000 TL</strong></td>
+<td>Eleman.net</td>
+</tr>
+
+<tr>
+<td>Mühendis</td>
+<td>Kamu</td>
+<td>2026</td>
+<td><strong>109.185 TL</strong></td>
+<td>AA / Temmuz-Aralık 2026</td>
+</tr>
+
+</tbody>
 
 </table>
 
@@ -4007,122 +3933,145 @@ araştırmasında kaynağın tarihi mutlaka kontrol edilmelidir.
 </div>
 
 
-
 <div class="mm-career-path">
-    <h3>Bir mühendisin kariyer yolu nasıl ilerleyebilir?</h3>
-    <p class="career-intro">
-        Mühendislik kariyeri tek bir kalıba sığmaz. Seçtiğin bölüm, geliştirdiğin teknik beceriler,
-        yaptığın stajlar, projeler, yabancı dil, iletişim yeteneği ve hedeflerin zamanla farklı
-        yollar açar. Aşağıdaki adımlar tipik bir ilerleyişi gösterir.
-    </p>
 
-    <div class="mm-career-steps">
-        <div>
-            <span>01</span>
-            <strong>Lise ve YKS Hazırlığı</strong>
-            <p>
-                Matematik, fizik, kimya ve problem çözme temeli güçlendirilir.
-                Farklı mühendislik alanları araştırılır, ilgi ve yetenekler keşfedilir.
-                Hedef netleştikçe çalışma planı netleşir.
-            </p>
-        </div>
-        <div>
-            <span>02</span>
-            <strong>Üniversiteye Giriş</strong>
-            <p>
-                YKS sonucuyla uygun puan türündeki programlar incelenir.
-                Ders programı, eğitim dili, laboratuvar imkanları, şehir ve staj
-                olanakları birlikte değerlendirilir.
-            </p>
-        </div>
-        <div>
-            <span>03</span>
-            <strong>Temel Mühendislik Eğitimi</strong>
-            <p>
-                İlk yıllarda matematik, fizik, programlama, teknik çizim ve
-                bölümün temel bilimleri öğrenilir. Bu dönem sonraki uzmanlaşmanın
-                omurgasını oluşturur.
-            </p>
-        </div>
-        <div>
-            <span>04</span>
-            <strong>Alan ve Uzmanlık Seçimi</strong>
-            <p>
-                Bölüm içindeki yönelimler netleşir: yazılım / yapay zekâ / siber güvenlik,
-                tasarım / üretim / enerji, kontrol / otomasyon gibi. Seçmeli dersler
-                ve projeler bu yönü güçlendirir.
-            </p>
-        </div>
-        <div>
-            <span>05</span>
-            <strong>Teknik Beceri Geliştirme</strong>
-            <p>
-                Programlama dilleri, CAD, simülasyon yazılımları, veri analizi,
-                elektronik tasarım, laboratuvar teknikleri veya proje yönetimi
-                gibi uygulamalı beceriler geliştirilir.
-            </p>
-        </div>
-        <div>
-            <span>06</span>
-            <strong>Proje, Kulüp ve Yarışmalar</strong>
-            <p>
-                Ders projeleri, öğrenci kulüpleri, TEKNOFEST, robot yarışmaları
-                ve kişisel projeler teoriyi uygulamaya çevirir. Portföy oluşmaya başlar.
-            </p>
-        </div>
-        <div>
-            <span>07</span>
-            <strong>Staj Dönemi</strong>
-            <p>
-                Gerçek çalışma ortamında teknik bilgi kullanılır. Ekip çalışması,
-                teknik dokümantasyon, iş güvenliği, proje takibi ve profesyonel
-                iletişim becerileri gelişir.
-            </p>
-        </div>
-        <div>
-            <span>08</span>
-            <strong>İlk Profesyonel Deneyim</strong>
-            <p>
-                Mezuniyet sonrası tasarım, üretim, yazılım, Ar-Ge, kalite, saha,
-                test, analiz veya teknik destek gibi rollerde kariyere başlanır.
-            </p>
-        </div>
-        <div>
-            <span>09</span>
-            <strong>Uzmanlaşma</strong>
-            <p>
-                Birkaç yıl içinde belirli bir teknik alanda derinleşilir.
-                Sertifikalar, lisansüstü eğitim ve zorlu projeler bu süreci hızlandırır.
-            </p>
-        </div>
-        <div>
-            <span>10</span>
-            <strong>Kıdemli Mühendislik</strong>
-            <p>
-                Daha karmaşık problemlerde sorumluluk alınır. Teknik kararlar,
-                kalite süreçleri ve genç mühendislerin gelişimi gibi görevler artar.
-            </p>
-        </div>
-        <div>
-            <span>11</span>
-            <strong>Teknik Liderlik / Proje Yönetimi</strong>
-            <p>
-                Teknik bilginin yanına planlama, risk yönetimi, ekip iletişimi,
-                bütçe ve zaman yönetimi eklenir. Bazı mühendisler bu yola yönelir.
-            </p>
-        </div>
-        <div>
-            <span>12</span>
-            <strong>Uzun Vadeli Yollar</strong>
-            <p>
-                Teknik uzman, teknik lider, proje yöneticisi, Ar-Ge, akademisyen,
-                yönetici veya girişimci olarak devam edilebilir. Tek zorunlu yol yoktur.
-            </p>
-        </div>
-    </div>
+<h3>Bir mühendisin kariyer yolu nasıl ilerleyebilir?</h3>
+
+<p class="career-intro">
+Mühendislik kariyeri üniversiteye girişle başlayıp tek bir meslek
+unvanıyla sınırlı kalmaz. Öğrencinin seçtiği uzmanlık alanı, geliştirdiği
+teknik beceriler, stajları, projeleri, yabancı dil bilgisi, iş deneyimi
+ve kariyer hedefleri zaman içinde farklı yönlere ilerleyebilir.
+</p>
+
+<div class="mm-career-steps">
+
+<div>
+<span>01</span>
+<strong>Lise ve YKS Hazırlığı</strong>
+<p>
+Matematik, fizik, kimya ve problem çözme becerileri güçlendirilir.
+Öğrenci farklı mühendislik alanlarını araştırarak hangi alanların
+kendi ilgi ve yetenekleriyle daha fazla örtüştüğünü keşfetmeye başlar.
+</p>
+</div>
+
+<div>
+<span>02</span>
+<strong>Üniversiteye Giriş</strong>
+<p>
+YKS sonucuna göre uygun puan türündeki mühendislik programları
+araştırılır. Programın dersleri, üniversitenin akademik yapısı,
+şehir, eğitim dili ve bölümün uygulama imkanları birlikte incelenir.
+</p>
+</div>
+
+<div>
+<span>03</span>
+<strong>Temel Mühendislik Eğitimi</strong>
+<p>
+İlk yıllarda matematik, fizik, programlama, teknik çizim, temel
+mühendislik dersleri ve bölümün temel bilimleri öğrenilir.
+Bu dönem sonraki uzmanlaşmanın altyapısını oluşturur.
+</p>
+</div>
+
+<div>
+<span>04</span>
+<strong>Alan Seçimi</strong>
+<p>
+Öğrenci bölüm içerisindeki farklı uzmanlıkları tanımaya başlar.
+Örneğin bilgisayar alanında yapay zekâ, siber güvenlik, yazılım,
+veri bilimi veya donanım; makinede tasarım, üretim, enerji veya
+otomotiv gibi farklı yönlere ilerlemek mümkündür.
+</p>
+</div>
+
+<div>
+<span>05</span>
+<strong>Teknik Beceri Geliştirme</strong>
+<p>
+Bölüme göre programlama dilleri, CAD araçları, simülasyon yazılımları,
+veri analizi, elektronik tasarım, laboratuvar teknikleri veya proje
+yönetimi gibi uygulamalı beceriler geliştirilebilir.
+</p>
+</div>
+
+<div>
+<span>06</span>
+<strong>Proje ve Öğrenci Çalışmaları</strong>
+<p>
+Ders projeleri, öğrenci kulüpleri, yarışmalar, araştırma çalışmaları
+ve kişisel projeler teorik bilgilerin uygulamaya aktarılmasını sağlar.
+Ortaya çıkan çalışmalar ileride oluşturulacak portföyün parçası olabilir.
+</p>
+</div>
+
+<div>
+<span>07</span>
+<strong>Staj</strong>
+<p>
+Staj döneminde mühendislik bilgisinin gerçek çalışma ortamında nasıl
+kullanıldığı görülür. Ekip çalışması, teknik dokümantasyon, iş güvenliği,
+proje takibi ve profesyonel iletişim gibi beceriler de gelişir.
+</p>
+</div>
+
+<div>
+<span>08</span>
+<strong>İlk Profesyonel Deneyim</strong>
+<p>
+Mezuniyet sonrasında mühendis; tasarım, üretim, yazılım, Ar-Ge,
+kalite, saha, proje, test, analiz veya teknik destek gibi görevlerde
+kariyerine başlayabilir.
+</p>
+</div>
+
+<div>
+<span>09</span>
+<strong>Uzmanlaşma</strong>
+<p>
+Birkaç yıllık deneyimden sonra belirli bir teknik alanda derinleşmek
+mümkündür. Sertifikalar, lisansüstü eğitim, profesyonel projeler ve
+sektör deneyimi bu süreçte destekleyici olabilir.
+</p>
+</div>
+
+<div>
+<span>10</span>
+<strong>Kıdemli Mühendislik</strong>
+<p>
+Deneyim arttıkça daha karmaşık problemlerin çözümünde sorumluluk
+alınabilir. Teknik kararlar, proje planlaması, kalite süreçleri ve
+daha genç mühendislerin teknik gelişimi gibi görevler artabilir.
+</p>
+</div>
+
+<div>
+<span>11</span>
+<strong>Teknik Liderlik ve Proje Yönetimi</strong>
+<p>
+Bazı mühendisler teknik liderlik veya proje yönetimine yönelir.
+Bu aşamada teknik bilginin yanında planlama, risk yönetimi, ekip
+iletişimi, bütçe ve zaman yönetimi gibi beceriler önem kazanır.
+</p>
+</div>
+
+<div>
+<span>12</span>
+<strong>Uzun Vadeli Kariyer Yolları</strong>
+<p>
+Deneyimli bir mühendis teknik uzman, teknik lider, proje yöneticisi,
+Ar-Ge çalışanı, akademisyen, yönetici, girişimci veya farklı bir
+uzmanlık alanına geçen profesyonel olarak kariyerini sürdürebilir.
+Tek bir zorunlu kariyer yolu yoktur.
+</p>
 </div>
 
 </div>
+
+</div>
+
 </section>
 
 
@@ -4294,55 +4243,58 @@ araştırmasında kaynağın tarihi mutlaka kontrol edilmelidir.
 </section>
 
 
-
 <footer>
+
 <div class="footer-inner">
-    <div class="footer-brand">
-        <h3>Mühendislik Merkezi</h3>
-        <p>
-            Mühendislik bölümleri, üniversite araştırması, YKS araçları
-            ve mühendislik kariyerleri hakkında düzenli, anlaşılır ve
-            güncel bilgi sunmayı amaçlayan bağımsız bir bilgi platformudur.
-        </p>
-        <p class="footer-slogan" style="margin-top:14px;font-weight:700;color:var(--mm-accent,#287cff);letter-spacing:.3px;">
-            9/D öğrencisinin hayali gerçek oldu.
-        </p>
-    </div>
 
-    <div>
-        <h4>Mühendislik</h4>
-        <a href="#muhendislik">Mühendislik Bölümleri</a>
-        <a href="#kesfet">Bölüm Keşfet</a>
-        <a href="#salaries">Maaş Araştırması</a>
-        <a href="#muhendislik">Kariyer Yolu</a>
-    </div>
+<div class="footer-brand">
+    <h3>Mühendislik Merkezi</h3>
+    <p>
+        Mühendislik bölümleri, üniversite araştırması, YKS araçları
+        ve mühendislik kariyerleri hakkında düzenli ve anlaşılır
+        bilgi sunmayı amaçlayan bağımsız bir bilgi platformudur.
+    </p>
 
-    <div>
-        <h4>Üniversite</h4>
-        <a href="#universite">Üniversiteler</a>
-        <a href="#universite">Mühendislik Programları</a>
-        <a href="#universite">Üniversite Rehberi</a>
-    </div>
+    <p class="footer-slogan">
+        9/D öğrencisinin hayali gerçek oldu.
+    </p>
+</div>
 
-    <div>
-        <h4>YKS</h4>
-        <a href="#yks">TYT Net Hesaplama</a>
-        <a href="#yks">AYT Net Hesaplama</a>
-        <a href="#yks">Puan Hesaplama</a>
-    </div>
+<div>
+    <h4>Mühendislik</h4>
+    <a href="#muhendislik">Mühendislik Bölümleri</a>
+    <a href="#kesfet">Bölüm Keşfet</a>
+    <a href="#salaries">Maaş Araştırması</a>
+</div>
 
-    <div>
-        <h4>Site</h4>
-        <a href="#haberler">Gündem</a>
-        <a href="/admin">Yönetim</a>
-        <a href="#kesfet">Keşfet</a>
-    </div>
+<div>
+    <h4>Üniversite</h4>
+    <a href="#universite">Üniversiteler</a>
+    <a href="#universite">Mühendislik Programları</a>
+    <a href="#universite">Üniversite Rehberi</a>
+</div>
+
+<div>
+    <h4>YKS</h4>
+    <a href="#yks">TYT</a>
+    <a href="#yks">AYT</a>
+    <a href="#yks">Net Hesaplama</a>
+    <a href="#yks">Puan Hesaplama</a>
+</div>
+
+<div>
+    <h4>Site</h4>
+    <a href="#haberler">Gündem</a>
+    <a href="/admin">Yönetim</a>
+</div>
+
 </div>
 
 <div class="footer-bottom">
-    © 2026 Mühendislik Merkezi — Berat Buğra Zorlu</div>
-</footer>
+    © 2026 Mühendislik Merkezi — Berat Buğra Zorlu
+</div>
 
+</footer>
 
 
 <script>
@@ -7536,93 +7488,114 @@ window.addEventListener(
 </script>
 
 
-
-
-
-<script id="mm-smart-engineering-search-v2">
+<script id="mm-smart-engineering-search">
 (function(){
+
+    const originalSearch =
+        window.kesfetAra &&
+        window.kesfetAra !== window.__mmSmartSearch
+            ? window.kesfetAra
+            : null;
+
+    window.__mmOriginalKesfetAra = originalSearch;
+
     function normalize(text){
         return String(text || "")
             .toLocaleLowerCase("tr-TR")
-            .replace(/ı/g,"i").replace(/İ/g,"i")
-            .replace(/ğ/g,"g").replace(/Ğ/g,"g")
-            .replace(/ü/g,"u").replace(/Ü/g,"u")
-            .replace(/ş/g,"s").replace(/Ş/g,"s")
-            .replace(/ö/g,"o").replace(/Ö/g,"o")
-            .replace(/ç/g,"c").replace(/Ç/g,"c")
+            .replace(/ı/g,"i")
+            .replace(/İ/g,"i")
+            .replace(/ğ/g,"g")
+            .replace(/Ğ/g,"g")
+            .replace(/ü/g,"u")
+            .replace(/Ü/g,"u")
+            .replace(/ş/g,"s")
+            .replace(/Ş/g,"s")
+            .replace(/ö/g,"o")
+            .replace(/Ö/g,"o")
+            .replace(/ç/g,"c")
+            .replace(/Ç/g,"c")
             .trim();
     }
 
     function findEngineering(query){
-        const q = normalize(query);
-        if(!q || typeof muhendislikDetaylari !== "object") return null;
-        const names = Object.keys(muhendislikDetaylari);
-        // Önce tam / içerir eşleşme
-        let match = names.find(name => {
-            const n = normalize(name);
-            return n === q || n.includes(q) || q.includes(n);
-        });
-        if(match) return match;
-        // Kısa kelime için başlangıç eşleşmesi
-        if(q.length >= 3){
-            match = names.find(name => {
-                const n = normalize(name);
-                return n.split(" ").some(w => w.startsWith(q));
-            });
-        }
-        return match || null;
+
+        const q=normalize(query);
+
+        if(!q) return null;
+
+        if(typeof muhendislikDetaylari !== "object") return null;
+
+        const names=Object.keys(muhendislikDetaylari);
+
+        return names.find(name=>{
+            const n=normalize(name);
+
+            return n === q ||
+                   n.includes(q) ||
+                   q.includes(n) ||
+                   (q.length >= 4 && n.split(" ").some(word=>word.startsWith(q)));
+        }) || null;
     }
 
-    window.kesfetAra = function(value){
-        const query = String(value || document.getElementById("kesfetSearch")?.value || "").trim();
-        if(!query) return;
+    window.__mmSmartSearch = function(value){
 
-        const match = findEngineering(query);
+        const query=String(value || "").trim();
+
+        const match=findEngineering(query);
+
         if(match){
-            const section = document.getElementById("muhendislik");
+
+            const section=document.getElementById("muhendislik");
+
             if(section){
-                section.scrollIntoView({ behavior: "smooth", block: "start" });
+
+                section.scrollIntoView({
+                    behavior:"smooth",
+                    block:"start"
+                });
+
             }
+
             setTimeout(function(){
+
                 if(typeof window.muhDetayAc === "function"){
                     window.muhDetayAc(match);
-                } else if(typeof window.muhendislikAc === "function"){
-                    window.muhendislikAc(match);
-                } else {
-                    // Kart tıklama fallback
-                    const cards = document.querySelectorAll("#muhendislik-listesi > div, #muhendislik-listesi .engineering-card");
-                    for(const card of cards){
-                        const title = card.querySelector("h3, h4, .title");
-                        if(title && normalize(title.textContent) === normalize(match)){
-                            card.click();
-                            break;
-                        }
-                    }
+                    return;
                 }
-            }, 300);
+
+                const cards=document.querySelectorAll(
+                    "#muhendislik-listesi > div"
+                );
+
+                for(const card of cards){
+
+                    const title=card.querySelector("h3");
+
+                    if(
+                        title &&
+                        normalize(title.textContent) === normalize(match)
+                    ){
+
+                        card.click();
+                        return;
+
+                    }
+
+                }
+
+            },300);
+
             return;
         }
-        // Eşleşme yoksa sonuç alanına yaz
-        const sonuc = document.getElementById("kesfetSonuc");
-        if(sonuc){
-            sonuc.innerHTML = `<div style="padding:16px;border-radius:12px;background:#f8fafc;border:1px solid #e2e8f0;color:#475569;">
-                "${query}" için doğrudan mühendislik eşleşmesi bulunamadı. Aşağıdaki listeden seçebilirsin.
-            </div>`;
+
+        if(originalSearch){
+            originalSearch(value);
         }
+
     };
 
-    // Enter tuşu
-    document.addEventListener("DOMContentLoaded", function(){
-        const inp = document.getElementById("kesfetSearch");
-        if(inp){
-            inp.addEventListener("keydown", function(e){
-                if(e.key === "Enter"){
-                    e.preventDefault();
-                    window.kesfetAra(inp.value);
-                }
-            });
-        }
-    });
+    window.kesfetAra=window.__mmSmartSearch;
+
 })();
 </script>
 

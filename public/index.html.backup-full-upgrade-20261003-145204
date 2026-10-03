@@ -780,8 +780,8 @@ footer .footer-bottom{
     padding-top:20px !important;
     border-top:1px solid #1e293b !important;
     text-align:center !important;
-    color: #000000 !important;
- color: #000000 !important; -webkit-text-fill-color: #000000 !important;}
+    color:#94a3b8 !important;
+}
 
 @media(max-width:700px){
     footer{
@@ -2396,795 +2396,6 @@ body {
 </style>
 <!-- /MODERN TASARIM - MÜHENDİSLİK MERKEZİ -->
 
-
-<style>
-
-
-.mm-section-intro{
-    max-width:900px;
-    margin:0 auto 35px;
-    text-align:center;
-}
-
-.mm-section-intro .mm-kicker,
-.mm-ranking-title > span,
-.mm-engineering-list-header span{
-    display:inline-block;
-    font-size:12px;
-    font-weight:800;
-    letter-spacing:2px;
-    color:#287cff;
-    margin-bottom:10px;
-}
-
-.mm-section-intro h2{
-    font-size:34px;
-    margin:8px 0 14px;
-    font-weight:850;
-}
-
-.mm-section-intro p{
-    max-width:850px;
-    margin:auto;
-    line-height:1.8;
-    color:#64748b;
-    font-size:16px;
-}
-
-.mm-engineering-intro-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:18px;
-    margin:30px 0;
-}
-
-.mm-info-panel{
-    position:relative;
-    overflow:hidden;
-    padding:28px;
-    border-radius:20px;
-    background:linear-gradient(145deg,#0b1830,#122b49);
-    color:white;
-    border:1px solid #254d72;
-    min-height:210px;
-}
-
-.mm-info-panel span{
-    font-size:13px;
-    font-weight:800;
-    color:#61a7ff;
-}
-
-.mm-info-panel h3{
-    margin:14px 0 10px;
-    font-size:20px;
-}
-
-.mm-info-panel p{
-    margin:0;
-    line-height:1.75;
-    color:#c9d7e7;
-}
-
-.mm-long-guide{
-    margin:35px 0;
-    padding:35px;
-    border-radius:24px;
-    background:#f7f9fc;
-    border:1px solid #e4e9f0;
-}
-
-.mm-guide-heading{
-    margin-bottom:28px;
-}
-
-.mm-guide-heading span{
-    color:#287cff;
-    font-weight:800;
-    font-size:12px;
-    letter-spacing:2px;
-}
-
-.mm-guide-heading h3{
-    font-size:27px;
-    margin:8px 0;
-}
-
-.mm-guide-columns{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:25px 45px;
-}
-
-.mm-guide-columns article{
-    padding:5px 0 10px;
-}
-
-.mm-guide-columns h4{
-    font-size:18px;
-    margin-bottom:9px;
-}
-
-.mm-guide-columns p{
-    color:#5d6978;
-    line-height:1.8;
-    margin:0;
-}
-
-.mm-engineering-list-header{
-    margin:45px 0 20px;
-}
-
-.mm-engineering-list-header h3{
-    font-size:30px;
-    margin:5px 0;
-}
-
-.mm-engineering-list-header p{
-    color:#64748b;
-}
-
-.mm-university-features{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:16px;
-    margin:30px 0;
-}
-
-.mm-university-features>div{
-    padding:24px;
-    border-radius:18px;
-    background:#f7f9fc;
-    border:1px solid #e3e8ef;
-}
-
-.mm-university-features strong{
-    display:block;
-    font-size:18px;
-    margin-bottom:9px;
-}
-
-.mm-university-features span{
-    color:#667384;
-    line-height:1.6;
-}
-
-.mm-university-guide{
-    padding:30px;
-    border-radius:22px;
-    background:linear-gradient(145deg,#0b1830,#102d4a);
-    color:white;
-    margin:30px 0;
-}
-
-.mm-university-guide h3{
-    font-size:25px;
-    margin-top:0;
-}
-
-.mm-check-grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:12px;
-}
-
-.mm-check-grid div{
-    padding:15px;
-    border-radius:12px;
-    background:rgba(255,255,255,.07);
-    color:#d8e4f0;
-}
-
-.mm-ranking-title{
-    margin:45px 0 22px;
-}
-
-.mm-ranking-title h3{
-    margin:5px 0 8px;
-    font-size:28px;
-}
-
-.mm-ranking-title p{
-    color:#64748b;
-    line-height:1.7;
-    max-width:850px;
-}
-
-.mm-university-note{
-    margin-top:20px;
-    padding:20px 24px;
-    border-radius:15px;
-    background:#fff8e8;
-    border:1px solid #f1d99c;
-    color:#664d16;
-    line-height:1.7;
-}
-
-.mm-salary-stats{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:16px;
-    margin:30px 0;
-}
-
-.mm-salary-stats>div{
-    padding:25px;
-    background:#f7f9fc;
-    border:1px solid #e2e7ef;
-    border-radius:18px;
-}
-
-.mm-salary-stats span{
-    font-size:27px;
-}
-
-.mm-salary-stats strong{
-    display:block;
-    font-size:18px;
-    margin:12px 0 7px;
-}
-
-.mm-salary-stats p{
-    margin:0;
-    color:#687586;
-    line-height:1.65;
-    font-size:14px;
-}
-
-.mm-career-path{
-    margin-top:35px;
-    padding:32px;
-    border-radius:22px;
-    background:#f7f9fc;
-    border:1px solid #e2e7ef;
-}
-
-.mm-career-path h3{
-    margin-top:0;
-    font-size:26px;
-}
-
-.mm-career-steps{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:15px;
-}
-
-.mm-career-steps>div{
-    background:white;
-    border:1px solid #e2e7ef;
-    border-radius:16px;
-    padding:20px;
-}
-
-.mm-career-steps span{
-    display:inline-flex;
-    width:34px;
-    height:34px;
-    align-items:center;
-    justify-content:center;
-    border-radius:50%;
-    background:#287cff;
-    color:white;
-    font-weight:800;
-}
-
-.mm-career-steps strong{
-    display:block;
-    margin:13px 0 7px;
-}
-
-.mm-career-steps p{
-    margin:0;
-    color:#687586;
-    line-height:1.6;
-    font-size:14px;
-}
-
-.mm-news-intro{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:15px;
-    margin:25px 0;
-}
-
-.mm-news-intro>div{
-    padding:20px;
-    border-radius:16px;
-    background:#f7f9fc;
-    border:1px solid #e3e8ef;
-}
-
-.mm-news-intro strong{
-    display:block;
-    margin-bottom:6px;
-}
-
-.mm-news-intro span{
-    color:#6b7787;
-    font-size:14px;
-}
-
-.mm-news-section .news{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:20px;
-}
-
-.mm-news-section .news-card{
-    min-height:210px;
-    padding:25px;
-    border-radius:20px;
-}
-
-.mm-news-section .news-card small{
-    color:#287cff;
-    font-weight:800;
-    letter-spacing:1px;
-}
-
-.mm-news-section .news-card h3{
-    font-size:20px;
-    line-height:1.35;
-}
-
-.mm-news-section .news-card p{
-    line-height:1.7;
-    color:#657284;
-}
-
-@media(max-width:900px){
-
-    .mm-engineering-intro-grid,
-    .mm-university-features,
-    .mm-salary-stats{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .mm-check-grid{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .mm-career-steps{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .mm-news-section .news{
-        grid-template-columns:1fr;
-    }
-}
-
-@media(max-width:650px){
-
-    .mm-section-intro h2{
-        font-size:27px;
-    }
-
-    .mm-engineering-intro-grid,
-    .mm-guide-columns,
-    .mm-university-features,
-    .mm-salary-stats,
-    .mm-check-grid,
-    .mm-career-steps,
-    .mm-news-intro{
-        grid-template-columns:1fr;
-    }
-
-    .mm-long-guide,
-    .mm-university-guide,
-    .mm-career-path{
-        padding:22px;
-    }
-
-    .uni25-grid{
-        grid-template-columns:1fr !important;
-    }
-}
-</style>
-
-
-<style id="mm-final-professional-ui">
-
-/* =========================================================
-   MÜHENDİSLİK MERKEZİ - PROFESYONEL UI
-   ========================================================= */
-
-:root{
-    --mm-accent:#287cff;
-    --mm-accent-2:#00b8d9;
-    --mm-bg:#f6f8fc;
-    --mm-card:#ffffff;
-    --mm-text:#162033;
-    --mm-muted:#667085;
-    --mm-border:#e3e8f0;
-    --mm-shadow:0 14px 35px rgba(15,23,42,.08);
-}
-
-body.dark,
-body.dark-theme,
-html[data-theme="dark"] body,
-body[data-theme="dark"]{
-    --mm-bg:#09111f;
-    --mm-card:#101b2d;
-    --mm-text:#f4f7fb;
-    --mm-muted:#b6c1d1;
-    --mm-border:#25344b;
-    --mm-shadow:0 18px 40px rgba(0,0,0,.25);
-}
-
-#kesfet{
-    scroll-margin-top:90px;
-}
-
-#kesfet .title,
-#kesfet .mm-section-intro{
-    max-width:920px;
-    margin-left:auto;
-    margin-right:auto;
-}
-
-#kesfet .title h2{
-    font-size:clamp(30px,4vw,46px);
-    margin-bottom:10px;
-}
-
-#kesfet .title p{
-    color:var(--mm-muted);
-}
-
-#kesfet .discover-search,
-#kesfet .search-card{
-    max-width:900px;
-    margin:25px auto 30px;
-    padding:24px;
-    border:1px solid var(--mm-border);
-    background:var(--mm-card);
-    border-radius:22px;
-    box-shadow:var(--mm-shadow);
-}
-
-#kesfet .discover-search input,
-#kesfet #kesfetSearch{
-    min-height:54px;
-    width:100%;
-    box-sizing:border-box;
-    border-radius:14px;
-    border:1px solid var(--mm-border);
-    background:var(--mm-bg);
-    color:var(--mm-text);
-    padding:0 18px;
-    font-size:16px;
-    outline:none;
-    transition:.2s;
-}
-
-#kesfet .discover-search input:focus,
-#kesfet #kesfetSearch:focus{
-    border-color:var(--mm-accent);
-    box-shadow:0 0 0 4px rgba(40,124,255,.12);
-}
-
-#kesfet .discover-search button,
-#kesfet button[onclick*="kesfetAra"]{
-    min-height:54px;
-    border:0;
-    border-radius:14px;
-    background:linear-gradient(135deg,var(--mm-accent),var(--mm-accent-2));
-    color:#fff;
-    font-weight:800;
-    padding:0 28px;
-    cursor:pointer;
-    transition:.2s;
-}
-
-#kesfet .discover-search button:hover,
-#kesfet button[onclick*="kesfetAra"]:hover{
-    transform:translateY(-2px);
-}
-
-#kesfetSonuc{
-    max-width:900px;
-    margin:0 auto 30px;
-}
-
-#kesfetSonuc > *{
-    border-radius:16px;
-}
-
-#kesfet .discover-grid,
-#kesfet .discover-cards,
-#kesfet .mm-discover-grid{
-    display:grid;
-    grid-template-columns:repeat(4,minmax(0,1fr));
-    gap:18px;
-    align-items:stretch;
-}
-
-#kesfet .discover-card{
-    min-height:210px;
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
-    padding:24px;
-    border-radius:20px;
-    border:1px solid var(--mm-border);
-    background:var(--mm-card);
-    color:var(--mm-text);
-    box-shadow:var(--mm-shadow);
-    transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;
-}
-
-#kesfet .discover-card:hover{
-    transform:translateY(-5px);
-    border-color:rgba(40,124,255,.45);
-    box-shadow:0 20px 45px rgba(15,23,42,.12);
-}
-
-#kesfet .discover-card h3,
-#kesfet .discover-card h4{
-    color:var(--mm-text);
-}
-
-#kesfet .discover-card p{
-    color:var(--mm-muted);
-    line-height:1.7;
-}
-
-#kesfet .discover-card a,
-#kesfet .discover-card button{
-    color:var(--mm-accent);
-}
-
-.mm-university-features{
-    display:grid !important;
-    grid-template-columns:repeat(4,minmax(0,1fr));
-    gap:18px;
-}
-
-.mm-university-features > div{
-    min-height:135px;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    padding:22px;
-    border-radius:18px;
-    background:var(--mm-card);
-    border:1px solid var(--mm-border);
-    box-shadow:var(--mm-shadow);
-}
-
-.mm-university-features span{
-    color:var(--mm-muted);
-    line-height:1.6;
-    margin-top:8px;
-}
-
-.mm-career-path{
-    margin-top:45px;
-    padding:34px;
-    border-radius:24px;
-    background:var(--mm-card);
-    border:1px solid var(--mm-border);
-    box-shadow:var(--mm-shadow);
-}
-
-.career-intro{
-    max-width:900px;
-    margin:10px auto 32px;
-    text-align:center;
-    color:var(--mm-muted);
-    line-height:1.8;
-}
-
-.mm-career-steps{
-    display:grid;
-    grid-template-columns:repeat(3,minmax(0,1fr));
-    gap:18px;
-}
-
-.mm-career-steps > div{
-    min-height:250px;
-    padding:24px;
-    border-radius:18px;
-    border:1px solid var(--mm-border);
-    background:var(--mm-bg);
-}
-
-.mm-career-steps span{
-    display:inline-flex;
-    width:42px;
-    height:42px;
-    align-items:center;
-    justify-content:center;
-    border-radius:12px;
-    background:var(--mm-accent);
-    color:#fff;
-    font-weight:900;
-    margin-bottom:16px;
-}
-
-.mm-career-steps strong{
-    display:block;
-    color:var(--mm-text);
-    font-size:18px;
-    margin-bottom:10px;
-}
-
-.mm-career-steps p{
-    color:var(--mm-muted);
-    line-height:1.75;
-    margin:0;
-}
-
-.mm-guide-columns{
-    display:grid;
-    grid-template-columns:repeat(4,minmax(0,1fr));
-    gap:18px;
-}
-
-.mm-guide-columns article{
-    background:var(--mm-card);
-    color:var(--mm-text);
-    border:1px solid var(--mm-border);
-    border-radius:20px;
-    padding:24px;
-    box-shadow:var(--mm-shadow);
-}
-
-.mm-guide-columns article p{
-    color:var(--mm-muted);
-    line-height:1.75;
-}
-
-.footer-inner{
-    color:var(--mm-text);
-}
-
-@media(max-width:1000px){
-    #kesfet .discover-grid,
-    #kesfet .discover-cards,
-    #kesfet .mm-discover-grid,
-    .mm-university-features{
-        grid-template-columns:repeat(2,minmax(0,1fr));
-    }
-
-    .mm-guide-columns{
-        grid-template-columns:repeat(2,minmax(0,1fr));
-    }
-
-    .mm-career-steps{
-        grid-template-columns:repeat(2,minmax(0,1fr));
-    }
-}
-
-@media(max-width:650px){
-    #kesfet .discover-grid,
-    #kesfet .discover-cards,
-    #kesfet .mm-discover-grid,
-    .mm-university-features,
-    .mm-guide-columns,
-    .mm-career-steps{
-        grid-template-columns:1fr;
-    }
-
-    .mm-career-path{
-        padding:20px;
-    }
-}
-
-</style>
-
-
-<style id="mm-kesfet-optimize">
-#kesfet .discover-grid,
-#kesfet .mm-discover-grid,
-#kesfet .discover-cards {
-    display: grid !important;
-    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
-    gap: 18px !important;
-    align-items: stretch !important;
-}
-
-#kesfet .discover-card {
-    min-height: 200px !important;
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: space-between !important;
-    padding: 22px !important;
-    border-radius: 18px !important;
-    transition: transform .22s ease, box-shadow .22s ease !important;
-}
-
-#kesfet .discover-card:hover {
-    transform: translateY(-4px) !important;
-}
-
-@media (max-width: 1000px) {
-    #kesfet .discover-grid,
-    #kesfet .mm-discover-grid,
-    #kesfet .discover-cards {
-        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    }
-}
-@media (max-width: 600px) {
-    #kesfet .discover-grid,
-    #kesfet .mm-discover-grid,
-    #kesfet .discover-cards {
-        grid-template-columns: 1fr !important;
-    }
-}
-
-/* Arama kutusu daha temiz */
-#kesfet .discover-search,
-#kesfet .search-card {
-    max-width: 860px !important;
-    margin: 0 auto 28px !important;
-}
-</style>
-
-
-<style id="mm-color-fix">
-/* Açık temada görünmeyen yazılar */
-body:not(.dark):not(.dark-theme):not([data-theme="dark"]) .mm-section-intro,
-body:not(.dark):not(.dark-theme):not([data-theme="dark"]) .section-heading p,
-body:not(.dark):not(.dark-theme):not([data-theme="dark"]) .title p {
-    color: #475569 !important;
-    -webkit-text-fill-color: #475569 !important;
-    opacity: 1 !important;
-}
-
-/* Koyu temada açık renk */
-body.dark .mm-section-intro,
-body.dark-theme .mm-section-intro,
-body[data-theme="dark"] .mm-section-intro,
-html[data-theme="dark"] .mm-section-intro,
-body.dark .section-heading p,
-body.dark-theme .section-heading p,
-body[data-theme="dark"] .section-heading p {
-    color: #cbd5e1 !important;
-    -webkit-text-fill-color: #cbd5e1 !important;
-}
-
-/* Hero alt yazılar */
-.hero p, .hero-text p, .banner p {
-    color: #e2e8f0 !important;
-}
-
-/* Genel metin kontrastı */
-.mm-guide-columns article p,
-.mm-career-steps p,
-.discover-card p {
-    color: var(--mm-muted, #64748b) !important;
-}
-</style>
-
-
-<style id="mm-hero-copyright-black">
-/* Ana sayfa (hero) copyright yazısını siyah yap */
-.hero p,
-.hero-text p,
-.banner p,
-.hero .copyright,
-.hero-bottom,
-.hero-footer,
-[class*="hero"] p,
-.main-hero p {
-    color: #000000 !important;
-    -webkit-text-fill-color: #000000 !important;
-    opacity: 1 !important;
-}
-
-/* Özellikle © satırı */
-p:has(+ *), 
-p {
-    /* güvenli yakalama */
-}
-body .hero p,
-body .banner p {
-    color: #000000 !important;
-}
-</style>
-
 </head>
 
 <body>
@@ -3334,334 +2545,734 @@ body .banner p {
 
 <!-- MÜHENDİSLİK -->
 
+<section class="container" id="muhendislik">
 
-<section class="container mm-engineering-section" id="muhendislik">
+<div class="title">
 
-<div class="mm-section-intro">
-    <span class="mm-kicker">MÜHENDİSLİK REHBERİ</span>
-    <h2>⚙️ Mühendislik Bölümlerini Gerçekten Tanı</h2>
+    <h2>⚙️ Mühendislik Alanları</h2>
+
     <p>
-        Mühendislik Merkezi'nde mühendislik bölümlerini yalnızca bölüm
-        isimlerinden ibaret görme. Eğitim sürecini, temel dersleri,
-        çalışma alanlarını, kariyer yollarını ve hangi alanlarla
-        bağlantılı olduğunu daha ayrıntılı şekilde incele.
+        Popüler mühendislik bölümlerini keşfet.
     </p>
-</div>
-
-<div class="mm-engineering-intro-grid">
-
-    <div class="mm-info-panel">
-        <span>01</span>
-        <h3>📚 Üniversitede ne öğrenilir?</h3>
-        <p>
-            Mühendislik eğitimi matematik, fizik, temel bilimler ve
-            mesleki derslerin birlikte kullanıldığı uygulamalı bir
-            eğitim yapısına sahiptir. Bölüme göre laboratuvar,
-            bilgisayar çalışmaları, tasarım, proje ve staj süreçleri
-            değişebilir.
-        </p>
-    </div>
-
-    <div class="mm-info-panel">
-        <span>02</span>
-        <h3>🛠️ Mezun olunca ne yapılır?</h3>
-        <p>
-            Bir mühendis yalnızca tek bir görevle sınırlı değildir.
-            Tasarım, üretim, yazılım, araştırma, proje yönetimi,
-            kalite, Ar-Ge, danışmanlık, teknik satış ve girişimcilik
-            gibi farklı kariyer yollarına yönelebilir.
-        </p>
-    </div>
-
-    <div class="mm-info-panel">
-        <span>03</span>
-        <h3>🎯 Kendine uygun alanı bul</h3>
-        <p>
-            Matematikten, bilgisayarlardan, makinelerden, enerjiden,
-            yapıdan, biyolojiden veya tasarımdan hoşlanıyorsan farklı
-            mühendislik alanları sana farklı çalışma ortamları sunabilir.
-        </p>
-    </div>
 
 </div>
 
-<div class="mm-long-guide">
-
-    <div class="mm-guide-heading">
-        <span>DETAYLI REHBER</span>
-        <h3>Mühendislik seçerken nelere bakmalısın?</h3>
-    </div>
-
-    <div class="mm-guide-columns">
-
-        <article>
-            <h4>📐 Matematik ve sayısal düşünme</h4>
-            <p>
-                Mühendislik bölümlerinin önemli bir kısmında matematik
-                temel bir araçtır. Ancak matematiğin kullanım biçimi
-                her bölümde aynı değildir. Bazı alanlarda algoritmalar
-                ve istatistik öne çıkarken bazı alanlarda fizik,
-                mekanik, diferansiyel denklemler veya optimizasyon
-                daha belirgin hale gelir.
-            </p>
-        </article>
-
-        <article>
-            <h4>💻 Bilgisayar ve yazılım</h4>
-            <p>
-                Günümüzde bilgisayar kullanımı hemen hemen bütün
-                mühendislik alanlarında önemlidir. Bununla birlikte
-                bilgisayar mühendisliği ve yazılım ağırlıklı bölümlerde
-                programlama, algoritmalar, veri yapıları ve yazılım
-                geliştirme doğrudan eğitimin merkezinde yer alır.
-            </p>
-        </article>
-
-        <article>
-            <h4>🔬 Laboratuvar ve proje</h4>
-            <p>
-                Elektrik-elektronik, kimya, biyomedikal, makine,
-                malzeme ve benzeri alanlarda laboratuvar ve tasarım
-                çalışmaları önemli olabilir. Öğrenciler teorik
-                bilgilerini deney, proje ve uygulamalarla
-                birleştirmeyi öğrenir.
-            </p>
-        </article>
-
-        <article>
-            <h4>🏢 Çalışma ortamları</h4>
-            <p>
-                Mühendisler ofislerde, fabrikalarda, laboratuvarlarda,
-                şantiyelerde, Ar-Ge merkezlerinde, enerji tesislerinde,
-                teknoloji şirketlerinde veya saha çalışmalarında görev
-                alabilir. Çalışma ortamı seçilen mühendislik dalına
-                ve kariyer yoluna göre değişir.
-            </p>
-        </article>
-
-    </div>
-
-</div>
-
-<div class="mm-engineering-list-header">
-    <div>
-        <span>DETAYLI BÖLÜMLER</span>
-        <h3>Mühendislik Alanları</h3>
-        <p>
-            Bir bölüme tıklayarak eğitim, çalışma alanları ve kariyer
-            bilgilerini inceleyebilirsin.
-        </p>
-    </div>
-</div>
 
 <div class="engineering" id="muhendislik-listesi">
-    <div style="width:100%;text-align:center;padding:40px 20px;color:#7f8b99;font-size:16px;">
+    <div style="
+        width:100%;
+        text-align:center;
+        padding:40px 20px;
+        color:#7f8b99;
+        font-size:16px;
+    ">
         Mühendislikler yükleniyor...
     </div>
 </div>
 
+
 </section>
+
 
 <!-- ÜNİVERSİTE -->
 
 
 
+<section class="container" id="universite">
 
-<section class="container mm-university-section" id="universite">
-
-<div class="mm-section-intro">
-    <span class="mm-kicker">ÜNİVERSİTE MERKEZİ</span>
-    <h2>🎓 Üniversite ve Mühendislik Rehberi</h2>
-    <p>
-        Mühendislik eğitimi için üniversite araştırırken yalnızca
-        taban puana bakmak yerine bölümün bulunduğu şehir, üniversitenin
-        akademik yapısı, eğitim dili, laboratuvarları, staj olanakları
-        ve mezunların çalışma alanları gibi birçok faktörü birlikte
-        değerlendirmek gerekir.
-    </p>
-</div>
-
-<div>
-        <strong>⚙️ Bölüm</strong>
-        <span>Hangi mühendisliğin hangi üniversitelerde bulunduğunu araştır.</span>
-    </div>
-
-    <div>
-        <strong>📍 Şehir</strong>
-        <span>Eğitim göreceğin şehri yaşam koşullarıyla birlikte değerlendir.</span>
-    </div>
-
-    <div>
-        <strong>📊 Başarı</strong>
-        <span>Tercih döneminde güncel ÖSYM verilerini ayrıca kontrol et.</span>
-    </div>
-
-</div>
-
-
-
-</div>
-
-<div class="mm-ranking-title">
-    <span>ÖRNEK LİSTE</span>
-    <h3>2026 Mühendislik Programları</h3>
-    <p>
-        Üniversite ve mühendislik programlarını puan türü, üniversite,
-        şehir ve program bilgileriyle birlikte inceleyebilirsin.
-    </p>
+<div class="title">
+    <h2>🎓 Üniversite Merkezi</h2>
+    <p>25 mühendislik alanında öne çıkan üniversiteleri keşfet.</p>
 </div>
 
 <div class="uni25-grid">
 
     <div class="uni25-card">
-        <div class="uni25-rank">01</div>
+        <div class="uni25-rank">1</div>
+
         <div class="uni25-info">
             <div class="uni25-department">Bilgisayar Mühendisliği</div>
             <div class="uni25-university">Koç Üniversitesi</div>
         </div>
+
         <div class="uni25-score">
-            <span>Mevcut listedeki değer</span>
+            <span>2025 taban puanı</span>
             <strong>544,03</strong>
         </div>
+
+        
     </div>
 
     <div class="uni25-card">
-        <div class="uni25-rank">02</div>
+        <div class="uni25-rank">2</div>
+
         <div class="uni25-info">
             <div class="uni25-department">Yazılım Mühendisliği</div>
             <div class="uni25-university">TED Üniversitesi</div>
         </div>
+
         <div class="uni25-score">
-            <span>Mevcut listedeki değer</span>
+            <span>2025 taban puanı</span>
             <strong>489,00</strong>
         </div>
+
+        
     </div>
 
     <div class="uni25-card">
-        <div class="uni25-rank">03</div>
+        <div class="uni25-rank">3</div>
+
         <div class="uni25-info">
             <div class="uni25-department">Elektrik-Elektronik Mühendisliği</div>
             <div class="uni25-university">Koç Üniversitesi</div>
         </div>
+
         <div class="uni25-score">
-            <span>Mevcut listedeki değer</span>
+            <span>2025 taban puanı</span>
             <strong>544,03</strong>
         </div>
+
+        
     </div>
 
     <div class="uni25-card">
-        <div class="uni25-rank">04</div>
+        <div class="uni25-rank">4</div>
+
         <div class="uni25-info">
             <div class="uni25-department">Makine Mühendisliği</div>
             <div class="uni25-university">Koç Üniversitesi</div>
         </div>
+
         <div class="uni25-score">
-            <span>Mevcut listedeki değer</span>
+            <span>2025 taban puanı</span>
             <strong>535,00</strong>
         </div>
+
+        
     </div>
 
     <div class="uni25-card">
-        <div class="uni25-rank">05</div>
+        <div class="uni25-rank">5</div>
+
         <div class="uni25-info">
             <div class="uni25-department">İnşaat Mühendisliği</div>
             <div class="uni25-university">Boğaziçi Üniversitesi</div>
         </div>
+
         <div class="uni25-score">
-            <span>Mevcut listedeki değer</span>
+            <span>2025 taban puanı</span>
             <strong>469,00</strong>
         </div>
+
+        
     </div>
 
     <div class="uni25-card">
-        <div class="uni25-rank">06</div>
+        <div class="uni25-rank">6</div>
+
         <div class="uni25-info">
             <div class="uni25-department">Endüstri Mühendisliği</div>
             <div class="uni25-university">Koç Üniversitesi</div>
         </div>
+
         <div class="uni25-score">
-            <span>Mevcut listedeki değer</span>
+            <span>2025 taban puanı</span>
             <strong>536,00</strong>
         </div>
+
+        
     </div>
 
     <div class="uni25-card">
-        <div class="uni25-rank">07</div>
+        <div class="uni25-rank">7</div>
+
         <div class="uni25-info">
             <div class="uni25-department">Mekatronik Mühendisliği</div>
             <div class="uni25-university">İstanbul Teknik Üniversitesi</div>
         </div>
+
         <div class="uni25-score">
-            <span>Mevcut listedeki değer</span>
+            <span>2025 taban puanı</span>
             <strong>491,00</strong>
         </div>
+
+        
     </div>
 
     <div class="uni25-card">
-        <div class="uni25-rank">08</div>
+        <div class="uni25-rank">8</div>
+
         <div class="uni25-info">
             <div class="uni25-department">Biyomedikal Mühendisliği</div>
             <div class="uni25-university">Başkent Üniversitesi</div>
         </div>
+
         <div class="uni25-score">
-            <span>Mevcut listedeki değer</span>
+            <span>2025 taban puanı</span>
             <strong>456,00</strong>
         </div>
+
+        
     </div>
 
     <div class="uni25-card">
-        <div class="uni25-rank">09</div>
+        <div class="uni25-rank">9</div>
+
         <div class="uni25-info">
             <div class="uni25-department">Kimya Mühendisliği</div>
             <div class="uni25-university">Boğaziçi Üniversitesi</div>
         </div>
+
         <div class="uni25-score">
-            <span>Mevcut listedeki değer</span>
+            <span>2025 taban puanı</span>
             <strong>486,00</strong>
         </div>
+
+        
     </div>
 
     <div class="uni25-card">
         <div class="uni25-rank">10</div>
+
         <div class="uni25-info">
             <div class="uni25-department">Çevre Mühendisliği</div>
             <div class="uni25-university">İstanbul Teknik Üniversitesi</div>
         </div>
+
         <div class="uni25-score">
-            <span>Mevcut listedeki değer</span>
+            <span>2025 taban puanı</span>
             <strong>451,00</strong>
         </div>
+
+        
     </div>
 
     <div class="uni25-card">
         <div class="uni25-rank">11</div>
+
         <div class="uni25-info">
             <div class="uni25-department">Uçak Mühendisliği</div>
             <div class="uni25-university">İstanbul Teknik Üniversitesi</div>
         </div>
+
         <div class="uni25-score">
-            <span>Mevcut listedeki değer</span>
+            <span>2025 taban puanı</span>
             <strong>511,00</strong>
         </div>
+
+        
     </div>
 
     <div class="uni25-card">
         <div class="uni25-rank">12</div>
+
         <div class="uni25-info">
             <div class="uni25-department">Uzay Mühendisliği</div>
             <div class="uni25-university">İstanbul Teknik Üniversitesi</div>
         </div>
+
         <div class="uni25-score">
-            <span>Mevcut listedeki değer</span>
+            <span>2025 taban puanı</span>
             <strong>506,00</strong>
         </div>
+
+        
+    </div>
+
+    <div class="uni25-card">
+        <div class="uni25-rank">13</div>
+
+        <div class="uni25-info">
+            <div class="uni25-department">Otomotiv Mühendisliği</div>
+            <div class="uni25-university">Bursa Uludağ Üniversitesi</div>
+        </div>
+
+        <div class="uni25-score">
+            <span>2025 taban puanı</span>
+            <strong>451,00</strong>
+        </div>
+
+        
+    </div>
+
+    <div class="uni25-card">
+        <div class="uni25-rank">14</div>
+
+        <div class="uni25-info">
+            <div class="uni25-department">Metalurji ve Malzeme Mühendisliği</div>
+            <div class="uni25-university">İstanbul Teknik Üniversitesi</div>
+        </div>
+
+        <div class="uni25-score">
+            <span>2025 taban puanı</span>
+            <strong>493,00</strong>
+        </div>
+
+        
+    </div>
+
+    <div class="uni25-card">
+        <div class="uni25-rank">15</div>
+
+        <div class="uni25-info">
+            <div class="uni25-department">Enerji Sistemleri Mühendisliği</div>
+            <div class="uni25-university">Yıldız Teknik Üniversitesi</div>
+        </div>
+
+        <div class="uni25-score">
+            <span>2025 taban puanı</span>
+            <strong>438,00</strong>
+        </div>
+
+        
+    </div>
+
+    <div class="uni25-card">
+        <div class="uni25-rank">16</div>
+
+        <div class="uni25-info">
+            <div class="uni25-department">Harita Mühendisliği</div>
+            <div class="uni25-university">İstanbul Teknik Üniversitesi</div>
+        </div>
+
+        <div class="uni25-score">
+            <span>2025 taban puanı</span>
+            <strong>443,00</strong>
+        </div>
+
+        
+    </div>
+
+    <div class="uni25-card">
+        <div class="uni25-rank">17</div>
+
+        <div class="uni25-info">
+            <div class="uni25-department">Jeoloji Mühendisliği</div>
+            <div class="uni25-university">İstanbul Teknik Üniversitesi</div>
+        </div>
+
+        <div class="uni25-score">
+            <span>2025 taban puanı</span>
+            <strong>422,00</strong>
+        </div>
+
+        
+    </div>
+
+    <div class="uni25-card">
+        <div class="uni25-rank">18</div>
+
+        <div class="uni25-info">
+            <div class="uni25-department">Jeofizik Mühendisliği</div>
+            <div class="uni25-university">İstanbul Üniversitesi-Cerrahpaşa</div>
+        </div>
+
+        <div class="uni25-score">
+            <span>2025 taban puanı</span>
+            <strong>407,00</strong>
+        </div>
+
+        
+    </div>
+
+    <div class="uni25-card">
+        <div class="uni25-rank">19</div>
+
+        <div class="uni25-info">
+            <div class="uni25-department">Gıda Mühendisliği</div>
+            <div class="uni25-university">Hacettepe Üniversitesi</div>
+        </div>
+
+        <div class="uni25-score">
+            <span>2025 taban puanı</span>
+            <strong>430,00</strong>
+        </div>
+
+        
+    </div>
+
+    <div class="uni25-card">
+        <div class="uni25-rank">20</div>
+
+        <div class="uni25-info">
+            <div class="uni25-department">Ziraat Mühendisliği</div>
+            <div class="uni25-university">Ankara Üniversitesi</div>
+        </div>
+
+        <div class="uni25-score">
+            <span>2025 taban puanı</span>
+            <strong>398,00</strong>
+        </div>
+
+        
+    </div>
+
+    <div class="uni25-card">
+        <div class="uni25-rank">21</div>
+
+        <div class="uni25-info">
+            <div class="uni25-department">Tekstil Mühendisliği</div>
+            <div class="uni25-university">İstanbul Teknik Üniversitesi</div>
+        </div>
+
+        <div class="uni25-score">
+            <span>2025 taban puanı</span>
+            <strong>455,00</strong>
+        </div>
+
+        
+    </div>
+
+    <div class="uni25-card">
+        <div class="uni25-rank">22</div>
+
+        <div class="uni25-info">
+            <div class="uni25-department">Maden Mühendisliği</div>
+            <div class="uni25-university">İstanbul Teknik Üniversitesi</div>
+        </div>
+
+        <div class="uni25-score">
+            <span>2025 taban puanı</span>
+            <strong>425,00</strong>
+        </div>
+
+        
+    </div>
+
+    <div class="uni25-card">
+        <div class="uni25-rank">23</div>
+
+        <div class="uni25-info">
+            <div class="uni25-department">Denizcilik Mühendisliği</div>
+            <div class="uni25-university">İstanbul Teknik Üniversitesi</div>
+        </div>
+
+        <div class="uni25-score">
+            <span>2025 taban puanı</span>
+            <strong>455,00</strong>
+        </div>
+
+        
+    </div>
+
+    <div class="uni25-card">
+        <div class="uni25-rank">24</div>
+
+        <div class="uni25-info">
+            <div class="uni25-department">Çevre Teknolojileri</div>
+            <div class="uni25-university">Gebze Teknik Üniversitesi</div>
+        </div>
+
+        <div class="uni25-score">
+            <span>2025 taban puanı</span>
+            <strong>374,45</strong>
+        </div>
+
+        
+    </div>
+
+    <div class="uni25-card">
+        <div class="uni25-rank">25</div>
+
+        <div class="uni25-info">
+            <div class="uni25-department">Nükleer Enerji Mühendisliği</div>
+            <div class="uni25-university">Hacettepe Üniversitesi</div>
+        </div>
+
+        <div class="uni25-score">
+            <span>2025 taban puanı</span>
+            <strong>470,00</strong>
+        </div>
+
+        
     </div>
 
 </div>
 
-
-
 </section>
+
+<style>
+.uni25-grid {
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:16px;
+    margin-top:25px;
+}
+
+.uni25-card {
+    position:relative;
+    min-height:120px;
+    display:flex;
+    align-items:center;
+    gap:18px;
+    padding:22px 24px;
+    background:linear-gradient(135deg,#08182b,#102d4a);
+    border:1px solid #214b70;
+    border-radius:16px;
+    color:#fff;
+    overflow:hidden;
+    cursor:pointer;
+    box-shadow:0 8px 25px rgba(0,0,0,.22);
+    transition:all .25s ease;
+}
+
+.uni25-card:hover {
+    border-color:#4b9bd0;
+    box-shadow:0 0 25px rgba(50,150,220,.18);
+    transform:translateY(-3px);
+}
+
+.uni25-card::before {
+    content:"";
+    position:absolute;
+    top:0;
+    left:-120%;
+    width:100%;
+    height:2px;
+    background:linear-gradient(90deg,transparent,#8bdcff,transparent);
+    transition:left .6s ease;
+}
+
+.uni25-card:hover::before {
+    left:120%;
+}
+
+.uni25-rank {
+    width:44px;
+    min-width:44px;
+    height:44px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:12px;
+    background:#123b5d;
+    border:1px solid #35698d;
+    color:#d9f3ff;
+    font-size:18px;
+    font-weight:800;
+}
+
+.uni25-info {
+    flex:1;
+}
+
+.uni25-department {
+    color:#fff;
+    font-size:16px;
+    font-weight:750;
+    margin-bottom:7px;
+}
+
+.uni25-university {
+    color:#b9d8ec;
+    font-size:14px;
+    font-weight:600;
+}
+
+.uni25-score {
+    min-width:125px;
+    text-align:right;
+}
+
+.uni25-score span {
+    display:block;
+    color:#7da4bd;
+    font-size:10px;
+    margin-bottom:5px;
+}
+
+.uni25-score strong {
+    color:#91dcff;
+    font-size:20px;
+}
+
+
+
+@media(max-width:750px) {
+    .uni25-grid {
+        grid-template-columns:1fr;
+    }
+}
+</style>
+
+
+<style>
+.uni25-grid{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:16px;
+    margin-top:25px;
+}
+
+.uni25-card{
+    position:relative;
+    min-height:125px;
+    display:flex;
+    align-items:center;
+    gap:18px;
+    padding:22px 24px;
+
+    background:linear-gradient(
+        135deg,
+        rgba(10,25,45,.96),
+        rgba(17,42,70,.94)
+    );
+
+    border:1px solid rgba(75,145,205,.38);
+    border-radius:16px;
+
+    color:white;
+    overflow:hidden;
+    cursor:pointer;
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.20),
+        inset 0 1px 0 rgba(255,255,255,.05);
+
+    transition:
+        border-color .25s ease,
+        box-shadow .25s ease,
+        transform .25s ease;
+}
+
+.uni25-card::before{
+    content:"";
+    position:absolute;
+    width:120%;
+    height:2px;
+    left:-130%;
+    top:0;
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(120,210,255,.9),
+        transparent
+    );
+
+    transition:left .65s ease;
+}
+
+.uni25-card:hover{
+    transform:translateY(-3px);
+
+    border-color:rgba(100,190,245,.75);
+
+    box-shadow:
+        0 12px 35px rgba(0,20,50,.38),
+        0 0 20px rgba(60,160,220,.10);
+}
+
+.uni25-card:hover::before{
+    left:110%;
+}
+
+.uni25-rank{
+    width:44px;
+    min-width:44px;
+    height:44px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:12px;
+
+    background:rgba(30,75,115,.65);
+    border:1px solid rgba(110,185,235,.30);
+
+    color:#bce7ff;
+    font-size:18px;
+    font-weight:800;
+}
+
+.uni25-info{
+    flex:1;
+    min-width:0;
+}
+
+.uni25-department{
+    color:#ffffff;
+    font-size:17px;
+    font-weight:750;
+    margin-bottom:7px;
+}
+
+.uni25-university{
+    color:#c7e3f5;
+    font-size:14px;
+    font-weight:600;
+}
+
+.uni25-score{
+    min-width:125px;
+    text-align:right;
+}
+
+.uni25-score span{
+    display:block;
+    color:#7597b1;
+    font-size:10px;
+    margin-bottom:5px;
+}
+
+.uni25-score strong{
+    color:#91d8ff;
+    font-size:20px;
+    font-weight:850;
+}
+
+.uni25-click{
+    position:absolute;
+    right:15px;
+    bottom:9px;
+
+    padding:4px 9px;
+
+    border-radius:7px;
+
+    background:rgba(4,15,28,.80);
+    border:1px solid rgba(100,180,230,.25);
+
+    color:#e2f6ff;
+    font-size:10px;
+    font-weight:700;
+
+    opacity:0;
+    transform:translateX(8px);
+
+    transition:
+        opacity .2s ease,
+        transform .2s ease;
+}
+
+.uni25-card:hover .uni25-click{
+    opacity:1;
+    transform:translateX(0);
+}
+
+@media(max-width:750px){
+    .uni25-grid{
+        grid-template-columns:1fr;
+    }
+
+    .uni25-card{
+        padding:18px;
+        min-height:115px;
+    }
+
+    .uni25-department{
+        font-size:15px;
+    }
+
+    .uni25-score strong{
+        font-size:17px;
+    }
+}
+</style>
+
+
+
 
 <!-- YKS -->
 <section class="container" id="yks">
@@ -3728,18 +3339,6 @@ background:#0b1020;padding:15px;border-radius:10px;text-align:center
 <div>Toplam Boş<b id="tytB">120</b></div>
 <div>Toplam Net<b id="tytN">0</b></div>
 </div>
-
-<div style="margin:20px 0;padding:16px;background:var(--mm-card,#fff);border-radius:14px;border:1px solid #e3e8f0;">
-    <label style="font-weight:700;display:block;margin-bottom:8px;">Diploma Notu / OBP (50-100 arası)</label>
-    <input type="number" id="obpInput" min="50" max="100" step="0.1" value="80" 
-           style="width:140px;padding:10px 14px;border-radius:10px;border:1px solid #e3e8f0;font-size:16px;">
-    <span style="margin-left:12px;color:#667085;font-size:14px;">OBP = Diploma × 5 → Yerleştirme katkısı × 0.12</span>
-</div>
-<div class="ayt-total-box" style="margin-top:12px;">
-    <div>TYT Ham (yaklaşık)<b id="tytHam">0</b></div>
-    <div>Yerleştirme (OBP dahil)<b id="tytYer">0.00</b></div>
-</div>
-
 </div>
 </div>
 
@@ -3825,70 +3424,35 @@ btn.classList.add('active');
 }
 
 function calculateYks(){
-    // TYT
-    let td=0, ty=0, tb=0;
-    document.querySelectorAll('#tyt .correct').forEach(inp=>{
-        const v = parseInt(inp.value)||0;
-        td += v;
-    });
-    document.querySelectorAll('#tyt .wrong').forEach(inp=>{
-        const v = parseInt(inp.value)||0;
-        ty += v;
-    });
-    // Boş = toplam soru - doğru - yanlış (TYT 120)
-    tb = 120 - td - ty;
-    if(tb < 0) tb = 0;
-    const tn = td - (ty / 4);
-    document.getElementById('tytD').textContent = td;
-    document.getElementById('tytY').textContent = ty;
-    document.getElementById('tytB').textContent = tb;
-    document.getElementById('tytN').textContent = tn.toFixed(2);
+document.querySelectorAll('.yks-table tr[data-total]').forEach(row=>{
+let total=Number(row.dataset.total);
+let d=Math.max(0,Number(row.querySelector('.correct').value)||0);
+let y=Math.max(0,Number(row.querySelector('.wrong').value)||0);
 
-    // Yaklaşık TYT Ham (basit katsayı modeli - gerçek ÖSYM standart sapma kullanır)
-    // Tipik: 100 + net * ~3.3
-    const tytHam = Math.max(100, 100 + (tn * 3.25));
-    document.getElementById('tytHam').textContent = tytHam.toFixed(1);
+if(d+y>total){
+y=Math.max(0,total-d);
+row.querySelector('.wrong').value=y;
+}
 
-    // OBP
-    const diploma = parseFloat(document.getElementById('obpInput')?.value) || 80;
-    const obp = Math.min(500, Math.max(250, diploma * 5));
-    const obpKatki = obp * 0.12;
-    const tytYer = tytHam + obpKatki;
-    document.getElementById('tytYer').textContent = tytYer.toFixed(2);
+let b=Math.max(0,total-d-y);
+let n=d-y/4;
 
-    // AYT alanları (SAY / EA / SÖZ) için net toplamları
-    ['say','ea','sozel'].forEach(area=>{
-        const panel = document.getElementById(area);
-        if(!panel) return;
-        let ad=0, ay=0;
-        panel.querySelectorAll('.correct').forEach(i=> ad += parseInt(i.value)||0);
-        panel.querySelectorAll('.wrong').forEach(i=> ay += parseInt(i.value)||0);
-        const an = ad - (ay/4);
-        const totalQ = area==='say' ? 80 : (area==='ea' ? 80 : 80); // yaklaşık
-        const ab = Math.max(0, totalQ - ad - ay);
-        const dEl = document.getElementById('ayt-'+area+'-d');
-        const yEl = document.getElementById('ayt-'+area+'-y');
-        const bEl = document.getElementById('ayt-'+area+'-b');
-        const nEl = document.getElementById('ayt-'+area+'-n');
-        if(dEl) dEl.textContent = ad;
-        if(yEl) yEl.textContent = ay;
-        if(bEl) bEl.textContent = ab;
-        if(nEl) nEl.textContent = an.toFixed(2);
-    });
+row.querySelector('.blank').textContent=b;
+row.querySelector('.net').textContent=n.toFixed(2);
+});
 
-    // Satır netleri
-    document.querySelectorAll('tr[data-total]').forEach(row=>{
-        const c = parseInt(row.querySelector('.correct')?.value)||0;
-        const w = parseInt(row.querySelector('.wrong')?.value)||0;
-        const net = c - (w/4);
-        const netCell = row.querySelector('.net');
-        const blankCell = row.querySelector('.blank');
-        if(netCell) netCell.textContent = net.toFixed(2);
-        if(blankCell){
-            const tot = parseInt(row.dataset.total)||0;
-            blankCell.textContent = Math.max(0, tot - c - w);
-        }
-    });
+let td=0,ty=0,tb=0,tn=0;
+document.querySelectorAll('#tyt tr[data-total]').forEach(row=>{
+td+=Number(row.querySelector('.correct').value)||0;
+ty+=Number(row.querySelector('.wrong').value)||0;
+tb+=Number(row.querySelector('.blank').textContent)||0;
+tn+=Number(row.querySelector('.net').textContent)||0;
+});
+
+document.getElementById('tytD').textContent=td;
+document.getElementById('tytY').textContent=ty;
+document.getElementById('tytB').textContent=tb;
+document.getElementById('tytN').textContent=tn.toFixed(2);
 }
 
 document.querySelectorAll('.correct,.wrong').forEach(input=>{
@@ -3901,230 +3465,111 @@ if(row && row.dataset.total){
 }
 
 input.addEventListener('input',calculateYks);
-document.getElementById('obpInput')?.addEventListener('input',calculateYks);
 });
 </script>
 
 <!-- MAAŞ -->
 
 
+<section id="salaries" class="section">
 
-<section id="salaries" class="section mm-salary-section">
-
-<div class="mm-section-intro">
-    <span class="mm-kicker">KARİYER VE GELİR</span>
-    <h2>💰 Mühendis Maaşları ve Kariyer Araştırması</h2>
-    <p>
-        Mühendis maaşı tek bir rakamla açıklanamaz. Deneyim, şehir,
-        sektör, şirket, uzmanlık alanı, yabancı dil, sorumluluk düzeyi
-        ve pozisyon gibi birçok değişken toplam geliri etkileyebilir.
-    </p>
-</div>
-
-<div class="mm-salary-stats">
-
-    <div>
-        <span>🎓</span>
-        <strong>Yeni Mezun</strong>
-        <p>İlk iş deneyiminde şirket ve pozisyona göre değişen başlangıç ücretleri.</p>
-    </div>
-
-    <div>
-        <span>📈</span>
-        <strong>Deneyimli</strong>
-        <p>Uzmanlık ve sorumluluk arttıkça ücret aralığı da değişebilir.</p>
-    </div>
-
-    <div>
-        <span>🏢</span>
-        <strong>Sektör</strong>
-        <p>Özel sektör ve kamu tarafındaki ücret yapıları birbirinden farklıdır.</p>
-    </div>
-
-    <div>
-        <span>🌍</span>
-        <strong>Uzmanlık</strong>
-        <p>Yazılım, yapay zekâ, enerji, otomotiv ve benzeri uzmanlıklar farklı kariyer yolları oluşturabilir.</p>
-    </div>
-
-</div>
-
-<div class="salary-table-wrap">
-
-<table class="salary-table">
-
-<thead>
-<tr>
-    <th>Mühendislik</th>
-    <th>Sektör</th>
-    <th>Yıl</th>
-    <th>Maaş</th>
-    <th>Kaynak</th>
-</tr>
-</thead>
-
-
-<tbody>
-<tr><td>Bilgisayar Mühendisliği</td><td>Özel</td><td>2026</td><td><strong>70.100 TL</strong></td><td>Eleman.net</td></tr>
-<tr><td>Yazılım Mühendisliği</td><td>Özel</td><td>2026</td><td><strong>75.200 TL</strong></td><td>Eleman.net</td></tr>
-<tr><td>Elektrik-Elektronik Mühendisliği</td><td>Özel</td><td>2026</td><td><strong>78.900 TL</strong></td><td>Eleman.net</td></tr>
-<tr><td>Makine Mühendisliği</td><td>Özel</td><td>2026</td><td><strong>57.100 TL</strong></td><td>Eleman.net</td></tr>
-<tr><td>İnşaat Mühendisliği</td><td>Özel</td><td>2026</td><td><strong>60.300 TL</strong></td><td>Eleman.net</td></tr>
-<tr><td>Endüstri Mühendisliği</td><td>Özel</td><td>2026</td><td><strong>68.900 TL</strong></td><td>Eleman.net</td></tr>
-<tr><td>Mekatronik Mühendisliği</td><td>Özel</td><td>2026</td><td><strong>59.300 TL</strong></td><td>Eleman.net</td></tr>
-<tr><td>Biyomedikal Mühendisliği</td><td>Özel</td><td>2026</td><td><strong>53.800 TL</strong></td><td>Eleman.net</td></tr>
-<tr><td>Kimya Mühendisliği</td><td>Özel</td><td>2026</td><td><strong>56.800 TL</strong></td><td>Eleman.net</td></tr>
-<tr><td>Çevre Mühendisliği</td><td>Özel</td><td>2026</td><td><strong>52.400 TL</strong></td><td>Eleman.net</td></tr>
-<tr><td>Uçak Mühendisliği</td><td>Özel</td><td>2026</td><td><strong>105.000 TL</strong></td><td>Eleman.net</td></tr>
-<tr><td>Uzay Mühendisliği</td><td>Özel</td><td>2026</td><td><strong>109.100 TL</strong></td><td>Eleman.net</td></tr>
-<tr><td>Metalurji ve Malzeme Mühendisliği</td><td>Özel</td><td>2026</td><td><strong>63.300 TL</strong></td><td>Eleman.net</td></tr>
-<tr><td>Maden Mühendisliği</td><td>Özel</td><td>2026</td><td><strong>69.900 TL</strong></td><td>Eleman.net</td></tr>
-<tr><td>Jeoloji Mühendisliği</td><td>Özel</td><td>2026</td><td><strong>52.800 TL</strong></td><td>Eleman.net</td></tr>
-<tr><td>Jeofizik Mühendisliği</td><td>Özel</td><td>2026</td><td><strong>48.200 TL</strong></td><td>Eleman.net</td></tr>
-<tr><td>Gıda Mühendisliği</td><td>Özel</td><td>2026</td><td><strong>88.800 TL</strong></td><td>Eleman.net</td></tr>
-<tr><td>Tekstil Mühendisliği</td><td>Özel</td><td>2026</td><td><strong>51.600 TL</strong></td><td>Eleman.net</td></tr>
-<tr><td>Petrol ve Doğalgaz Mühendisliği</td><td>Özel</td><td>2026</td><td><strong>72.400 TL</strong></td><td>Eleman.net</td></tr>
-<tr><td>Enerji Sistemleri Mühendisliği</td><td>Özel</td><td>2026</td><td><strong>61.500 TL</strong></td><td>Eleman.net</td></tr>
-<tr><td>Otomotiv Mühendisliği</td><td>Özel</td><td>2026</td><td><strong>64.200 TL</strong></td><td>Eleman.net</td></tr>
-<tr><td>Gemi İnşaatı ve Gemi Makineleri</td><td>Özel</td><td>2026</td><td><strong>66.700 TL</strong></td><td>Eleman.net</td></tr>
-<tr><td>Harita Mühendisliği</td><td>Özel</td><td>2026</td><td><strong>54.900 TL</strong></td><td>Eleman.net</td></tr>
-<tr><td>Orman Mühendisliği</td><td>Özel</td><td>2026</td><td><strong>49.800 TL</strong></td><td>Eleman.net</td></tr>
-<tr><td>Ziraat Mühendisliği</td><td>Özel</td><td>2026</td><td><strong>47.300 TL</strong></td><td>Eleman.net</td></tr>
-</tbody>
-
-
-</table>
-
-</div>
-
-<div class="salary-note">
-<strong>📌 Maaş verilerini nasıl okumalı?</strong>
-<br><br>
-Buradaki değerler belirli kaynakların belirli dönemlerde yayımladığı
-verilerdir. Gerçek ücret; deneyim, şehir, şirket, görev, yan haklar,
-mesai, prim ve uzmanlık alanına göre değişebilir. Güncel ücret
-araştırmasında kaynağın tarihi mutlaka kontrol edilmelidir.
-</div>
-
-
-
-<div class="mm-career-path">
-    <h3>Bir mühendisin kariyer yolu nasıl ilerleyebilir?</h3>
-    <p class="career-intro">
-        Mühendislik kariyeri tek bir kalıba sığmaz. Seçtiğin bölüm, geliştirdiğin teknik beceriler,
-        yaptığın stajlar, projeler, yabancı dil, iletişim yeteneği ve hedeflerin zamanla farklı
-        yollar açar. Aşağıdaki adımlar tipik bir ilerleyişi gösterir.
-    </p>
-
-    <div class="mm-career-steps">
+    <div class="section-heading">
         <div>
-            <span>01</span>
-            <strong>Lise ve YKS Hazırlığı</strong>
-            <p>
-                Matematik, fizik, kimya ve problem çözme temeli güçlendirilir.
-                Farklı mühendislik alanları araştırılır, ilgi ve yetenekler keşfedilir.
-                Hedef netleştikçe çalışma planı netleşir.
-            </p>
-        </div>
-        <div>
-            <span>02</span>
-            <strong>Üniversiteye Giriş</strong>
-            <p>
-                YKS sonucuyla uygun puan türündeki programlar incelenir.
-                Ders programı, eğitim dili, laboratuvar imkanları, şehir ve staj
-                olanakları birlikte değerlendirilir.
-            </p>
-        </div>
-        <div>
-            <span>03</span>
-            <strong>Temel Mühendislik Eğitimi</strong>
-            <p>
-                İlk yıllarda matematik, fizik, programlama, teknik çizim ve
-                bölümün temel bilimleri öğrenilir. Bu dönem sonraki uzmanlaşmanın
-                omurgasını oluşturur.
-            </p>
-        </div>
-        <div>
-            <span>04</span>
-            <strong>Alan ve Uzmanlık Seçimi</strong>
-            <p>
-                Bölüm içindeki yönelimler netleşir: yazılım / yapay zekâ / siber güvenlik,
-                tasarım / üretim / enerji, kontrol / otomasyon gibi. Seçmeli dersler
-                ve projeler bu yönü güçlendirir.
-            </p>
-        </div>
-        <div>
-            <span>05</span>
-            <strong>Teknik Beceri Geliştirme</strong>
-            <p>
-                Programlama dilleri, CAD, simülasyon yazılımları, veri analizi,
-                elektronik tasarım, laboratuvar teknikleri veya proje yönetimi
-                gibi uygulamalı beceriler geliştirilir.
-            </p>
-        </div>
-        <div>
-            <span>06</span>
-            <strong>Proje, Kulüp ve Yarışmalar</strong>
-            <p>
-                Ders projeleri, öğrenci kulüpleri, TEKNOFEST, robot yarışmaları
-                ve kişisel projeler teoriyi uygulamaya çevirir. Portföy oluşmaya başlar.
-            </p>
-        </div>
-        <div>
-            <span>07</span>
-            <strong>Staj Dönemi</strong>
-            <p>
-                Gerçek çalışma ortamında teknik bilgi kullanılır. Ekip çalışması,
-                teknik dokümantasyon, iş güvenliği, proje takibi ve profesyonel
-                iletişim becerileri gelişir.
-            </p>
-        </div>
-        <div>
-            <span>08</span>
-            <strong>İlk Profesyonel Deneyim</strong>
-            <p>
-                Mezuniyet sonrası tasarım, üretim, yazılım, Ar-Ge, kalite, saha,
-                test, analiz veya teknik destek gibi rollerde kariyere başlanır.
-            </p>
-        </div>
-        <div>
-            <span>09</span>
-            <strong>Uzmanlaşma</strong>
-            <p>
-                Birkaç yıl içinde belirli bir teknik alanda derinleşilir.
-                Sertifikalar, lisansüstü eğitim ve zorlu projeler bu süreci hızlandırır.
-            </p>
-        </div>
-        <div>
-            <span>10</span>
-            <strong>Kıdemli Mühendislik</strong>
-            <p>
-                Daha karmaşık problemlerde sorumluluk alınır. Teknik kararlar,
-                kalite süreçleri ve genç mühendislerin gelişimi gibi görevler artar.
-            </p>
-        </div>
-        <div>
-            <span>11</span>
-            <strong>Teknik Liderlik / Proje Yönetimi</strong>
-            <p>
-                Teknik bilginin yanına planlama, risk yönetimi, ekip iletişimi,
-                bütçe ve zaman yönetimi eklenir. Bazı mühendisler bu yola yönelir.
-            </p>
-        </div>
-        <div>
-            <span>12</span>
-            <strong>Uzun Vadeli Yollar</strong>
-            <p>
-                Teknik uzman, teknik lider, proje yöneticisi, Ar-Ge, akademisyen,
-                yönetici veya girişimci olarak devam edilebilir. Tek zorunlu yol yoktur.
+            <h2>💰 Mühendis Maaşları</h2>
+            <p style="color:#000000 !important; -webkit-text-fill-color:#000000 !important; opacity:1 !important; visibility:visible !important;">
+                2026 yılı güncel maaş verilerini mühendislik alanlarına
+                göre incele.
             </p>
         </div>
     </div>
-</div>
 
-</div>
+    <div class="salary-table-wrap">
+
+        <table class="salary-table">
+
+            <thead>
+                <tr>
+                    <th>Mühendislik</th>
+                    <th>Sektör</th>
+                    <th>Yıl</th>
+                    <th>Maaş</th>
+                    <th>Kaynak</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>Bilgisayar Mühendisliği</td>
+                    <td>Özel</td>
+                    <td>2026</td>
+                    <td><strong>70.100 TL</strong></td>
+                    <td>Eleman.net</td>
+                </tr>
+
+                <tr>
+                    <td>Elektrik-Elektronik Mühendisliği</td>
+                    <td>Özel</td>
+                    <td>2026</td>
+                    <td><strong>78.900 TL</strong></td>
+                    <td>Eleman.net</td>
+                </tr>
+
+                <tr>
+                    <td>Makine Mühendisliği</td>
+                    <td>Özel</td>
+                    <td>2026</td>
+                    <td><strong>57.100 TL</strong></td>
+                    <td>Eleman.net</td>
+                </tr>
+
+                <tr>
+                    <td>İnşaat Mühendisliği</td>
+                    <td>Özel</td>
+                    <td>2026</td>
+                    <td><strong>60.300 TL</strong></td>
+                    <td>Eleman.net</td>
+                </tr>
+
+                <tr>
+                    <td>Endüstri Mühendisliği</td>
+                    <td>Özel</td>
+                    <td>2026</td>
+                    <td><strong>68.900 TL</strong></td>
+                    <td>Eleman.net</td>
+                </tr>
+
+                <tr>
+                    <td>Uçak Mühendisliği</td>
+                    <td>Özel</td>
+                    <td>2026</td>
+                    <td><strong>105.000 TL</strong></td>
+                    <td>Eleman.net</td>
+                </tr>
+
+                <tr>
+                    <td>Mühendis</td>
+                    <td>Kamu</td>
+                    <td>2026</td>
+                    <td><strong>109.185 TL</strong></td>
+                    <td>AA / Temmuz-Aralık 2026</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <div class="salary-note">
+        <strong>📌 Kaynak ve açıklama:</strong>
+        Özel sektör değerleri Eleman.net'in 2026 maaş verilerindeki
+        aylık ortalamalardır. Maaşlar deneyim, şehir, şirket ve pozisyona
+        göre değişebilir. Kamu verisi 1/4 derece mühendis için
+        Temmuz-Aralık 2026 net görev aylığıdır.
+    </div>
+
 </section>
-
 
 <style>
 
@@ -4228,65 +3673,31 @@ araştırmasında kaynağın tarihi mutlaka kontrol edilmelidir.
 
 <!-- HABERLER -->
 
+<section class="container" id="haberler">
 
-<section class="container mm-news-section" id="haberler">
+<div class="title">
 
-<div class="mm-section-intro">
-    <span class="mm-kicker">GÜNCEL</span>
-    <h2>📰 Eğitim, YKS ve Mühendislik Gündemi</h2>
+    <h2>📰 Haberler ve Duyurular</h2>
+
     <p>
-        Eğitim, sınavlar, üniversiteler ve mühendislik alanındaki
-        gelişmeleri tek bölümden takip et.
+        Eğitim ve mühendislik dünyasından gelişmeler.
     </p>
-</div>
-
-<div class="mm-news-intro">
-
-<div>
-    <strong>🎓 Eğitim</strong>
-    <span>Sınav ve üniversite duyuruları</span>
-</div>
-
-<div>
-    <strong>⚙️ Mühendislik</strong>
-    <span>Sektör ve teknoloji gelişmeleri</span>
-</div>
-
-<div>
-    <strong>📢 Duyurular</strong>
-    <span>Site ve içerik güncellemeleri</span>
-</div>
 
 </div>
 
 <div id="newsContainer" class="news">
 
 <div class="news-card">
+
     <small>DUYURU</small>
-    <h3>Mühendislik Merkezi geliştiriliyor</h3>
-    <p>
-        Mühendislik bölümleri, YKS araçları, üniversite araştırması
-        ve kariyer içerikleri tek bir platform altında genişletiliyor.
-    </p>
-</div>
 
-<div class="news-card">
-    <small>REHBER</small>
-    <h3>Mühendislik bölümünü araştırırken nelere bakılmalı?</h3>
-    <p>
-        Bölüm seçerken yalnızca puan veya popülerlik yerine ders
-        yapısı, çalışma alanları, üniversite imkanları ve kişisel
-        ilgi alanlarının birlikte değerlendirilmesi önemlidir.
-    </p>
-</div>
+    <h3>Yakında</h3>
 
-<div class="news-card">
-    <small>YKS</small>
-    <h3>Netlerini düzenli takip et</h3>
     <p>
-        TYT ve AYT denemelerindeki netlerini zaman içinde takip ederek
-        hangi derslerde gelişim gerektiğini daha kolay görebilirsin.
+        Haber ve duyuru sistemi admin panelinden
+        yönetilebilir hale getirilecek.
     </p>
+
 </div>
 
 </div>
@@ -4294,55 +3705,52 @@ araştırmasında kaynağın tarihi mutlaka kontrol edilmelidir.
 </section>
 
 
-
 <footer>
+
 <div class="footer-inner">
-    <div class="footer-brand">
-        <h3>Mühendislik Merkezi</h3>
-        <p>
-            Mühendislik bölümleri, üniversite araştırması, YKS araçları
-            ve mühendislik kariyerleri hakkında düzenli, anlaşılır ve
-            güncel bilgi sunmayı amaçlayan bağımsız bir bilgi platformudur.
-        </p>
-        <p class="footer-slogan" style="margin-top:14px;font-weight:700;color:var(--mm-accent,#287cff);letter-spacing:.3px;">
-            9/D öğrencisinin hayali gerçek oldu.
-        </p>
-    </div>
 
-    <div>
-        <h4>Mühendislik</h4>
-        <a href="#muhendislik">Mühendislik Bölümleri</a>
-        <a href="#kesfet">Bölüm Keşfet</a>
-        <a href="#salaries">Maaş Araştırması</a>
-        <a href="#muhendislik">Kariyer Yolu</a>
-    </div>
+<div>
 
-    <div>
-        <h4>Üniversite</h4>
-        <a href="#universite">Üniversiteler</a>
-        <a href="#universite">Mühendislik Programları</a>
-        <a href="#universite">Üniversite Rehberi</a>
-    </div>
+    <h3>Mühendislik Merkezi</h3>
 
-    <div>
-        <h4>YKS</h4>
-        <a href="#yks">TYT Net Hesaplama</a>
-        <a href="#yks">AYT Net Hesaplama</a>
-        <a href="#yks">Puan Hesaplama</a>
-    </div>
+    <p>
+        Eğitim, mühendislik ve kariyer
+        bilgilerini tek yerde bul.
+    </p>
 
-    <div>
-        <h4>Site</h4>
-        <a href="#haberler">Gündem</a>
-        <a href="/admin">Yönetim</a>
-        <a href="#kesfet">Keşfet</a>
-    </div>
 </div>
 
-<div class="footer-bottom">
-    © 2026 Mühendislik Merkezi — Berat Buğra Zorlu</div>
-</footer>
+<div>
 
+    <h3>Kategoriler</h3>
+
+    <p>Mühendislik</p>
+    <p>Üniversite</p>
+    <p>YKS</p>
+    <p>Maaşlar</p>
+
+</div>
+
+<div>
+
+    <h3>Hızlı Menü</h3>
+
+    <p>Hakkımızda</p>
+    <p>İletişim</p>
+    <p>Gizlilik</p>
+
+</div>
+
+</div>
+
+<div class="bottom">
+
+    © 2026 Mühendislik Merkezi —
+    Berat Buğra Zorlu
+
+</div>
+
+</footer>
 
 
 <script>
@@ -7533,97 +6941,6 @@ window.addEventListener(
     }
 );
 
-</script>
-
-
-
-
-
-<script id="mm-smart-engineering-search-v2">
-(function(){
-    function normalize(text){
-        return String(text || "")
-            .toLocaleLowerCase("tr-TR")
-            .replace(/ı/g,"i").replace(/İ/g,"i")
-            .replace(/ğ/g,"g").replace(/Ğ/g,"g")
-            .replace(/ü/g,"u").replace(/Ü/g,"u")
-            .replace(/ş/g,"s").replace(/Ş/g,"s")
-            .replace(/ö/g,"o").replace(/Ö/g,"o")
-            .replace(/ç/g,"c").replace(/Ç/g,"c")
-            .trim();
-    }
-
-    function findEngineering(query){
-        const q = normalize(query);
-        if(!q || typeof muhendislikDetaylari !== "object") return null;
-        const names = Object.keys(muhendislikDetaylari);
-        // Önce tam / içerir eşleşme
-        let match = names.find(name => {
-            const n = normalize(name);
-            return n === q || n.includes(q) || q.includes(n);
-        });
-        if(match) return match;
-        // Kısa kelime için başlangıç eşleşmesi
-        if(q.length >= 3){
-            match = names.find(name => {
-                const n = normalize(name);
-                return n.split(" ").some(w => w.startsWith(q));
-            });
-        }
-        return match || null;
-    }
-
-    window.kesfetAra = function(value){
-        const query = String(value || document.getElementById("kesfetSearch")?.value || "").trim();
-        if(!query) return;
-
-        const match = findEngineering(query);
-        if(match){
-            const section = document.getElementById("muhendislik");
-            if(section){
-                section.scrollIntoView({ behavior: "smooth", block: "start" });
-            }
-            setTimeout(function(){
-                if(typeof window.muhDetayAc === "function"){
-                    window.muhDetayAc(match);
-                } else if(typeof window.muhendislikAc === "function"){
-                    window.muhendislikAc(match);
-                } else {
-                    // Kart tıklama fallback
-                    const cards = document.querySelectorAll("#muhendislik-listesi > div, #muhendislik-listesi .engineering-card");
-                    for(const card of cards){
-                        const title = card.querySelector("h3, h4, .title");
-                        if(title && normalize(title.textContent) === normalize(match)){
-                            card.click();
-                            break;
-                        }
-                    }
-                }
-            }, 300);
-            return;
-        }
-        // Eşleşme yoksa sonuç alanına yaz
-        const sonuc = document.getElementById("kesfetSonuc");
-        if(sonuc){
-            sonuc.innerHTML = `<div style="padding:16px;border-radius:12px;background:#f8fafc;border:1px solid #e2e8f0;color:#475569;">
-                "${query}" için doğrudan mühendislik eşleşmesi bulunamadı. Aşağıdaki listeden seçebilirsin.
-            </div>`;
-        }
-    };
-
-    // Enter tuşu
-    document.addEventListener("DOMContentLoaded", function(){
-        const inp = document.getElementById("kesfetSearch");
-        if(inp){
-            inp.addEventListener("keydown", function(e){
-                if(e.key === "Enter"){
-                    e.preventDefault();
-                    window.kesfetAra(inp.value);
-                }
-            });
-        }
-    });
-})();
 </script>
 
 </body>
