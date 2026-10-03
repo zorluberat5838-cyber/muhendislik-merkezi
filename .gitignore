@@ -1,1 +1,6 @@
 node_modules/
+yedek-yeni-admin-*/
+admin-backup-*/
+server.log
+server.js.backup*
+data/site.db.backup-*

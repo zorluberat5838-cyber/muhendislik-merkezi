@@ -1,1741 +1,636 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Mühendislik Merkezi — Admin</title>
-
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Yönetim Paneli | Mühendislik Merkezi</title>
 <style>
-*{box-sizing:border-box}
-
 :root{
-    --bg:#070a0f;
-    --panel:#0d1219;
-    --panel2:#111821;
-    --border:#202b38;
-    --text:#e8edf3;
-    --muted:#7f8b99;
-    --accent:#36d399;
-    --accent2:#1fa97b;
-    --danger:#ff5c6c;
+  --bg:#ffffff; --side:#f6f7f9; --line:#e4e8ee; --text:#18202b; --mute:#667385;
+  --acc:#0b5cad; --acc-d:#094a8c; --acc-s:#e8f1fb;
+  --danger:#b42318; --danger-s:#fdecea; --ok:#067647; --ok-s:#e7f6ee;
 }
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%}
+body{font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;color:var(--text);background:var(--bg)}
+a{color:var(--acc)}
+button,input,textarea,select{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
 
-body{
-    margin:0;
-    background:var(--bg);
-    color:var(--text);
-    font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+.app{display:flex;min-height:100vh}
+.sidebar{width:252px;flex:none;background:var(--side);border-right:1px solid var(--line);display:flex;flex-direction:column;padding:18px 12px;position:sticky;top:0;height:100vh;overflow-y:auto}
+.brand{padding:4px 10px 14px;font-weight:700;font-size:16px;line-height:1.3}
+.brand small{display:block;font-weight:400;color:var(--mute);font-size:13px;margin-top:2px}
+.grp{margin:18px 10px 6px;font-size:13px;color:var(--mute);font-weight:600}
+a.nav{display:block;padding:8px 10px;border-radius:6px;color:var(--text);text-decoration:none}
+a.nav:hover{background:#eceff3}
+a.nav.on{background:var(--acc-s);color:var(--acc-d);font-weight:600}
+a.nav.sub{padding-left:22px}
+.sidebar .out{margin-top:auto;padding-top:16px}
+.sidebar .out button{width:100%;text-align:left;background:none;border:0;padding:8px 10px;border-radius:6px;cursor:pointer;color:var(--danger)}
+.sidebar .out button:hover{background:var(--danger-s)}
+
+.main{flex:1;min-width:0;display:flex;flex-direction:column}
+.topbar{display:flex;align-items:center;gap:14px;padding:14px 28px;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--bg);z-index:5}
+.topbar h1{font-size:19px;margin:0;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.who{color:var(--mute);font-size:14px}
+.menubtn{display:none;background:none;border:1px solid var(--line);border-radius:6px;padding:6px 10px;cursor:pointer}
+main{padding:26px 28px 60px;max-width:1100px;width:100%}
+
+.btn{display:inline-block;padding:8px 14px;border:1px solid var(--line);border-radius:6px;background:#fff;cursor:pointer;text-decoration:none;color:var(--text);font-size:14.5px;line-height:1.3}
+.btn:hover{background:#f3f5f8}
+.btn.primary{background:var(--acc);border-color:var(--acc);color:#fff}
+.btn.primary:hover{background:var(--acc-d)}
+.btn.danger{background:var(--danger);border-color:var(--danger);color:#fff}
+.btn.danger-o{color:var(--danger)}
+.btn.danger-o:hover{background:var(--danger-s)}
+.btn.sm{padding:5px 10px;font-size:13.5px}
+.btn:disabled{opacity:.6;cursor:wait}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin-bottom:24px}
+.stat{border:1px solid var(--line);border-radius:8px;padding:14px 16px}
+.stat .num{font-size:26px;font-weight:700;line-height:1.15}
+.stat .lbl{color:var(--mute);font-size:13.5px;margin-top:2px}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.panel{border:1px solid var(--line);border-radius:8px;padding:20px}
+.panel h2{font-size:16px;margin:0 0 12px}
+.quick{display:flex;flex-wrap:wrap;gap:8px}
+.list{list-style:none;margin:0;padding:0}
+.list li{padding:9px 0;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:12px}
+.list li:first-child{border-top:0}
+.list .d{color:var(--mute);font-size:13px;white-space:nowrap}
+
+.toolbar{display:flex;gap:10px;align-items:center;margin-bottom:14px;flex-wrap:wrap}
+.toolbar input[type=search]{flex:1;min-width:180px;max-width:340px}
+.toolbar .sp{flex:1}
+.tablewrap{border:1px solid var(--line);border-radius:8px;overflow-x:auto}
+table{width:100%;border-collapse:collapse;min-width:560px}
+th,td{text-align:left;padding:10px 14px;border-top:1px solid var(--line);vertical-align:top}
+thead th{border-top:0;background:var(--side);font-size:13.5px;color:var(--mute);font-weight:600}
+td.act{white-space:nowrap;text-align:right}
+td .sub{color:var(--mute);font-size:13.5px}
+.empty{border:1px dashed var(--line);border-radius:8px;padding:36px 20px;text-align:center;color:var(--mute)}
+.empty p{margin:0 0 12px}
+
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.field.full{grid-column:1/-1}
+label{display:block;font-weight:600;font-size:14px;margin-bottom:5px}
+.req{color:var(--danger)}
+input,textarea,select{width:100%;border:1px solid #cfd6df;border-radius:6px;padding:9px 11px;background:#fff}
+textarea{resize:vertical;min-height:90px}
+input:focus,textarea:focus{border-color:var(--acc)}
+.hint{color:var(--mute);font-size:13px;margin-top:4px}
+.formerr{margin-top:14px;padding:10px 12px;border-radius:6px;background:var(--danger-s);color:var(--danger);font-size:14px}
+.actions{display:flex;gap:10px;justify-content:flex-end;margin-top:20px}
+.note{margin:0 0 16px;padding:10px 12px;border-radius:6px;background:var(--acc-s);color:var(--acc-d);font-size:14px}
+
+dialog{border:1px solid var(--line);border-radius:10px;padding:0;width:min(580px,94vw);max-height:92vh;color:var(--text);background:#fff}
+dialog[open]{display:flex;flex-direction:column}
+dialog::backdrop{background:rgba(20,28,40,.45)}
+.dhead{padding:18px 20px 0}
+.dhead h2,.dbody h2{margin:0;font-size:17px}
+.dbody{padding:16px 20px;overflow:auto}
+.dbody p{margin:8px 0 0}
+.dfoot{display:flex;gap:10px;justify-content:flex-end;padding:14px 20px;border-top:1px solid var(--line)}
+
+#toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);padding:10px 16px;border-radius:8px;font-size:14.5px;opacity:0;pointer-events:none;transition:opacity .2s;z-index:50;max-width:92vw}
+#toast.show{opacity:1}
+#toast.ok{background:var(--ok);color:#fff}
+#toast.err{background:var(--danger);color:#fff}
+
+.loading{padding:50px 0;text-align:center;color:var(--mute)}
+.spin{display:inline-block;width:18px;height:18px;border:2px solid var(--line);border-top-color:var(--acc);border-radius:50%;animation:sp .8s linear infinite;vertical-align:-4px;margin-right:8px}
+@keyframes sp{to{transform:rotate(360deg)}}
+.scrim{display:none}
+
+@media (max-width:860px){
+  .sidebar{position:fixed;left:0;top:0;bottom:0;z-index:30;transform:translateX(-100%);transition:transform .2s;width:272px}
+  body.menu .sidebar{transform:none}
+  body.menu .scrim{display:block;position:fixed;inset:0;background:rgba(20,28,40,.4);z-index:20}
+  .menubtn{display:block}
+  .topbar{padding:12px 16px}
+  .who{display:none}
+  main{padding:18px 16px 60px}
+  .cols,.grid{grid-template-columns:1fr}
 }
-
-/* LOGIN */
-#loginScreen{
-    position:fixed;
-    inset:0;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background:
-        radial-gradient(circle at center,#12201d 0,#070a0f 45%,#040609 100%);
-}
-
-.login-box{
-    width:min(420px,90%);
-    background:rgba(13,18,25,.96);
-    border:1px solid var(--border);
-    padding:38px;
-    border-radius:18px;
-    box-shadow:0 25px 80px #000;
-}
-
-.logo{
-    font-size:15px;
-    color:var(--accent);
-    letter-spacing:3px;
-    font-weight:800;
-    margin-bottom:12px;
-}
-
-.login-box h1{
-    margin:0 0 8px;
-    font-size:27px;
-}
-
-.login-box p{
-    color:var(--muted);
-    margin-bottom:28px;
-}
-
-input,textarea,select{
-    width:100%;
-    background:#080c11;
-    border:1px solid var(--border);
-    color:var(--text);
-    padding:12px 14px;
-    border-radius:9px;
-    outline:none;
-    font:inherit;
-}
-
-input:focus,textarea:focus,select:focus{
-    border-color:var(--accent);
-}
-
-.login-box button{
-    width:100%;
-    margin-top:14px;
-    padding:13px;
-    border:0;
-    border-radius:9px;
-    background:var(--accent);
-    color:#04110c;
-    font-weight:800;
-    cursor:pointer;
-}
-
-.error{
-    color:var(--danger);
-    margin-top:12px;
-    min-height:20px;
-    font-size:13px;
-}
-
-/* ADMIN */
-#adminApp{
-    display:none;
-    min-height:100vh;
-}
-
-.topbar{
-    height:64px;
-    border-bottom:1px solid var(--border);
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:0 25px;
-    background:#090d13;
-}
-
-.brand{
-    font-weight:800;
-}
-
-.brand span{
-    color:var(--accent);
-}
-
-.status{
-    color:var(--accent);
-    font-size:12px;
-}
-
-.layout{
-    display:grid;
-    grid-template-columns:230px minmax(0,1fr);
-    min-height:calc(100vh - 64px);
-}
-
-.sidebar{
-    border-right:1px solid var(--border);
-    background:#090d13;
-    padding:18px 12px;
-}
-
-.nav-title{
-    color:#596575;
-    font-size:10px;
-    letter-spacing:2px;
-    margin:16px 12px 8px;
-}
-
-.nav{
-    display:block;
-    width:100%;
-    border:0;
-    background:none;
-    color:#aeb8c5;
-    text-align:left;
-    padding:11px 12px;
-    border-radius:8px;
-    cursor:pointer;
-    font:inherit;
-    margin-bottom:3px;
-}
-
-.nav:hover,.nav.active{
-    background:#111a21;
-    color:var(--accent);
-}
-
-.main{
-    padding:28px;
-    min-width:0;
-}
-
-.page{
-    display:none;
-}
-
-.page.active{
-    display:block;
-}
-
-.page-head{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:20px;
-    margin-bottom:24px;
-}
-
-.page-head h1{
-    margin:0;
-    font-size:28px;
-}
-
-.page-head p{
-    color:var(--muted);
-    margin:6px 0 0;
-}
-
-.cards{
-    display:grid;
-    grid-template-columns:repeat(4,minmax(0,1fr));
-    gap:14px;
-}
-
-.card{
-    background:var(--panel);
-    border:1px solid var(--border);
-    border-radius:13px;
-    padding:20px;
-}
-
-.card small{
-    color:var(--muted);
-}
-
-.card strong{
-    display:block;
-    font-size:27px;
-    margin-top:8px;
-}
-
-.editor{
-    display:grid;
-    grid-template-columns:300px minmax(0,1fr);
-    gap:18px;
-}
-
-.list,.workspace{
-    background:var(--panel);
-    border:1px solid var(--border);
-    border-radius:14px;
-}
-
-.list{
-    padding:12px;
-}
-
-.list-item{
-    padding:12px;
-    border-radius:8px;
-    cursor:pointer;
-    color:#b6c0cb;
-}
-
-.list-item:hover,.list-item.active{
-    background:#141d25;
-    color:var(--accent);
-}
-
-.workspace{
-    padding:22px;
-    min-width:0;
-}
-
-.workspace h2{
-    margin-top:0;
-}
-
-.form-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:15px;
-}
-
-.field.full{
-    grid-column:1/-1;
-}
-
-.field label{
-    display:block;
-    color:#8995a4;
-    font-size:12px;
-    margin-bottom:6px;
-}
-
-textarea{
-    min-height:110px;
-    resize:vertical;
-}
-
-.actions{
-    display:flex;
-    gap:10px;
-    margin-top:20px;
-}
-
-.btn{
-    border:1px solid var(--border);
-    background:#111821;
-    color:var(--text);
-    padding:11px 16px;
-    border-radius:8px;
-    cursor:pointer;
-}
-
-.btn.primary{
-    background:var(--accent);
-    color:#04110c;
-    border-color:var(--accent);
-    font-weight:800;
-}
-
-.btn.danger{
-    color:#ff7c89;
-}
-
-.notice{
-    padding:13px 15px;
-    border:1px solid var(--border);
-    background:#0a1016;
-    border-radius:9px;
-    color:var(--muted);
-    margin-bottom:18px;
-}
-
-@media(max-width:900px){
-    .layout{grid-template-columns:1fr}
-    .sidebar{
-        border-right:0;
-        border-bottom:1px solid var(--border);
-    }
-    .cards{grid-template-columns:1fr 1fr}
-    .editor{grid-template-columns:1fr}
-}
-
-@media(max-width:600px){
-    .cards,.form-grid{grid-template-columns:1fr}
-    .main{padding:16px}
+@media (prefers-reduced-motion:reduce){
+  .sidebar,#toast{transition:none}
+  .spin{animation-duration:2s}
 }
 </style>
 </head>
-
 <body>
-
-<!-- GİRİŞ -->
-<section id="loginScreen">
-    <div class="login-box">
-        <div class="logo">SECURE CONTROL</div>
-        <h1>Mühendislik Merkezi</h1>
-        <p>Yönetim paneline erişmek için yetkilendirme gerekiyor.</p>
-
-        <input
-            id="password"
-            type="password"
-            placeholder="Erişim şifresi"
-            autocomplete="off"
-        >
-
-        <button onclick="login()">SİSTEME GİRİŞ</button>
-
-        <div id="loginError" class="error"></div>
-    </div>
-</section>
-
-<!-- PANEL -->
-<div id="adminApp">
-
-<header class="topbar">
-    <div class="brand">
-        <span>◆</span> Mühendislik Merkezi / ADMIN
-    </div>
-
-    <div class="status">● SİSTEM AKTİF</div>
-</header>
-
-<div class="layout">
-
-<aside class="sidebar">
-
-    <div class="nav-title">CONTROL</div>
-
-    <button class="nav active" onclick="showPage('dashboard',this)">
-        📊 Dashboard
-    </button>
-
-    <button class="nav" onclick="showPage('site',this)">
-        🌐 Ana Site
-    </button>
-
-    <div class="nav-title">İÇERİK</div>
-
-    <button class="nav" onclick="showPage('engineering',this)">
-        ⚙️ Mühendislikler
-    </button>
-
-    <button class="nav" onclick="showPage('universities',this)">
-        🎓 Üniversiteler
-    </button>
-
-    <button class="nav" onclick="showPage('yks',this)">
-        📚 YKS
-    </button>
-
-    <button class="nav" onclick="showPage('salary',this)">
-        💰 Maaşlar
-    </button>
-
-    <button class="nav" onclick="showPage('news',this)">
-        📰 Haberler
-    </button>
-
-    <div class="nav-title">SYSTEM</div>
-
-    <button class="nav" onclick="showPage('settings',this)">
-        ⚙️ Ayarlar
-    </button>
-
-    <button class="nav" onclick="logout()">
-        ⇥ Çıkış
-    </button>
-
-</aside>
-
-<main class="main">
-
-<!-- DASHBOARD -->
-<section id="dashboard" class="page active">
-
-    <div class="page-head">
-        <div>
-            <h1>Dashboard</h1>
-            <p>Berat Buğra Zorlu — Yönetim Merkezi</p>
-        </div>
-    </div>
-
-    <div class="cards">
-
-        <div class="card">
-            <small>MÜHENDİSLİK</small>
-            <strong>25</strong>
-        </div>
-
-        <div class="card">
-            <small>ÜNİVERSİTE</small>
-            <strong>0</strong>
-        </div>
-
-        <div class="card">
-            <small>MAAŞ KAYDI</small>
-            <strong>7</strong>
-        </div>
-
-        <div class="card">
-            <small>HABER</small>
-            <strong>0</strong>
-        </div>
-
-    </div>
-
-    <div class="card" style="margin-top:18px">
-        <small>SİSTEM</small>
-        <h2>Kontrol paneli hazır.</h2>
-        <p style="color:var(--muted)">
-            Soldaki menüden ana sitedeki bölümleri seçerek
-            içerikleri düzenleyebilirsin.
-        </p>
-    </div>
-
-</section>
-
-<!-- ANA SİTE -->
-<section id="site" class="page">
-
-    <div class="page-head">
-        <div>
-            <h1>Ana Site</h1>
-            <p>Ana sayfanın temel bilgilerini yönet.</p>
-        </div>
-    </div>
-
-    <div class="workspace">
-
-        <div class="form-grid">
-
-            <div class="field">
-                <label>Site adı</label>
-                <input value="Mühendislik Merkezi">
-            </div>
-
-            <div class="field">
-                <label>Site sahibi</label>
-                <input value="Berat Buğra Zorlu">
-            </div>
-
-            <div class="field full">
-                <label>Ana başlık</label>
-                <input value="Geleceğini Mühendislikle Tasarla">
-            </div>
-
-            <div class="field full">
-                <label>Ana açıklama</label>
-                <textarea>Mühendislik bölümleri, üniversiteler, kariyer seçenekleri, maaşlar, YKS ve eğitim bilgilerini tek yerde keşfet.</textarea>
-            </div>
-
-        </div>
-
-        <div class="actions">
-            <button class="btn primary">💾 Kaydet ve Yayınla</button>
-        </div>
-
-    </div>
-
-</section>
-
-<!-- MÜHENDİSLİK -->
-<section id="engineering" class="page">
-
-    <div class="page-head">
-        <div>
-            <h1>Mühendislikler</h1>
-            <p>Ana sitedeki mühendislik bilgilerini yönet.</p>
-        </div>
-        <button class="btn primary">+ Yeni Mühendislik</button>
-    </div>
-
-    <div class="editor">
-
-        <div class="list">
-
-            <div class="list-item active">Bilgisayar Mühendisliği</div>
-            <div class="list-item">Yazılım Mühendisliği</div>
-            <div class="list-item">Elektrik-Elektronik Mühendisliği</div>
-            <div class="list-item">Makine Mühendisliği</div>
-            <div class="list-item">İnşaat Mühendisliği</div>
-            <div class="list-item">Endüstri Mühendisliği</div>
-            <div class="list-item">Mekatronik Mühendisliği</div>
-            <div class="list-item">Biyomedikal Mühendisliği</div>
-
-        </div>
-
-        <div class="workspace">
-
-            <h2>Bilgisayar Mühendisliği</h2>
-
-            <div class="form-grid">
-
-                <div class="field full">
-                    <label>Mühendislik adı</label>
-                    <input value="Bilgisayar Mühendisliği">
-                </div>
-
-                <div class="field full">
-                    <label>Kısa açıklama</label>
-                    <input value="Yazılım, bilgisayar sistemleri ve yapay zekâ.">
-                </div>
-
-                <div class="field">
-                    <label>Bu bölüm nedir?</label>
-                    <textarea></textarea>
-                </div>
-
-                <div class="field">
-                    <label>Ne iş yapar?</label>
-                    <textarea></textarea>
-                </div>
-
-                <div class="field">
-                    <label>Öne çıkan konular</label>
-                    <textarea></textarea>
-                </div>
-
-                <div class="field">
-                    <label>Çalışma alanları</label>
-                    <textarea></textarea>
-                </div>
-
-                <div class="field">
-                    <label>Kimlere uygun?</label>
-                    <textarea></textarea>
-                </div>
-
-                <div class="field">
-                    <label>Eğitim ve kariyer</label>
-                    <textarea></textarea>
-                </div>
-
-                <div class="field">
-                    <label>Etiketler</label>
-                    <input>
-                </div>
-
-                <div class="field">
-                    <label>Maaş</label>
-                    <input>
-                </div>
-
-            </div>
-
-            <div class="actions">
-                <button class="btn primary">💾 Kaydet ve Yayınla</button>
-                <button class="btn danger">🗑 Sil</button>
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-<!-- ÜNİVERSİTELER -->
-<section id="universities" class="page">
-
-    <div class="page-head">
-        <div>
-            <h1>Üniversiteler</h1>
-            <p>Üniversite ve bölüm verilerini yönet.</p>
-        </div>
-    </div>
-
-    <div class="workspace">
-
-        <div class="notice">
-            Üniversite adı, bölüm, puan ve başarı sırası bilgilerini buradan yönetebileceğiz.
-        </div>
-
-        <div class="form-grid">
-
-            <div class="field">
-                <label>Üniversite</label>
-                <input placeholder="Örn. Erciyes Üniversitesi">
-            </div>
-
-            <div class="field">
-                <label>Bölüm</label>
-                <input placeholder="Bilgisayar Mühendisliği">
-            </div>
-
-            <div class="field">
-                <label>Taban puan</label>
-                <input>
-            </div>
-
-            <div class="field">
-                <label>Başarı sırası</label>
-                <input>
-            </div>
-
-        </div>
-
-        <div class="actions">
-            <button class="btn primary">💾 Kaydet</button>
-        </div>
-
-    </div>
-
-</section>
-
-<!-- YKS -->
-<section id="yks" class="page">
-
-    <div class="page-head">
-        <div>
-            <h1>YKS Merkezi</h1>
-            <p>TYT ve AYT hesaplama sistemini yönet.</p>
-        </div>
-    </div>
-
-    <div class="workspace">
-
-        <h2>TYT</h2>
-
-        <div class="form-grid">
-
-            <div class="field">
-                <label>Türkçe soru sayısı</label>
-                <input value="40">
-            </div>
-
-            <div class="field">
-                <label>Sosyal Bilimler</label>
-                <input value="20">
-            </div>
-
-            <div class="field">
-                <label>Temel Matematik</label>
-                <input value="40">
-            </div>
-
-            <div class="field">
-                <label>Fen Bilimleri</label>
-                <input value="20">
-            </div>
-
-        </div>
-
-        <h2 style="margin-top:30px">AYT</h2>
-
-        <div class="form-grid">
-
-            <div class="field">
-                <label>Sayısal</label>
-                <input value="80">
-            </div>
-
-            <div class="field">
-                <label>Eşit Ağırlık</label>
-                <input value="80">
-            </div>
-
-            <div class="field">
-                <label>Sözel</label>
-                <input value="80">
-            </div>
-
-        </div>
-
-        <div class="actions">
-            <button class="btn primary">💾 YKS Ayarlarını Kaydet</button>
-        </div>
-
-    </div>
-
-</section>
-
-<!-- MAAŞ -->
-<section id="salary" class="page">
-
-    <div class="page-head">
-        <div>
-            <h1>Maaşlar</h1>
-            <p>Ana sitedeki maaş verilerini yönet.</p>
-        </div>
-    </div>
-
-    <div class="workspace">
-
-        <div class="form-grid">
-
-            <div class="field">
-                <label>Mühendislik</label>
-                <input value="Bilgisayar Mühendisliği">
-            </div>
-
-            <div class="field">
-                <label>Sektör</label>
-                <select>
-                    <option>Özel</option>
-                    <option>Kamu</option>
-                </select>
-            </div>
-
-            <div class="field">
-                <label>Yıl</label>
-                <input value="2026">
-            </div>
-
-            <div class="field">
-                <label>Maaş</label>
-                <input value="70.100 TL">
-            </div>
-
-            <div class="field full">
-                <label>Kaynak</label>
-                <input value="Eleman.net">
-            </div>
-
-        </div>
-
-        <div class="actions">
-            <button class="btn primary">💾 Maaşı Kaydet</button>
-        </div>
-
-    </div>
-
-</section>
-
-<!-- HABERLER -->
-<section id="news" class="page">
-
-    <div class="page-head">
-        <div>
-            <h1>Haberler</h1>
-            <p>Site haberlerini ve duyurularını yönet.</p>
-        </div>
-    </div>
-
-    <div class="workspace">
-
-        <div class="form-grid">
-
-            <div class="field full">
-                <label>Haber başlığı</label>
-                <input>
-            </div>
-
-            <div class="field full">
-                <label>Açıklama</label>
-                <textarea></textarea>
-            </div>
-
-            <div class="field full">
-                <label>Kaynak bağlantısı</label>
-                <input placeholder="https://...">
-            </div>
-
-        </div>
-
-        <div class="actions">
-            <button class="btn primary">💾 Haberi Yayınla</button>
-        </div>
-
-    </div>
-
-</section>
-
-<!-- AYARLAR -->
-<section id="settings" class="page">
-
-    <div class="page-head">
-        <div>
-            <h1>Sistem Ayarları</h1>
-            <p>Admin paneli ve güvenlik ayarları.</p>
-        </div>
-    </div>
-
-    <div class="workspace">
-
-        <div class="notice">
-            🔐 Admin erişimi etkin. Oturum kapatıldığında panel tekrar giriş ister.
-        </div>
-
-        <h2>Panel</h2>
-
-        <div class="form-grid">
-
-            <div class="field">
-                <label>Yönetici</label>
-                <input value="Berat Buğra Zorlu" readonly>
-            </div>
-
-            <div class="field">
-                <label>Durum</label>
-                <input value="Aktif" readonly>
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-</main>
-</div>
+<div class="app">
+  <aside class="sidebar" id="sidebar" aria-label="Ana menü">
+    <div class="brand">Mühendislik Merkezi<small>Yönetim paneli</small></div>
+    <nav>
+      <a class="nav" href="#dashboard" data-v="dashboard">Dashboard</a>
+      <div class="grp">Mühendislik içerikleri</div>
+      <a class="nav sub" href="#eng-list" data-v="eng-list">Tüm içerikler</a>
+      <a class="nav sub" href="#eng-form" data-v="eng-form">Yeni içerik</a>
+      <a class="nav" href="#universities" data-v="universities">Üniversiteler</a>
+      <a class="nav" href="#salaries" data-v="salaries">Maaşlar</a>
+      <div class="grp">Haberler</div>
+      <a class="nav sub" href="#news-list" data-v="news-list">Tüm haberler</a>
+      <a class="nav sub" href="#news-form" data-v="news-form">Yeni haber</a>
+      <div class="grp">Site</div>
+      <a class="nav sub" href="#site" data-v="site">Site ayarları</a>
+      <a class="nav sub" href="#look" data-v="look">Görünüm</a>
+      <a class="nav sub" href="#account" data-v="account">Yönetici hesabı</a>
+    </nav>
+    <div class="out"><button type="button" id="logoutBtn">Çıkış yap</button></div>
+  </aside>
+  <div class="scrim" id="scrim"></div>
+
+  <div class="main">
+    <header class="topbar">
+      <button type="button" class="menubtn" id="menuBtn" aria-label="Menüyü aç">Menü</button>
+      <h1 id="pageTitle">Dashboard</h1>
+      <span class="who" id="who"></span>
+      <a class="btn sm" href="/" target="_blank" rel="noopener">Siteyi aç</a>
+    </header>
+    <main id="view"><div class="loading"><span class="spin"></span>Yükleniyor…</div></main>
+  </div>
 </div>
 
+<dialog id="dlg"></dialog>
+<div id="toast" role="status" aria-live="polite"></div>
+<noscript>Bu panel JavaScript gerektirir.</noscript>
 
 <script>
-
+(function(){
 "use strict";
 
-/* ============================================================
-   ADMİN PANELİ CANLI SİSTEM
-   ============================================================ */
+/* ---------- yardımcılar ---------- */
+var $ = function(s, r){ return (r || document).querySelector(s); };
+function esc(v){
+  return String(v == null ? "" : v).replace(/[&<>"']/g, function(c){
+    return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];
+  });
+}
+function fmtDate(v){
+  var d = new Date(v);
+  return isNaN(d) ? "" : d.toLocaleString("tr-TR", {dateStyle:"medium", timeStyle:"short"});
+}
+function byId(list, id){
+  for (var i = 0; i < list.length; i++) if (String(list[i].id) === String(id)) return list[i];
+  return null;
+}
 
-let adminData = {
-    engineering: [],
-    universities: [],
-    salaries: [],
-    news: [],
-    siteSettings: {}
+var data = {engineering:[], universities:[], salaries:[], news:[], siteSettings:{}};
+var stats = null, adminName = "", ready = false;
+
+/* ---------- API ---------- */
+async function api(url, opt){
+  opt = opt || {};
+  var o = {method: opt.method || "GET", credentials: "same-origin", headers: {}};
+  if (opt.body !== undefined){
+    o.headers["Content-Type"] = "application/json";
+    o.body = JSON.stringify(opt.body);
+  }
+  var res;
+  try { res = await fetch(url, o); }
+  catch(e){ throw new Error("Sunucuya ulaşılamadı. İnternet bağlantını kontrol edip tekrar dene."); }
+  if (res.status === 401){
+    location.href = "/admin";
+    throw new Error("Oturum sona erdi. Yeniden giriş yapman gerekiyor.");
+  }
+  var json = null;
+  try { json = await res.json(); } catch(e){}
+  if (!res.ok || (json && json.success === false)){
+    throw new Error((json && json.message) || ("İşlem başarısız (kod " + res.status + ")."));
+  }
+  return json;
+}
+
+async function loadAll(){
+  var r = await api("/api/admin/dashboard-data");
+  data.engineering  = r.engineering  || [];
+  data.universities = r.universities || [];
+  data.salaries     = r.salaries     || [];
+  data.news         = r.news         || [];
+  data.siteSettings = r.siteSettings || {};
+  try { stats = await api("/api/site-stats"); } catch(e){ stats = null; }
+}
+
+/* ---------- bildirim, modal ---------- */
+var toastTimer;
+function toast(msg, type){
+  var t = $("#toast");
+  t.textContent = msg;
+  t.className = "show " + (type || "ok");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(function(){ t.className = ""; }, 3800);
+}
+function openModal(html){
+  var d = $("#dlg");
+  d.innerHTML = html;
+  if (!d.open) d.showModal();
+  return d;
+}
+function closeModal(){ var d = $("#dlg"); if (d.open) d.close(); }
+function showErr(root, msg){
+  var e = $(".formerr", root);
+  if (e){ e.textContent = msg; e.hidden = false; }
+}
+function hideErr(root){ var e = $(".formerr", root); if (e) e.hidden = true; }
+async function withBusy(btn, label, fn){
+  var old = btn.textContent;
+  btn.disabled = true; btn.textContent = label;
+  try { return await fn(); }
+  finally { btn.disabled = false; btn.textContent = old; }
+}
+
+/* ---------- form alanları ---------- */
+var F = {
+  eng: [
+    {k:"name",    l:"Mühendislik adı", req:1, full:1, ph:"Örn. Bilgisayar Mühendisliği"},
+    {k:"kisa",    l:"Kısa açıklama", full:1, ph:"Kartta görünen kısa cümle"},
+    {k:"nedir",   l:"Nedir?", t:"ta", full:1, rows:5},
+    {k:"isler",   l:"Yapılan işler", t:"ta", h:"Her satıra bir madde yaz."},
+    {k:"dersler", l:"Dersler", t:"ta", h:"Her satıra bir madde yaz."},
+    {k:"alanlar", l:"Çalışma alanları", t:"ta", h:"Her satıra bir madde yaz."},
+    {k:"etiket",  l:"Etiketler", t:"ta", h:"Her satıra bir etiket yaz."},
+    {k:"uygun",   l:"Kimler için uygun?", t:"ta", full:1},
+    {k:"kariyer", l:"Kariyer", t:"ta", full:1},
+    {k:"salary",  l:"Maaş bilgisi", full:1}
+  ],
+  uni: [
+    {k:"name", l:"Üniversite", req:1, full:1},
+    {k:"department", l:"Bölüm", req:1, full:1},
+    {k:"score", l:"Taban puan"},
+    {k:"ranking", l:"Başarı sırası"}
+  ],
+  sal: [
+    {k:"engineering", l:"Mühendislik", req:1, full:1},
+    {k:"sector", l:"Sektör", req:1, list:["Özel","Kamu"]},
+    {k:"year", l:"Yıl", req:1, t:"number"},
+    {k:"salary", l:"Maaş", req:1, full:1, ph:"Örn. 70.100 TL"},
+    {k:"source", l:"Kaynak", full:1}
+  ],
+  news: [
+    {k:"title", l:"Haber başlığı", req:1, full:1},
+    {k:"text", l:"Haber metni", req:1, t:"ta", full:1, rows:8}
+  ],
+  site: [
+    {k:"site_name", l:"Site adı", req:1, full:1},
+    {k:"site_description", l:"Site açıklaması", t:"ta", full:1, rows:3},
+    {k:"technician", l:"Teknisyen / hazırlayan", full:1},
+    {k:"footer_text", l:"Alt bilgi metni", t:"ta", full:1, rows:3}
+  ],
+  look: [
+    {k:"hero_title", l:"Ana sayfa başlığı", req:1, full:1},
+    {k:"hero_text", l:"Ana sayfa metni", t:"ta", full:1, rows:4}
+  ],
+  acc: [
+    {k:"currentPassword", l:"Mevcut şifre", req:1, full:1, t:"password", ac:"current-password", raw:1},
+    {k:"newName", l:"Yeni yönetici adı", full:1, h:"Değiştirmek istemiyorsan boş bırak."},
+    {k:"newPassword", l:"Yeni şifre", t:"password", ac:"new-password", raw:1, h:"En az 8 karakter. Değiştirmek istemiyorsan boş bırak."},
+    {k:"newPassword2", l:"Yeni şifre (tekrar)", t:"password", ac:"new-password", raw:1}
+  ]
 };
 
-async function api(url, options = {}){
-
-    const response = await fetch(
-        url,
-        {
-            credentials:"same-origin",
-            cache:"no-store",
-            headers:{
-                "Content-Type":"application/json",
-                ...(options.headers || {})
-            },
-            ...options
-        }
-    );
-
-    let data = {};
-
-    try{
-        data = await response.json();
-    }catch(e){}
-
-    if(!response.ok){
-
-        throw new Error(
-            data.message ||
-            ("HTTP " + response.status)
-        );
-
+function fieldHTML(f, v){
+  var id = "f_" + f.k, val = v == null ? "" : v, input;
+  var ph = f.ph ? ' placeholder="' + esc(f.ph) + '"' : "";
+  if (f.t === "ta"){
+    input = '<textarea id="' + id + '" name="' + f.k + '" rows="' + (f.rows || 4) + '"' + ph + '>' + esc(val) + '</textarea>';
+  } else {
+    input = '<input id="' + id + '" name="' + f.k + '" type="' + (f.t || "text") + '" value="' + esc(val) + '"' + ph +
+      (f.list ? ' list="dl_' + f.k + '"' : "") +
+      (f.t === "number" ? ' inputmode="numeric"' : "") +
+      (f.ac ? ' autocomplete="' + f.ac + '"' : ' autocomplete="off"') + '>';
+    if (f.list){
+      input += '<datalist id="dl_' + f.k + '">' + f.list.map(function(x){ return '<option value="' + esc(x) + '">'; }).join("") + '</datalist>';
     }
-
-    return data;
-
+  }
+  return '<div class="field' + (f.full ? " full" : "") + '"><label for="' + id + '">' + esc(f.l) +
+    (f.req ? ' <span class="req">*</span>' : "") + '</label>' + input +
+    (f.h ? '<div class="hint">' + esc(f.h) + '</div>' : "") + '</div>';
 }
-
-
-/* ============================================================
-   LOGIN
-   ============================================================ */
-
-async function login(){
-
-    const name =
-        document.getElementById("username")?.value?.trim() ||
-        document.getElementById("name")?.value?.trim() ||
-        "Berat Buğra Zorlu";
-
-    const password =
-        document.getElementById("password")?.value || "";
-
-    const error =
-        document.getElementById("loginError");
-
-    try{
-
-        const result = await api(
-            "/api/login",
-            {
-                method:"POST",
-                body:JSON.stringify({
-                    name,
-                    password
-                })
-            }
-        );
-
-        if(result.success){
-
-            sessionStorage.setItem(
-                "admin_authenticated",
-                "1"
-            );
-
-            const loginScreen =
-                document.getElementById("loginScreen");
-
-            const adminApp =
-                document.getElementById("adminApp");
-
-            if(loginScreen)
-                loginScreen.style.display="none";
-
-            if(adminApp)
-                adminApp.style.display="block";
-
-            await loadAdminData();
-
-        }
-
-    }catch(errorObject){
-
-        console.error(errorObject);
-
-        if(error){
-
-            error.textContent =
-                "Kullanıcı adı veya şifre yanlış";
-
-        }
-
+function formHTML(fields, values){
+  values = values || {};
+  return '<div class="grid">' + fields.map(function(f){ return fieldHTML(f, values[f.k]); }).join("") +
+    '</div><div class="formerr" role="alert" hidden></div>';
+}
+function readForm(root, fields){
+  var o = {};
+  fields.forEach(function(f){
+    var el = root.querySelector('[name="' + f.k + '"]');
+    var v = el ? el.value : "";
+    o[f.k] = f.raw ? v : v.trim();
+  });
+  return o;
+}
+function missing(fields, o){
+  var m = fields.filter(function(f){ return f.req && !o[f.k]; });
+  if (m.length) return "Şu alanlar gerekli: " + m.map(function(f){ return f.l; }).join(", ") + ".";
+  for (var i = 0; i < fields.length; i++){
+    if (fields[i].t === "number" && o[fields[i].k] && isNaN(Number(o[fields[i].k]))){
+      return fields[i].l + " alanına sayı gir.";
     }
-
+  }
+  return "";
 }
 
-
-async function logout(){
-
-    try{
-
-        await fetch(
-            "/api/logout",
-            {
-                credentials:"same-origin"
-            }
-        );
-
-    }catch(e){}
-
-    sessionStorage.removeItem(
-        "admin_authenticated"
-    );
-
-    location.href="/admin";
-
+/* ---------- ortak parçalar ---------- */
+function emptyBox(msg, href, label){
+  return '<div class="empty"><p>' + esc(msg) + '</p>' +
+    (href ? '<a class="btn primary" href="' + href + '">' + esc(label) + '</a>' : "") + '</div>';
+}
+function tableHTML(head, rows, emptyMsg, emptyAct){
+  if (!rows) return '<div class="empty"><p>' + esc(emptyMsg) + '</p>' + (emptyAct || "") + '</div>';
+  return '<div class="tablewrap"><table><thead><tr>' +
+    head.map(function(h){ return "<th>" + esc(h) + "</th>"; }).join("") +
+    "</tr></thead><tbody>" + rows + "</tbody></table></div>";
+}
+function rowBtns(kind, id){
+  return '<td class="act"><button type="button" class="btn sm" data-act="' + kind + '-edit" data-id="' + id + '">Düzenle</button> ' +
+    '<button type="button" class="btn sm danger-o" data-act="' + kind + '-del" data-id="' + id + '">Sil</button></td>';
+}
+function entryModal(o){
+  var d = openModal('<div class="dhead"><h2>' + esc(o.title) + '</h2></div><div class="dbody">' +
+    formHTML(o.fields, o.values) + '</div><div class="dfoot"><button type="button" class="btn" data-x>Vazgeç</button>' +
+    '<button type="button" class="btn primary" data-ok>Kaydet</button></div>');
+  $("[data-x]", d).onclick = closeModal;
+  var ok = $("[data-ok]", d);
+  ok.onclick = async function(){
+    var v = readForm(d, o.fields), m = missing(o.fields, v);
+    if (m) return showErr(d, m);
+    hideErr(d);
+    try { await withBusy(ok, "Kaydediliyor…", function(){ return o.save(v); }); closeModal(); }
+    catch(e){ showErr(d, e.message); }
+  };
+  var first = $("input,textarea", d); if (first) first.focus();
+}
+function confirmDelete(text, url){
+  var d = openModal('<div class="dbody"><h2>Silmek istediğine emin misin?</h2><p>' + esc(text) +
+    ' kalıcı olarak silinecek. Bu işlem geri alınamaz.</p><div class="formerr" role="alert" hidden></div></div>' +
+    '<div class="dfoot"><button type="button" class="btn" data-x>Vazgeç</button>' +
+    '<button type="button" class="btn danger" data-ok>Sil</button></div>');
+  $("[data-x]", d).onclick = closeModal;
+  var ok = $("[data-ok]", d);
+  ok.onclick = async function(){
+    try {
+      var r = await withBusy(ok, "Siliniyor…", function(){ return api(url, {method:"DELETE"}); });
+      closeModal(); await loadAll(); toast(r.message || "Silindi."); route();
+    } catch(e){ showErr(d, e.message); }
+  };
 }
 
-
-function showPage(id, button){
-
-    document.querySelectorAll(".page")
-        .forEach(function(page){
-
-            page.classList.remove("active");
-
-        });
-
-    const page =
-        document.getElementById(id);
-
-    if(page)
-        page.classList.add("active");
-
-    document.querySelectorAll(".nav")
-        .forEach(function(nav){
-
-            nav.classList.remove("active");
-
-        });
-
-    if(button)
-        button.classList.add("active");
-
+/* ---------- sayfalar ---------- */
+function vDashboard(){
+  var s = stats || {};
+  var items = [
+    ["Toplam ziyaretçi", s.totalVisitors], ["Bugünkü ziyaretçi", s.todayVisitors],
+    ["Mühendislik", data.engineering.length], ["Üniversite", data.universities.length],
+    ["Maaş kaydı", data.salaries.length], ["Haber", data.news.length]
+  ];
+  var cards = items.map(function(it){
+    var n = it[1] == null ? "–" : Number(it[1]).toLocaleString("tr-TR");
+    return '<div class="stat"><div class="num">' + esc(n) + '</div><div class="lbl">' + esc(it[0]) + '</div></div>';
+  }).join("");
+  var last = data.news.slice(0, 5).map(function(n){
+    return '<li><span>' + esc(n.title) + '</span><span class="d">' + esc(fmtDate(n.created_at)) + '</span></li>';
+  }).join("");
+  $("#view").innerHTML =
+    '<div class="stats">' + cards + '</div><div class="cols">' +
+    '<div class="panel"><h2>Hızlı işlemler</h2><div class="quick">' +
+      '<a class="btn primary" href="#eng-form">Yeni içerik</a><a class="btn" href="#news-form">Yeni haber</a>' +
+      '<a class="btn" href="#universities">Üniversiteler</a><a class="btn" href="#salaries">Maaşlar</a></div></div>' +
+    '<div class="panel"><h2>Son haberler</h2>' +
+      (last ? '<ul class="list">' + last + '</ul>' : '<p class="hint">Henüz haber eklenmemiş.</p>') + '</div></div>';
 }
 
-
-/* ============================================================
-   ADMIN VERİLERİNİ ÇEK
-   ============================================================ */
-
-async function loadAdminData(){
-
-    try{
-
-        const data =
-            await api("/api/admin/dashboard-data");
-
-        adminData = data;
-
-        console.log(
-            "✅ Admin verileri:",
-            data
-        );
-
-        renderEngineering();
-
-        renderUniversities();
-
-        renderSalaries();
-
-        renderNews();
-
-        fillSiteSettings();
-
-    }catch(error){
-
-        console.error(
-            "Admin data error:",
-            error
-        );
-
-    }
-
+function engRows(q){
+  q = (q || "").toLowerCase();
+  return data.engineering.filter(function(e){
+    return !q || (e.name || "").toLowerCase().indexOf(q) > -1 || (e.kisa || "").toLowerCase().indexOf(q) > -1;
+  }).map(function(e){
+    return '<tr><td><strong>' + esc(e.name) + '</strong>' + (e.kisa ? '<div class="sub">' + esc(e.kisa) + '</div>' : "") +
+      '</td><td>' + esc(e.salary) + '</td><td class="act"><a class="btn sm" href="#eng-form/' + e.id + '">Düzenle</a> ' +
+      '<button type="button" class="btn sm danger-o" data-act="eng-del" data-id="' + e.id + '">Sil</button></td></tr>';
+  }).join("");
+}
+function vEngList(){
+  var add = '<a class="btn primary" href="#eng-form">Yeni içerik ekle</a>';
+  $("#view").innerHTML =
+    '<div class="toolbar"><input type="search" id="q" placeholder="İçeriklerde ara" aria-label="İçeriklerde ara"><span class="sp"></span>' + add + '</div>' +
+    '<div id="engTable"></div>';
+  function draw(){
+    var q = $("#q").value;
+    $("#engTable").innerHTML = tableHTML(["Mühendislik", "Maaş bilgisi", ""], engRows(q),
+      q ? "Aramana uyan içerik bulunamadı." : "Henüz içerik eklenmemiş.", q ? "" : add);
+  }
+  $("#q").oninput = draw; draw();
+}
+function vEngForm(id){
+  var vals = {};
+  if (id){
+    var it = byId(data.engineering, id);
+    if (!it){ $("#view").innerHTML = emptyBox("Bu içerik bulunamadı. Silinmiş olabilir.", "#eng-list", "Listeye dön"); return; }
+    vals = {name:it.name, kisa:it.kisa, nedir:it.nedir || it.description, isler:it.isler || it.work,
+            dersler:it.dersler || it.education, alanlar:it.alanlar, uygun:it.uygun, kariyer:it.kariyer,
+            etiket:it.etiket, salary:it.salary};
+  }
+  var root = $("#view");
+  root.innerHTML = '<div class="panel">' + formHTML(F.eng, vals) + '<div class="actions"><a class="btn" href="#eng-list">Vazgeç</a>' +
+    '<button type="button" class="btn primary" id="save">' + (id ? "Değişiklikleri kaydet" : "İçeriği yayınla") + '</button></div></div>';
+  var btn = $("#save");
+  btn.onclick = async function(){
+    var v = readForm(root, F.eng), m = missing(F.eng, v);
+    if (m) return showErr(root, m);
+    hideErr(root);
+    try {
+      var r = await withBusy(btn, "Kaydediliyor…", function(){
+        return api(id ? "/api/admin/engineering/" + id : "/api/admin/engineering", {method: id ? "PUT" : "POST", body: v});
+      });
+      await loadAll(); toast(r.message || "Kaydedildi."); location.hash = "#eng-list";
+    } catch(e){ showErr(root, e.message); }
+  };
 }
 
-
-/* ============================================================
-   MÜHENDİSLİKLER
-   ============================================================ */
-
-function renderEngineering(){
-
-    const container =
-        document.querySelector(
-            "#admin-engineering-list"
-        ) ||
-        document.querySelector(
-            "[data-admin-engineering]"
-        );
-
-    if(!container)
-        return;
-
-    container.innerHTML="";
-
-    adminData.engineering.forEach(function(item){
-
-        const div =
-            document.createElement("div");
-
-        div.className =
-            "admin-engineering-item";
-
-        div.style.cssText = `
-            background:#111821;
-            border:1px solid #202b38;
-            border-radius:12px;
-            padding:15px;
-            margin-bottom:10px;
-        `;
-
-        div.innerHTML = `
-
-            <strong>
-                ${escapeAdmin(item.name)}
-            </strong>
-
-            <p>
-                ${escapeAdmin(
-                    item.kisa ||
-                    item.nedir ||
-                    item.description ||
-                    ""
-                )}
-            </p>
-
-            <button
-                onclick="editEngineering(${item.id})"
-            >
-                Düzenle
-            </button>
-
-            <button
-                onclick="deleteEngineering(${item.id})"
-            >
-                Sil
-            </button>
-
-        `;
-
-        container.appendChild(div);
-
-    });
-
+function vUniversities(){
+  var rows = data.universities.map(function(u){
+    return '<tr><td>' + esc(u.name) + '</td><td>' + esc(u.department) + '</td><td>' + esc(u.score) + '</td><td>' +
+      esc(u.ranking) + '</td>' + rowBtns("uni", u.id) + '</tr>';
+  }).join("");
+  var add = '<button type="button" class="btn primary" data-act="uni-new">Yeni üniversite</button>';
+  $("#view").innerHTML = '<div class="toolbar"><span class="sp"></span>' + add + '</div>' +
+    tableHTML(["Üniversite", "Bölüm", "Taban puan", "Başarı sırası", ""], rows, "Henüz üniversite eklenmemiş.", add);
+}
+function uniModal(u){
+  entryModal({title: u ? "Üniversiteyi düzenle" : "Yeni üniversite", fields: F.uni, values: u || {},
+    save: async function(v){
+      var r = await api(u ? "/api/admin/universities/" + u.id : "/api/admin/universities", {method: u ? "PUT" : "POST", body: v});
+      await loadAll(); toast(r.message || "Kaydedildi."); route();
+    }});
 }
 
-
-function escapeAdmin(value){
-
-    return String(value ?? "")
-        .replace(/&/g,"&amp;")
-        .replace(/</g,"&lt;")
-        .replace(/>/g,"&gt;")
-        .replace(/"/g,"&quot;")
-        .replace(/'/g,"&#039;");
-
+function vSalaries(){
+  var rows = data.salaries.map(function(s){
+    return '<tr><td>' + esc(s.engineering) + '</td><td>' + esc(s.sector) + '</td><td>' + esc(s.year) + '</td><td>' +
+      esc(s.salary) + '</td><td>' + esc(s.source) + '</td>' + rowBtns("sal", s.id) + '</tr>';
+  }).join("");
+  var add = '<button type="button" class="btn primary" data-act="sal-new">Yeni maaş kaydı</button>';
+  $("#view").innerHTML = '<div class="toolbar"><span class="sp"></span>' + add + '</div>' +
+    tableHTML(["Mühendislik", "Sektör", "Yıl", "Maaş", "Kaynak", ""], rows, "Henüz maaş kaydı eklenmemiş.", add);
+}
+function salModal(s){
+  entryModal({title: s ? "Maaş kaydını düzenle" : "Yeni maaş kaydı", fields: F.sal, values: s || {year: new Date().getFullYear()},
+    save: async function(v){
+      var r = await api(s ? "/api/admin/salaries/" + s.id : "/api/admin/salaries", {method: s ? "PUT" : "POST", body: v});
+      await loadAll(); toast(r.message || "Kaydedildi."); route();
+    }});
 }
 
-
-function getEngineeringForm(){
-
-    const get = function(names){
-
-        for(const name of names){
-
-            const el =
-                document.getElementById(name) ||
-                document.querySelector(
-                    `[name="${name}"]`
-                );
-
-            if(el)
-                return el.value || "";
-
-        }
-
-        return "";
-
-    };
-
-    return {
-
-        name:get([
-            "engineeringName",
-            "engName",
-            "name"
-        ]),
-
-        kisa:get([
-            "engineeringShort",
-            "engShort",
-            "kisa"
-        ]),
-
-        nedir:get([
-            "engineeringDescription",
-            "engDescription",
-            "nedir",
-            "description"
-        ]),
-
-        isler:get([
-            "engineeringJobs",
-            "engJobs",
-            "isler",
-            "work"
-        ]),
-
-        dersler:get([
-            "engineeringLessons",
-            "engLessons",
-            "dersler",
-            "education"
-        ]),
-
-        alanlar:get([
-            "engineeringFields",
-            "engFields",
-            "alanlar"
-        ]),
-
-        uygun:get([
-            "engineeringSuitable",
-            "engSuitable",
-            "uygun"
-        ]),
-
-        kariyer:get([
-            "engineeringCareer",
-            "engCareer",
-            "kariyer"
-        ]),
-
-        etiket:get([
-            "engineeringTags",
-            "engTags",
-            "etiket"
-        ]),
-
-        salary:get([
-            "engineeringSalary",
-            "engSalary",
-            "salary"
-        ])
-
-    };
-
+function vNewsList(){
+  var rows = data.news.map(function(n){
+    return '<tr><td><strong>' + esc(n.title) + '</strong></td><td>' + esc(fmtDate(n.created_at)) +
+      '</td><td class="act"><a class="btn sm" href="#news-form/' + n.id + '">Düzenle</a> ' +
+      '<button type="button" class="btn sm danger-o" data-act="news-del" data-id="' + n.id + '">Sil</button></td></tr>';
+  }).join("");
+  var add = '<a class="btn primary" href="#news-form">Yeni haber</a>';
+  $("#view").innerHTML = '<div class="toolbar"><span class="sp"></span>' + add + '</div>' +
+    tableHTML(["Başlık", "Tarih", ""], rows, "Henüz haber eklenmemiş.", add);
+}
+function vNewsForm(id){
+  var vals = {};
+  if (id){
+    var n = byId(data.news, id);
+    if (!n){ $("#view").innerHTML = emptyBox("Bu haber bulunamadı. Silinmiş olabilir.", "#news-list", "Listeye dön"); return; }
+    vals = {title:n.title, text:n.text};
+  }
+  var root = $("#view");
+  root.innerHTML = '<div class="panel">' + formHTML(F.news, vals) + '<div class="actions"><a class="btn" href="#news-list">Vazgeç</a>' +
+    '<button type="button" class="btn primary" id="save">' + (id ? "Değişiklikleri kaydet" : "Haberi yayınla") + '</button></div></div>';
+  var btn = $("#save");
+  btn.onclick = async function(){
+    var v = readForm(root, F.news), m = missing(F.news, v);
+    if (m) return showErr(root, m);
+    hideErr(root);
+    try {
+      var r = await withBusy(btn, "Kaydediliyor…", function(){
+        return api(id ? "/api/admin/news/" + id : "/api/admin/news", {method: id ? "PUT" : "POST", body: v});
+      });
+      await loadAll(); toast(r.message || "Kaydedildi."); location.hash = "#news-list";
+    } catch(e){ showErr(root, e.message); }
+  };
 }
 
-
-async function saveEngineering(){
-
-    const data =
-        getEngineeringForm();
-
-    if(!data.name){
-
-        alert(
-            "Mühendislik adı gerekli."
-        );
-
-        return;
-
-    }
-
-    try{
-
-        const result =
-            await api(
-                "/api/admin/engineering",
-                {
-                    method:"POST",
-                    body:JSON.stringify(data)
-                }
-            );
-
-        alert(
-            result.message ||
-            "Mühendislik kaydedildi."
-        );
-
-        await loadAdminData();
-
-        location.reload();
-
-    }catch(error){
-
-        console.error(error);
-
-        alert(
-            "Kaydetme hatası: " +
-            error.message
-        );
-
-    }
-
+function vSettings(kind){
+  var fields = F[kind], root = $("#view");
+  var intro = kind === "site"
+    ? "Sitenin adı, açıklaması ve alt bilgisi. Kaydedince ana sitede hemen yayınlanır."
+    : "Ana sayfanın üst bölümünde görünen başlık ve metin. Kaydedince ana sitede hemen yayınlanır.";
+  root.innerHTML = '<div class="panel"><p class="note">' + esc(intro) + '</p>' + formHTML(fields, data.siteSettings) +
+    '<div class="actions"><button type="button" class="btn primary" id="save">Kaydet ve yayınla</button></div></div>';
+  var btn = $("#save");
+  btn.onclick = async function(){
+    var v = readForm(root, fields), m = missing(fields, v);
+    if (m) return showErr(root, m);
+    hideErr(root);
+    try {
+      var r = await withBusy(btn, "Kaydediliyor…", function(){ return api("/api/admin/customization", {method:"PUT", body: v}); });
+      if (r.settings) data.siteSettings = r.settings;
+      toast(r.message || "Kaydedildi.");
+    } catch(e){ showErr(root, e.message); }
+  };
 }
 
-
-async function updateEngineering(id){
-
-    const data =
-        getEngineeringForm();
-
-    if(!data.name){
-
-        alert(
-            "Mühendislik adı gerekli."
-        );
-
-        return;
-
-    }
-
-    try{
-
-        const result =
-            await api(
-                "/api/admin/engineering/" + id,
-                {
-                    method:"PUT",
-                    body:JSON.stringify(data)
-                }
-            );
-
-        alert(
-            result.message ||
-            "Mühendislik güncellendi."
-        );
-
-        await loadAdminData();
-
-        location.reload();
-
-    }catch(error){
-
-        console.error(error);
-
-        alert(
-            "Güncelleme hatası: " +
-            error.message
-        );
-
-    }
-
+function vAccount(){
+  var root = $("#view");
+  root.innerHTML = '<div class="panel"><p class="note">Giriş yapan yönetici: <strong>' + esc(adminName) +
+    '</strong>. Ad veya şifreyi değiştirmek için mevcut şifreni gir.</p>' + formHTML(F.acc, {}) +
+    '<div class="actions"><button type="button" class="btn primary" id="save">Hesabı güncelle</button></div></div>';
+  var btn = $("#save");
+  btn.onclick = async function(){
+    var v = readForm(root, F.acc), m = missing(F.acc, v);
+    if (m) return showErr(root, m);
+    if (!v.newName.trim() && !v.newPassword) return showErr(root, "Değiştirmek için yeni ad veya yeni şifre gir.");
+    if (v.newPassword && v.newPassword.length < 8) return showErr(root, "Yeni şifre en az 8 karakter olmalı.");
+    if (v.newPassword !== v.newPassword2) return showErr(root, "Yeni şifre ile tekrarı aynı değil.");
+    hideErr(root);
+    try {
+      var r = await withBusy(btn, "Güncelleniyor…", function(){
+        return api("/api/admin/account", {method:"POST", body:{currentPassword: v.currentPassword, newName: v.newName.trim(), newPassword: v.newPassword}});
+      });
+      if (v.newName.trim()){ adminName = v.newName.trim(); setWho(); }
+      toast(r.message || "Hesap güncellendi.");
+      vAccount();
+    } catch(e){ showErr(root, e.message); }
+  };
 }
 
+/* ---------- tıklama işlemleri ---------- */
+var act = {
+  "uni-new":  function(){ uniModal(null); },
+  "uni-edit": function(id){ var u = byId(data.universities, id); if (u) uniModal(u); },
+  "uni-del":  function(id){ var u = byId(data.universities, id); if (u) confirmDelete(u.name + " – " + u.department, "/api/admin/universities/" + id); },
+  "sal-new":  function(){ salModal(null); },
+  "sal-edit": function(id){ var s = byId(data.salaries, id); if (s) salModal(s); },
+  "sal-del":  function(id){ var s = byId(data.salaries, id); if (s) confirmDelete(s.engineering + " (" + s.year + ") maaş kaydı", "/api/admin/salaries/" + id); },
+  "eng-del":  function(id){ var e = byId(data.engineering, id); if (e) confirmDelete(e.name, "/api/admin/engineering/" + id); },
+  "news-del": function(id){ var n = byId(data.news, id); if (n) confirmDelete(n.title, "/api/admin/news/" + id); }
+};
+$("#view").addEventListener("click", function(e){
+  var b = e.target.closest("[data-act]");
+  if (b && act[b.dataset.act]) act[b.dataset.act](b.dataset.id);
+});
 
-function editEngineering(id){
-
-    const item =
-        adminData.engineering.find(
-            x => Number(x.id) === Number(id)
-        );
-
-    if(!item)
-        return;
-
-    const values = {
-
-        engineeringName:item.name,
-
-        engineeringShort:
-            item.kisa || "",
-
-        engineeringDescription:
-            item.nedir ||
-            item.description ||
-            "",
-
-        engineeringJobs:
-            item.isler ||
-            item.work ||
-            "",
-
-        engineeringLessons:
-            item.dersler ||
-            item.education ||
-            "",
-
-        engineeringFields:
-            item.alanlar ||
-            "",
-
-        engineeringSuitable:
-            item.uygun ||
-            "",
-
-        engineeringCareer:
-            item.kariyer ||
-            "",
-
-        engineeringTags:
-            item.etiket ||
-            "",
-
-        engineeringSalary:
-            item.salary ||
-            ""
-
-    };
-
-    Object.entries(values)
-        .forEach(function([id,value]){
-
-            const el =
-                document.getElementById(id) ||
-                document.querySelector(
-                    `[name="${id}"]`
-                );
-
-            if(el)
-                el.value =
-                    Array.isArray(value)
-                    ? value.join("\n")
-                    : value;
-
-        });
-
-    window.editingEngineeringId =
-        id;
-
-    alert(
-        "Mühendislik düzenleme moduna alındı."
-    );
-
+/* ---------- yönlendirme ---------- */
+var TITLES = {dashboard:"Dashboard", "eng-list":"Tüm içerikler", "eng-form":"Yeni içerik", universities:"Üniversiteler",
+  salaries:"Maaşlar", "news-list":"Tüm haberler", "news-form":"Yeni haber", site:"Site ayarları", look:"Görünüm", account:"Yönetici hesabı"};
+var VIEWS = {
+  dashboard: vDashboard, "eng-list": vEngList, "eng-form": vEngForm, universities: vUniversities, salaries: vSalaries,
+  "news-list": vNewsList, "news-form": vNewsForm,
+  site: function(){ vSettings("site"); }, look: function(){ vSettings("look"); }, account: vAccount
+};
+function route(){
+  if (!ready) return;
+  var parts = (location.hash.slice(1) || "dashboard").split("/");
+  var v = TITLES[parts[0]] ? parts[0] : "dashboard", arg = parts[1];
+  var title = TITLES[v];
+  if (v === "eng-form" && arg) title = "İçeriği düzenle";
+  if (v === "news-form" && arg) title = "Haberi düzenle";
+  var navKey = (v === "eng-form" && arg) ? "eng-list" : (v === "news-form" && arg) ? "news-list" : v;
+  $("#pageTitle").textContent = title;
+  document.title = title + " | Mühendislik Merkezi";
+  document.querySelectorAll("a.nav").forEach(function(a){ a.classList.toggle("on", a.dataset.v === navKey); });
+  document.body.classList.remove("menu");
+  VIEWS[v](arg);
+  window.scrollTo(0, 0);
 }
+window.addEventListener("hashchange", route);
 
+function setWho(){ $("#who").textContent = adminName; }
 
-async function deleteEngineering(id){
+/* ---------- menü, çıkış ---------- */
+$("#menuBtn").onclick = function(){ document.body.classList.toggle("menu"); };
+$("#scrim").onclick = function(){ document.body.classList.remove("menu"); };
+$("#logoutBtn").onclick = async function(){
+  try { await fetch("/api/logout", {credentials:"same-origin"}); } catch(e){}
+  location.href = "/admin";
+};
 
-    if(!confirm(
-        "Bu mühendisliği silmek istediğine emin misin?"
-    ))
-        return;
-
-    try{
-
-        const result =
-            await api(
-                "/api/admin/engineering/" + id,
-                {
-                    method:"DELETE"
-                }
-            );
-
-        alert(
-            result.message ||
-            "Mühendislik silindi."
-        );
-
-        await loadAdminData();
-
-        location.reload();
-
-    }catch(error){
-
-        alert(
-            "Silme hatası: " +
-            error.message
-        );
-
-    }
-
+/* ---------- başlangıç ---------- */
+async function boot(){
+  $("#view").innerHTML = '<div class="loading"><span class="spin"></span>Yükleniyor…</div>';
+  try {
+    var s = await api("/api/admin/session");
+    adminName = s.admin || "";
+    setWho();
+    await loadAll();
+    ready = true;
+    route();
+  } catch(e){
+    $("#view").innerHTML = '<div class="empty"><p>' + esc(e.message) + '</p><button type="button" class="btn primary" id="retry">Tekrar dene</button></div>';
+    $("#retry").onclick = boot;
+  }
 }
-
-
-/* ============================================================
-   SİTE AYARLARI
-   ============================================================ */
-
-function fillSiteSettings(){
-
-    const settings =
-        adminData.siteSettings || {};
-
-    const map = {
-
-        site_name:
-            settings.site_name,
-
-        site_description:
-            settings.site_description,
-
-        hero_title:
-            settings.hero_title,
-
-        hero_text:
-            settings.hero_text,
-
-        technician:
-            settings.technician,
-
-        footer_text:
-            settings.footer_text
-
-    };
-
-    Object.entries(map)
-        .forEach(function([name,value]){
-
-            const el =
-                document.querySelector(
-                    `[name="${name}"]`
-                ) ||
-                document.getElementById(name);
-
-            if(el && value !== undefined)
-                el.value=value;
-
-        });
-
-}
-
-
-async function saveSiteSettings(){
-
-    const get=function(name){
-
-        const el =
-            document.querySelector(
-                `[name="${name}"]`
-            ) ||
-            document.getElementById(name);
-
-        return el ? el.value : "";
-
-    };
-
-    const data={
-
-        site_name:get("site_name"),
-
-        site_description:
-            get("site_description"),
-
-        hero_title:
-            get("hero_title"),
-
-        hero_text:
-            get("hero_text"),
-
-        technician:
-            get("technician"),
-
-        footer_text:
-            get("footer_text")
-
-    };
-
-    try{
-
-        const result =
-            await api(
-                "/api/admin/site-settings",
-                {
-                    method:"PUT",
-                    body:JSON.stringify(data)
-                }
-            );
-
-        alert(
-            result.message ||
-            "Site ayarları kaydedildi."
-        );
-
-        await loadAdminData();
-
-    }catch(error){
-
-        alert(
-            "Site ayarları kaydedilemedi: " +
-            error.message
-        );
-
-    }
-
-}
-
-
-/* ============================================================
-   ÜNİVERSİTE
-   ============================================================ */
-
-function renderUniversities(){
-
-    console.log(
-        "Üniversiteler:",
-        adminData.universities
-    );
-
-}
-
-
-/* ============================================================
-   MAAŞ
-   ============================================================ */
-
-function renderSalaries(){
-
-    console.log(
-        "Maaşlar:",
-        adminData.salaries
-    );
-
-}
-
-
-/* ============================================================
-   HABER
-   ============================================================ */
-
-function renderNews(){
-
-    console.log(
-        "Haberler:",
-        adminData.news
-    );
-
-}
-
-
-/* ============================================================
-   KAYDET BUTONLARINI OTOMATİK YAKALA
-   ============================================================ */
-
-document.addEventListener(
-    "click",
-    function(event){
-
-        const button =
-            event.target.closest("button");
-
-        if(!button)
-            return;
-
-        const text =
-            button.innerText
-                .toLowerCase();
-
-        if(
-            text.includes("mühendislik") &&
-            (
-                text.includes("kaydet") ||
-                text.includes("yayınla")
-            )
-        ){
-
-            event.preventDefault();
-
-            if(
-                window.editingEngineeringId
-            ){
-
-                updateEngineering(
-                    window.editingEngineeringId
-                );
-
-            }else{
-
-                saveEngineering();
-
-            }
-
-        }
-
-        if(
-            text.includes("site") &&
-            text.includes("kaydet")
-        ){
-
-            event.preventDefault();
-
-            saveSiteSettings();
-
-        }
-
-    }
-);
-
-
-/* ============================================================
-   ENTER İLE LOGIN
-   ============================================================ */
-
-document.addEventListener(
-    "keydown",
-    function(event){
-
-        if(
-            event.key === "Enter" &&
-            document.activeElement?.id === "password"
-        ){
-
-            login();
-
-        }
-
-    }
-);
-
-
-/* ============================================================
-   SAYFA AÇILIŞI
-   ============================================================ */
-
-(async function(){
-
-    try{
-
-        const session =
-            await api(
-                "/api/admin/session"
-            );
-
-        if(
-            session &&
-            session.success
-        ){
-
-            sessionStorage.setItem(
-                "admin_authenticated",
-                "1"
-            );
-
-            const loginScreen =
-                document.getElementById(
-                    "loginScreen"
-                );
-
-            const adminApp =
-                document.getElementById(
-                    "adminApp"
-                );
-
-            if(loginScreen)
-                loginScreen.style.display="none";
-
-            if(adminApp)
-                adminApp.style.display="block";
-
-            await loadAdminData();
-
-        }
-
-    }catch(error){
-
-        console.log(
-            "Admin oturumu henüz açık değil."
-        );
-
-    }
-
+boot();
 })();
-
 </script>
-
-
 </body>
 </html>

@@ -144,18 +144,69 @@ try {
     console.error("Salary source migration:", error);
 }
 
+// ==================== YÖNETİCİ GÜVENLİĞİ ====================
+
+// Render gibi proxy arkasında doğru IP ve https algısı için
+app.set("trust proxy", 1);
+
+function isBcryptHash(v) {
+    return typeof v === "string" && v.startsWith("$2");
+}
+
+// Şifre yalnızca bcrypt hash ile doğrulanır (düz metin karşılaştırma yok)
+function checkAdminPassword(plain, stored) {
+    if (typeof plain !== "string" || !plain || !isBcryptHash(stored)) return false;
+    try { return bcrypt.compareSync(plain, stored); } catch (e) { return false; }
+}
+
+// Eski kurulumda düz metin kalmış şifreyi bir kereye mahsus hash'le
+{
+    const kayit = db.prepare("SELECT admin_password FROM settings WHERE id = 1").get();
+    if (kayit && !isBcryptHash(kayit.admin_password)) {
+        db.prepare("UPDATE settings SET admin_password = ? WHERE id = 1")
+            .run(bcrypt.hashSync(String(kayit.admin_password), 10));
+    }
+}
+
+// Giriş denemesi sınırı: 15 dakikada 8 hatalı denemeden sonra 15 dakika bekletir
+const loginFails = new Map();
+function loginLimiter(req, res, next) {
+    const key = req.ip;
+    const now = Date.now();
+    const rec = loginFails.get(key);
+    if (rec && rec.until && rec.until > now) {
+        return res.status(429).json({
+            success: false,
+            message: "Çok fazla hatalı deneme. 15 dakika sonra tekrar dene."
+        });
+    }
+    res.on("finish", () => {
+        const r = loginFails.get(key) || { count: 0, first: now, until: 0 };
+        if (res.statusCode === 401) {
+            if (now - r.first > 15 * 60 * 1000) { r.count = 0; r.first = now; }
+            r.count++;
+            if (r.count >= 8) { r.until = now + 15 * 60 * 1000; r.count = 0; r.first = now; }
+            loginFails.set(key, r);
+        } else if (res.statusCode === 200) {
+            loginFails.delete(key);
+        }
+    });
+    next();
+}
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // ==================== ADMIN OTURUM SİSTEMİ ====================
 
 app.use(session({
-    secret: process.env.SESSION_SECRET || "muhendislik-merkezi-guvenlik-2026",
+    secret: process.env.SESSION_SECRET || require("crypto").randomBytes(32).toString("hex"),
     resave: false,
     saveUninitialized: false,
     cookie: {
         httpOnly: true,
         sameSite: "lax",
+        secure: "auto",
         maxAge: 1000 * 60 * 60 * 8
     }
 }));
@@ -289,7 +340,7 @@ app.get("/api/settings", (req, res) => {
     res.json(settings);
 });
 
-app.post("/api/login", (req, res) => {
+app.post("/api/login", loginLimiter, (req, res) => {
     const { name, password } = req.body;
 
     const admin = db.prepare(
@@ -300,8 +351,7 @@ app.post("/api/login", (req, res) => {
         admin &&
         name === admin.admin_name &&
         (
-            bcrypt.compareSync(password, admin.admin_password) ||
-            password === admin.admin_password
+            checkAdminPassword(password, admin.admin_password)
         )
     ) {
         req.session.isAdmin = true;
@@ -1231,7 +1281,7 @@ app.delete("/api/admin/engineering/:id", adminAuth, (req, res) => {
 // ==================== MAAŞ YÖNETİMİ ====================
 
 app.post("/api/admin/salaries", adminAuth, (req, res) => {
-    const { engineering, sector, year, salary } = req.body;
+    const { engineering, sector, year, salary, source } = req.body;
 
     if (!engineering || !sector || !year || !salary) {
         return res.status(400).json({
@@ -1243,13 +1293,14 @@ app.post("/api/admin/salaries", adminAuth, (req, res) => {
     try {
         const result = db.prepare(`
             INSERT INTO salaries
-            (engineering, sector, year, salary)
-            VALUES (?, ?, ?, ?)
+            (engineering, sector, year, salary, source)
+            VALUES (?, ?, ?, ?, ?)
         `).run(
             engineering.trim(),
             sector.trim(),
             Number(year),
-            salary.trim()
+            salary.trim(),
+            String(source || "").trim()
         );
 
         res.json({
@@ -1268,18 +1319,19 @@ app.post("/api/admin/salaries", adminAuth, (req, res) => {
 });
 
 app.put("/api/admin/salaries/:id", adminAuth, (req, res) => {
-    const { engineering, sector, year, salary } = req.body;
+    const { engineering, sector, year, salary, source } = req.body;
     const id = Number(req.params.id);
 
     const result = db.prepare(`
         UPDATE salaries
-        SET engineering = ?, sector = ?, year = ?, salary = ?
+        SET engineering = ?, sector = ?, year = ?, salary = ?, source = ?
         WHERE id = ?
     `).run(
         String(engineering || "").trim(),
         String(sector || "").trim(),
         Number(year),
         String(salary || "").trim(),
+        String(source || "").trim(),
         id
     );
 
@@ -1573,6 +1625,39 @@ app.get("/api/admin/customization/status", adminAuth, (req, res) => {
     }
 });
 
+
+
+// ==================== YÖNETİCİ HESABI ====================
+
+app.post("/api/admin/account", adminAuth, (req, res) => {
+    const body = req.body || {};
+    const admin = db.prepare("SELECT * FROM settings WHERE id = 1").get();
+
+    if (!admin || !checkAdminPassword(body.currentPassword, admin.admin_password)) {
+        return res.status(400).json({ success: false, message: "Mevcut şifre yanlış." });
+    }
+
+    const newName = String(body.newName || "").trim() || admin.admin_name;
+    const newPassword = String(body.newPassword || "");
+
+    if (newName.length > 60) {
+        return res.status(400).json({ success: false, message: "Yönetici adı en fazla 60 karakter olabilir." });
+    }
+    if (newPassword && newPassword.length < 8) {
+        return res.status(400).json({ success: false, message: "Yeni şifre en az 8 karakter olmalı." });
+    }
+
+    const hash = newPassword ? bcrypt.hashSync(newPassword, 10) : admin.admin_password;
+
+    try {
+        db.prepare("UPDATE settings SET admin_name = ?, admin_password = ? WHERE id = 1").run(newName, hash);
+        req.session.adminName = newName;
+        res.json({ success: true, message: "Hesap bilgileri güncellendi." });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ success: false, message: "Hesap güncellenemedi." });
+    }
+});
 
 
 app.listen(PORT, () => {
